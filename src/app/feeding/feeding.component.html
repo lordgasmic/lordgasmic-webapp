@@ -1,0 +1,29 @@
+<div>
+  <div class="row">
+    <label>Date:</label><input #date>
+  </div>
+  <div class="row">
+    <label>Time:</label><input #time><span (click)="meridiemToggle()"><label [class.meridiem]="meridiem">Am</label>|<label [class.meridiem]="!meridiem">Pm</label></span>
+  </div>
+  <div class="row">
+    <label>Given:</label><input #given>
+    <select class="uom" #givenUom>
+      <option *ngFor="let uom of unitOfMeasure">{{uom}}</option>
+    </select>
+  </div>
+  <div class="row">
+    <label>Took it all:</label><input type="checkbox" #tookItAll>
+  </div>
+  <div class="row">
+    <label>Quantity:</label><input #quantity>
+    <select class="uom" #quantityUom>
+      <option *ngFor="let uom of unitOfMeasure">{{uom}}</option>
+    </select>
+  </div>
+  <div class="row">
+    <label>Vitamin:</label><input type="checkbox" #vitamin>
+  </div>
+  <div class="row">
+    <input (click)="submitFeed()" type="submit" value="Submit">
+  </div>
+</div>
