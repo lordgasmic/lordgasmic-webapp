@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {LordgasmicService} from '../services/lordgasmic/lordgasmic.service';
 import {Feed} from '../models/Feed';
 import {UnitOfMeasure} from "../models/UnitOfMeasure";
+import {Meridiem} from "../models/Meridiem";
 
 @Component({
   selector: 'app-feeding',
@@ -38,7 +39,7 @@ export class FeedingComponent implements OnInit {
     let feed: Feed = {
       date: this.date.nativeElement.value,
       time: this.time.nativeElement.value,
-      meridiem: this.meridiem,
+      meridiem: this.meridiem ? Meridiem.am : Meridiem.pm,
       given: this.given.nativeElement.value,
       givenUom: this.givenUom.nativeElement.value,
       quantity: this.tookItAll.nativeElement.checked ? this.given.nativeElement.value : this.quantity.nativeElement.value,

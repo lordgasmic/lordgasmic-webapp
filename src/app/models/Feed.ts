@@ -1,10 +1,13 @@
+import {UnitOfMeasure} from './UnitOfMeasure';
+import {Meridiem} from './Meridiem';
+
 export class Feed {
   date: string;
   time: string;
-  meridiem: boolean;
+  meridiem: Meridiem;
   given: number;
-  givenUom: boolean;
+  givenUom: UnitOfMeasure;
   quantity: number;
-  quantityUom: boolean;
+  quantityUom: UnitOfMeasure;
   vitamin: boolean;
 }
