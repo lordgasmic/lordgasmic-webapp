@@ -1,3 +1,3 @@
 export enum UnitOfMeasure {
-  ml = 'ml', oz = 'oz'
+  ml, oz
 }

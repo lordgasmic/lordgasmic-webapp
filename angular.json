@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "lordgasmic-app": {
+    "lordgasmic-webapp": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/lordgasmic-app",
+            "outputPath": "dist/lordgasmic-webapp",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -66,18 +67,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "lordgasmic-app:build"
+            "browserTarget": "lordgasmic-webapp:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "lordgasmic-app:build:production"
+              "browserTarget": "lordgasmic-webapp:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "lordgasmic-app:build"
+            "browserTarget": "lordgasmic-webapp:build"
           }
         },
         "test": {
@@ -92,6 +93,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -114,15 +116,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "lordgasmic-app:serve"
+            "devServerTarget": "lordgasmic-webapp:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "lordgasmic-app:serve:production"
+              "devServerTarget": "lordgasmic-webapp:serve:production"
             }
           }
         }
       }
-    }},
-  "defaultProject": "lordgasmic-app"
+    }
+  },
+  "defaultProject": "lordgasmic-webapp"
 }

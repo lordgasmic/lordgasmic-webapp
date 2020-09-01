@@ -1,8 +1,8 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {LordgasmicService} from '../services/lordgasmic/lordgasmic.service';
 import {Feed} from '../models/Feed';
-import {UnitOfMeasure} from "../models/UnitOfMeasure";
-import {Meridiem} from "../models/Meridiem";
+import {UnitOfMeasure} from '../models/UnitOfMeasure';
+import {Meridiem} from '../models/Meridiem';
 
 @Component({
   selector: 'app-feeding',
@@ -12,23 +12,29 @@ import {Meridiem} from "../models/Meridiem";
 export class FeedingComponent implements OnInit {
 
   @ViewChild('date') date: ElementRef;
-  @ViewChild('time') time: ElementRef;
+  @ViewChild('time_hour') timeHour: ElementRef;
+  @ViewChild('time_minute') timeMinute: ElementRef;
   @ViewChild('given') given: ElementRef;
   @ViewChild('givenUom') givenUom: ElementRef;
   @ViewChild('tookItAll') tookItAll: ElementRef;
   @ViewChild('quantity') quantity: ElementRef;
   @ViewChild('quantityUom') quantityUom: ElementRef;
   @ViewChild('vitamin') vitamin: ElementRef;
+  @ViewChild('note') note: ElementRef;
 
   meridiem: boolean;
-  unitOfMeasure: UnitOfMeasure[] = [];
+  unitOfMeasure: string[] = [];
+  hours: number[] = [];
 
   constructor(private lordgasmicService: LordgasmicService) { }
 
   ngOnInit(): void {
     this.meridiem = true;
-    this.unitOfMeasure.push(UnitOfMeasure.ml);
-    this.unitOfMeasure.push(UnitOfMeasure.oz);
+    this.unitOfMeasure = Object.keys(UnitOfMeasure)
+                               .filter(key => isNaN(Number(key)));
+    for (let i = 1; i <= 12; i++) {
+      this.hours.push(i);
+    }
   }
 
   public meridiemToggle(): void {
@@ -38,14 +44,17 @@ export class FeedingComponent implements OnInit {
   submitFeed(): void {
     let feed: Feed = {
       date: this.date.nativeElement.value,
-      time: this.time.nativeElement.value,
+      timeHour: this.timeHour.nativeElement.value,
+      timeMinute: this.timeMinute.nativeElement.value,
       meridiem: this.meridiem ? Meridiem.am : Meridiem.pm,
       given: this.given.nativeElement.value,
       givenUom: this.givenUom.nativeElement.value,
       quantity: this.tookItAll.nativeElement.checked ? this.given.nativeElement.value : this.quantity.nativeElement.value,
       quantityUom: this.tookItAll.nativeElement.checked ? this.givenUom.nativeElement.value : this.quantityUom.nativeElement.value,
-      vitamin: this.vitamin.nativeElement.checked
+      vitamin: this.vitamin.nativeElement.checked,
+      note: this.note.nativeElement.value
     };
-    this.lordgasmicService.putFeed(feed);
+    console.log(feed);
+    // this.lordgasmicService.putFeed(feed);
   }
 }

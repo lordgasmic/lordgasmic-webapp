@@ -1,27 +1,52 @@
 <div>
   <div class="row">
-    <label>Date:</label><input #date>
+    <label class="label-col">Date:</label>
+    <input matInput [matDatepicker]="picker" disabled placeholder="Choose a date" #date />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker disabled="false" #picker></mat-datepicker>
   </div>
   <div class="row">
-    <label>Time:</label><input #time><span (click)="meridiemToggle()"><label [class.meridiem]="meridiem">Am</label>|<label [class.meridiem]="!meridiem">Pm</label></span>
+    <label class="label-col">Time:</label>
+    <select #time_hour>
+      <option *ngFor="let hour of hours">{{hour}}</option>
+    </select>
+    <select #time_minute>
+      <option>00</option>
+      <option>15</option>
+      <option>30</option>
+      <option>45</option>
+    </select>
+    <div class="meridiem-toggle" (click)="meridiemToggle()">
+      <span [class.meridiem]="meridiem">Am</span>
+      |
+      <span [class.meridiem]="!meridiem">Pm</span>
+    </div>
   </div>
   <div class="row">
-    <label>Given:</label><input #given>
+    <label class="label-col">Given:</label>
+    <input #given />
     <select class="uom" #givenUom>
       <option *ngFor="let uom of unitOfMeasure">{{uom}}</option>
     </select>
   </div>
   <div class="row">
-    <label>Took it all:</label><input type="checkbox" #tookItAll>
+    <label class="label-col">Took it all:</label>
+    <input type="checkbox" #tookItAll />
   </div>
   <div class="row">
-    <label>Quantity:</label><input #quantity>
+    <label class="label-col">Quantity:</label>
+    <input #quantity />
     <select class="uom" #quantityUom>
       <option *ngFor="let uom of unitOfMeasure">{{uom}}</option>
     </select>
   </div>
   <div class="row">
-    <label>Vitamin:</label><input type="checkbox" #vitamin>
+    <label class="label-col">Vitamin:</label>
+    <input type="checkbox" #vitamin />
+  </div>
+  <div clas="row">
+    <label class="label-col lbl-note">Note:</label>
+    <textarea rows="3" cols="50" #note></textarea>
   </div>
   <div class="row">
     <input (click)="submitFeed()" type="submit" value="Submit">
