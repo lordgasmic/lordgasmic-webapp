@@ -25,6 +25,3 @@ export class LordgasmicService {
     });
   }
 }
-
-
-// jim beam bacon burger, fries, med well

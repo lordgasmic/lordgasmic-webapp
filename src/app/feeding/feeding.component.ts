@@ -54,7 +54,7 @@ export class FeedingComponent implements OnInit {
       vitamin: this.vitamin.nativeElement.checked,
       note: this.note.nativeElement.value
     };
-    console.log(feed);
-    // this.lordgasmicService.putFeed(feed);
+
+    this.lordgasmicService.putFeed(feed);
   }
 }
