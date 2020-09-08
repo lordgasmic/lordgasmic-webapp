@@ -1,5 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {LordgasmicService} from '../services/lordgasmic/lordgasmic.service';
+import {ToastMessageService} from '../services/toast-message/toast-message.service'
 import {Feed} from '../models/Feed';
 import {UnitOfMeasure} from '../models/UnitOfMeasure';
 import {Meridiem} from '../models/Meridiem';
@@ -26,7 +27,7 @@ export class FeedingComponent implements OnInit {
   unitOfMeasure: string[] = [];
   hours: number[] = [];
 
-  constructor(private lordgasmicService: LordgasmicService) { }
+  constructor(private lordgasmicService: LordgasmicService, private toastMessageService: ToastMessageService) { }
 
   ngOnInit(): void {
     this.meridiem = true;
@@ -59,11 +60,25 @@ export class FeedingComponent implements OnInit {
     .putFeed(feed)
     .subscribe(
       ()=>{
-        console.log("success");
+        this.toastMessageService.showToastMessage('Feed added successfully');
+        this.reset();
       },
       ()=>{
         console.log('error');
       }
     );
+  }
+
+  reset() {
+    this.date.nativeElement.reset();
+    this.timeHour.nativeElement.reset();
+    this.timeMinute.nativeElement.reset();
+    this.given.nativeElement.reset();
+    this.givenUom.nativeElement.reset();
+    this.tookItAll.nativeElement.reset();
+    this.quantity.nativeElement.reset();
+    this.quantityUom.nativeElement.reset();
+    this.vitamin.nativeElement.reset();
+    this.note.nativeElement.reset();
   }
 }
