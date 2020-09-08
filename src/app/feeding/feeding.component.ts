@@ -70,15 +70,16 @@ export class FeedingComponent implements OnInit {
   }
 
   reset() {
-    this.date.nativeElement.reset();
-    this.timeHour.nativeElement.reset();
-    this.timeMinute.nativeElement.reset();
-    this.given.nativeElement.reset();
-    this.givenUom.nativeElement.reset();
-    this.tookItAll.nativeElement.reset();
-    this.quantity.nativeElement.reset();
-    this.quantityUom.nativeElement.reset();
-    this.vitamin.nativeElement.reset();
-    this.note.nativeElement.reset();
+    this.date.nativeElement.value = '';
+    this.timeHour.nativeElement.value = '';
+    this.timeMinute.nativeElement.value = '';
+    this.meridiem = true;
+    this.given.nativeElement.value = '';
+    this.givenUom.nativeElement.value = '';
+    this.tookItAll.nativeElement.checked = false;
+    this.quantity.nativeElement.value = '';
+    this.quantityUom.nativeElement.value = '';
+    this.vitamin.nativeElement.checked = false;
+    this.note.nativeElement.value = '';
   }
 }
