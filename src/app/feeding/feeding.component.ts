@@ -55,6 +55,15 @@ export class FeedingComponent implements OnInit {
       note: this.note.nativeElement.value
     };
 
-    this.lordgasmicService.putFeed(feed);
+    this.lordgasmicService
+    .putFeed(feed)
+    .subscribe(
+      ()=>{
+        console.log("success");
+      },
+      ()=>{
+        console.log('error');
+      }
+    );
   }
 }
