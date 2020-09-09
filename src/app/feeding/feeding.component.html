@@ -24,7 +24,7 @@
   </div>
   <div class="row">
     <label class="label-col">Given:</label>
-    <input #given />
+    <input type="number" pattern="\d*" #given />
     <select class="uom" #givenUom>
       <option *ngFor="let uom of unitOfMeasure">{{uom}}</option>
     </select>
@@ -35,7 +35,7 @@
   </div>
   <div class="row">
     <label class="label-col">Quantity:</label>
-    <input #quantity />
+    <input type="number" pattern="\d*" #quantity />
     <select class="uom" #quantityUom>
       <option *ngFor="let uom of unitOfMeasure">{{uom}}</option>
     </select>
