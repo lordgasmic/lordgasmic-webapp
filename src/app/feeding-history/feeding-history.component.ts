@@ -1,4 +1,6 @@
+import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
+import { FeedResponse } from '../models/FeedResponse';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
 
 @Component({
@@ -33,12 +35,23 @@ export class FeedingHistoryComponent implements OnInit {
   constructor(private lordgasmicService: LordgasmicService) { }
 
   ngOnInit(): void {
-    var feeds;
     this.lordgasmicService.getFeeds().subscribe(feedResonse => {
-       feeds = feedResonse;
        console.log("feedResponse", feedResonse);
-    });
+       var date = '';
+       var feeds = new Map<string, FeedResponse[]> ();
+       feedResonse.forEach(feed => {
+          var res: FeedResponse[];
+          if (feeds.has(feed.date)) {
+             res = feeds.get(feed.date);
+          }
 
+          res.push(feed);
+
+          feeds.set(feed.date, res);
+
+       });
+       console.log("map", feeds);
+    });
   }
 
 }
