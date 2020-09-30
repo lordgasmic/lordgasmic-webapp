@@ -12,13 +12,16 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from "@angular/material/input";
-import {MatSnackBarModule} from '@angular/material/snack-bar'
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { GoogleChartsModule } from 'angular-google-charts';
+import { FeedingHistoryComponent } from './feeding-history/feeding-history.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PumpingComponent,
-    FeedingComponent
+    FeedingComponent,
+    FeedingHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar'
     MatNativeDateModule,
     MatInputModule,
     MatIconModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    GoogleChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

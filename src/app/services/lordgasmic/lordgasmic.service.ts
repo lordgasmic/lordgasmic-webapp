@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Expression} from '../../models/Expression';
 import {HttpClient} from '@angular/common/http';
-import {Feed} from '../../models/Feed';
+import {FeedRequest} from '../../models/FeedRequest';
+import {FeedResponse} from '../../models/FeedResponse';
 import { Observable, Observer } from 'rxjs';
 
 @Injectable({
@@ -19,12 +20,27 @@ export class LordgasmicService {
       .subscribe(expressions =>  console.log(expressions));
   }
 
-  putFeed(feed: Feed): Observable<void> {
+  putFeed(feed: FeedRequest): Observable<void> {
     return new Observable((observer: Observer<void>) => {
       this.http
         .put(this.ADDY + '/v1/feed', feed)
         .subscribe(() => {
           observer.next();
+          observer.complete();
+        },
+        err => {
+          observer.error(err);
+        }
+      );
+    });
+  }
+
+  getFeeds(): Observable<FeedResponse[]> {
+    return new Observable((observer: Observer<FeedResponse[]>) =>{
+      this.http
+        .get<FeedResponse[]>(this.ADDY + '/v1/feeds')
+        .subscribe( feedResponse => {
+          observer.next(feedResponse);
           observer.complete();
         },
         err => {

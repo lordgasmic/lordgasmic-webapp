@@ -1,7 +1,7 @@
 import {UnitOfMeasure} from './UnitOfMeasure';
 import {Meridiem} from './Meridiem';
 
-export class Feed {
+export class FeedRequest {
   date: string;
   timeHour: number;
   timeMinute: number;

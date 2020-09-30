@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {LordgasmicService} from '../services/lordgasmic/lordgasmic.service';
 import {ToastMessageService} from '../services/toast-message/toast-message.service'
-import {Feed} from '../models/Feed';
+import {FeedRequest} from '../models/FeedRequest';
 import {UnitOfMeasure} from '../models/UnitOfMeasure';
 import {Meridiem} from '../models/Meridiem';
 
@@ -43,7 +43,7 @@ export class FeedingComponent implements OnInit {
   }
 
   submitFeed(): void {
-    let feed: Feed = {
+    let feed: FeedRequest = {
       date: this.date.nativeElement.value,
       timeHour: this.timeHour.nativeElement.value,
       timeMinute: this.timeMinute.nativeElement.value,
