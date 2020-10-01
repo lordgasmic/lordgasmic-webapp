@@ -16,6 +16,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { FeedingHistoryComponent } from './feeding-history/feeding-history.component';
 import { FeedingHistoryTypeComponent } from './feeding-history-type/feeding-history-type.component';
+import { FeedingHistoryQuantityComponent } from './feeding-history-quantity/feeding-history-quantity.component';
+import { FeedingHistoryBottlesComponent } from './feeding-history-bottles/feeding-history-bottles.component';
+import { FeedingHistoryFeedsComponent } from './feeding-history-feeds/feeding-history-feeds.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { FeedingHistoryTypeComponent } from './feeding-history-type/feeding-hist
     FeedingComponent,
     FeedingHistoryComponent,
     FeedingHistoryTypeComponent,
+    FeedingHistoryQuantityComponent,
+    FeedingHistoryBottlesComponent,
+    FeedingHistoryFeedsComponent,
   ],
   imports: [
     BrowserModule,
