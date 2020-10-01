@@ -9,5 +9,5 @@ export class Bottle {
     vitamin: boolean;
     probiotic: boolean;
     gas: boolean;
-    note: String;
+    note: string;
 }
