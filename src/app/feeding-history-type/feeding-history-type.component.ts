@@ -13,6 +13,7 @@ import { FeedResponse } from 'src/app/models/FeedResponse';
   styleUrls: ['./feeding-history-type.component.scss'],
 })
 export class FeedingHistoryTypeComponent implements OnChanges {
+  
   @Input() source;
 
   title = 'Feeding by milk type';
