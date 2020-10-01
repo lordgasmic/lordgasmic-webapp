@@ -1,3 +1,4 @@
 export enum Meridiem {
-  am, pm
+  am,
+  pm,
 }

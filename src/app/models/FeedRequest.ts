@@ -1,5 +1,5 @@
-import {UnitOfMeasure} from './UnitOfMeasure';
-import {Meridiem} from './Meridiem';
+import { UnitOfMeasure } from './UnitOfMeasure';
+import { Meridiem } from './Meridiem';
 
 export class FeedRequest {
   date: string;

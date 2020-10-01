@@ -1,27 +1,26 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {PumpingComponent} from './pumping/pumping.component';
-import {FeedingComponent} from './feeding/feeding.component';
+import { PumpingComponent } from './pumping/pumping.component';
+import { FeedingComponent } from './feeding/feeding.component';
 import { FeedingHistoryComponent } from './feeding-history/feeding-history.component';
 
 const routes: Routes = [
   {
     path: 'pumping',
-    component: PumpingComponent
+    component: PumpingComponent,
   },
   {
     path: 'feeding',
-    component: FeedingComponent
+    component: FeedingComponent,
   },
   {
     path: 'feeding/history',
-    component: FeedingHistoryComponent
-  }
-
+    component: FeedingHistoryComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
