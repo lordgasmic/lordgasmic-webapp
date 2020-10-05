@@ -1,12 +1,14 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import {FeedingHistoryParent} from "../models/FeedingHistoryParent";
+import { FeedingHistoryParent } from '../models/FeedingHistoryParent';
 
 @Component({
   selector: 'app-feeding-history-type',
   templateUrl: './feeding-history-type.component.html',
   styleUrls: ['./feeding-history-type.component.scss'],
 })
-export class FeedingHistoryTypeComponent extends FeedingHistoryParent implements OnChanges {
+export class FeedingHistoryTypeComponent
+  extends FeedingHistoryParent
+  implements OnChanges {
   @Input() source;
 
   title = 'Feeding by milk type';

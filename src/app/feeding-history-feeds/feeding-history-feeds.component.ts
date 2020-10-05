@@ -1,12 +1,14 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import {FeedingHistoryParent} from "../models/FeedingHistoryParent";
+import { FeedingHistoryParent } from '../models/FeedingHistoryParent';
 
 @Component({
   selector: 'app-feeding-history-feeds',
   templateUrl: './feeding-history-feeds.component.html',
   styleUrls: ['./feeding-history-feeds.component.scss'],
 })
-export class FeedingHistoryFeedsComponent extends FeedingHistoryParent implements OnChanges {
+export class FeedingHistoryFeedsComponent
+  extends FeedingHistoryParent
+  implements OnChanges {
   @Input() source;
 
   title = 'Feeding by feeds per day';
