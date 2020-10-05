@@ -1,17 +1,19 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {FeedingHistoryParent} from "../models/FeedingHistoryParent";
 
 @Component({
   selector: 'app-feeding-history-quantity',
   templateUrl: './feeding-history-quantity.component.html',
   styleUrls: ['./feeding-history-quantity.component.scss'],
 })
-export class FeedingHistoryQuantityComponent implements OnChanges {
+export class FeedingHistoryQuantityComponent extends FeedingHistoryParent implements OnChanges {
   @Input() source;
 
   title = 'Feeding by quantity per day';
   type = 'ColumnChart';
   data = [];
-  columnNames = ['Date', 'ml', { role: 'annotation' }];
+  // columnNames = ['Date', 'ml', { role: 'annotation' }];
+  columnNames = ['Date', 'ml'];
   options = {
     hAxis: {
       title: 'Date',
@@ -24,15 +26,17 @@ export class FeedingHistoryQuantityComponent implements OnChanges {
   width = 550;
   height = 400;
 
-  constructor() {}
+  constructor() {
+    super();
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['source'] && this.source) {
-      this.generateChart();
+      this.buildChart();
     }
   }
 
-  generateChart() {
+  generateChart(): void {
     this.source.forEach((value, key) => {
       var arr = [];
       arr.push(key);
@@ -43,17 +47,8 @@ export class FeedingHistoryQuantityComponent implements OnChanges {
         });
       });
       arr.push(quantity);
-      arr.push(`${quantity}`);
 
       this.data.push(arr);
-    });
-
-    this.data.sort(function (a, b) {
-      var aComps = a[0].split('/');
-      var bComps = b[0].split('/');
-      var aDate = new Date(aComps[2], aComps[0] - 1, aComps[1]);
-      var bDate = new Date(bComps[2], bComps[0] - 1, bComps[1]);
-      return aDate.getTime() - bDate.getTime();
     });
   }
 }

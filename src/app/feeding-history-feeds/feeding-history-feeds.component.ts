@@ -1,11 +1,12 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {FeedingHistoryParent} from "../models/FeedingHistoryParent";
 
 @Component({
   selector: 'app-feeding-history-feeds',
   templateUrl: './feeding-history-feeds.component.html',
   styleUrls: ['./feeding-history-feeds.component.scss'],
 })
-export class FeedingHistoryFeedsComponent implements OnChanges {
+export class FeedingHistoryFeedsComponent extends FeedingHistoryParent implements OnChanges {
   @Input() source;
 
   title = 'Feeding by feeds per day';
@@ -24,11 +25,13 @@ export class FeedingHistoryFeedsComponent implements OnChanges {
   width = 550;
   height = 400;
 
-  constructor() {}
+  constructor() {
+    super();
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['source'] && this.source) {
-      this.generateChart();
+      this.buildChart();
     }
   }
 
@@ -43,14 +46,6 @@ export class FeedingHistoryFeedsComponent implements OnChanges {
       arr.push(quantity);
 
       this.data.push(arr);
-    });
-
-    this.data.sort(function (a, b) {
-      var aComps = a[0].split('/');
-      var bComps = b[0].split('/');
-      var aDate = new Date(aComps[2], aComps[0] - 1, aComps[1]);
-      var bDate = new Date(bComps[2], bComps[0] - 1, bComps[1]);
-      return aDate.getTime() - bDate.getTime();
     });
   }
 }
