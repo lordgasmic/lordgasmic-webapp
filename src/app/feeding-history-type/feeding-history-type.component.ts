@@ -12,8 +12,6 @@ export class FeedingHistoryTypeComponent
   @Input() source;
 
   title = 'Feeding by milk type';
-  type = 'ColumnChart';
-  data = [];
   columnNames = ['Date', 'hmf', 'no hmf', 'bm+f', '22c', 'bm', 'bm+f+22c'];
   options = {
     hAxis: {
@@ -24,8 +22,6 @@ export class FeedingHistoryTypeComponent
     },
     isStacked: true,
   };
-  width = 550;
-  height = 400;
 
   constructor() {
     super();
@@ -39,14 +35,14 @@ export class FeedingHistoryTypeComponent
 
   generateChart(): void {
     this.source.forEach((value, key) => {
-      var arr = [];
+      let arr = [];
       arr.push(key);
-      var types: Map<string, number> = new Map<string, number>();
+      let types: Map<string, number> = new Map<string, number>();
       value.forEach((feed) => {
         feed.bottles.forEach((bottle) => {
-          var q = 0;
+          let q = 0;
           if (types.get(bottle.note)) {
-            var q = types.get(bottle.note);
+            q = types.get(bottle.note);
             q += bottle.quantity;
           } else {
             q = bottle.quantity;

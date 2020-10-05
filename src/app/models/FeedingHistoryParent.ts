@@ -1,8 +1,8 @@
 export abstract class FeedingHistoryParent {
-  title = 'Feeding by milk type';
+  title = 'Default';
   type = 'ColumnChart';
   data = [];
-  columnNames = ['Date', 'hmf', 'no hmf', 'bm+f', '22c', 'bm', 'bm+f+22c'];
+  columnNames = ['Date', 'Default'];
   options = {
     hAxis: {
       title: 'Date',
@@ -10,7 +10,7 @@ export abstract class FeedingHistoryParent {
     vAxis: {
       minValue: 0,
     },
-    isStacked: true,
+    isStacked: false,
   };
   width = 550;
   height = 400;

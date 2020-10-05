@@ -14,9 +14,9 @@ export class FeedingHistoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.lordgasmicService.getFeeds().subscribe((feedResonse) => {
-      var feeds = new Map<string, FeedResponse[]>();
+      let feeds = new Map<string, FeedResponse[]>();
       feedResonse.forEach((feed) => {
-        var res: FeedResponse[];
+        let res: FeedResponse[];
         if (feeds.has(feed.date)) {
           res = feeds.get(feed.date);
         } else {
