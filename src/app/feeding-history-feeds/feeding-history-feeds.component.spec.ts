@@ -8,9 +8,8 @@ describe('FeedingHistoryFeedsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FeedingHistoryFeedsComponent ]
-    })
-    .compileComponents();
+      declarations: [FeedingHistoryFeedsComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

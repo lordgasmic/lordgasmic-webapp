@@ -1,11 +1,4 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
-import { FeedResponse } from 'src/app/models/FeedResponse';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-feeding-history-type',
@@ -13,7 +6,6 @@ import { FeedResponse } from 'src/app/models/FeedResponse';
   styleUrls: ['./feeding-history-type.component.scss'],
 })
 export class FeedingHistoryTypeComponent implements OnChanges {
-  
   @Input() source;
 
   title = 'Feeding by milk type';
@@ -35,27 +27,13 @@ export class FeedingHistoryTypeComponent implements OnChanges {
   constructor() {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['source']) {
+    if (changes['source'] && this.source) {
       this.generateChart();
     }
   }
 
   generateChart() {
-    var feeds = new Map<string, FeedResponse[]>();
-    this.source.forEach((feed) => {
-      var res: FeedResponse[];
-      if (feeds.has(feed.date)) {
-        res = feeds.get(feed.date);
-      } else {
-        res = [];
-      }
-
-      res.push(feed);
-
-      feeds.set(feed.date, res);
-    });
-
-    feeds.forEach((value, key) => {
+    this.source.forEach((value, key) => {
       var arr = [];
       arr.push(key);
       var types: Map<string, number> = new Map<string, number>();

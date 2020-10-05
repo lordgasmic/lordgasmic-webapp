@@ -8,13 +8,27 @@ import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
   styleUrls: ['./feeding-history.component.scss'],
 })
 export class FeedingHistoryComponent implements OnInit {
-  source: FeedResponse[] = [];
+  source: Map<string, FeedResponse[]>;
 
   constructor(private lordgasmicService: LordgasmicService) {}
 
   ngOnInit(): void {
     this.lordgasmicService.getFeeds().subscribe((feedResonse) => {
-      this.source = feedResonse;
+      var feeds = new Map<string, FeedResponse[]>();
+      feedResonse.forEach((feed) => {
+        var res: FeedResponse[];
+        if (feeds.has(feed.date)) {
+          res = feeds.get(feed.date);
+        } else {
+          res = [];
+        }
+
+        res.push(feed);
+
+        feeds.set(feed.date, res);
+      });
+
+      this.source = feeds;
     });
   }
 }

@@ -8,9 +8,8 @@ describe('FeedingHistoryQuantityComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FeedingHistoryQuantityComponent ]
-    })
-    .compileComponents();
+      declarations: [FeedingHistoryQuantityComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
