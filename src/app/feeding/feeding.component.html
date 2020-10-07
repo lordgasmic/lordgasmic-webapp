@@ -11,10 +11,7 @@
       <option *ngFor="let hour of hours">{{hour}}</option>
     </select>
     <select #time_minute>
-      <option>00</option>
-      <option>15</option>
-      <option>30</option>
-      <option>45</option>
+      <option *ngFor="let min of minutes">{{min}}</option>
     </select>
     <div class="meridiem-toggle" (click)="meridiemToggle()">
       <span [class.meridiem]="meridiem">Am</span>
@@ -22,31 +19,47 @@
       <span [class.meridiem]="!meridiem">Pm</span>
     </div>
   </div>
-  <div class="row">
-    <label class="label-col">Given:</label>
-    <input type="number" pattern="\d*" #given />
-    <select class="uom" #givenUom>
-      <option *ngFor="let uom of unitOfMeasure">{{uom}}</option>
-    </select>
+  <div class="bottles-completed" #bottlesCompleted>
+    <p *ngFor="let bottle of bottles">- {{bottle.quantity}}/{{bottle.given}} {{bottle.givenUom}} {{bottle.note}}{{bottle.gas ? ' + gas' : ''}}{{bottle.probiotic ? ' + probiotic' : ''}}{{bottle.vitamin ? ' + vitamin' : ''}}</p>
   </div>
-  <div class="row">
-    <label class="label-col">Took it all:</label>
-    <input type="checkbox" #tookItAll />
-  </div>
-  <div class="row">
-    <label class="label-col">Quantity:</label>
-    <input type="number" pattern="\d*" #quantity />
-    <select class="uom" #quantityUom>
-      <option *ngFor="let uom of unitOfMeasure">{{uom}}</option>
-    </select>
-  </div>
-  <div class="row">
-    <label class="label-col">Vitamin:</label>
-    <input type="checkbox" #vitamin />
-  </div>
-  <div clas="row">
-    <label class="label-col lbl-note">Note:</label>
-    <textarea rows="3" cols="50" #note></textarea>
+  <div class="bottle-container">
+    <div class="bottle-box">
+      <div class="row">
+        <label class="label-col">Given:</label>
+        <input type="number" pattern="\d*" #given />
+        <select class="uom" #givenUom>
+          <option *ngFor="let uom of unitOfMeasure">{{uom}}</option>
+        </select>
+      </div>
+      <div class="row">
+        <label class="label-col">Took it all:</label>
+        <input type="checkbox" #tookItAll />
+      </div>
+      <div class="row">
+        <label class="label-col">Quantity:</label>
+        <input type="number" pattern="\d*" #quantity />
+        <select class="uom" #quantityUom>
+          <option *ngFor="let uom of unitOfMeasure">{{uom}}</option>
+        </select>
+      </div>
+      <div class="row">
+        <label class="label-col">Gas:</label>
+        <input type="checkbox" #gas />
+      </div>
+      <div class="row">
+        <label class="label-col">Probiotic:</label>
+        <input type="checkbox" #probiotic />
+      </div>
+      <div class="row">
+        <label class="label-col">Vitamin:</label>
+        <input type="checkbox" #vitamin />
+      </div>
+      <div clas="row">
+        <label class="label-col lbl-note">Note:</label>
+        <textarea rows="3" cols="50" #note></textarea>
+      </div>
+    </div>
+    <img src="assets/icons/plus-25.png" class="add-row-btn" alt="add row" (click)="addRow()" />
   </div>
   <div class="row">
     <input (click)="submitFeed()" type="submit" value="Submit">

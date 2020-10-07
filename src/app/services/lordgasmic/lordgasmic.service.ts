@@ -22,7 +22,7 @@ export class LordgasmicService {
 
   putFeed(feed: FeedRequest): Observable<void> {
     return new Observable((observer: Observer<void>) => {
-      this.http.put(this.ADDY + '/v1/feed', feed).subscribe(
+      this.http.put(this.ADDY + '/v2/feed', feed).subscribe(
         () => {
           observer.next();
           observer.complete();

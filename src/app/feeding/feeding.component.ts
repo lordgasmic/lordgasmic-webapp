@@ -4,6 +4,7 @@ import { ToastMessageService } from '../services/toast-message/toast-message.ser
 import { FeedRequest } from '../models/FeedRequest';
 import { UnitOfMeasure } from '../models/UnitOfMeasure';
 import { Meridiem } from '../models/Meridiem';
+import {Bottle} from "../models/Bottle";
 
 @Component({
   selector: 'app-feeding',
@@ -19,12 +20,18 @@ export class FeedingComponent implements OnInit {
   @ViewChild('tookItAll') tookItAll: ElementRef;
   @ViewChild('quantity') quantity: ElementRef;
   @ViewChild('quantityUom') quantityUom: ElementRef;
+  @ViewChild('gas') gas: ElementRef;
+  @ViewChild('probiotic') probiotic: ElementRef;
   @ViewChild('vitamin') vitamin: ElementRef;
   @ViewChild('note') note: ElementRef;
+  @ViewChild('bottlesCompleted') bottlesCompleted: ElementRef;
 
   meridiem: boolean;
   unitOfMeasure: string[] = [];
   hours: number[] = [];
+  minutes: string[] = ['00', '15', '30', '45'];
+  bottles: Bottle[] = [];
+  ordinal = 0;
 
   constructor(
     private lordgasmicService: LordgasmicService,
@@ -46,21 +53,13 @@ export class FeedingComponent implements OnInit {
   }
 
   submitFeed(): void {
-    let feed: FeedRequest = {
+    this.addBottle();
+    const feed: FeedRequest = {
       date: this.date.nativeElement.value,
       timeHour: this.timeHour.nativeElement.value,
       timeMinute: this.timeMinute.nativeElement.value,
       meridiem: this.meridiem ? Meridiem.am : Meridiem.pm,
-      given: this.given.nativeElement.value,
-      givenUom: this.givenUom.nativeElement.value,
-      quantity: this.tookItAll.nativeElement.checked
-        ? this.given.nativeElement.value
-        : this.quantity.nativeElement.value,
-      quantityUom: this.tookItAll.nativeElement.checked
-        ? this.givenUom.nativeElement.value
-        : this.quantityUom.nativeElement.value,
-      vitamin: this.vitamin.nativeElement.checked,
-      note: this.note.nativeElement.value,
+      bottles: this.bottles
     };
 
     this.lordgasmicService.putFeed(feed).subscribe(
@@ -74,17 +73,52 @@ export class FeedingComponent implements OnInit {
     );
   }
 
-  reset() {
+  reset(): void {
     this.date.nativeElement.value = '';
     this.timeHour.nativeElement.value = '';
     this.timeMinute.nativeElement.value = '';
     this.meridiem = true;
+    this.resetBottle();
+    this.bottlesCompleted.nativeElement.innerHTML = '';
+  }
+
+  resetBottle(): void {
     this.given.nativeElement.value = '';
-    this.givenUom.nativeElement.value = '';
+    this.givenUom.nativeElement.selectedIndex = 0;
     this.tookItAll.nativeElement.checked = false;
     this.quantity.nativeElement.value = '';
-    this.quantityUom.nativeElement.value = '';
+    this.quantityUom.nativeElement.selectedIndex = 0;
+    this.gas.nativeElement.checked = false;
+    this.probiotic.nativeElement.checked = false;
     this.vitamin.nativeElement.checked = false;
     this.note.nativeElement.value = '';
+    this.ordinal = 0;
+  }
+
+  addRow(): void {
+    console.log('add row', );
+    this.addBottle();
+    this.resetBottle();
+  }
+
+  addBottle(): void {
+    if (this.given.nativeElement.value) {
+      const bottle: Bottle = {
+        given: this.given.nativeElement.value,
+        givenUom: this.givenUom.nativeElement.value,
+        quantity: this.tookItAll.nativeElement.checked
+          ? this.given.nativeElement.value
+          : this.quantity.nativeElement.value,
+        quantityUom: this.tookItAll.nativeElement.checked
+          ? this.givenUom.nativeElement.value
+          : this.quantityUom.nativeElement.value,
+        vitamin: this.vitamin.nativeElement.checked,
+        note: this.note.nativeElement.value,
+        gas: this.gas.nativeElement.checked,
+        probiotic: this.probiotic.nativeElement.checked,
+        ordinal: this.ordinal++
+      };
+      this.bottles.push(bottle);
+    }
   }
 }
