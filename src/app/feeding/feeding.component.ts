@@ -80,6 +80,7 @@ export class FeedingComponent implements OnInit {
     this.meridiem = true;
     this.resetBottle();
     this.bottlesCompleted.nativeElement.innerHTML = '';
+    this.ordinal = 0;
   }
 
   resetBottle(): void {
@@ -92,11 +93,9 @@ export class FeedingComponent implements OnInit {
     this.probiotic.nativeElement.checked = false;
     this.vitamin.nativeElement.checked = false;
     this.note.nativeElement.value = '';
-    this.ordinal = 0;
   }
 
   addRow(): void {
-    console.log('add row', );
     this.addBottle();
     this.resetBottle();
   }
