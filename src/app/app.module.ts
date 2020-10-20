@@ -20,6 +20,7 @@ import { FeedingHistoryQuantityComponent } from './feeding-history-quantity/feed
 import { FeedingHistoryBottlesComponent } from './feeding-history-bottles/feeding-history-bottles.component';
 import { FeedingHistoryFeedsComponent } from './feeding-history-feeds/feeding-history-feeds.component';
 import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { LoginComponent } from './login/login.component';
     FeedingHistoryBottlesComponent,
     FeedingHistoryFeedsComponent,
     LoginComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
