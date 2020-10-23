@@ -21,6 +21,7 @@ import { FeedingHistoryBottlesComponent } from './feeding-history-bottles/feedin
 import { FeedingHistoryFeedsComponent } from './feeding-history-feeds/feeding-history-feeds.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { PortalComponent } from './portal/portal.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { HomeComponent } from './home/home.component';
     FeedingHistoryFeedsComponent,
     LoginComponent,
     HomeComponent,
+    PortalComponent,
   ],
   imports: [
     BrowserModule,
