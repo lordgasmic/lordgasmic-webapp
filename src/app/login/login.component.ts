@@ -1,6 +1,6 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {LoginRequest} from "../models/LoginRequest";
-import {LordgasmicService} from "../services/lordgasmic/lordgasmic.service";
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { LoginRequest } from '../models/LoginRequest';
+import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +8,6 @@ import {LordgasmicService} from "../services/lordgasmic/lordgasmic.service";
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
   @ViewChild('username') username: ElementRef;
   @ViewChild('password') password: ElementRef;
 
