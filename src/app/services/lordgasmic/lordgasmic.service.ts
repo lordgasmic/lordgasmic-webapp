@@ -5,6 +5,8 @@ import { FeedRequest } from '../../models/FeedRequest';
 import { FeedResponse } from '../../models/FeedResponse';
 import { Observable, Observer } from 'rxjs';
 import { SessionInfo } from '../../models/SessionInfo';
+import {LoginRequest} from "../../models/LoginRequest";
+import {LoginInfo} from "../../models/LoginInfo";
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +17,7 @@ export class LordgasmicService {
   private readonly FEED = '/v2/feed';
   private readonly FEEDS = '/v2/feeds';
   private readonly SESSION = '/v1/session';
+  private readonly LOGIN = '/v1/login';
 
   constructor(private http: HttpClient) {}
 
@@ -58,6 +61,17 @@ export class LordgasmicService {
       this.http
         .get<SessionInfo>(this.API + this.SESSION)
         .subscribe((response) => {
+          observer.next(response);
+          observer.complete();
+        });
+    });
+  }
+
+  login(loginRequest: LoginRequest): Observable<LoginInfo> {
+    return new Observable<LoginInfo>((observer : Observer<LoginInfo>) => {
+      this.http
+        .get<LoginInfo>(this.API + this.LOGIN)
+        .subscribe(response => {
           observer.next(response);
           observer.complete();
         });
