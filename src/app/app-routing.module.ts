@@ -3,12 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { PumpingComponent } from './pumping/pumping.component';
 import { FeedingComponent } from './feeding/feeding.component';
 import { FeedingHistoryComponent } from './feeding-history/feeding-history.component';
-import {HomeComponent} from "./home/home.component";
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
   },
   {
     path: 'pumping',

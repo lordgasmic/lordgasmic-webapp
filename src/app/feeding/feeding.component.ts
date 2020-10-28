@@ -4,7 +4,7 @@ import { ToastMessageService } from '../services/toast-message/toast-message.ser
 import { FeedRequest } from '../models/FeedRequest';
 import { UnitOfMeasure } from '../models/UnitOfMeasure';
 import { Meridiem } from '../models/Meridiem';
-import {Bottle} from "../models/Bottle";
+import { Bottle } from '../models/Bottle';
 
 @Component({
   selector: 'app-feeding',
@@ -59,7 +59,7 @@ export class FeedingComponent implements OnInit {
       timeHour: this.timeHour.nativeElement.value,
       timeMinute: this.timeMinute.nativeElement.value,
       meridiem: this.meridiem ? Meridiem.am : Meridiem.pm,
-      bottles: this.bottles
+      bottles: this.bottles,
     };
 
     this.lordgasmicService.putFeed(feed).subscribe(
@@ -115,7 +115,7 @@ export class FeedingComponent implements OnInit {
         note: this.note.nativeElement.value,
         gas: this.gas.nativeElement.checked,
         probiotic: this.probiotic.nativeElement.checked,
-        ordinal: this.ordinal++
+        ordinal: this.ordinal++,
       };
       this.bottles.push(bottle);
     }
