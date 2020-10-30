@@ -69,10 +69,12 @@ export class LordgasmicService {
 
   login(loginRequest: LoginRequest): Observable<LoginInfo> {
     return new Observable<LoginInfo>((observer: Observer<LoginInfo>) => {
-      this.http.get<LoginInfo>(this.API + this.LOGIN).subscribe((response) => {
-        observer.next(response);
-        observer.complete();
-      });
+      this.http
+        .post<LoginInfo>(this.API + this.LOGIN, loginRequest)
+        .subscribe((response) => {
+          observer.next(response);
+          observer.complete();
+        });
     });
   }
 }
