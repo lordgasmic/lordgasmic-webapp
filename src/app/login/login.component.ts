@@ -20,9 +20,8 @@ export class LoginComponent implements OnInit {
     loginRequest.username = this.username.nativeElement.value;
     loginRequest.password = this.password.nativeElement.value;
 
-    this.lordgasmicService.login(loginRequest)
-      .subscribe(value => {
-        console.log(value);
-      });
+    this.lordgasmicService.login(loginRequest).subscribe((value) => {
+      console.log(value);
+    });
   }
 }

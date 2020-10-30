@@ -4,8 +4,8 @@ import { PumpingComponent } from './pumping/pumping.component';
 import { FeedingComponent } from './feeding/feeding.component';
 import { FeedingHistoryComponent } from './feeding-history/feeding-history.component';
 import { HomeComponent } from './home/home.component';
-import {LoginComponent} from "./login/login.component";
-import {PortalComponent} from "./portal/portal.component";
+import { LoginComponent } from './login/login.component';
+import { PortalComponent } from './portal/portal.component';
 
 const routes: Routes = [
   {
