@@ -17,8 +17,8 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     const loginRequest = new LoginRequest();
-    loginRequest.username = this.username.nativeElement.valueOf();
-    loginRequest.password = this.password.nativeElement.valueOf();
+    loginRequest.username = this.username.nativeElement.value;
+    loginRequest.password = this.password.nativeElement.value;
 
     this.lordgasmicService.login(loginRequest);
   }
