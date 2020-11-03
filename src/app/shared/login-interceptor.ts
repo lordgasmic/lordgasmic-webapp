@@ -6,21 +6,22 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root',
 })
-export class LoginInterceptorService implements HttpInterceptor {
+export class LoginInterceptor implements HttpInterceptor {
   private readonly LOGIN_HEADER = 'Login-Header';
 
-  constructor(private window: Window) {}
+  constructor(private router: Router) {}
 
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     if (req.headers.has(this.LOGIN_HEADER)) {
-      this.window.location.href = req.headers.get(this.LOGIN_HEADER);
+      this.router.navigate("/login");
       return of(undefined);
     }
     return next.handle(req);
