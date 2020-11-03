@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { LoginRequest } from '../models/LoginRequest';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
-import {ActivatedRoute, Router} from "@angular/router";
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +12,10 @@ export class LoginComponent implements OnInit {
   @ViewChild('username') username: ElementRef;
   @ViewChild('password') password: ElementRef;
 
-  constructor(private lordgasmicService: LordgasmicService, private router: Router) {}
+  constructor(
+    private lordgasmicService: LordgasmicService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
