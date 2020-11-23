@@ -11,19 +11,22 @@ import {Router} from "@angular/router";
 @Injectable({
   providedIn: 'root',
 })
-export class LoginInterceptor implements HttpInterceptor {
-  private readonly LOGIN_HEADER = 'Login-Header';
+// export class LoginInterceptor implements HttpInterceptor {
+//   private readonly LOGIN_HEADER = 'Login-Header';
+//
+//   constructor(private router: Router) {}
+//
+//   intercept(
+//     req: HttpRequest<any>,
+//     next: HttpHandler
+//   ): Observable<HttpEvent<any>> {
+//     if (req.headers.has(this.LOGIN_HEADER)) {
+//       this.router.navigate("/login");
+//       return of(undefined);
+//     }
+//     return next.handle(req);
+//   }
+// }
+export class LoginInterceptor {
 
-  constructor(private router: Router) {}
-
-  intercept(
-    req: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
-    if (req.headers.has(this.LOGIN_HEADER)) {
-      this.router.navigate("/login");
-      return of(undefined);
-    }
-    return next.handle(req);
-  }
 }

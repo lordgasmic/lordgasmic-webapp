@@ -22,6 +22,7 @@ import { FeedingHistoryFeedsComponent } from './feeding-history-feeds/feeding-hi
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { PortalComponent } from './portal/portal.component';
+import { ApprovedCountersComponent } from './approved-counters/approved-counters.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { PortalComponent } from './portal/portal.component';
     LoginComponent,
     HomeComponent,
     PortalComponent,
+    ApprovedCountersComponent,
   ],
   imports: [
     BrowserModule,
