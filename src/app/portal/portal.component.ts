@@ -7,9 +7,22 @@ import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
   styleUrls: ['./portal.component.scss'],
 })
 export class PortalComponent implements OnInit {
+
+  name: string;
+  roles: number;
+
+  recipeDisabled = true;
+  nopeDisabled = true;
+
   constructor(private lordgasmicService: LordgasmicService) {}
 
   ngOnInit(): void {
-    this.lordgasmicService.getSessionInfo();
+    this.lordgasmicService.getSessionInfo().subscribe(sessionInfo => {
+      this.name = sessionInfo.username;
+      this.roles = sessionInfo.roles;
+
+      this.recipeDisabled = false;
+      this.nopeDisabled = false;
+    });
   }
 }

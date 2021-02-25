@@ -1,1 +1,4 @@
-export class SessionInfo {}
+export class SessionInfo {
+  username: string;
+  roles: number;
+}
