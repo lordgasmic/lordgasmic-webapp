@@ -1,10 +1,10 @@
 <p>portal works, {{name}}!</p>
 <div>
-  <div class="portal__recipe-header" disabled="{{recipeDisabled}}">
+  <div class="portal__recipe-header" [hidden]="recipeDisabled">
     <span>Recipe</span>
     <img src="assets/icons/recipe.png">
   </div>
-  <div class="portal__nope-header" disabled="{{nopeDisabled}}">
+  <div class="portal__nope-header" [hidden]="nopeDisabled">
     <span>no dice</span>
     <img src="assets/icons/nope.webp">
   </div>
