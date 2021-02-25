@@ -1,4 +1,4 @@
-import {SwgohCounter} from "./SwgohCounter";
+import { SwgohCounter } from './SwgohCounter';
 
 export class Swgoh {
   name: string;

@@ -6,7 +6,7 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import {Router} from "@angular/router";
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -27,6 +27,4 @@ import {Router} from "@angular/router";
 //     return next.handle(req);
 //   }
 // }
-export class LoginInterceptor {
-
-}
+export class LoginInterceptor {}

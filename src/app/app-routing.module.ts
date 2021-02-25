@@ -6,7 +6,7 @@ import { FeedingHistoryComponent } from './feeding-history/feeding-history.compo
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { PortalComponent } from './portal/portal.component';
-import {ApprovedCountersComponent} from "./approved-counters/approved-counters.component";
+import { ApprovedCountersComponent } from './approved-counters/approved-counters.component';
 
 const routes: Routes = [
   {

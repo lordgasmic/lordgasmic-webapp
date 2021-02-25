@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
 
 @Component({
   selector: 'app-portal',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./portal.component.scss'],
 })
 export class PortalComponent implements OnInit {
-  constructor() {}
+  constructor(private lordgasmicService: LordgasmicService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.lordgasmicService.getSessionInfo();
+  }
 }
