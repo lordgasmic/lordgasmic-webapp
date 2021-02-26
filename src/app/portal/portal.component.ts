@@ -11,10 +11,10 @@ export class PortalComponent implements OnInit {
   name: string;
   roles: number;
 
-  recipeDisabled = true;
-  nopeDisabled = true;
-  userDisabled = true;
-  feedingDisabled = true;
+  recipeEnabled = false;
+  nopeEnabled = false;
+  userEnabled = false;
+  feedingEnabled = false ;
 
   constructor(private lordgasmicService: LordgasmicService) {}
 
@@ -23,16 +23,16 @@ export class PortalComponent implements OnInit {
       this.name = sessionInfo.username;
       this.roles = sessionInfo.roles;
 
-      this.recipeDisabled = false;
-      this.nopeDisabled = false;
+      this.recipeEnabled = false;
+      this.nopeEnabled = false;
 
       // I hate this
       /* tslint:disable:no-bitwise */
-      this.userDisabled = (RoleConstants.user & this.roles) === RoleConstants.user;
-      this.feedingDisabled = (RoleConstants.feeding & this.roles) === RoleConstants.feeding;
+      this.userEnabled = (RoleConstants.user & this.roles) === RoleConstants.user;
+      this.feedingEnabled = (RoleConstants.feeding & this.roles) === RoleConstants.feeding;
       /* tslint:enable:no-bitwise */
 
-      console.log('userDisabled', this.userDisabled);
+      console.log('userDisabled', this.userEnabled);
     });
   }
 }
