@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
+import {RoleConstants} from "../configuration/RoleConstants";
 
 @Component({
   selector: 'app-portal',
@@ -13,6 +14,8 @@ export class PortalComponent implements OnInit {
 
   recipeDisabled = true;
   nopeDisabled = true;
+  userDisabled = true;
+  feedingDisabled = true;
 
   constructor(private lordgasmicService: LordgasmicService) {}
 
@@ -23,6 +26,14 @@ export class PortalComponent implements OnInit {
 
       this.recipeDisabled = false;
       this.nopeDisabled = false;
+
+      // I hate this
+      /* tslint:disable:no-bitwise */
+      this.userDisabled = (RoleConstants.user & this.roles) === RoleConstants.user;
+      this.feedingDisabled = (RoleConstants.feeding & this.roles) === RoleConstants.feeding;
+      /* tslint:enable:no-bitwise */
+
+      console.log("userDisabled", this.userDisabled);
     });
   }
 }
