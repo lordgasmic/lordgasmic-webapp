@@ -16,8 +16,8 @@ export class AppComponent implements OnInit {
   }
 
   private loadSessionInfo(): void {
-      this.lordgasmicService.getSessionInfo().subscribe((sessionInfo) => {
-        // nothing to do
-      });
+    this.lordgasmicService.getSessionInfo().subscribe((sessionInfo) => {
+      // nothing to do
+    });
   }
 }
