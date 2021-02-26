@@ -1,5 +1,5 @@
 <div>
   <label class="lbl" for="username">Username</label><input type="text" name="username" id="username" #username>
-  <label class="lbl" for="password">Password</label><input type="text" name="password" id="password" #password>
+  <label class="lbl" for="password">Password</label><input type="text" name="password" id="password" #password (keyup.enter)="login()">
   <input type="submit" value="Submit" (click)="login()">
 </div>
