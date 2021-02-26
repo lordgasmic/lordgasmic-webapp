@@ -1,10 +1,10 @@
-<p>portal works, {{name}}!</p>
+<p *ngIf="name">portal works, {{name}}!</p>
 <div>
-  <div class="portal__recipe-header" [hidden]="recipeDisabled">
+  <div class="portal__recipe-header" *ngIf="recipeDisabled">
     <span>Recipe</span>
     <img src="assets/icons/recipe.png">
   </div>
-  <div class="portal__nope-header" [hidden]="nopeDisabled">
+  <div class="portal__nope-header" *ngIf="nopeDisabled">
     <span>no dice</span>
     <img src="assets/icons/nope.webp">
   </div>

@@ -28,10 +28,8 @@ export class PortalComponent implements OnInit {
 
       // I hate this
       /* tslint:disable:no-bitwise */
-      this.userDisabled =
-        (RoleConstants.user & this.roles) === RoleConstants.user;
-      this.feedingDisabled =
-        (RoleConstants.feeding & this.roles) === RoleConstants.feeding;
+      this.userDisabled = (RoleConstants.user & this.roles) === RoleConstants.user;
+      this.feedingDisabled = (RoleConstants.feeding & this.roles) === RoleConstants.feeding;
       /* tslint:enable:no-bitwise */
 
       console.log('userDisabled', this.userDisabled);
