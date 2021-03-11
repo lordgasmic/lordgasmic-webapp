@@ -11,36 +11,36 @@ import { ApprovedCountersComponent } from './approved-counters/approved-counters
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: HomeComponent
   },
   {
     path: 'pumping',
-    component: PumpingComponent,
+    component: PumpingComponent
   },
   {
     path: 'feeding',
-    component: FeedingComponent,
+    component: FeedingComponent
   },
   {
     path: 'feeding/history',
-    component: FeedingHistoryComponent,
+    component: FeedingHistoryComponent
   },
   {
     path: 'login',
-    component: LoginComponent,
+    component: LoginComponent
   },
   {
     path: 'portal',
-    component: PortalComponent,
+    component: PortalComponent
   },
   {
     path: 'approved-counters',
-    component: ApprovedCountersComponent,
-  },
+    component: ApprovedCountersComponent
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}

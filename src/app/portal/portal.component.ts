@@ -5,7 +5,7 @@ import { RoleConstants } from '../configuration/RoleConstants';
 @Component({
   selector: 'app-portal',
   templateUrl: './portal.component.html',
-  styleUrls: ['./portal.component.scss'],
+  styleUrls: ['./portal.component.scss']
 })
 export class PortalComponent implements OnInit {
   name: string;
@@ -28,10 +28,8 @@ export class PortalComponent implements OnInit {
 
       // I hate this
       /* tslint:disable:no-bitwise */
-      this.userEnabled =
-        (RoleConstants.user & this.roles) === RoleConstants.user;
-      this.feedingEnabled =
-        (RoleConstants.feeding & this.roles) === RoleConstants.feeding;
+      this.userEnabled = (RoleConstants.user & this.roles) === RoleConstants.user;
+      this.feedingEnabled = (RoleConstants.feeding & this.roles) === RoleConstants.feeding;
       this.recipeEnabled = (RoleConstants.recipe & this.roles) === RoleConstants.recipe;
       /* tslint:enable:no-bitwise */
     });

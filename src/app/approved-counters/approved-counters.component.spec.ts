@@ -8,7 +8,7 @@ describe('ApprovedCountersComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ApprovedCountersComponent],
+      declarations: [ApprovedCountersComponent]
     }).compileComponents();
   }));
 

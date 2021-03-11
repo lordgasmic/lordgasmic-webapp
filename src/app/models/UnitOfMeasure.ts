@@ -1,4 +1,4 @@
 export enum UnitOfMeasure {
   ml,
-  oz,
+  oz
 }

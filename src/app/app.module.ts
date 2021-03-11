@@ -39,7 +39,7 @@ import { RecipeHomeComponent } from './recipe-home/recipe-home.component';
     HomeComponent,
     PortalComponent,
     ApprovedCountersComponent,
-    RecipeHomeComponent,
+    RecipeHomeComponent
   ],
   imports: [
     BrowserModule,
@@ -52,9 +52,9 @@ import { RecipeHomeComponent } from './recipe-home/recipe-home.component';
     MatInputModule,
     MatIconModule,
     MatSnackBarModule,
-    GoogleChartsModule,
+    GoogleChartsModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

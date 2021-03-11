@@ -4,11 +4,9 @@ import { FeedingHistoryParent } from '../models/FeedingHistoryParent';
 @Component({
   selector: 'app-feeding-history-quantity',
   templateUrl: './feeding-history-quantity.component.html',
-  styleUrls: ['./feeding-history-quantity.component.scss'],
+  styleUrls: ['./feeding-history-quantity.component.scss']
 })
-export class FeedingHistoryQuantityComponent
-  extends FeedingHistoryParent
-  implements OnChanges {
+export class FeedingHistoryQuantityComponent extends FeedingHistoryParent implements OnChanges {
   @Input() source;
 
   title = 'Feeding by quantity per day';

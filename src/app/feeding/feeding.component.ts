@@ -9,7 +9,7 @@ import { Bottle } from '../models/Bottle';
 @Component({
   selector: 'app-feeding',
   templateUrl: './feeding.component.html',
-  styleUrls: ['./feeding.component.scss'],
+  styleUrls: ['./feeding.component.scss']
 })
 export class FeedingComponent implements OnInit {
   @ViewChild('date') date: ElementRef;
@@ -33,16 +33,11 @@ export class FeedingComponent implements OnInit {
   bottles: Bottle[] = [];
   ordinal = 0;
 
-  constructor(
-    private lordgasmicService: LordgasmicService,
-    private toastMessageService: ToastMessageService
-  ) {}
+  constructor(private lordgasmicService: LordgasmicService, private toastMessageService: ToastMessageService) {}
 
   ngOnInit(): void {
     this.meridiem = true;
-    this.unitOfMeasure = Object.keys(UnitOfMeasure).filter((key) =>
-      isNaN(Number(key))
-    );
+    this.unitOfMeasure = Object.keys(UnitOfMeasure).filter((key) => isNaN(Number(key)));
     for (let i = 1; i <= 12; i++) {
       this.hours.push(i);
     }
@@ -59,7 +54,7 @@ export class FeedingComponent implements OnInit {
       timeHour: this.timeHour.nativeElement.value,
       timeMinute: this.timeMinute.nativeElement.value,
       meridiem: this.meridiem ? Meridiem.am : Meridiem.pm,
-      bottles: this.bottles,
+      bottles: this.bottles
     };
 
     this.lordgasmicService.putFeed(feed).subscribe(
@@ -105,17 +100,13 @@ export class FeedingComponent implements OnInit {
       const bottle: Bottle = {
         given: this.given.nativeElement.value,
         givenUom: this.givenUom.nativeElement.value,
-        quantity: this.tookItAll.nativeElement.checked
-          ? this.given.nativeElement.value
-          : this.quantity.nativeElement.value,
-        quantityUom: this.tookItAll.nativeElement.checked
-          ? this.givenUom.nativeElement.value
-          : this.quantityUom.nativeElement.value,
+        quantity: this.tookItAll.nativeElement.checked ? this.given.nativeElement.value : this.quantity.nativeElement.value,
+        quantityUom: this.tookItAll.nativeElement.checked ? this.givenUom.nativeElement.value : this.quantityUom.nativeElement.value,
         vitamin: this.vitamin.nativeElement.checked,
         note: this.note.nativeElement.value,
         gas: this.gas.nativeElement.checked,
         probiotic: this.probiotic.nativeElement.checked,
-        ordinal: this.ordinal++,
+        ordinal: this.ordinal++
       };
       this.bottles.push(bottle);
     }

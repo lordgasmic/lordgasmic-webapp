@@ -5,7 +5,7 @@ import { Expression } from '../models/Expression';
 @Component({
   selector: 'app-pumping',
   templateUrl: './pumping.component.html',
-  styleUrls: ['./pumping.component.scss'],
+  styleUrls: ['./pumping.component.scss']
 })
 export class PumpingComponent implements OnInit {
   private expressions: Expression[];

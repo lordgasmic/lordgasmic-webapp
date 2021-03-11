@@ -4,23 +4,21 @@ import { FeedingHistoryParent } from '../models/FeedingHistoryParent';
 @Component({
   selector: 'app-feeding-history-type',
   templateUrl: './feeding-history-type.component.html',
-  styleUrls: ['./feeding-history-type.component.scss'],
+  styleUrls: ['./feeding-history-type.component.scss']
 })
-export class FeedingHistoryTypeComponent
-  extends FeedingHistoryParent
-  implements OnChanges {
+export class FeedingHistoryTypeComponent extends FeedingHistoryParent implements OnChanges {
   @Input() source;
 
   title = 'Feeding by milk type';
   columnNames = ['Date', 'hmf', 'no hmf', 'bm+f', '22c', 'bm', 'bm+f+22c'];
   options = {
     hAxis: {
-      title: 'Date',
+      title: 'Date'
     },
     vAxis: {
-      minValue: 0,
+      minValue: 0
     },
-    isStacked: true,
+    isStacked: true
   };
 
   constructor() {

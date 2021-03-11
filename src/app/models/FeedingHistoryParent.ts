@@ -5,12 +5,12 @@ export abstract class FeedingHistoryParent {
   columnNames = ['Date', 'Default'];
   options = {
     hAxis: {
-      title: 'Date',
+      title: 'Date'
     },
     vAxis: {
-      minValue: 0,
+      minValue: 0
     },
-    isStacked: false,
+    isStacked: false
   };
   width = 550;
   height = 400;

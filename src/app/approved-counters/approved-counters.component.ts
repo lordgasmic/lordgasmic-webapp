@@ -4,7 +4,7 @@ import { Swgoh } from '../models/Swgoh';
 @Component({
   selector: 'app-approved-counters',
   templateUrl: './approved-counters.component.html',
-  styleUrls: ['./approved-counters.component.scss'],
+  styleUrls: ['./approved-counters.component.scss']
 })
 export class ApprovedCountersComponent implements OnInit {
   teams: Swgoh[] = [];

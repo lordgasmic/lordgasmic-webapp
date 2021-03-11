@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, NavigationStart } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ToastMessageService {
   constructor(private matSnackBar: MatSnackBar, private router: Router) {

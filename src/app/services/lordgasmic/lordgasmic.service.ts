@@ -9,7 +9,7 @@ import { LoginRequest } from '../../models/LoginRequest';
 import { LoginInfo } from '../../models/LoginInfo';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class LordgasmicService {
   private readonly API = 'https://lordgasmic.com/api';
@@ -23,9 +23,7 @@ export class LordgasmicService {
 
   // getExpressions(): Expression[] {
   getExpressions(): void {
-    this.http
-      .get<Expression[]>(this.API + this.EXPRESSIONS)
-      .subscribe((expressions) => console.log(expressions));
+    this.http.get<Expression[]>(this.API + this.EXPRESSIONS).subscribe((expressions) => console.log(expressions));
   }
 
   putFeed(feed: FeedRequest): Observable<void> {
@@ -58,23 +56,19 @@ export class LordgasmicService {
 
   getSessionInfo(): Observable<SessionInfo> {
     return new Observable((observer: Observer<SessionInfo>) => {
-      this.http
-        .get<SessionInfo>(this.API + this.SESSION)
-        .subscribe((response) => {
-          observer.next(response);
-          observer.complete();
-        });
+      this.http.get<SessionInfo>(this.API + this.SESSION).subscribe((response) => {
+        observer.next(response);
+        observer.complete();
+      });
     });
   }
 
   login(loginRequest: LoginRequest): Observable<LoginInfo> {
     return new Observable<LoginInfo>((observer: Observer<LoginInfo>) => {
-      this.http
-        .post<LoginInfo>(this.API + this.LOGIN, loginRequest)
-        .subscribe((response) => {
-          observer.next(response);
-          observer.complete();
-        });
+      this.http.post<LoginInfo>(this.API + this.LOGIN, loginRequest).subscribe((response) => {
+        observer.next(response);
+        observer.complete();
+      });
     });
   }
 }

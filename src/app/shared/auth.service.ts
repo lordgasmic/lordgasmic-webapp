@@ -1,9 +1,5 @@
 export class AuthService {
-  constructor(
-    private windowObject: Window,
-    private localStorage: Storage,
-    private sessionStorage: Storage
-  ) {}
+  constructor(private windowObject: Window, private localStorage: Storage, private sessionStorage: Storage) {}
 
   // private redirectToLogin(loginPageUrl?: string): void {
   //   if (loginPageUrl && loginPageUrl.indexOf('http') !== -1) {

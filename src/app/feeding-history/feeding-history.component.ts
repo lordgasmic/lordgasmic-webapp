@@ -5,7 +5,7 @@ import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
 @Component({
   selector: 'app-feeding-history',
   templateUrl: './feeding-history.component.html',
-  styleUrls: ['./feeding-history.component.scss'],
+  styleUrls: ['./feeding-history.component.scss']
 })
 export class FeedingHistoryComponent implements OnInit {
   source: Map<string, FeedResponse[]>;
