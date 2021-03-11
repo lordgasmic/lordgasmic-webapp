@@ -32,9 +32,8 @@ export class PortalComponent implements OnInit {
         (RoleConstants.user & this.roles) === RoleConstants.user;
       this.feedingEnabled =
         (RoleConstants.feeding & this.roles) === RoleConstants.feeding;
+      this.recipeEnabled = (RoleConstants.recipe & this.roles) === RoleConstants.recipe;
       /* tslint:enable:no-bitwise */
-
-      console.log('userDisabled', this.userEnabled);
     });
   }
 }
