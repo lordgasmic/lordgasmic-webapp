@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     loginRequest.password = this.password.nativeElement.value;
 
     this.lordgasmicService.login(loginRequest).subscribe((value) => {
-      this.zone.run(() => this.router.navigateByUrl('/portal'));
+      this.zone.run(() => this.router.navigate(['/portal']));
     });
   }
 }
