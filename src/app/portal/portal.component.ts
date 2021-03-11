@@ -14,7 +14,7 @@ export class PortalComponent implements OnInit {
   recipeEnabled = false;
   nopeEnabled = false;
   userEnabled = false;
-  feedingEnabled = false ;
+  feedingEnabled = false;
 
   constructor(private lordgasmicService: LordgasmicService) {}
 
@@ -28,8 +28,10 @@ export class PortalComponent implements OnInit {
 
       // I hate this
       /* tslint:disable:no-bitwise */
-      this.userEnabled = (RoleConstants.user & this.roles) === RoleConstants.user;
-      this.feedingEnabled = (RoleConstants.feeding & this.roles) === RoleConstants.feeding;
+      this.userEnabled =
+        (RoleConstants.user & this.roles) === RoleConstants.user;
+      this.feedingEnabled =
+        (RoleConstants.feeding & this.roles) === RoleConstants.feeding;
       /* tslint:enable:no-bitwise */
 
       console.log('userDisabled', this.userEnabled);

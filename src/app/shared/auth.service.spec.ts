@@ -1,12 +1,12 @@
+import { AuthService } from './auth.service';
 import { TestBed } from '@angular/core/testing';
-import { LoginInterceptor } from './login-interceptor';
 
-describe('LoginInterceptorService', () => {
-  let service: LoginInterceptor;
+describe('AuthService: modify x-auth-token', () => {
+  let service: AuthService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(LoginInterceptor);
+    service = TestBed.inject(AuthService);
   });
 
   it('should be created', () => {
