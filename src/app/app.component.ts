@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   constructor(private lordgasmicService: LordgasmicService) {}
 
   ngOnInit(): void {
-    this.loadSessionInfo();
+    // this.loadSessionInfo();
   }
 
   private loadSessionInfo(): void {
