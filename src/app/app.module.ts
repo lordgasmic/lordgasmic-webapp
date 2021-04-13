@@ -25,7 +25,6 @@ import { PortalComponent } from './portal/portal.component';
 import { ApprovedCountersComponent } from './approved-counters/approved-counters.component';
 import { RecipeHomeComponent } from './recipe-home/recipe-home.component';
 import { MemeHomeComponent } from './meme-home/meme-home.component';
-import { MemeSearchComponent } from './meme-search/meme-search.component';
 import { MemeResultsComponent } from './meme-results/meme-results.component';
 
 @NgModule({
@@ -44,7 +43,6 @@ import { MemeResultsComponent } from './meme-results/meme-results.component';
     ApprovedCountersComponent,
     RecipeHomeComponent,
     MemeHomeComponent,
-    MemeSearchComponent,
     MemeResultsComponent
   ],
   imports: [
