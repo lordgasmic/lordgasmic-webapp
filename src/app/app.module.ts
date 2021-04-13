@@ -24,6 +24,9 @@ import { HomeComponent } from './home/home.component';
 import { PortalComponent } from './portal/portal.component';
 import { ApprovedCountersComponent } from './approved-counters/approved-counters.component';
 import { RecipeHomeComponent } from './recipe-home/recipe-home.component';
+import { MemeHomeComponent } from './meme-home/meme-home.component';
+import { MemeSearchComponent } from './meme-search/meme-search.component';
+import { MemeResultsComponent } from './meme-results/meme-results.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { RecipeHomeComponent } from './recipe-home/recipe-home.component';
     HomeComponent,
     PortalComponent,
     ApprovedCountersComponent,
-    RecipeHomeComponent
+    RecipeHomeComponent,
+    MemeHomeComponent,
+    MemeSearchComponent,
+    MemeResultsComponent
   ],
   imports: [
     BrowserModule,
