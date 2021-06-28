@@ -24,6 +24,7 @@ import { HomeComponent } from './home/home.component';
 import { PortalComponent } from './portal/portal.component';
 import { ApprovedCountersComponent } from './approved-counters/approved-counters.component';
 import { RecipeHomeComponent } from './recipe-home/recipe-home.component';
+import { MemeComponent } from './meme/meme.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { RecipeHomeComponent } from './recipe-home/recipe-home.component';
     HomeComponent,
     PortalComponent,
     ApprovedCountersComponent,
-    RecipeHomeComponent
+    RecipeHomeComponent,
+    MemeComponent
   ],
   imports: [
     BrowserModule,

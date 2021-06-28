@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { PortalComponent } from './portal/portal.component';
 import { ApprovedCountersComponent } from './approved-counters/approved-counters.component';
+import { MemeComponent } from './meme/meme.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'approved-counters',
     component: ApprovedCountersComponent
+  },
+  {
+    path: 'memes',
+    component: MemeComponent
   }
 ];
 

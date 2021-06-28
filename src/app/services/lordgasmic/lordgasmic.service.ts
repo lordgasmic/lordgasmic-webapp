@@ -7,6 +7,7 @@ import { Observable, Observer } from 'rxjs';
 import { SessionInfo } from '../../models/SessionInfo';
 import { LoginRequest } from '../../models/LoginRequest';
 import { LoginInfo } from '../../models/LoginInfo';
+import { MemeResponse } from '../../models/MemeResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,7 @@ export class LordgasmicService {
   private readonly FEEDS = '/v2/feeds';
   private readonly SESSION = '/v1/session';
   private readonly LOGIN = '/v1/login';
+  private readonly MEME = '/v1/memes/tag/';
 
   constructor(private http: HttpClient) {}
 
@@ -66,6 +68,15 @@ export class LordgasmicService {
   login(loginRequest: LoginRequest): Observable<LoginInfo> {
     return new Observable<LoginInfo>((observer: Observer<LoginInfo>) => {
       this.http.post<LoginInfo>(this.API + this.LOGIN, loginRequest).subscribe((response) => {
+        observer.next(response);
+        observer.complete();
+      });
+    });
+  }
+
+  getMemes(tag: string): Observable<Array<MemeResponse>> {
+    return new Observable((observer: Observer<Array<MemeResponse>>) => {
+      this.http.get<Array<MemeResponse>>(this.API + this.MEME + tag).subscribe((response) => {
         observer.next(response);
         observer.complete();
       });

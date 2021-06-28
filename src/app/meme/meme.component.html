@@ -1,0 +1,9 @@
+<div>
+  <label class="lbl" for="search">Seach by Tag</label><input type="text" name="search" id="search" #search>
+  <input type="submit" value="Submit" (click)="submit()">
+</div>
+
+<div *ngFor="let meme in memeResponse">
+  {{meme.name}}
+  {{meme.url}}
+</div>
