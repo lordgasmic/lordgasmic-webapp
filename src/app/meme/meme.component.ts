@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
 import { MemeResponse } from '../models/MemeResponse';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-meme',
@@ -13,7 +14,7 @@ export class MemeComponent implements OnInit {
 
   memeResponse: Array<MemeResponse>;
 
-  constructor(private lordgasmicService: LordgasmicService) { }
+  constructor(private lordgasmicService: LordgasmicService,private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -24,8 +25,15 @@ export class MemeComponent implements OnInit {
     this.lordgasmicService.getMemes(tag).subscribe((value) => {
       this.memeResponse = value;
       console.log(value);
-      this.ngOnInit();
+      this.reloadComponent();
     });
+  }
+
+  reloadComponent(): void {
+    const currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
   }
 
 }
