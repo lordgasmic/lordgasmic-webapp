@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
 import { MemeResponse } from '../models/MemeResponse';
 
@@ -13,7 +13,7 @@ export class MemeComponent implements OnInit {
 
   memeResponse: Array<MemeResponse>;
 
-  constructor(private lordgasmicService: LordgasmicService) { }
+  constructor(private lordgasmicService: LordgasmicService, private changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
   }
@@ -24,6 +24,7 @@ export class MemeComponent implements OnInit {
     this.lordgasmicService.getMemes(tag).subscribe((value) => {
       this.memeResponse = value;
       console.log(value);
+      this.changeDetectorRef.detectChanges();
     });
   }
 
