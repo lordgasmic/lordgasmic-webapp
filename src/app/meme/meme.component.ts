@@ -13,7 +13,7 @@ export class MemeComponent implements OnInit {
 
   memeResponse: Array<MemeResponse>;
 
-  constructor(private lordgasmicService: LordgasmicService, private changeDetectorRef: ChangeDetectorRef) { }
+  constructor(private lordgasmicService: LordgasmicService) { }
 
   ngOnInit(): void {
   }
@@ -24,7 +24,7 @@ export class MemeComponent implements OnInit {
     this.lordgasmicService.getMemes(tag).subscribe((value) => {
       this.memeResponse = value;
       console.log(value);
-      this.changeDetectorRef.detectChanges();
+      this.ngOnInit();
     });
   }
 

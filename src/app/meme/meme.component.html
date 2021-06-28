@@ -7,3 +7,10 @@
   {{meme.name}}
   {{meme.url}}
 </div>
+
+<span *ngFor="let meme in memeResponse">
+  {{meme.name}}
+  {{meme.url}}
+</span>
+
+{{memeResponse[0].name}}
