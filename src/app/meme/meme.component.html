@@ -4,7 +4,7 @@
 </div>
 
 <div [ngClass]="{'hide-container': hidden}">
-  <p *ngFor="let meme in memeResponse">
+  <p *ngFor="let meme of memeResponse">
     {{meme.name}}
     {{meme.url}}
   </p>
