@@ -15,7 +15,7 @@ export class MemeComponent implements OnInit {
 
   hidden: boolean;
 
-  constructor(private lordgasmicService: LordgasmicService, private changeDetectorRef: ChangeDetectorRef) {}
+  constructor(private lordgasmicService: LordgasmicService) {}
 
   ngOnInit(): void {
     this.hidden = true;
@@ -28,7 +28,6 @@ export class MemeComponent implements OnInit {
       this.memeResponse = value;
       console.log(this.memeResponse);
       this.hidden = false;
-      this.changeDetectorRef.detectChanges();
     });
   }
 }
