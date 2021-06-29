@@ -1,7 +1,7 @@
-<div>
+<form (submit)='submit()'>
   <label class="lbl" for="search">Seach by Tag</label><input type="text" name="search" id="search" #search>
   <input type="submit" value="Submit" (click)="submit()">
-</div>
+</form>
 
 <div [ngClass]="{'hide-container': hidden}">
   <div *ngFor="let meme of memeResponse">
