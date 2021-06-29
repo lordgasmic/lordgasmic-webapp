@@ -3,9 +3,11 @@
   <input type="submit" value="Submit" (click)="submit()">
 </div>
 
-<div *ngFor="let meme in memeResponse">
-  {{meme.name}}
-  {{meme.url}}
+<div [ngClass]="{'hide-container': hidden}">
+  <div *ngFor="let meme in memeResponse">
+    {{meme.name}}
+    {{meme.url}}
+  </div>
 </div>
 
 <span *ngFor="let meme in memeResponse">

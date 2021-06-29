@@ -9,14 +9,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./meme.component.scss']
 })
 export class MemeComponent implements OnInit {
-
   @ViewChild('search') search: ElementRef;
 
   memeResponse: Array<MemeResponse>;
 
-  constructor(private lordgasmicService: LordgasmicService,private router: Router) { }
+  hidden: boolean;
+
+  constructor(private lordgasmicService: LordgasmicService, private router: Router) {}
 
   ngOnInit(): void {
+    this.hidden = true;
   }
 
   submit(): void {
@@ -25,15 +27,7 @@ export class MemeComponent implements OnInit {
     this.lordgasmicService.getMemes(tag).subscribe((value) => {
       this.memeResponse = value;
       console.log(value);
-      this.reloadComponent();
+      this.hidden = false;
     });
   }
-
-  reloadComponent(): void {
-    const currentUrl = this.router.url;
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate([currentUrl]);
-  }
-
 }
