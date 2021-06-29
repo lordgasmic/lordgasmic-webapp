@@ -11,11 +11,11 @@ import { Router } from '@angular/router';
 export class MemeComponent implements OnInit {
   @ViewChild('search') search: ElementRef;
 
-  memeResponse: Array<MemeResponse>;
+  memeResponse: Array<MemeResponse> = [];
 
   hidden: boolean;
 
-  constructor(private lordgasmicService: LordgasmicService, private router: Router) {}
+  constructor(private lordgasmicService: LordgasmicService) {}
 
   ngOnInit(): void {
     this.hidden = true;
@@ -26,7 +26,7 @@ export class MemeComponent implements OnInit {
 
     this.lordgasmicService.getMemes(tag).subscribe((value) => {
       this.memeResponse = value;
-      console.log(value);
+      console.log(this.memeResponse);
       this.hidden = false;
     });
   }
