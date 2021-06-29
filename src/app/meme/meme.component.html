@@ -4,10 +4,10 @@
 </div>
 
 <div [ngClass]="{'hide-container': hidden}">
-  <div *ngFor="let meme in memeResponse">
+  <p *ngFor="let meme in memeResponse">
     {{meme.name}}
     {{meme.url}}
-  </div>
+  </p>
 </div>
 
 <span *ngFor="let meme in memeResponse">
