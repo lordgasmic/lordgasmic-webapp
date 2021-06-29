@@ -5,7 +5,8 @@
 
 <div [ngClass]="{'hide-container': hidden}">
   <div *ngFor="let meme of memeResponse">
-    {{meme.name}}
-    <img class="thumbnail" src='{{meme.url}}' />
+    <a href='{{meme.url}}'>
+      <img class="thumbnail" src='{{meme.url}}' />
+    </a>
   </div>
 </div>
