@@ -21,7 +21,9 @@ export class MemeComponent implements OnInit {
     this.hidden = true;
   }
 
-  submit(): void {
+  submit($event: MouseEvent): void {
+    $event.preventDefault();
+    
     const tag = this.search.nativeElement.value;
 
     this.lordgasmicService.getMemes(tag).subscribe((value) => {
