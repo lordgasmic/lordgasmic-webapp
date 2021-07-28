@@ -18,8 +18,14 @@ export class MemeComponent implements OnInit {
   constructor(private lordgasmicService: LordgasmicService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParamMap.subscribe(params => {
       console.log(params);
+      if (params.keys.length === 0) {
+        console.log("no length");
+      }
+      else {
+        console.log(params.keys);
+      }
     });
     this.hidden = true;
   }
