@@ -39,6 +39,6 @@ export class MemeComponent implements OnInit {
     $event.preventDefault();
 
     const tag = this.search.nativeElement.value;
-    this.zone.run(() => this.router.navigate(['/memes?tag${tag}']));
+    this.zone.run(() => this.router.navigate([`/memes?tag${tag}`]));
   }
 }
