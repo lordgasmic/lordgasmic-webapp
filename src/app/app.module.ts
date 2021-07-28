@@ -26,6 +26,7 @@ import { ApprovedCountersComponent } from './approved-counters/approved-counters
 import { RecipeHomeComponent } from './recipe-home/recipe-home.component';
 import { MemeHomeComponent } from './meme-home/meme-home.component';
 import { MemeResultsComponent } from './meme-results/meme-results.component';
+import { MemeComponent } from './meme/meme.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { MemeResultsComponent } from './meme-results/meme-results.component';
     ApprovedCountersComponent,
     RecipeHomeComponent,
     MemeHomeComponent,
-    MemeResultsComponent
+    MemeResultsComponent,
+    MemeComponent
   ],
   imports: [
     BrowserModule,

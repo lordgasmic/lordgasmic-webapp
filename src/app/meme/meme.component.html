@@ -1,0 +1,12 @@
+<form (submit)='submit($event)' >
+  <label class="lbl" for="search">Seach by Tag</label><input type="text" name="search" id="search" #search>
+  <button type="button" value="Submit" (click)="submit($event)"></button>
+</form>
+
+<div [ngClass]="{'hide-container': hidden}">
+  <div *ngFor="let meme of memeResponse">
+    <a href='{{meme.url}}'>
+      <img class="thumbnail" src='{{meme.url}}' />
+    </a>
+  </div>
+</div>

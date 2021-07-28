@@ -8,9 +8,8 @@ describe('MemeResultsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MemeResultsComponent ]
-    })
-    .compileComponents();
+      declarations: [MemeResultsComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
