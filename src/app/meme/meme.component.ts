@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {ChangeDetectorRef, Component, ElementRef, NgZone, OnInit, ViewChild} from '@angular/core';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
 import { MemeResponse } from '../models/MemeResponse';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -15,30 +15,30 @@ export class MemeComponent implements OnInit {
 
   hidden: boolean;
 
-  constructor(private lordgasmicService: LordgasmicService, private route: ActivatedRoute) {}
+  constructor(private lordgasmicService: LordgasmicService, private route: ActivatedRoute,private router: Router, private zone: NgZone) {}
 
   ngOnInit(): void {
     this.route.queryParamMap.subscribe(params => {
       console.log(params);
       if (params.keys.length === 0) {
         console.log("no length");
+        this.hidden = true;
       }
       else {
         console.log(params.keys);
+        const tag = params.get('tag');
+        this.lordgasmicService.getMemes(tag).subscribe((value) => {
+          this.memeResponse = value;
+          this.hidden = false;
+        });
       }
     });
-    this.hidden = true;
   }
 
   submit($event: Event): void {
     $event.preventDefault();
 
     const tag = this.search.nativeElement.value;
-
-    this.lordgasmicService.getMemes(tag).subscribe((value) => {
-      this.memeResponse = value;
-      console.log(this.memeResponse);
-      this.hidden = false;
-    });
+    this.zone.run(() => this.router.navigate(['/memes?tag${tag}']));
   }
 }
