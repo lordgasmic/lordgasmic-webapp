@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
 import { MemeResponse } from '../models/MemeResponse';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-meme',
@@ -15,9 +15,12 @@ export class MemeComponent implements OnInit {
 
   hidden: boolean;
 
-  constructor(private lordgasmicService: LordgasmicService) {}
+  constructor(private lordgasmicService: LordgasmicService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      console.log(params);
+    });
     this.hidden = true;
   }
 
