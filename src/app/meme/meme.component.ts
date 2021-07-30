@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PictureType } from '../models/PictureType';
 import { VideoType } from '../models/VideoType';
 import { ToastMessageService } from '../services/toast-message/toast-message.service';
+import { MDCSnackbar } from '@material/snackbar/component';
 
 @Component({
   selector: 'app-meme',
@@ -18,13 +19,15 @@ export class MemeComponent implements OnInit {
 
   hidden: boolean;
 
+  snackbar: MDCSnackbar;
+
   constructor(
     private lordgasmicService: LordgasmicService,
     private route: ActivatedRoute,
     private router: Router,
-    private zone: NgZone,
-    private toastService: ToastMessageService
-  ) {}
+    private zone: NgZone
+  ) // private toastService: ToastMessageService
+  {}
 
   ngOnInit(): void {
     this.route.queryParamMap.subscribe((params) => {
@@ -38,6 +41,7 @@ export class MemeComponent implements OnInit {
         });
       }
     });
+    this.snackbar = new MDCSnackbar(document.querySelector('.mdc-snackbar'));
   }
 
   submit($event: Event): void {
@@ -56,7 +60,8 @@ export class MemeComponent implements OnInit {
     document.execCommand('copy');
     document.body.removeChild(selBox);
 
-    this.toastService.showToastMessage('Copied to clipboard');
+    // this.toastService.showToastMessage('Copied to clipboard');
+    this.snackbar.open();
   }
 
   share(url: string): void {
