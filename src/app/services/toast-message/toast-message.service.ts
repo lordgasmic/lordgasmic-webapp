@@ -16,8 +16,9 @@ export class ToastMessageService {
   }
 
   showToastMessage(message: string, duration?: number): void {
-    // this.matSnackBar.open(message, undefined, { duration: duration || 3000 });
-    this.matSnackBar.openFromComponent(ToastMessageComponent, { data: message, duration: 3000 });
+    this.matSnackBar.open(message, undefined, { duration: duration || 3000 });
+    // this.matSnackBar.openFromComponent(ToastMessageComponent, { data: message, duration: duration || 3000 });
+    // this.matSnackBar.open(message, undefined, {})
   }
 
   hideToastMessage(): void {
