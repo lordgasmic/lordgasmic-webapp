@@ -59,6 +59,19 @@ export class MemeComponent implements OnInit {
     this.toastService.showToastMessage('Copied to clipboard');
   }
 
+  share(url: string): void {
+    if (navigator.share) {
+      navigator
+        .share({
+          title: 'derp',
+          text: 'you are a derp',
+          url
+        })
+        .then(() => console.log('successful share'))
+        .catch((error) => console.log('error sharing', error));
+    }
+  }
+
   isPicture(meme: MemeResponse): boolean {
     return Object.values(PictureType).includes(this.getUrlExtension(meme.url));
   }
