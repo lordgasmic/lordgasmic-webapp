@@ -44,11 +44,15 @@ export class MemeComponent implements OnInit {
     selBox.style.left = '0';
     selBox.style.top = '0';
     selBox.style.opacity = '0';
-    selBox.value = url;
+    selBox.value = `${location.hostname}${url}`;
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
+
+    //todo: toast
+    //todo: move style into css
+    //todo: fix size of copy png
   }
 }

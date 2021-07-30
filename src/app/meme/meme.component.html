@@ -8,6 +8,8 @@
     <a href='{{meme.url}}'>
       <img class="thumbnail" src='{{meme.url}}' />
     </a>
-    <img src='assets/icons/copy.png' (click)="copyToClipboard(meme.url)" />
+    <a (click)="copyToClipboard(meme.url)">
+      <img src='assets/icons/copy.png' />
+    </a>
   </div>
 </div>
