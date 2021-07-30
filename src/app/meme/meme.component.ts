@@ -19,12 +19,9 @@ export class MemeComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParamMap.subscribe((params) => {
-      console.log(params);
       if (params.keys.length === 0) {
-        console.log('no length');
         this.hidden = true;
       } else {
-        console.log(params.keys);
         const tag = params.get('tag');
         this.lordgasmicService.getMemes(tag).subscribe((value) => {
           this.memeResponse = value;
@@ -39,5 +36,19 @@ export class MemeComponent implements OnInit {
 
     const tag = this.search.nativeElement.value;
     this.zone.run(() => this.router.navigate([`/memes`], { queryParams: { tag } }));
+  }
+
+  copyToClipboard(url: string): void {
+    const selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = url;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
   }
 }
