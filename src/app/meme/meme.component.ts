@@ -40,10 +40,6 @@ export class MemeComponent implements OnInit {
 
   copyToClipboard(url: string): void {
     const selBox = document.createElement('textarea');
-    selBox.style.position = 'fixed';
-    selBox.style.left = '0';
-    selBox.style.top = '0';
-    selBox.style.opacity = '0';
     selBox.value = `${location.hostname}${url}`;
     document.body.appendChild(selBox);
     selBox.focus();
