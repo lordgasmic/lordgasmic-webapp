@@ -5,7 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PictureType } from '../models/PictureType';
 import { VideoType } from '../models/VideoType';
 import { ToastMessageService } from '../services/toast-message/toast-message.service';
-import { MDCSnackbar } from '@material/snackbar/component';
 
 @Component({
   selector: 'app-meme',
