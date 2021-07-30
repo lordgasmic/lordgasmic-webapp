@@ -21,4 +21,8 @@ describe('MemeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should return the extension', () => {
+    expect(component.getUrlExtension('value.png')).toBe('png');
+  });
 });

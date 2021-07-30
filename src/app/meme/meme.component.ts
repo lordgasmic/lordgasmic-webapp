@@ -1,7 +1,9 @@
-import { ChangeDetectorRef, Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
 import { MemeResponse } from '../models/MemeResponse';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PictureType } from '../models/PictureType';
+import { VideoType } from '../models/VideoType';
 
 @Component({
   selector: 'app-meme',
@@ -48,5 +50,17 @@ export class MemeComponent implements OnInit {
     document.body.removeChild(selBox);
 
     //todo: toast
+  }
+
+  isPicture(meme: MemeResponse): boolean {
+    return Object.values(PictureType).includes(this.getUrlExtension(meme.url));
+  }
+
+  idVideo(meme: MemeResponse): boolean {
+    return Object.values(VideoType).includes(this.getUrlExtension(meme.url));
+  }
+
+  getUrlExtension(url: string): string {
+    return url.substr(url.lastIndexOf('.') + 1);
   }
 }

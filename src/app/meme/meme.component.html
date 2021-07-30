@@ -7,7 +7,10 @@
   <div *ngFor="let meme of memeResponse">
     <a href='{{meme.url}}'>
 <!--      todo: webm-->
-      <img class="thumbnail" src='{{meme.url}}' />
+      <img *ngIf="isPicture(meme)" class="thumbnail" src='{{meme.url}}' />
+      <video *ngIf="idVideo(meme)" class="thumbnail" autoplay loop>
+        <source src="{{meme.url}}"/>
+      </video>
     </a>
     <a (click)="copyToClipboard(meme.url)">
       <img class="copy2clipboard" src='assets/icons/copy.png' />
