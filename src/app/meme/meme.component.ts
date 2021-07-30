@@ -49,6 +49,7 @@ export class MemeComponent implements OnInit {
 
   copyToClipboard(url: string): void {
     const selBox = document.createElement('textarea');
+    selBox.classList.add('clipboard');
     selBox.value = `${location.hostname}${url}`;
     document.body.appendChild(selBox);
     selBox.focus();
@@ -56,7 +57,7 @@ export class MemeComponent implements OnInit {
     document.execCommand('copy');
     document.body.removeChild(selBox);
 
-    this.toastService.showToastMessage('Copied to clipboard', 600000);
+    this.toastService.showToastMessage('Copied to clipboard');
   }
 
   share(url: string): void {

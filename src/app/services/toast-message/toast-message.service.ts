@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, NavigationStart } from '@angular/router';
+import { ToastMessageComponent } from '../../shared/toast-message/toast-message.component';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class ToastMessageService {
   }
 
   showToastMessage(message: string, duration?: number): void {
-    this.matSnackBar.open(message, undefined, { duration: duration || 3000 });
+    // this.matSnackBar.open(message, undefined, { duration: duration || 3000 });
+    this.matSnackBar.openFromComponent(ToastMessageComponent, { data: message, duration: 3000 });
   }
 
   hideToastMessage(): void {

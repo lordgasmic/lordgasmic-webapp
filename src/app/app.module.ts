@@ -25,6 +25,7 @@ import { PortalComponent } from './portal/portal.component';
 import { ApprovedCountersComponent } from './approved-counters/approved-counters.component';
 import { RecipeHomeComponent } from './recipe-home/recipe-home.component';
 import { MemeComponent } from './meme/meme.component';
+import { ToastMessageComponent } from './shared/toast-message/toast-message.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { MemeComponent } from './meme/meme.component';
     PortalComponent,
     ApprovedCountersComponent,
     RecipeHomeComponent,
-    MemeComponent
+    MemeComponent,
+    ToastMessageComponent
   ],
   imports: [
     BrowserModule,
