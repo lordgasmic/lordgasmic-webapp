@@ -6,10 +6,11 @@
 <div [ngClass]="{'hide-container': hidden}">
   <div *ngFor="let meme of memeResponse">
     <a href='{{meme.url}}'>
+<!--      todo: webm-->
       <img class="thumbnail" src='{{meme.url}}' />
     </a>
     <a (click)="copyToClipboard(meme.url)">
-      <img src='assets/icons/copy.png' />
+      <img class="copy2clipboard" src='assets/icons/copy.png' />
     </a>
   </div>
 </div>

@@ -48,7 +48,5 @@ export class MemeComponent implements OnInit {
     document.body.removeChild(selBox);
 
     //todo: toast
-    //todo: move style into css
-    //todo: fix size of copy png
   }
 }
