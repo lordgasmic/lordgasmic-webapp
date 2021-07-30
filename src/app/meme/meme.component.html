@@ -8,7 +8,7 @@
     <a href='{{meme.url}}'>
 <!--      todo: webm-->
       <img *ngIf="isPicture(meme)" class="thumbnail" src='{{meme.url}}' />
-      <video *ngIf="idVideo(meme)" class="thumbnail" autoplay loop muted>
+      <video *ngIf="idVideo(meme)" class="thumbnail" autoplay loop [muted]="'muted'">
         <source src="{{meme.url}}"/>
       </video>
     </a>
