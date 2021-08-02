@@ -1,8 +1,12 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { NgZone } from '@angular/core';
 
 export class HttpErrorInterceptor implements HttpInterceptor {
+  constructor(private router: Router, private zone: NgZone) {}
+
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       retry(1),
@@ -15,7 +19,9 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           // server-side error
           errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
         }
-        window.alert(errorMessage);
+
+        this.zone.run(() => this.router.navigate(['/']));
+
         return throwError(errorMessage);
       })
     );
