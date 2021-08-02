@@ -16,7 +16,7 @@ export class ToastMessageService {
 
   showToastMessage(message: string, duration?: number): void {
     this.zone.run(() => {
-      this.matSnackBar.open(message, undefined, { duration: duration || 3000 });
+      this.matSnackBar.open(message, undefined, { duration: duration || 3000, verticalPosition: 'bottom', horizontalPosition: 'center' });
     });
   }
 
