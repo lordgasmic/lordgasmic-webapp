@@ -2,8 +2,9 @@ import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { NgZone } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 
+@Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
   constructor(private router: Router, private zone: NgZone) {}
 
