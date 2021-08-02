@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, NavigationStart } from '@angular/router';
 import { ToastMessageComponent } from '../../shared/toast-message/toast-message.component';
@@ -7,7 +7,7 @@ import { ToastMessageComponent } from '../../shared/toast-message/toast-message.
   providedIn: 'root'
 })
 export class ToastMessageService {
-  constructor(private matSnackBar: MatSnackBar, private router: Router) {
+  constructor(private matSnackBar: MatSnackBar, private router: Router, private zone: NgZone) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
         this.hideToastMessage();
@@ -16,8 +16,9 @@ export class ToastMessageService {
   }
 
   showToastMessage(message: string, duration?: number): void {
-    // this.matSnackBar.open(message, undefined, { duration: duration || 3000 });
-    this.matSnackBar.openFromComponent(ToastMessageComponent, { data: message, duration: 3000 });
+    this.zone.run(() => {
+      this.matSnackBar.open(message, undefined, { duration: duration || 3000 });
+    });
   }
 
   hideToastMessage(): void {
