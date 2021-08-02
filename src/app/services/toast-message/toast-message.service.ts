@@ -1,7 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, NavigationStart } from '@angular/router';
-import { ToastMessageComponent } from '../../shared/toast-message/toast-message.component';
 
 @Injectable({
   providedIn: 'root'

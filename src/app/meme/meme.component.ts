@@ -57,7 +57,7 @@ export class MemeComponent implements OnInit {
     document.execCommand('copy');
     document.body.removeChild(selBox);
 
-    this.toastService.showToastMessage('Copied to clipboard',6000000);
+    this.toastService.showToastMessage('Copied to clipboard', 6000000);
   }
 
   share(url: string): void {
