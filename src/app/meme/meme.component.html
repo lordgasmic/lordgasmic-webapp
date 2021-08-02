@@ -12,12 +12,12 @@
         <source src="{{meme.url}}"/>
       </video>
     </a>
-    <a (click)="copyToClipboard(meme.url)">
+    <button (click)="copyToClipboard(meme.url)">
       <img src='assets/icons/copy.png' class="copy2clipboard" />
-    </a>
-    <a (click)="share(meme.url)">
+    </button>
+    <button (click)="share(meme.url)">
       <img src="assets/icons/share.jpg" class="share" />
-    </a>
+    </button>
     <br />
   </div>
 </div>
