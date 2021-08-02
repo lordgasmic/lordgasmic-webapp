@@ -11,12 +11,9 @@ import { Router } from '@angular/router';
 //
 //   constructor(private router: Router) {}
 //
-//   intercept(
-//     req: HttpRequest<any>,
-//     next: HttpHandler
-//   ): Observable<HttpEvent<any>> {
+//   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 //     if (req.headers.has(this.LOGIN_HEADER)) {
-//       this.router.navigate("/login");
+//       this.router.navigate('/');
 //       return of(undefined);
 //     }
 //     return next.handle(req);

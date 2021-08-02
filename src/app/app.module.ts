@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PumpingComponent } from './pumping/pumping.component';
 import { FeedingComponent } from './feeding/feeding.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -25,6 +25,7 @@ import { PortalComponent } from './portal/portal.component';
 import { ApprovedCountersComponent } from './approved-counters/approved-counters.component';
 import { RecipeHomeComponent } from './recipe-home/recipe-home.component';
 import { MemeComponent } from './meme/meme.component';
+import { HttpErrorInterceptor } from './shared/http-error.interceptor';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,13 @@ import { MemeComponent } from './meme/meme.component';
     MatSnackBarModule,
     GoogleChartsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

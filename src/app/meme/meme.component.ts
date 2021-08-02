@@ -64,8 +64,6 @@ export class MemeComponent implements OnInit {
     if (navigator.share) {
       navigator
         .share({
-          title: 'derp',
-          text: 'you are a derp',
           url
         })
         .then(() => console.log('successful share'))
