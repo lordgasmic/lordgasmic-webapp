@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LordgasmicService } from './services/lordgasmic/lordgasmic.service';
+import { logger } from 'codelyzer/util/logger';
 
 @Component({
   selector: 'app-root',
@@ -12,12 +13,12 @@ export class AppComponent implements OnInit {
   constructor(private lordgasmicService: LordgasmicService) {}
 
   ngOnInit(): void {
-    // this.loadSessionInfo();
+    this.loadSessionInfo();
   }
 
   private loadSessionInfo(): void {
     this.lordgasmicService.getSessionInfo().subscribe((sessionInfo) => {
-      // nothing to do
+      console.log('sessionInfo: ', sessionInfo);
     });
   }
 }
