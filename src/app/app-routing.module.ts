@@ -8,6 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { PortalComponent } from './portal/portal.component';
 import { ApprovedCountersComponent } from './approved-counters/approved-counters.component';
 import { MemeComponent } from './meme/meme.component';
+import { WineComponent } from './wine/wine.component';
+import { FunkoComponent } from './funko/funko.component';
 
 const routes: Routes = [
   {
@@ -41,6 +43,14 @@ const routes: Routes = [
   {
     path: 'memes',
     component: MemeComponent
+  },
+  {
+    path: 'wine',
+    component: WineComponent
+  },
+  {
+    path: 'funko',
+    component: FunkoComponent
   }
 ];
 

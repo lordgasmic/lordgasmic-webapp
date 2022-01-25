@@ -26,6 +26,9 @@ import { ApprovedCountersComponent } from './approved-counters/approved-counters
 import { RecipeHomeComponent } from './recipe-home/recipe-home.component';
 import { MemeComponent } from './meme/meme.component';
 import { HttpErrorInterceptor } from './shared/http-error.interceptor';
+import { HeaderComponent } from './header/header.component';
+import { WineComponent } from './wine/wine.component';
+import { FunkoComponent } from './funko/funko.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,10 @@ import { HttpErrorInterceptor } from './shared/http-error.interceptor';
     PortalComponent,
     ApprovedCountersComponent,
     RecipeHomeComponent,
-    MemeComponent
+    MemeComponent,
+    HeaderComponent,
+    WineComponent,
+    FunkoComponent
   ],
   imports: [
     BrowserModule,

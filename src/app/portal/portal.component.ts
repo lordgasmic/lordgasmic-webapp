@@ -16,6 +16,8 @@ export class PortalComponent implements OnInit {
   userEnabled = false;
   feedingEnabled = false;
   memesEnabled = false;
+  wineEnabled = false;
+  funkoEnabled = false;
 
   constructor(private lordgasmicService: LordgasmicService) {}
 
@@ -33,6 +35,8 @@ export class PortalComponent implements OnInit {
       this.feedingEnabled = (RoleConstants.feeding & this.roles) === RoleConstants.feeding;
       this.recipeEnabled = (RoleConstants.recipe & this.roles) === RoleConstants.recipe;
       this.memesEnabled = (RoleConstants.memes & this.roles) === RoleConstants.memes;
+      this.wineEnabled = (RoleConstants.wine & this.roles) === RoleConstants.wine;
+      this.funkoEnabled = (RoleConstants.funko & this.roles) === RoleConstants.funko;
       /* tslint:enable:no-bitwise */
     });
   }
