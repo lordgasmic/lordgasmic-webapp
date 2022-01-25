@@ -1,1 +1,5 @@
-<p>wine works!</p>
+<div [ngClass]="{'hide-container': hidden}">
+  <ul>
+    <li *ngFor="let winery of wineryResponse">{{winery.name}}</li>
+  </ul>
+</div>

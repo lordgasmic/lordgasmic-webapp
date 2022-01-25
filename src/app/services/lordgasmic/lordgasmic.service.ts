@@ -8,6 +8,7 @@ import { SessionInfo } from '../../models/SessionInfo';
 import { LoginRequest } from '../../models/LoginRequest';
 import { LoginInfo } from '../../models/LoginInfo';
 import { MemeResponse } from '../../models/MemeResponse';
+import { WineryResponse } from '../../models/WineryResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ export class LordgasmicService {
   private readonly SESSION = '/v1/session';
   private readonly LOGIN = '/v1/login';
   private readonly MEME = '/v1/memes/tag/';
+  private readonly WINERIES = '/v1/wineries/';
 
   constructor(private http: HttpClient) {}
 
@@ -77,6 +79,15 @@ export class LordgasmicService {
   getMemes(tag: string): Observable<Array<MemeResponse>> {
     return new Observable((observer: Observer<Array<MemeResponse>>) => {
       this.http.get<Array<MemeResponse>>(this.API + this.MEME + tag).subscribe((response) => {
+        observer.next(response);
+        observer.complete();
+      });
+    });
+  }
+
+  getWineries(): Observable<Array<WineryResponse>> {
+    return new Observable((observer: Observer<Array<WineryResponse>>) => {
+      this.http.get<Array<WineryResponse>>(this.API + this.WINERIES).subscribe((response) => {
         observer.next(response);
         observer.complete();
       });

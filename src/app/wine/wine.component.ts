@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
+import { WineryResponse } from '../models/WineryResponse';
 
 @Component({
   selector: 'app-wine',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./wine.component.scss']
 })
 export class WineComponent implements OnInit {
-
-  constructor() { }
+  wineryResponse: Array<WineryResponse> = [];
+  hidden = true;
+  constructor(private lordgasmicService: LordgasmicService) {}
 
   ngOnInit(): void {
+    this.lordgasmicService.getWineries().subscribe((value) => {
+      this.wineryResponse = value;
+      this.hidden = false;
+    });
   }
-
 }
