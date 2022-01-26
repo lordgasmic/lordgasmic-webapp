@@ -2,6 +2,7 @@ import { Component, NgZone, OnInit } from '@angular/core';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WineryResponse } from '../models/WineryResponse';
+import { WineResponse } from '../models/WineResponse';
 
 @Component({
   selector: 'app-winery',
@@ -10,6 +11,7 @@ import { WineryResponse } from '../models/WineryResponse';
 })
 export class WineryComponent implements OnInit {
   wineryResponse: WineryResponse;
+  wineResponse: Array<WineResponse> = [];
 
   constructor(private lordgasmicService: LordgasmicService, private route: ActivatedRoute) {}
 
@@ -18,7 +20,9 @@ export class WineryComponent implements OnInit {
       const id = params.id;
       this.lordgasmicService.getWinery(id).subscribe((value) => {
         this.wineryResponse = value;
-        console.log(this.wineryResponse);
+        this.lordgasmicService.getWinesByWinery(id).subscribe((res) => {
+          this.wineResponse = res;
+        });
       });
     });
   }

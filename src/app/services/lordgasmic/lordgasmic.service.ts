@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Expression } from '../../models/Expression';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { FeedRequest } from '../../models/FeedRequest';
 import { FeedResponse } from '../../models/FeedResponse';
 import { Observable, Observer } from 'rxjs';
@@ -9,6 +9,7 @@ import { LoginRequest } from '../../models/LoginRequest';
 import { LoginInfo } from '../../models/LoginInfo';
 import { MemeResponse } from '../../models/MemeResponse';
 import { WineryResponse } from '../../models/WineryResponse';
+import { WineResponse } from '../../models/WineResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,7 @@ export class LordgasmicService {
   private readonly LOGIN = '/v1/login';
   private readonly MEME = '/v1/memes/tag/';
   private readonly WINERIES = '/v1/wineries/';
+  private readonly WINES = '/v1/wines/';
 
   constructor(private http: HttpClient) {}
 
@@ -100,6 +102,41 @@ export class LordgasmicService {
         observer.next(response);
         observer.complete();
       });
+    });
+  }
+
+  getAllWines(): Observable<Array<WineResponse>> {
+    return new Observable((observer: Observer<Array<WineResponse>>) => {
+      this.http.get<Array<WineResponse>>(this.API + this.WINES).subscribe((response) => {
+        observer.next(response);
+        observer.complete();
+      });
+    });
+  }
+
+  getWinesByWinery(id: string): Observable<Array<WineResponse>> {
+    const params = new HttpParams();
+    params.append('wineryId', id);
+    return new Observable((observer: Observer<Array<WineResponse>>) => {
+      this.http
+        .get<Array<WineResponse>>(this.API + this.WINES, { params })
+        .subscribe((response) => {
+          observer.next(response);
+          observer.complete();
+        });
+    });
+  }
+
+  getWineByWinery(id: string): Observable<WineResponse> {
+    const params = new HttpParams();
+    params.append('wineryId', id);
+    return new Observable((observer: Observer<WineResponse>) => {
+      this.http
+        .get<WineResponse>(this.API + this.WINES, { params })
+        .subscribe((response) => {
+          observer.next(response);
+          observer.complete();
+        });
     });
   }
 }
