@@ -15,6 +15,7 @@ export class WineryComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
+      console.log(params);
       if (params.keys.length === 0) {
         this.zone.run(() => this.router.navigate([`/wineTasting`], {}));
       } else {
