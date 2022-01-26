@@ -16,6 +16,7 @@ export class WineryComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       console.log(params);
+      console.log(params.id);
       console.log(params.keys);
       console.log(params.keys.length);
       if (params.keys.length === 0) {
