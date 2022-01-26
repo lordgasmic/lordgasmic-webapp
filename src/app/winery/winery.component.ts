@@ -17,11 +17,15 @@ export class WineryComponent implements OnInit {
     this.route.params.subscribe((params) => {
       console.log(params);
       if (params.keys.length === 0) {
+        console.log('keys zero');
         this.zone.run(() => this.router.navigate([`/wineTasting`], {}));
       } else {
+        console.log('found keys');
         const id = params.get('id');
+        console.log('id: ' + id);
         this.lordgasmicService.getWinery(id).subscribe((value) => {
           this.wineryResponse = value;
+          console.log(this.wineryResponse);
         });
       }
     });
