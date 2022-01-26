@@ -10,6 +10,8 @@ import { ApprovedCountersComponent } from './approved-counters/approved-counters
 import { MemeComponent } from './meme/meme.component';
 import { WineComponent } from './wine/wine.component';
 import { FunkoComponent } from './funko/funko.component';
+import { WineTastingComponent } from './wine-tasting/wine-tasting.component';
+import { WineryComponent } from './winery/winery.component';
 
 const routes: Routes = [
   {
@@ -45,8 +47,12 @@ const routes: Routes = [
     component: MemeComponent
   },
   {
-    path: 'wine',
-    component: WineComponent
+    path: 'wineTasting',
+    component: WineTastingComponent
+  },
+  {
+    path: 'wineTasting/winery/:id',
+    component: WineryComponent
   },
   {
     path: 'funko',

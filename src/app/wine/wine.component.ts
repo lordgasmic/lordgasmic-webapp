@@ -8,14 +8,7 @@ import { WineryResponse } from '../models/WineryResponse';
   styleUrls: ['./wine.component.scss']
 })
 export class WineComponent implements OnInit {
-  wineryResponse: Array<WineryResponse> = [];
-  hidden = true;
   constructor(private lordgasmicService: LordgasmicService) {}
 
-  ngOnInit(): void {
-    this.lordgasmicService.getWineries().subscribe((value) => {
-      this.wineryResponse = value;
-      this.hidden = false;
-    });
-  }
+  ngOnInit(): void {}
 }

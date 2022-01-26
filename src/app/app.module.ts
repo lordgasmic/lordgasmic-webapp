@@ -29,6 +29,8 @@ import { HttpErrorInterceptor } from './shared/http-error.interceptor';
 import { HeaderComponent } from './header/header.component';
 import { WineComponent } from './wine/wine.component';
 import { FunkoComponent } from './funko/funko.component';
+import { WineTastingComponent } from './wine-tasting/wine-tasting.component';
+import { WineryComponent } from './winery/winery.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { FunkoComponent } from './funko/funko.component';
     MemeComponent,
     HeaderComponent,
     WineComponent,
-    FunkoComponent
+    FunkoComponent,
+    WineTastingComponent,
+    WineryComponent
   ],
   imports: [
     BrowserModule,
