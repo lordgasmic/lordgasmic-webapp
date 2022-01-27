@@ -118,25 +118,21 @@ export class LordgasmicService {
     const params = new HttpParams();
     params.append('wineryId', id);
     return new Observable((observer: Observer<Array<WineResponse>>) => {
-      this.http
-        .get<Array<WineResponse>>(this.API + this.WINES, { params })
-        .subscribe((response) => {
-          observer.next(response);
-          observer.complete();
-        });
+      this.http.get<Array<WineResponse>>(this.API + this.WINES + `?wineryId=${id}`).subscribe((response) => {
+        observer.next(response);
+        observer.complete();
+      });
     });
   }
 
   getWineByWinery(id: string): Observable<WineResponse> {
     const params = new HttpParams();
-    params.append('wineryId', id);
+    params.append('wineId', id);
     return new Observable((observer: Observer<WineResponse>) => {
-      this.http
-        .get<WineResponse>(this.API + this.WINES, { params })
-        .subscribe((response) => {
-          observer.next(response);
-          observer.complete();
-        });
+      this.http.get<WineResponse>(this.API + this.WINES + `?wineId=${id}`).subscribe((response) => {
+        observer.next(response);
+        observer.complete();
+      });
     });
   }
 }
