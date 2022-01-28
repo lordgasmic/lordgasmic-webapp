@@ -129,7 +129,7 @@ export class LordgasmicService {
 
   getWineById(id: string): Observable<WineResponse> {
     return new Observable((observer: Observer<WineResponse>) => {
-      this.http.get<WineResponse>(this.API + this.WINES + `?id=${id}`).subscribe((response) => {
+      this.http.get<WineResponse>(this.API + this.WINES + `?wineId=${id}`).subscribe((response) => {
         observer.next(response);
         observer.complete();
       });
