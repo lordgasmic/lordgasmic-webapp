@@ -10,6 +10,8 @@ import { LoginInfo } from '../../models/LoginInfo';
 import { MemeResponse } from '../../models/MemeResponse';
 import { WineryResponse } from '../../models/WineryResponse';
 import { WineResponse } from '../../models/WineResponse';
+import { WineNoteResponse } from '../../models/WineNoteResponse';
+import { WineRatingResponse } from '../../models/WineRatingResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +26,8 @@ export class LordgasmicService {
   private readonly MEME = '/v1/memes/tag/';
   private readonly WINERIES = '/v1/wineries/';
   private readonly WINES = '/v1/wines/';
+  private readonly WINE_NOTES = '/v1/wineNotes/';
+  private readonly WINE_RATING = '/v1/wineRating/';
 
   constructor(private http: HttpClient) {}
 
@@ -115,8 +119,6 @@ export class LordgasmicService {
   }
 
   getWinesByWinery(id: string): Observable<Array<WineResponse>> {
-    const params = new HttpParams();
-    params.append('wineryId', id);
     return new Observable((observer: Observer<Array<WineResponse>>) => {
       this.http.get<Array<WineResponse>>(this.API + this.WINES + `?wineryId=${id}`).subscribe((response) => {
         observer.next(response);
@@ -125,11 +127,63 @@ export class LordgasmicService {
     });
   }
 
-  getWineByWinery(id: string): Observable<WineResponse> {
-    const params = new HttpParams();
-    params.append('wineId', id);
+  getWineById(id: string): Observable<WineResponse> {
     return new Observable((observer: Observer<WineResponse>) => {
-      this.http.get<WineResponse>(this.API + this.WINES + `?wineId=${id}`).subscribe((response) => {
+      this.http.get<WineResponse>(this.API + this.WINES + `?id=${id}`).subscribe((response) => {
+        observer.next(response);
+        observer.complete();
+      });
+    });
+  }
+
+  getAllWineNotes(): Observable<Array<WineNoteResponse>> {
+    return new Observable((observer: Observer<Array<WineNoteResponse>>) => {
+      this.http.get<Array<WineNoteResponse>>(this.API + this.WINE_NOTES).subscribe((response) => {
+        observer.next(response);
+        observer.complete();
+      });
+    });
+  }
+
+  getWineNotesByUser(user: string): Observable<Array<WineNoteResponse>> {
+    return new Observable((observer: Observer<Array<WineNoteResponse>>) => {
+      this.http.get<Array<WineNoteResponse>>(this.API + this.WINE_NOTES + `?user=${user}`).subscribe((response) => {
+        observer.next(response);
+        observer.complete();
+      });
+    });
+  }
+
+  getWineNotesByWineId(wineId: number): Observable<Array<WineNoteResponse>> {
+    return new Observable((observer: Observer<Array<WineNoteResponse>>) => {
+      this.http.get<Array<WineNoteResponse>>(this.API + this.WINE_NOTES + `?wineId=${wineId}`).subscribe((response) => {
+        observer.next(response);
+        observer.complete();
+      });
+    });
+  }
+
+  getAllWineRatings(): Observable<Array<WineRatingResponse>> {
+    return new Observable((observer: Observer<Array<WineRatingResponse>>) => {
+      this.http.get<Array<WineRatingResponse>>(this.API + this.WINE_RATING).subscribe((response) => {
+        observer.next(response);
+        observer.complete();
+      });
+    });
+  }
+
+  getWineRatingsByUser(user: string): Observable<Array<WineRatingResponse>> {
+    return new Observable((observer: Observer<Array<WineRatingResponse>>) => {
+      this.http.get<Array<WineRatingResponse>>(this.API + this.WINE_RATING + `?user=${user}`).subscribe((response) => {
+        observer.next(response);
+        observer.complete();
+      });
+    });
+  }
+
+  getWineRatingByWineId(wineId: number): Observable<WineRatingResponse> {
+    return new Observable((observer: Observer<WineRatingResponse>) => {
+      this.http.get<WineRatingResponse>(this.API + this.WINE_RATING + `?wineId=${wineId}`).subscribe((response) => {
         observer.next(response);
         observer.complete();
       });

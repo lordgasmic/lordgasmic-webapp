@@ -1,0 +1,7 @@
+<div>
+  Wine: {{wineResponse.name}} <br/>
+  Wine Rating: {{wineRatingResponse.rating}} <br/>
+  Wine Notes: <ul>
+  <li *ngFor="let note of wineNoteResponse">{{note.note}}</li>
+</ul>
+</div>

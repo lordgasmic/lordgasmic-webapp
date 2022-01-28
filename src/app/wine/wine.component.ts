@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
-import { WineryResponse } from '../models/WineryResponse';
+import { WineResponse } from '../models/WineResponse';
+import { WineNoteResponse } from '../models/WineNoteResponse';
+import { WineRatingResponse } from '../models/WineRatingResponse';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-wine',
@@ -8,7 +11,23 @@ import { WineryResponse } from '../models/WineryResponse';
   styleUrls: ['./wine.component.scss']
 })
 export class WineComponent implements OnInit {
-  constructor(private lordgasmicService: LordgasmicService) {}
+  wineResponse: WineResponse;
+  wineNoteResponse: Array<WineNoteResponse> = [];
+  wineRatingResponse: WineRatingResponse;
+  constructor(private lordgasmicService: LordgasmicService, private route: ActivatedRoute) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      const id = params.id;
+      this.lordgasmicService.getWineById(id).subscribe((res) => {
+        this.wineResponse = res;
+        this.lordgasmicService.getWineNotesByWineId(id).subscribe((wnr) => {
+          this.wineNoteResponse = wnr;
+        });
+        this.lordgasmicService.getWineRatingByWineId(id).subscribe((wrr) => {
+          this.wineRatingResponse = wrr;
+        });
+      });
+    });
+  }
 }

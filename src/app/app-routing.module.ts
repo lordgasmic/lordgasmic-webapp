@@ -55,6 +55,10 @@ const routes: Routes = [
     component: WineryComponent
   },
   {
+    path: 'wineTasting/wine/:id',
+    component: WineComponent
+  },
+  {
     path: 'funko',
     component: FunkoComponent
   }

@@ -1,6 +1,6 @@
 {{wineryResponse.name}} {{wineryResponse.location}}
 <div>
   <ul>
-    <li *ngFor="let wine of wineResponse">{{wine.name}}</li>
+    <li *ngFor="let wine of wineResponse"><a href ="/wineTasting/wine/{{wine.id}}">{{wine.name}}</a></li>
   </ul>
 </div>
