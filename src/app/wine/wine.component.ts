@@ -11,9 +11,14 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./wine.component.scss']
 })
 export class WineComponent implements OnInit {
-  wineResponse: WineResponse = null;
+  wineResponse: WineResponse;
   wineNoteResponse: Array<WineNoteResponse> = [];
-  wineRatingResponse: WineRatingResponse = null;
+  wineRatingResponse: WineRatingResponse;
+
+  isWineAvailable = false;
+  isWineNoteAvailable = false;
+  isWineRatingAvailable = false;
+
   constructor(private lordgasmicService: LordgasmicService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
@@ -21,11 +26,14 @@ export class WineComponent implements OnInit {
       const id = params.id;
       this.lordgasmicService.getWineById(id).subscribe((res) => {
         this.wineResponse = res;
+        this.isWineAvailable = true;
         this.lordgasmicService.getWineNotesByWineId(id).subscribe((wnr) => {
           this.wineNoteResponse = wnr;
+          this.isWineNoteAvailable = true;
         });
         this.lordgasmicService.getWineRatingByWineId(id).subscribe((wrr) => {
           this.wineRatingResponse = wrr;
+          this.isWineRatingAvailable = true;
         });
       });
     });
