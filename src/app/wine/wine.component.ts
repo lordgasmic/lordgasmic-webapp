@@ -11,9 +11,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./wine.component.scss']
 })
 export class WineComponent implements OnInit {
-  wineResponse: WineResponse;
+  wineResponse: WineResponse = null;
   wineNoteResponse: Array<WineNoteResponse> = [];
-  wineRatingResponse: WineRatingResponse;
+  wineRatingResponse: WineRatingResponse = null;
   constructor(private lordgasmicService: LordgasmicService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
