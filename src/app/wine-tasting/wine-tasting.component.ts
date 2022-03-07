@@ -27,7 +27,7 @@ export class WineTastingComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.zone.run(() => this.router.navigate([`/wineTasting`]));
+        this.zone.runOutsideAngular(() => (window.location.href = '/wineTasting'));
       }
     });
   }
