@@ -13,6 +13,7 @@ import { WineResponse } from '../../models/WineResponse';
 import { WineNoteResponse } from '../../models/WineNoteResponse';
 import { WineRatingResponse } from '../../models/WineRatingResponse';
 import { WineryRequest } from '../../models/WineryRequest';
+import { WineRequest } from '../../models/WineRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -194,6 +195,20 @@ export class LordgasmicService {
   addWinery(wineryRequest: WineryRequest): Observable<WineryResponse> {
     return new Observable((observer: Observer<WineryResponse>) => {
       this.http.put<WineryResponse>(this.API + this.WINERIES, wineryRequest).subscribe(
+        (response) => {
+          observer.next(response);
+          observer.complete();
+        },
+        (err) => {
+          observer.error(err);
+        }
+      );
+    });
+  }
+
+  addWine(wineRequest: WineRequest): Observable<WineResponse> {
+    return new Observable((observer: Observer<WineResponse>) => {
+      this.http.put<WineResponse>(this.API + this.WINES, wineRequest).subscribe(
         (response) => {
           observer.next(response);
           observer.complete();

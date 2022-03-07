@@ -34,6 +34,7 @@ import { WineryComponent } from './winery/winery.component';
 import { MatButtonModule } from '@angular/material/button';
 import { DialogWineryAddComponent } from './dialog-winery-add/dialog-winery-add.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DialogWineAddComponent } from './dialog-wine-add/dialog-wine-add.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     FunkoComponent,
     WineTastingComponent,
     WineryComponent,
-    DialogWineryAddComponent
+    DialogWineryAddComponent,
+    DialogWineAddComponent
   ],
   imports: [
     BrowserModule,

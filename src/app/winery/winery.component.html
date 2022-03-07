@@ -1,6 +1,9 @@
-{{wineryResponse.name}} {{wineryResponse.location}}
-<div>
+<div  [ngClass]="{'hide-container': hidden}">
+  {{wineryResponse.name}} {{wineryResponse.location}}
   <ul>
     <li *ngFor="let wine of wineResponse"><a href ="/wineTasting/wine/{{wine.id}}">{{wine.name}}</a></li>
   </ul>
+</div>
+<div>
+  <button mat-raised-button (click)="openDialog()">Add Winery</button>
 </div>
