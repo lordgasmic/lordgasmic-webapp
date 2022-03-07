@@ -31,6 +31,9 @@ import { WineComponent } from './wine/wine.component';
 import { FunkoComponent } from './funko/funko.component';
 import { WineTastingComponent } from './wine-tasting/wine-tasting.component';
 import { WineryComponent } from './winery/winery.component';
+import { MatButtonModule } from '@angular/material/button';
+import { DialogWineryAddComponent } from './dialog-winery-add/dialog-winery-add.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,8 @@ import { WineryComponent } from './winery/winery.component';
     WineComponent,
     FunkoComponent,
     WineTastingComponent,
-    WineryComponent
+    WineryComponent,
+    DialogWineryAddComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +69,9 @@ import { WineryComponent } from './winery/winery.component';
     MatInputModule,
     MatIconModule,
     MatSnackBarModule,
-    GoogleChartsModule
+    GoogleChartsModule,
+    MatButtonModule,
+    MatDialogModule
   ],
   providers: [
     {

@@ -12,6 +12,7 @@ import { WineryResponse } from '../../models/WineryResponse';
 import { WineResponse } from '../../models/WineResponse';
 import { WineNoteResponse } from '../../models/WineNoteResponse';
 import { WineRatingResponse } from '../../models/WineRatingResponse';
+import { WineryRequest } from '../../models/WineryRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -187,6 +188,20 @@ export class LordgasmicService {
         observer.next(response);
         observer.complete();
       });
+    });
+  }
+
+  addWinery(wineryRequest: WineryRequest): Observable<WineryResponse> {
+    return new Observable((observer: Observer<WineryResponse>) => {
+      this.http.put<WineryResponse>(this.API + this.WINERIES, wineryRequest).subscribe(
+        (response) => {
+          observer.next(response);
+          observer.complete();
+        },
+        (err) => {
+          observer.error(err);
+        }
+      );
     });
   }
 }

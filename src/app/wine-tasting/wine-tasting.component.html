@@ -3,3 +3,6 @@
     <li *ngFor="let winery of wineryResponse"><a href="/wineTasting/winery/{{winery.id}}">{{winery.name}} ({{winery.location}})</a></li>
   </ul>
 </div>
+<div>
+  <button mat-raised-button (click)="openDialog()">Add Winery</button>
+</div>
