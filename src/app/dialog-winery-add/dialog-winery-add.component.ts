@@ -12,15 +12,10 @@ export class DialogWineryAddComponent {
   @ViewChild('name') nameRef: ElementRef;
   @ViewChild('location') locationRef: ElementRef;
 
-  constructor(
-    public dialogRef: MatDialogRef<DialogWineryAddComponent>,
-    private lordgasmicService: LordgasmicService,
-    private router: Router,
-    private zone: NgZone
-  ) {}
+  constructor(public dialogRef: MatDialogRef<DialogWineryAddComponent>, private lordgasmicService: LordgasmicService) {}
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(false);
   }
 
   submit(): void {
@@ -28,7 +23,7 @@ export class DialogWineryAddComponent {
     const location = this.locationRef.nativeElement.value;
 
     this.lordgasmicService.addWinery({ name, location }).subscribe((response) => {
-      this.zone.run(() => this.router.navigate([`/wineTasting`]));
+      this.dialogRef.close(true);
     });
   }
 }
