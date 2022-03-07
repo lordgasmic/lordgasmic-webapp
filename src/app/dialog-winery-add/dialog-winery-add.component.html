@@ -1,15 +1,12 @@
-<h1 mat-dialog-title>Add Winery</h1>
-<div mat-dialog-content>
-  <mat-form-field appearance="fill">
-    <mat-label>Winery Name</mat-label>
-    <input type="text" name="name" id="name" #name>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Winery Location</mat-label>
-    <input type="text" name="location" id="location" #location>
-  </mat-form-field>
+<h2>Add Winery</h2>
+<div>
+  <label>Winery Name</label>
+  <input type="text" name="name" id="name" #name>
+  <br/>
+  <label>Winery Location</label>
+  <input type="text" name="location" id="location" #location>
 </div>
-<div mat-dialog-actions>
+<div>
   <button mat-button (click)="onNoClick()">Cancel</button>
   <button mat-button (click)="submit()">Submit</button>
 </div>
