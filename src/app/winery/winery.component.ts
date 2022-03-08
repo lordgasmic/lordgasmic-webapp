@@ -45,7 +45,7 @@ export class WineryComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.zone.runOutsideAngular(() => (window.location.href = `/winery/${this.id}`));
+        this.zone.runOutsideAngular(() => (window.location.href = `/wineTasting/winery/${this.id}`));
       }
     });
   }
