@@ -1,7 +1,8 @@
 <div [ngClass]="{'hide-container': !(isWineAvailable && isWineNoteAvailable && isWineRatingAvailable)}">
-  Wine: {{wineResponse.name}}
+  <span *ngIf="isWineAvailable">Wine: {{wineResponse.name}}</span>
   <br/>
-  Wine Rating: {{wineRatingResponse.rating}} <button (click)="addRating()" [disabled]="isWineRatingBtnEnabled">Add Rating</button>
+  <span *ngIf="isWineRatingAvailable">Wine Rating: {{wineRatingResponse.rating}}</span>
+  <button (click)="addRating()" [disabled]="isWineRatingBtnEnabled">Add Rating</button>
   <br/>
   Wine Notes: <ul>
   <li *ngFor="let note of wineNoteResponse">{{note.note}}</li>
