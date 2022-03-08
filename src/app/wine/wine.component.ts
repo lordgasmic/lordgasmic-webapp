@@ -24,10 +24,11 @@ export class WineComponent implements OnInit {
   isWineRatingAvailable = false;
 
   isWineRatingBtnEnabled = true;
+  isEditingNotes = false;
 
   wineId: number;
-
   date: string;
+  addWineNotes: string[] = [];
 
   constructor(
     private lordgasmicService: LordgasmicService,
@@ -71,5 +72,34 @@ export class WineComponent implements OnInit {
         this.zone.runOutsideAngular(() => (window.location.href = `/wineTasting/wine/${this.wineId}`));
       }
     });
+  }
+
+  editNotes(): void {
+    this.toggleEditingNotes();
+  }
+
+  onCancel(): void {
+    this.addWineNotes = [];
+    this.toggleEditingNotes();
+  }
+
+  onSubmit(): void {
+    // get list of notes
+
+    // call service to add notes
+
+    // pull notes
+
+    this.toggleEditingNotes();
+  }
+
+  addNote(): void {
+    // get element
+    // this.addWineNote.push(element);
+    // clear element
+  }
+
+  toggleEditingNotes(): void {
+    this.isEditingNotes = !this.isEditingNotes;
   }
 }

@@ -4,7 +4,18 @@
   <span *ngIf="isWineRatingAvailable">Wine Rating: {{wineRatingResponse.rating}}</span>
   <button (click)="addRating()" [disabled]="!isWineRatingBtnEnabled">Add Rating</button>
   <br/>
-  Wine Notes: <ul>
-  <li *ngFor="let note of wineNoteResponse">{{note.note}}</li>
-</ul>
+  Wine Notes:
+  <div *ngIf="!isEditingNotes">
+    <ul>
+      <li *ngFor="let note of wineNoteResponse">{{note.note}}</li>
+    </ul>
+    <button (click)="editNotes()">Edit Notes</button>
+  </div>
+  <div *ngIf="isEditingNotes">
+    <!-- dynamic list of input boxes -->
+<!--  plus button, minus button  -->
+    <br />
+    <button (click)="onCancel()">Cancel</button>
+    <button (click)="onSubmit()">Submit</button>
+  </div>
 </div>
