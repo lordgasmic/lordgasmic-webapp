@@ -4,7 +4,8 @@
   <span *ngIf="isWineRatingAvailable">Wine Rating: {{wineRatingResponse.rating}}</span>
   <div matTooltip="Update is not available at this time"
        [matTooltipDisabled]="isWineRatingBtnEnabled"
-       matTooltipPosition="right">
+       matTooltipPosition="right"
+       class="button-wrapper">
     <button (click)="addRating()"
             [disabled]="!isWineRatingBtnEnabled">Add Rating</button>
   </div>
@@ -15,8 +16,8 @@
       <li *ngFor="let note of wineNoteResponse">{{note.note}}</li>
     </ul>
     <div matTooltip="Update is not available at this time"
-         [matTooltipDisabled]="!isEditingBtnEnabled"
-         matTooltipPosition="right">>
+         [matTooltipDisabled]="isEditingBtnEnabled"
+         matTooltipPosition="right">
       <button (click)="editNotes()"
               [disabled]="!isEditingBtnEnabled">Edit Notes</button>
     </div>
