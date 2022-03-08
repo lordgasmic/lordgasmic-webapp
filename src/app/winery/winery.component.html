@@ -1,8 +1,13 @@
-<div [ngClass]="{'hide-container': hidden}">
+<div class="wine-container" [ngClass]="{'hide-container': hidden}">
   <span *ngIf="isWineryResponseLoaded">{{wineryResponse.name}} ({{wineryResponse.location}})</span>
   <ul>
     <li *ngFor="let wine of wineResponse"><a href ="/wineTasting/wine/{{wine.id}}">{{wine.name}}</a></li>
   </ul>
+</div>
+<div *ngIf="isUsersResponseLoaded" class="filter">
+  <mat-select [formControl]="usersFormControl" multiple>
+    <mat-option *ngFor="let user of usersResponse" [value]="user">{{user}}</mat-option>
+  </mat-select>
 </div>
 <div>
   <button mat-raised-button (click)="openDialog()">Add Wine</button>

@@ -3,9 +3,10 @@ import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WineryResponse } from '../models/WineryResponse';
 import { WineResponse } from '../models/WineResponse';
-import { DialogWineryAddComponent } from '../dialog-winery-add/dialog-winery-add.component';
 import { DialogWineAddComponent } from '../dialog-wine-add/dialog-wine-add.component';
 import { MatDialog } from '@angular/material/dialog';
+import { FormControl } from '@angular/forms';
+import { RoleConstants } from '../configuration/RoleConstants';
 
 @Component({
   selector: 'app-winery',
@@ -15,9 +16,13 @@ import { MatDialog } from '@angular/material/dialog';
 export class WineryComponent implements OnInit {
   wineryResponse: WineryResponse;
   wineResponse: Array<WineResponse> = [];
+  usersResponse: Array<string> = [];
+
+  usersFormControl = new FormControl();
 
   hidden = true;
   isWineryResponseLoaded = false;
+  isUsersResponseLoaded = false;
   id: string;
 
   constructor(
@@ -39,6 +44,10 @@ export class WineryComponent implements OnInit {
           this.hidden = false;
         });
       });
+    });
+    this.lordgasmicService.getUsersByRole(RoleConstants.wine).subscribe((res) => {
+      this.usersResponse = res;
+      this.isUsersResponseLoaded = true;
     });
   }
 

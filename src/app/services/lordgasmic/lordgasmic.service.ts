@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Expression } from '../../models/Expression';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { FeedRequest } from '../../models/FeedRequest';
 import { FeedResponse } from '../../models/FeedResponse';
 import { Observable, Observer } from 'rxjs';
@@ -32,6 +32,7 @@ export class LordgasmicService {
   private readonly WINES = '/v1/wines/';
   private readonly WINE_NOTES = '/v1/wineNotes/';
   private readonly WINE_RATING = '/v1/wineRating/';
+  private readonly USERS = '/v1/users';
 
   constructor(private http: HttpClient) {}
 
@@ -239,6 +240,20 @@ export class LordgasmicService {
   addWineNotes(wineNotesRequest: WineNoteRequest[]): Observable<Array<WineNoteResponse>> {
     return new Observable((observer: Observer<Array<WineNoteResponse>>) => {
       this.http.put<Array<WineNoteResponse>>(this.API + this.WINE_NOTES, wineNotesRequest).subscribe(
+        (response) => {
+          observer.next(response);
+          observer.complete();
+        },
+        (err) => {
+          observer.error(err);
+        }
+      );
+    });
+  }
+
+  getUsersByRole(role: number): Observable<Array<string>> {
+    return new Observable((observer: Observer<Array<string>>) => {
+      this.http.get<Array<string>>(this.API + this.USERS + `?role=${role}`).subscribe(
         (response) => {
           observer.next(response);
           observer.complete();
