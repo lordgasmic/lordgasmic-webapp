@@ -15,7 +15,14 @@
 
 .is-loading {
   z-index: 10000;
-  padding: 300px;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 200px;
 }
 
 .card {
@@ -23,5 +30,9 @@
   padding: 10px;
   border: 1px solid gray;
   border-radius: 16px;
-  height: 2em;
+  margin: 3px;
+}
+
+.card-span {
+  display: flex;
 }

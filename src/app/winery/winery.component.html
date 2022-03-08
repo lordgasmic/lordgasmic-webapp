@@ -5,7 +5,7 @@
 <div class="wine-container" [ngClass]="{'hide-container': hidden}">
   <span *ngIf="isWineryResponseLoaded">{{wineryResponse.name}} ({{wineryResponse.location}})</span>
   <ul>
-    <li *ngFor="let wine of wineResponse"><a href ="/wineTasting/wine/{{wine.id}}">{{wine.name}}</a></li>
+    <li *ngFor="let wine of wineResponse"></li>
   </ul>
 </div>
 <div *ngIf="isUsersResponseLoaded" class="filter">
@@ -20,7 +20,7 @@
 
 
 <div class="card" *ngFor="let wine of wineResponse">
-  <span>{{wine.name}}</span>
-  <span>{{wine.style}}</span>
+  <span class="card-span"><a href ="/wineTasting/wine/{{wine.id}}">{{wine.name}}</a></span>
+  <span class="card-span">{{wine.style}}</span>
 <!--  wine friends-->
 </div>
