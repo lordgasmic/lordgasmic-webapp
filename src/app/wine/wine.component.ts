@@ -1,4 +1,4 @@
-import { Component, NgZone, OnInit } from '@angular/core';
+import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
 import { WineResponse } from '../models/WineResponse';
 import { WineNoteResponse } from '../models/WineNoteResponse';
@@ -15,6 +15,8 @@ import { DatePipe } from '@angular/common';
   providers: [DatePipe]
 })
 export class WineComponent implements OnInit {
+  @ViewChild('wineNote') wineNoteRef: ElementRef;
+
   wineResponse: WineResponse;
   wineNoteResponse: Array<WineNoteResponse> = [];
   wineRatingResponse: WineRatingResponse;
@@ -94,9 +96,9 @@ export class WineComponent implements OnInit {
   }
 
   addNote(): void {
-    // get element
-    // this.addWineNote.push(element);
-    // clear element
+    const note = this.wineNoteRef.nativeElement.value;
+    this.addWineNotes.push(note);
+    this.wineNoteRef.nativeElement.value = '';
   }
 
   toggleEditingNotes(): void {

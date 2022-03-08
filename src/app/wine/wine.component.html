@@ -12,8 +12,9 @@
     <button (click)="editNotes()">Edit Notes</button>
   </div>
   <div *ngIf="isEditingNotes">
-    <!-- dynamic list of input boxes -->
-<!--  plus button, minus button  -->
+    <span *ngFor="let note of addWineNotes">{{note}}</span>
+    <input type="text" name="wineNote" id="wineNote" #wineNote>
+    <button (click)="addNote()">Add</button>
     <br />
     <button (click)="onCancel()">Cancel</button>
     <button (click)="onSubmit()">Submit</button>
