@@ -1,7 +1,14 @@
 <h2>Add Wine Rating</h2>
 <div>
   <label>Wine Rating</label>
-  <input type="text" name="rating" id="rating" #rating>
+  <select name="rating" id="rating" #rating>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    <option value="-1">💩</option>
+  </select>
 </div>
 <div>
   <button mat-button (click)="onNoClick()">Cancel</button>

@@ -5,7 +5,7 @@
   Wine Rating:
   <div *ngIf="isWineRatingAvailable">
     <ul>
-      <li *ngFor="let rating of wineRatingResponse">{{rating.rating}} ({{rating.date}})</li>
+      <li *ngFor="let rating of wineRatingResponse">{{rating.rating == "-1" ? "💩" : rating.rating}} ({{rating.date}})</li>
     </ul>
   </div>
   <div *ngIf="isWineRatingBtnEnabled">
