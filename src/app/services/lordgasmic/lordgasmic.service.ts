@@ -185,9 +185,9 @@ export class LordgasmicService {
     });
   }
 
-  getWineRatingByWineId(wineId: number): Observable<WineRatingResponse> {
-    return new Observable((observer: Observer<WineRatingResponse>) => {
-      this.http.get<WineRatingResponse>(this.API + this.WINE_RATING + `?wineId=${wineId}`).subscribe((response) => {
+  getWineRatingByWineId(wineId: number): Observable<Array<WineRatingResponse>> {
+    return new Observable((observer: Observer<Array<WineRatingResponse>>) => {
+      this.http.get<Array<WineRatingResponse>>(this.API + this.WINE_RATING + `?wineId=${wineId}`).subscribe((response) => {
         observer.next(response);
         observer.complete();
       });

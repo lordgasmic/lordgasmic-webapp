@@ -1,15 +1,24 @@
 <div [ngClass]="{'hide-container': !(isWineAvailable && isWineNoteAvailable && isWineRatingAvailable)}">
   <span *ngIf="isWineAvailable">Wine: {{wineResponse.name}}</span>
   <br/>
-  <span *ngIf="isWineRatingAvailable">Wine Rating: {{wineRatingResponse.rating}}</span> &nbsp;
-  <div matTooltip="Update is not available at this time"
-       [matTooltipDisabled]="isWineRatingBtnEnabled"
-       matTooltipPosition="right"
-       class="button-wrapper">
-    <button (click)="addRating()"
-            [disabled]="!isWineRatingBtnEnabled">Add Rating</button>
+
+  Wine Rating:
+  <div *ngIf="isWineRatingAvailable">
+    <ul>
+      <li *ngFor="let rating of wineRatingResponse">{{rating.rating}} ({{rating.date}})</li>
+    </ul>
+  </div>
+  <div *ngIf="!isWineRatingAvailable">
+    <div matTooltip="Update is not available at this time"
+         [matTooltipDisabled]="isWineRatingBtnEnabled"
+         matTooltipPosition="right"
+         class="button-wrapper">
+      <button (click)="addRating()"
+              [disabled]="!isWineRatingBtnEnabled">Add Rating</button>
+    </div>
   </div>
   <br/>
+
   Wine Notes:
   <div *ngIf="!isEditingNotes">
     <ul>

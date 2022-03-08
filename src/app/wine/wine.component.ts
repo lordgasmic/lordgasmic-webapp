@@ -20,7 +20,7 @@ export class WineComponent implements OnInit {
 
   wineResponse: WineResponse;
   wineNoteResponse: Array<WineNoteResponse> = [];
-  wineRatingResponse: WineRatingResponse;
+  wineRatingResponse: Array<WineRatingResponse> = [];
 
   isWineAvailable = false;
   isWineNoteAvailable = false;
@@ -61,7 +61,7 @@ export class WineComponent implements OnInit {
         this.lordgasmicService.getWineRatingByWineId(this.wineId).subscribe((wrr) => {
           this.wineRatingResponse = wrr;
           this.isWineRatingAvailable = true;
-          if (this.wineRatingResponse.date) {
+          if (this.wineRatingResponse.length > 0) {
             this.isWineRatingBtnEnabled = false;
           }
         });
