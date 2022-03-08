@@ -5,7 +5,7 @@
   </ul>
 </div>
 <div *ngIf="isUsersResponseLoaded" class="filter">
-  <mat-select [formControl]="usersFormControl" (selectionChange)="onSelectChange($event)" multiple>
+  <mat-select [formControl]="usersFormControl" (openedChange)="onOpenedChanged($event)" multiple>
     <mat-option *ngFor="let user of usersResponse" [value]="user">{{user}}</mat-option>
   </mat-select>
 </div>

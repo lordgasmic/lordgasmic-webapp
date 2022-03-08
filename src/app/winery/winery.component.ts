@@ -62,8 +62,8 @@ export class WineryComponent implements OnInit {
     });
   }
 
-  onSelectChange($event: MatSelectChange): void {
-    console.log($event.value);
+  onOpenedChanged($event: boolean): void {
+    console.log($event);
     console.log(this.usersFormControl.value);
   }
 }
