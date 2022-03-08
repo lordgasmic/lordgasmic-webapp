@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogWineRatingAddComponent } from '../dialog-wine-rating-add/dialog-wine-rating-add.component';
 import { DatePipe } from '@angular/common';
+import { WineNoteRequest } from '../models/WineNoteRequest';
 
 @Component({
   selector: 'app-wine',
@@ -86,12 +87,22 @@ export class WineComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // get list of notes
+    const wineNoteRequests = new Array<WineNoteRequest>();
+    this.addWineNotes.forEach((value, index) => {
+      const req = new WineNoteRequest();
+      req.wineId = this.wineId;
+      req.user = sessionStorage.getItem('username');
+      req.note = value;
+      req.ordinal = index;
+      req.date = this.date;
+      wineNoteRequests.push(req);
+    });
 
-    // call service to add notes
+    this.lordgasmicService.addWineNotes(wineNoteRequests).subscribe((response) => {
+      this.wineNoteResponse = response;
+    });
 
-    // pull notes
-
+    this.addWineNotes = [];
     this.toggleEditingNotes();
   }
 
