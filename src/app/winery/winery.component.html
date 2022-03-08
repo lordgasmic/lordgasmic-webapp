@@ -1,3 +1,7 @@
+<div [ngClass]="{'is-loading': isLoading, 'hide-container': !isLoading}">
+  <img src="assets/icons/loading.gif" alt="loading">
+</div>
+
 <div class="wine-container" [ngClass]="{'hide-container': hidden}">
   <span *ngIf="isWineryResponseLoaded">{{wineryResponse.name}} ({{wineryResponse.location}})</span>
   <ul>
@@ -11,4 +15,12 @@
 </div>
 <div>
   <button mat-raised-button (click)="openDialog()">Add Wine</button>
+</div>
+
+
+
+<div class="card" *ngFor="let wine of wineResponse">
+  <span>{{wine.name}}</span>
+  <span>{{wine.style}}</span>
+<!--  wine friends-->
 </div>

@@ -22,6 +22,7 @@ export class WineryComponent implements OnInit {
   usersFormControl = new FormControl();
 
   hidden = true;
+  isLoading = false;
   isWineryResponseLoaded = false;
   isUsersResponseLoaded = false;
   id: string;
@@ -47,7 +48,9 @@ export class WineryComponent implements OnInit {
       });
     });
     this.lordgasmicService.getUsersByRole(RoleConstants.wine).subscribe((res) => {
-      this.usersResponse = res;
+      this.usersResponse = res.filter((obj) => {
+        return obj !== sessionStorage.getItem('username');
+      });
       this.isUsersResponseLoaded = true;
     });
   }
@@ -63,7 +66,12 @@ export class WineryComponent implements OnInit {
   }
 
   onOpenedChanged($event: boolean): void {
-    console.log($event);
-    console.log(this.usersFormControl.value);
+    if (!$event) {
+      this.isLoading = true;
+
+      // this.lordgasmicService.getwinera
+
+      this.isLoading = false;
+    }
   }
 }

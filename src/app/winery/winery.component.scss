@@ -12,3 +12,16 @@
   display: inline-block;
   width: 100px;
 }
+
+.is-loading {
+  z-index: 10000;
+  padding: 300px;
+}
+
+.card {
+  display: block;
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 16px;
+  height: 2em;
+}
