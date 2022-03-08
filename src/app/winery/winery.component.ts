@@ -17,6 +17,7 @@ export class WineryComponent implements OnInit {
   wineResponse: Array<WineResponse> = [];
 
   hidden = true;
+  isWineryResponseLoaded = false;
   id: string;
 
   constructor(
@@ -32,6 +33,7 @@ export class WineryComponent implements OnInit {
       this.id = params.id;
       this.lordgasmicService.getWinery(this.id).subscribe((value) => {
         this.wineryResponse = value;
+        this.isWineryResponseLoaded = true;
         this.lordgasmicService.getWinesByWinery(this.id).subscribe((res) => {
           this.wineResponse = res;
           this.hidden = false;

@@ -1,5 +1,5 @@
 <div [ngClass]="{'hide-container': hidden}">
-<!--  {{wineryResponse.name}} ({{wineryResponse.location}})-->
+  <span *ngIf="isWineryResponseLoaded">{{wineryResponse.name}} ({{wineryResponse.location}})</span>
   <ul>
     <li *ngFor="let wine of wineResponse"><a href ="/wineTasting/wine/{{wine.id}}">{{wine.name}}</a></li>
   </ul>
