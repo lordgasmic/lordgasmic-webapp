@@ -45,10 +45,12 @@ export class WineryComponent implements OnInit {
         });
       });
     });
+    console.log('debug 1');
     this.lordgasmicService.getUsersByRole(RoleConstants.wine).subscribe((res) => {
       this.usersResponse = res;
       this.isUsersResponseLoaded = true;
     });
+    console.log('debug 2');
   }
 
   openDialog(): void {
