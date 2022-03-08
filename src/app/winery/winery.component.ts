@@ -7,6 +7,7 @@ import { DialogWineAddComponent } from '../dialog-wine-add/dialog-wine-add.compo
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl } from '@angular/forms';
 import { RoleConstants } from '../configuration/RoleConstants';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'app-winery',
@@ -45,12 +46,10 @@ export class WineryComponent implements OnInit {
         });
       });
     });
-    console.log('debug 1');
     this.lordgasmicService.getUsersByRole(RoleConstants.wine).subscribe((res) => {
       this.usersResponse = res;
       this.isUsersResponseLoaded = true;
     });
-    console.log('debug 2');
   }
 
   openDialog(): void {
@@ -61,5 +60,10 @@ export class WineryComponent implements OnInit {
         this.zone.runOutsideAngular(() => (window.location.href = `/wineTasting/winery/${this.id}`));
       }
     });
+  }
+
+  onSelectChange($event: MatSelectChange): void {
+    console.log($event.value);
+    console.log(this.usersFormControl.value);
   }
 }
