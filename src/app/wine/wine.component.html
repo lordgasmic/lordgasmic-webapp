@@ -1,7 +1,7 @@
 <div [ngClass]="{'hide-container': !(isWineAvailable && isWineNoteAvailable && isWineRatingAvailable)}">
   <span *ngIf="isWineAvailable">Wine: {{wineResponse.name}}</span>
   <br/>
-  <span *ngIf="isWineRatingAvailable">Wine Rating: {{wineRatingResponse.rating}}</span>
+  <span *ngIf="isWineRatingAvailable">Wine Rating: {{wineRatingResponse.rating}}</span> &nbsp;
   <div matTooltip="Update is not available at this time"
        [matTooltipDisabled]="isWineRatingBtnEnabled"
        matTooltipPosition="right"
