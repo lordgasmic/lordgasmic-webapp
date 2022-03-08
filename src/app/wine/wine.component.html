@@ -2,7 +2,7 @@
   <span *ngIf="isWineAvailable">Wine: {{wineResponse.name}}</span>
   <br/>
   <span *ngIf="isWineRatingAvailable">Wine Rating: {{wineRatingResponse.rating}}</span>
-  <button (click)="addRating()" [disabled]="isWineRatingBtnEnabled">Add Rating</button>
+  <button (click)="addRating()" [disabled]="!isWineRatingBtnEnabled">Add Rating</button>
   <br/>
   Wine Notes: <ul>
   <li *ngFor="let note of wineNoteResponse">{{note.note}}</li>
