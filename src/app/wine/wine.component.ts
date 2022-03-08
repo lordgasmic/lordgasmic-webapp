@@ -29,8 +29,6 @@ export class WineComponent implements OnInit {
 
   date: string;
 
-  username: string;
-
   constructor(
     private lordgasmicService: LordgasmicService,
     private route: ActivatedRoute,
@@ -43,9 +41,6 @@ export class WineComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.lordgasmicService.getSessionInfo().subscribe((sessionInfo) => {
-      this.username = sessionInfo.username;
-    });
     this.route.params.subscribe((params) => {
       this.wineId = params.id;
       this.lordgasmicService.getWineById(this.wineId).subscribe((res) => {
@@ -68,7 +63,7 @@ export class WineComponent implements OnInit {
 
   addRating(): void {
     const dialogRef = this.dialog.open(DialogWineRatingAddComponent, {
-      data: { wineId: this.wineId, date: this.date, user: this.username }
+      data: { wineId: this.wineId, date: this.date }
     });
 
     dialogRef.afterClosed().subscribe((result) => {

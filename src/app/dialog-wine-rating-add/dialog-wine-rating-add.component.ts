@@ -27,8 +27,8 @@ export class DialogWineRatingAddComponent {
 
     const request = new WineRatingRequest();
     request.wineId = this.data.wineId;
-    request.user = this.data.user;
     request.date = this.data.date;
+    request.user = sessionStorage.getItem('username');
     request.rating = rating;
 
     this.lordgasmicService.addWineRating(request).subscribe((response) => {

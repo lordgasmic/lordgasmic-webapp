@@ -19,6 +19,8 @@ export class AppComponent implements OnInit {
   private loadSessionInfo(): void {
     this.lordgasmicService.getSessionInfo().subscribe((sessionInfo) => {
       console.log('sessionInfo: ', sessionInfo);
+      sessionStorage.setItem('username', sessionInfo.username);
+      sessionStorage.setItem('roles', String(sessionInfo.roles));
     });
   }
 }
