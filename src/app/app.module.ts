@@ -36,6 +36,7 @@ import { DialogWineryAddComponent } from './dialog-winery-add/dialog-winery-add.
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogWineAddComponent } from './dialog-wine-add/dialog-wine-add.component';
 import { DialogWineRatingAddComponent } from './dialog-wine-rating-add/dialog-wine-rating-add.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { DialogWineRatingAddComponent } from './dialog-wine-rating-add/dialog-wi
     MatSnackBarModule,
     GoogleChartsModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTooltipModule
   ],
   providers: [
     {
