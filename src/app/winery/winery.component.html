@@ -1,5 +1,5 @@
 <div [ngClass]="{'hide-container': hidden}">
-  {{wineryResponse.name}} {{wineryResponse.location}}
+<!--  {{wineryResponse.name}} ({{wineryResponse.location}})-->
   <ul>
     <li *ngFor="let wine of wineResponse"><a href ="/wineTasting/wine/{{wine.id}}">{{wine.name}}</a></li>
   </ul>
