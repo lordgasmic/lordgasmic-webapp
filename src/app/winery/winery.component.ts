@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { FormControl } from '@angular/forms';
 import { RoleConstants } from '../configuration/RoleConstants';
 import { MatSelectChange } from '@angular/material/select';
+import { WineDisplay } from '../models/WineDisplay';
 
 @Component({
   selector: 'app-winery',
@@ -16,7 +17,7 @@ import { MatSelectChange } from '@angular/material/select';
 })
 export class WineryComponent implements OnInit {
   wineryResponse: WineryResponse;
-  wineResponse: Array<WineResponse> = [];
+  wineResponses: Array<WineDisplay> = [];
   usersResponse: Array<string> = [];
 
   usersFormControl = new FormControl();
@@ -42,7 +43,7 @@ export class WineryComponent implements OnInit {
         this.wineryResponse = value;
         this.isWineryResponseLoaded = true;
         this.lordgasmicService.getWinesByWinery(this.id).subscribe((res) => {
-          this.wineResponse = res;
+          this.wineResponses = res;
           this.hidden = false;
         });
       });
@@ -72,7 +73,7 @@ export class WineryComponent implements OnInit {
       this.lordgasmicService
         .getWineRatingsByUsersForWineIds(
           this.usersFormControl.value,
-          this.wineResponse.map((wr) => {
+          this.wineResponses.map((wr) => {
             return wr.id;
           })
         )

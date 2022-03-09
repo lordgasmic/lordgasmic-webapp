@@ -16,6 +16,7 @@ import { WineryRequest } from '../../models/WineryRequest';
 import { WineRequest } from '../../models/WineRequest';
 import { WineRatingRequest } from '../../models/WineRatingRequest';
 import { WineNoteRequest } from '../../models/WineNoteRequest';
+import { WineDisplay } from '../../models/WineDisplay';
 
 @Injectable({
   providedIn: 'root'
@@ -123,9 +124,9 @@ export class LordgasmicService {
     });
   }
 
-  getWinesByWinery(id: string): Observable<Array<WineResponse>> {
-    return new Observable((observer: Observer<Array<WineResponse>>) => {
-      this.http.get<Array<WineResponse>>(this.API + this.WINES + `?wineryId=${id}`).subscribe((response) => {
+  getWinesByWinery(id: string): Observable<Array<WineDisplay>> {
+    return new Observable((observer: Observer<Array<WineDisplay>>) => {
+      this.http.get<Array<WineDisplay>>(this.API + this.WINES + `?wineryId=${id}`).subscribe((response) => {
         observer.next(response);
         observer.complete();
       });
