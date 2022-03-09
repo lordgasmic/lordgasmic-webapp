@@ -34,6 +34,7 @@ export class LordgasmicService {
   private readonly WINE_NOTES = '/v1/wineNotes/';
   private readonly WINE_RATING = '/v1/wineRating/';
   private readonly USERS = '/v1/users';
+  private readonly WINE_IMAGES = '/v1/wineImages';
 
   constructor(private http: HttpClient) {}
 
@@ -266,6 +267,20 @@ export class LordgasmicService {
   getUsersByRole(role: number): Observable<Array<string>> {
     return new Observable((observer: Observer<Array<string>>) => {
       this.http.get<Array<string>>(this.API + this.USERS + `?role=${role}`).subscribe(
+        (response) => {
+          observer.next(response);
+          observer.complete();
+        },
+        (err) => {
+          observer.error(err);
+        }
+      );
+    });
+  }
+
+  addWineImage(uploadImageData: FormData): Observable<string> {
+    return new Observable((observer: Observer<string>) => {
+      this.http.put<string>(this.API + this.WINE_IMAGES, uploadImageData).subscribe(
         (response) => {
           observer.next(response);
           observer.complete();

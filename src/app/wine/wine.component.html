@@ -42,3 +42,9 @@
     <button (click)="onSubmit()">Submit</button>
   </div>
 </div>
+
+<div>
+  Upload Image: <br />
+  <input type="file" (change)="onFileChange($event)">
+  <input type="button" (click)="onUpload()" value="upload">
+</div>

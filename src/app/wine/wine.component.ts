@@ -34,6 +34,8 @@ export class WineComponent implements OnInit {
   date: string;
   addWineNotes: string[] = [];
 
+  selectedFile: File;
+
   constructor(
     private lordgasmicService: LordgasmicService,
     private route: ActivatedRoute,
@@ -118,5 +120,19 @@ export class WineComponent implements OnInit {
 
   toggleEditingNotes(): void {
     this.isEditingNotes = !this.isEditingNotes;
+  }
+
+  onFileChanged(event): void {
+    this.selectedFile = event.target.files[0];
+  }
+
+  onUpload(): void {
+    console.log(this.selectedFile);
+
+    const uploadImageData = new FormData();
+    uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
+    this.lordgasmicService.addWineImage(uploadImageData).subscribe((response) => {
+      console.log(response);
+    });
   }
 }
