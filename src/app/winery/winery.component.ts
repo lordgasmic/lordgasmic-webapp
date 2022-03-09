@@ -73,7 +73,7 @@ export class WineryComponent implements OnInit {
         .getWineRatingsByUsersForWineIds(
           this.usersFormControl.value,
           this.wineResponse.map((wr) => {
-            return wr.wineryId;
+            return wr.id;
           })
         )
         .subscribe((response) => {
