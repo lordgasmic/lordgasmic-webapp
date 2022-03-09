@@ -69,7 +69,16 @@ export class WineryComponent implements OnInit {
     if (!$event) {
       this.isLoading = true;
 
-      // this.lordgasmicService.getwinera
+      this.lordgasmicService
+        .getWineRatingsByUsersForWineIds(
+          this.usersFormControl.value,
+          this.wineResponse.map((wr) => {
+            return wr.wineryId;
+          })
+        )
+        .subscribe((response) => {
+          console.log(response);
+        });
 
       this.isLoading = false;
     }

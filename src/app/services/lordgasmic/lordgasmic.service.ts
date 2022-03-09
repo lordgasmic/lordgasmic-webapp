@@ -195,6 +195,17 @@ export class LordgasmicService {
     });
   }
 
+  getWineRatingsByUsersForWineIds(users: string[], wineIds: number[]): Observable<Array<WineRatingResponse>> {
+    return new Observable((observer: Observer<Array<WineRatingResponse>>) => {
+      this.http
+        .post<Array<WineRatingResponse>>(this.API + this.WINE_RATING, { users, wineIds })
+        .subscribe((response) => {
+          observer.next(response);
+          observer.complete();
+        });
+    });
+  }
+
   addWinery(wineryRequest: WineryRequest): Observable<WineryResponse> {
     return new Observable((observer: Observer<WineryResponse>) => {
       this.http.put<WineryResponse>(this.API + this.WINERIES, wineryRequest).subscribe(
