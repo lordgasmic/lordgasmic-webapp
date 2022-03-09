@@ -11,7 +11,7 @@
   <button mat-raised-button (click)="openDialog()">Add Wine</button>
 </div>
 
-<div class="card" *ngFor="let wine of wineResponse">
+<div class="card" *ngFor="let wine of wineResponses">
   <div class="v1">
     <span class="card-span"><a href ="/wineTasting/wine/{{wine.id}}">{{wine.name}}</a></span>
     <span class="card-span">{{wine.style}}</span>
