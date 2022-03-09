@@ -122,7 +122,7 @@ export class WineComponent implements OnInit {
     this.isEditingNotes = !this.isEditingNotes;
   }
 
-  onFileChanged(event): void {
+  onFileChange(event): void {
     this.selectedFile = event.target.files[0];
   }
 
