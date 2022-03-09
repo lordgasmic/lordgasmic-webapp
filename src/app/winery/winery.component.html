@@ -2,12 +2,6 @@
   <img src="assets/icons/loading.gif" alt="loading">
 </div>
 
-<div class="wine-container" [ngClass]="{'hide-container': hidden}">
-  <span *ngIf="isWineryResponseLoaded">{{wineryResponse.name}} ({{wineryResponse.location}})</span>
-  <ul>
-    <li *ngFor="let wine of wineResponse"></li>
-  </ul>
-</div>
 <div *ngIf="isUsersResponseLoaded" class="filter">
   <mat-select [formControl]="usersFormControl" (openedChange)="onOpenedChanged($event)" multiple>
     <mat-option *ngFor="let user of usersResponse" [value]="user">{{user}}</mat-option>
@@ -17,10 +11,10 @@
   <button mat-raised-button (click)="openDialog()">Add Wine</button>
 </div>
 
-
-
 <div class="card" *ngFor="let wine of wineResponse">
-  <span class="card-span"><a href ="/wineTasting/wine/{{wine.id}}">{{wine.name}}</a></span>
-  <span class="card-span">{{wine.style}}</span>
+  <div class="v1">
+    <span class="card-span"><a href ="/wineTasting/wine/{{wine.id}}">{{wine.name}}</a></span>
+    <span class="card-span">{{wine.style}}</span>
+  </div>
 <!--  wine friends-->
 </div>
