@@ -78,7 +78,13 @@ export class WineryComponent implements OnInit {
           })
         )
         .subscribe((response) => {
-          console.log(response);
+          response.forEach((wrr) => {
+            this.wineResponses.forEach((wr) => {
+              if (wr.id === wrr.wineId) {
+                wr.wineFriend.push(wrr.user);
+              }
+            });
+          });
         });
 
       this.isLoading = false;
