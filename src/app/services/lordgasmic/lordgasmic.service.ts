@@ -17,6 +17,7 @@ import { WineRequest } from '../../models/WineRequest';
 import { WineRatingRequest } from '../../models/WineRatingRequest';
 import { WineNoteRequest } from '../../models/WineNoteRequest';
 import { WineDisplay } from '../../models/WineDisplay';
+import { WineImageResponse } from '../../models/WineImageResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -278,9 +279,23 @@ export class LordgasmicService {
     });
   }
 
-  addWineImage(uploadImageData: FormData): Observable<string> {
-    return new Observable((observer: Observer<string>) => {
-      this.http.put<string>(this.API + this.WINE_IMAGES, uploadImageData).subscribe(
+  addWineImage(uploadImageData: FormData): Observable<WineImageResponse> {
+    return new Observable((observer: Observer<WineImageResponse>) => {
+      this.http.put<WineImageResponse>(this.API + this.WINE_IMAGES, uploadImageData).subscribe(
+        (response) => {
+          observer.next(response);
+          observer.complete();
+        },
+        (err) => {
+          observer.error(err);
+        }
+      );
+    });
+  }
+
+  getWineImages(wineId: number): Observable<WineImageResponse> {
+    return new Observable((observer: Observer<WineImageResponse>) => {
+      this.http.get<WineImageResponse>(this.API + this.WINE_IMAGES + `?wineId=${wineId}`).subscribe(
         (response) => {
           observer.next(response);
           observer.complete();

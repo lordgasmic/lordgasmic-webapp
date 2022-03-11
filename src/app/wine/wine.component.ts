@@ -8,6 +8,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogWineRatingAddComponent } from '../dialog-wine-rating-add/dialog-wine-rating-add.component';
 import { DatePipe } from '@angular/common';
 import { WineNoteRequest } from '../models/WineNoteRequest';
+import { WineImageDisplay } from '../models/WineImageDisplay';
+import { DialogWineImageAddComponent } from '../dialog-wine-image-add/dialog-wine-image-add.component';
+import { WineImage } from '../models/WineImage';
+import { WineImageResponse } from '../models/WineImageResponse';
 
 @Component({
   selector: 'app-wine',
@@ -16,11 +20,22 @@ import { WineNoteRequest } from '../models/WineNoteRequest';
   providers: [DatePipe]
 })
 export class WineComponent implements OnInit {
+  constructor(
+    private lordgasmicService: LordgasmicService,
+    private route: ActivatedRoute,
+    private dialog: MatDialog,
+    private zone: NgZone,
+    private datePipe: DatePipe
+  ) {
+    const myDate = new Date();
+    this.date = this.datePipe.transform(myDate, 'MM/dd/yyy');
+  }
   @ViewChild('wineNote') wineNoteRef: ElementRef;
 
   wineResponse: WineResponse;
   wineNoteResponse: Array<WineNoteResponse> = [];
   wineRatingResponse: Array<WineRatingResponse> = [];
+  wineImages: Array<WineImageDisplay> = [];
 
   isWineAvailable = false;
   isWineNoteAvailable = false;
@@ -34,17 +49,8 @@ export class WineComponent implements OnInit {
   date: string;
   addWineNotes: string[] = [];
 
-  selectedFile: File;
-
-  constructor(
-    private lordgasmicService: LordgasmicService,
-    private route: ActivatedRoute,
-    private dialog: MatDialog,
-    private zone: NgZone,
-    private datePipe: DatePipe
-  ) {
-    const myDate = new Date();
-    this.date = this.datePipe.transform(myDate, 'MM/dd/yyy');
+  private static instanceOfWineImageResponse(data: any): data is WineImageResponse {
+    return 'wineImages' in data;
   }
 
   ngOnInit(): void {
@@ -66,6 +72,11 @@ export class WineComponent implements OnInit {
           if (this.wineRatingResponse.length > 0) {
             this.isWineRatingBtnEnabled = false;
           }
+        });
+        this.lordgasmicService.getWineImages(this.wineId).subscribe((response) => {
+          response.wineImages.forEach((wi) => {
+            this.loadImage(wi);
+          });
         });
       });
     });
@@ -122,17 +133,21 @@ export class WineComponent implements OnInit {
     this.isEditingNotes = !this.isEditingNotes;
   }
 
-  onFileChange(event): void {
-    this.selectedFile = event.target.files[0];
+  addImage(): void {
+    const dialogRef = this.dialog.open(DialogWineImageAddComponent, {
+      data: { wineId: this.wineId, response: {} }
+    });
+
+    dialogRef.afterClosed().subscribe((result: WineImageResponse | boolean) => {
+      if (result && WineComponent.instanceOfWineImageResponse(result)) {
+        result.wineImages.forEach((wi) => {
+          this.loadImage(wi);
+        });
+      }
+    });
   }
 
-  onUpload(): void {
-    console.log(this.selectedFile);
-
-    const uploadImageData = new FormData();
-    uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
-    this.lordgasmicService.addWineImage(uploadImageData).subscribe((response) => {
-      console.log(response);
-    });
+  private loadImage(wineImage: WineImage): void {
+    this.wineImages.push({ label: wineImage.label, image: `data:${wineImage.mimeType};base64,${wineImage.image}` });
   }
 }

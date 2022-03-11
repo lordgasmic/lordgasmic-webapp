@@ -39,6 +39,7 @@ import { DialogWineRatingAddComponent } from './dialog-wine-rating-add/dialog-wi
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DialogWineImageAddComponent } from './dialog-wine-image-add/dialog-wine-image-add.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     WineryComponent,
     DialogWineryAddComponent,
     DialogWineAddComponent,
-    DialogWineRatingAddComponent
+    DialogWineRatingAddComponent,
+    DialogWineImageAddComponent
   ],
   imports: [
     BrowserModule,

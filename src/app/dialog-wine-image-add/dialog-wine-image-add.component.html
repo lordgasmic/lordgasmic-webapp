@@ -1,0 +1,11 @@
+<h2>Add Wine Rating</h2>
+<div>
+  <label>Wine Label Description</label>
+  <input type="text" id="label" name="label" placeholder="front|back" #label>
+  <input type="file" (change)="onFileChange($event)">
+</div>
+<div>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+</div>
+
+<input type="button" (click)="onUpload()" value="upload">

@@ -43,8 +43,16 @@
   </div>
 </div>
 
+<div class="wine-image">
+  <div class="container row">
+    <div class="col-md-12">
+      <div *ngFor="let image of wineImages">
+        <img [src]="image.image">
+      </div>
+    </div>
+  </div>
+</div>
 <div>
   Upload Image: <br />
-  <input type="file" (change)="onFileChange($event)">
-  <input type="button" (click)="onUpload()" value="upload">
+  <button (click)="addImage()">Add Image</button>
 </div>
