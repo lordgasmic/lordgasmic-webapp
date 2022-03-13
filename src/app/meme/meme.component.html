@@ -1,4 +1,4 @@
-<form [formControl]="memeFormControl" (submit)='submit($event)' >
+<form (submit)='submit($event)' >
   <label class="lbl" for="search">Seach by Tag</label><input type="text" name="search" id="search" #search>
   <button class="btn-search" type="button" value="Submit" (click)="submit($event)">Search</button>
 </form>

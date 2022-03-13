@@ -17,8 +17,6 @@ export class MemeComponent implements OnInit {
 
   memeResponse: Array<MemeResponse> = [];
 
-  memeFormControl = new FormControl();
-
   hidden: boolean;
 
   constructor(
