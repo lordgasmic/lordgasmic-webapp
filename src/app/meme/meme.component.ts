@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PictureType } from '../models/PictureType';
 import { VideoType } from '../models/VideoType';
 import { ToastMessageService } from '../services/toast-message/toast-message.service';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-meme',
@@ -15,6 +16,8 @@ export class MemeComponent implements OnInit {
   @ViewChild('search') search: ElementRef;
 
   memeResponse: Array<MemeResponse> = [];
+
+  memeFormControl = new FormControl();
 
   hidden: boolean;
 
