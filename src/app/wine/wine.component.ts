@@ -24,7 +24,6 @@ export class WineComponent implements OnInit {
     private lordgasmicService: LordgasmicService,
     private route: ActivatedRoute,
     private dialog: MatDialog,
-    private zone: NgZone,
     private datePipe: DatePipe
   ) {
     const myDate = new Date();
