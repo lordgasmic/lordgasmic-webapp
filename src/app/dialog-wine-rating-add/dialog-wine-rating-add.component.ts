@@ -32,7 +32,7 @@ export class DialogWineRatingAddComponent {
     request.rating = rating;
 
     this.lordgasmicService.addWineRating(request).subscribe((response) => {
-      this.dialogRef.close(true);
+      this.dialogRef.close(response);
     });
   }
 }

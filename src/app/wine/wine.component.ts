@@ -80,9 +80,7 @@ export class WineComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.zone.runOutsideAngular(() => (window.location.href = `/wineTasting/wine/${this.wineId}`));
-      }
+      this.wineRatingResponse.push(...result);
     });
   }
 
