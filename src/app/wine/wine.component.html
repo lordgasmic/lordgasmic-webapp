@@ -8,14 +8,8 @@
       <li *ngFor="let rating of wineRatingResponse">{{rating.rating == "-1" ? "💩" : rating.rating}} ({{rating.date}})</li>
     </ul>
   </div>
-  <div *ngIf="isWineRatingBtnEnabled">
-    <div matTooltip="Update is not available at this time"
-         [matTooltipDisabled]="isWineRatingBtnEnabled"
-         matTooltipPosition="right"
-         class="button-wrapper">
-      <button (click)="addRating()"
-              [disabled]="!isWineRatingBtnEnabled">Add Rating</button>
-    </div>
+  <div class="button-wrapper">
+    <button (click)="addRating()">Add Rating</button>
   </div>
   <br/>
 
