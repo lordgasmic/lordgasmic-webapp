@@ -33,7 +33,7 @@ export class WineComponent implements OnInit {
   @ViewChild('wineNote') wineNoteRef: ElementRef;
 
   wineResponse: WineResponse;
-  wineNoteResponse: Array<WineNoteResponse> = [];
+  wineNoteResponse: WineNoteResponse;
   wineRatingResponse: Array<WineRatingResponse> = [];
   wineImages: Array<WineImageDisplay> = [];
 
@@ -62,7 +62,7 @@ export class WineComponent implements OnInit {
         this.lordgasmicService.getWineNotesByWineId(this.wineId).subscribe((wnr) => {
           this.wineNoteResponse = wnr;
           this.isWineNoteAvailable = true;
-          if (this.wineNoteResponse.length > 0) {
+          if (this.wineNoteResponse.wineNotes.length > 0) {
             this.isEditingBtnEnabled = false;
           }
         });
@@ -104,19 +104,17 @@ export class WineComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const wineNoteRequests = new Array<WineNoteRequest>();
-    this.addWineNotes.forEach((value, index) => {
-      const req = new WineNoteRequest();
-      req.wineId = this.wineId;
-      req.user = sessionStorage.getItem('username');
-      req.note = value;
-      req.ordinal = index;
-      req.date = this.date;
-      wineNoteRequests.push(req);
+    const req = new WineNoteRequest();
+    req.wineId = this.wineId;
+    req.user = sessionStorage.getItem('username');
+    req.date = this.date;
+
+    this.addWineNotes.forEach((value) => {
+      req.wineNotes.push(value);
     });
 
-    this.lordgasmicService.addWineNotes(wineNoteRequests).subscribe((response) => {
-      this.wineNoteResponse = response;
+    this.lordgasmicService.addWineNotes(req).subscribe((response) => {
+      this.wineNoteResponse.wineNotes.push(...response.wineNotes);
     });
 
     this.addWineNotes = [];

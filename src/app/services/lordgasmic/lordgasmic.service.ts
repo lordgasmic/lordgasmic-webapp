@@ -144,27 +144,27 @@ export class LordgasmicService {
     });
   }
 
-  getAllWineNotes(): Observable<Array<WineNoteResponse>> {
-    return new Observable((observer: Observer<Array<WineNoteResponse>>) => {
-      this.http.get<Array<WineNoteResponse>>(this.API + this.WINE_NOTES).subscribe((response) => {
+  getAllWineNotes(): Observable<WineNoteResponse> {
+    return new Observable((observer: Observer<WineNoteResponse>) => {
+      this.http.get<WineNoteResponse>(this.API + this.WINE_NOTES).subscribe((response) => {
         observer.next(response);
         observer.complete();
       });
     });
   }
 
-  getWineNotesByUser(user: string): Observable<Array<WineNoteResponse>> {
-    return new Observable((observer: Observer<Array<WineNoteResponse>>) => {
-      this.http.get<Array<WineNoteResponse>>(this.API + this.WINE_NOTES + `?user=${user}`).subscribe((response) => {
+  getWineNotesByUser(user: string): Observable<WineNoteResponse> {
+    return new Observable((observer: Observer<WineNoteResponse>) => {
+      this.http.get<WineNoteResponse>(this.API + this.WINE_NOTES + `?user=${user}`).subscribe((response) => {
         observer.next(response);
         observer.complete();
       });
     });
   }
 
-  getWineNotesByWineId(wineId: number): Observable<Array<WineNoteResponse>> {
-    return new Observable((observer: Observer<Array<WineNoteResponse>>) => {
-      this.http.get<Array<WineNoteResponse>>(this.API + this.WINE_NOTES + `?wineId=${wineId}`).subscribe((response) => {
+  getWineNotesByWineId(wineId: number): Observable<WineNoteResponse> {
+    return new Observable((observer: Observer<WineNoteResponse>) => {
+      this.http.get<WineNoteResponse>(this.API + this.WINE_NOTES + `?wineId=${wineId}`).subscribe((response) => {
         observer.next(response);
         observer.complete();
       });
@@ -251,9 +251,9 @@ export class LordgasmicService {
     });
   }
 
-  addWineNotes(wineNotesRequest: WineNoteRequest[]): Observable<Array<WineNoteResponse>> {
-    return new Observable((observer: Observer<Array<WineNoteResponse>>) => {
-      this.http.put<Array<WineNoteResponse>>(this.API + this.WINE_NOTES, wineNotesRequest).subscribe(
+  addWineNotes(wineNotesRequest: WineNoteRequest): Observable<WineNoteResponse> {
+    return new Observable((observer: Observer<WineNoteResponse>) => {
+      this.http.put<WineNoteResponse>(this.API + this.WINE_NOTES, wineNotesRequest).subscribe(
         (response) => {
           observer.next(response);
           observer.complete();
