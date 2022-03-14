@@ -20,10 +20,10 @@
   <br/>
 
   Wine Notes:
+  <ul>
+    <li *ngFor="let note of wineNoteResponse.wineNotes">{{note.note}}</li>
+  </ul>
   <div *ngIf="!isEditingNotes">
-    <ul>
-      <li *ngFor="let note of wineNoteResponse.wineNotes">{{note.note}}</li>
-    </ul>
     <div class="button-wrapper">
       <button (click)="editNotes()">Edit Notes</button>
     </div>
