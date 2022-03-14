@@ -24,12 +24,8 @@
     <ul>
       <li *ngFor="let note of wineNoteResponse.wineNotes">{{note.note}}</li>
     </ul>
-    <div matTooltip="Update is not available at this time"
-         [matTooltipDisabled]="isEditingBtnEnabled"
-         matTooltipPosition="right"
-         class="button-wrapper">
-      <button (click)="editNotes()"
-              [disabled]="!isEditingBtnEnabled">Edit Notes</button>
+    <div class="button-wrapper">
+      <button (click)="editNotes()">Edit Notes</button>
     </div>
   </div>
   <div *ngIf="isEditingNotes">

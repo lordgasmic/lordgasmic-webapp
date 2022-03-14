@@ -42,7 +42,6 @@ export class WineComponent implements OnInit {
   isWineRatingAvailable = false;
 
   isWineRatingBtnEnabled = true;
-  isEditingBtnEnabled = true;
   isEditingNotes = false;
 
   wineId: number;
@@ -62,9 +61,6 @@ export class WineComponent implements OnInit {
         this.lordgasmicService.getWineNotesByWineId(this.wineId).subscribe((wnr) => {
           this.wineNoteResponse = wnr;
           this.isWineNoteAvailable = true;
-          if (this.wineNoteResponse.wineNotes.length > 0) {
-            this.isEditingBtnEnabled = false;
-          }
         });
         this.lordgasmicService.getWineRatingByWineId(this.wineId).subscribe((wrr) => {
           this.wineRatingResponse = wrr;
