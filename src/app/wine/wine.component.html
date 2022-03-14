@@ -30,7 +30,6 @@
   </div>
   <div *ngIf="isEditingNotes">
     <span *ngFor="let note of addWineNotes" class="spn-add-wine-notes">{{note}}</span>
-    <br />
     <form (submit)='addNote()'>
       <input type="text" name="wineNote" id="wineNote" autofocus #wineNote>
       <button (click)="addNote()">Add</button>
