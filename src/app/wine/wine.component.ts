@@ -79,7 +79,9 @@ export class WineComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.wineRatingResponse.push(...result);
+      if (result) {
+        this.wineRatingResponse.push(result);
+      }
     });
   }
 
