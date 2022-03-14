@@ -119,8 +119,12 @@ export class WineComponent implements OnInit {
 
   addNote(): void {
     const note = this.wineNoteRef.nativeElement.value;
+    if (note === '') {
+      return;
+    }
     this.addWineNotes.push(note);
     this.wineNoteRef.nativeElement.value = '';
+    this.wineNoteRef.nativeElement.focus();
   }
 
   toggleEditingNotes(): void {
