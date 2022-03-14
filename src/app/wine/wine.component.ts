@@ -28,7 +28,7 @@ export class WineComponent implements OnInit {
     private datePipe: DatePipe
   ) {
     const myDate = new Date();
-    this.date = this.datePipe.transform(myDate, 'MM/dd/yyy');
+    this.date = this.datePipe.transform(myDate, 'yyyy-MM-dd');
   }
   @ViewChild('wineNote') wineNoteRef: ElementRef;
 
