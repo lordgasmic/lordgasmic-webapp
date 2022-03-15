@@ -19,7 +19,7 @@
   <br/> <br/>
 
   Wine Notes:
-  <ul>
+  <ul *ngIf="isWineNoteAvailable">
     <li *ngFor="let note of wineNoteResponse.wineNotes">{{note.note}}</li>
   </ul>
   <div *ngIf="!isEditingNotes">
