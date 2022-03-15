@@ -74,17 +74,21 @@ export class WineryComponent implements OnInit {
   onOpenedChanged($event: boolean): void {
     if (!$event) {
       this.isLoading = true;
-
-      this.wineRatings.forEach((wrr) => {
-        this.wineResponses.forEach((wr) => {
-          if (wr.id === wrr.wineId) {
-            if (wr.wineFriend === undefined) {
-              wr.wineFriend = [];
+      const users: string[] = this.usersFormControl.value;
+      this.wineRatings
+        .filter((wrr) => {
+          return users.includes(wrr.user);
+        })
+        .forEach((wrr) => {
+          this.wineResponses.forEach((wr) => {
+            if (wr.id === wrr.wineId) {
+              if (wr.wineFriend === undefined) {
+                wr.wineFriend = [];
+              }
+              wr.wineFriend.push(wrr.user);
             }
-            wr.wineFriend.push(wrr.user);
-          }
+          });
         });
-      });
 
       this.isLoading = false;
     }
