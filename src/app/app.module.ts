@@ -40,6 +40,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { DialogWineImageAddComponent } from './dialog-wine-image-add/dialog-wine-image-add.component';
+import { WineHeaderComponent } from './wine-header/wine-header.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { DialogWineImageAddComponent } from './dialog-wine-image-add/dialog-wine
     DialogWineryAddComponent,
     DialogWineAddComponent,
     DialogWineRatingAddComponent,
-    DialogWineImageAddComponent
+    DialogWineImageAddComponent,
+    WineHeaderComponent
   ],
   imports: [
     BrowserModule,
