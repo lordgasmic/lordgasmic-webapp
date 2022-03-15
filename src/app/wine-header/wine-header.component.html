@@ -1,9 +1,11 @@
-<h1>Wine Tasting App</h1>
-<div>
-  <span><a href="/portal">Portal</a></span>
-  <span>&nbsp; > <a href="/wineTasting">Wineries</a></span>
-  <span *ngIf="wineryId">&nbsp; > <a href="/wineTasting/winery/{{wineryId}}">{{wineryName}}</a></span>
-  <span *ngIf="wineId">&nbsp; > <a href="/wineTasting/wine/{{wineId}}">{{wineName}}</a></span>
+<div class="header-container">
+  <h1>Wine Tasting App</h1>
+  <div>
+    <span><a href="/portal">Portal</a></span>
+    <span>&nbsp; > <a href="/wineTasting">Wineries</a></span>
+    <span *ngIf="wineryId">&nbsp; > <a href="/wineTasting/winery/{{wineryId}}">{{wineryName}}</a></span>
+    <span *ngIf="wineId">&nbsp; > <a href="/wineTasting/wine/{{wineId}}">{{wineName}}</a></span>
+  </div>
+  <button *ngIf="!isTopLevel">Back</button>
+  <br />
 </div>
-<button *ngIf="!isTopLevel">Back</button>
-<br />
