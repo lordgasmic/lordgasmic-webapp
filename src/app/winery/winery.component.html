@@ -18,7 +18,7 @@
 
 <div>
   <h1 class="banner">Wines tasted</h1>
-  <div *ngIf="!winesTasted">
+  <div *ngIf="winesTasted.length === 0">
     <span>You do not have any tasted wines</span>
   </div>
   <div class="card" *ngFor="let wine of winesTasted">
@@ -38,7 +38,7 @@
 
 <div>
   <h1 class="banner">Wines Untasted</h1>
-  <div *ngIf="!winesUntasted">
+  <div *ngIf="winesUntasted.length === 0">
     <span>You do not have any untasted wines</span>
   </div>
   <div class="card" *ngFor="let wine of winesUntasted">
