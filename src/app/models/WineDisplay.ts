@@ -1,5 +1,5 @@
 import { WineResponse } from './WineResponse';
 
 export class WineDisplay extends WineResponse {
-  wineFriend: string[] = [];
+  wineFriend = new Set<string>();
 }

@@ -86,10 +86,7 @@ export class WineryComponent implements OnInit {
         .forEach((wrr) => {
           this.wineResponses.forEach((wr) => {
             if (wr.id === wrr.wineId) {
-              if (wr.wineFriend === undefined) {
-                wr.wineFriend = [];
-              }
-              wr.wineFriend.push(wrr.user);
+              wr.wineFriend.add(wrr.user);
             }
           });
         });
