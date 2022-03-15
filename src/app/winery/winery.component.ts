@@ -1,14 +1,13 @@
-import { Component, NgZone, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { WineryResponse } from '../models/WineryResponse';
-import { WineResponse } from '../models/WineResponse';
 import { DialogWineAddComponent } from '../dialog-wine-add/dialog-wine-add.component';
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl } from '@angular/forms';
 import { RoleConstants } from '../configuration/RoleConstants';
-import { MatSelectChange } from '@angular/material/select';
 import { WineDisplay } from '../models/WineDisplay';
+import { WineRatingResponse } from '../models/WineRatingResponse';
 
 @Component({
   selector: 'app-winery',
@@ -19,6 +18,7 @@ export class WineryComponent implements OnInit {
   wineryResponse: WineryResponse;
   wineResponses: Array<WineDisplay> = [];
   usersResponse: Array<string> = [];
+  wineRatings: Array<WineRatingResponse> = [];
 
   usersFormControl = new FormControl();
 
@@ -28,13 +28,7 @@ export class WineryComponent implements OnInit {
   isUsersResponseLoaded = false;
   id: string;
 
-  constructor(
-    private lordgasmicService: LordgasmicService,
-    private route: ActivatedRoute,
-    private dialog: MatDialog,
-    private router: Router,
-    private zone: NgZone
-  ) {}
+  constructor(private lordgasmicService: LordgasmicService, private route: ActivatedRoute, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -45,6 +39,17 @@ export class WineryComponent implements OnInit {
         this.lordgasmicService.getWinesByWinery(this.id).subscribe((res) => {
           this.wineResponses = res;
           this.hidden = false;
+
+          this.lordgasmicService
+            .getWineRatingsByUsersForWineIds(
+              ['*'],
+              this.wineResponses.map((wr) => {
+                return wr.id;
+              })
+            )
+            .subscribe((response) => {
+              this.wineRatings = response;
+            });
         });
       });
     });
@@ -61,7 +66,7 @@ export class WineryComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.zone.runOutsideAngular(() => (window.location.href = `/wineTasting/winery/${this.id}`));
+        this.wineResponses.push(result);
       }
     });
   }
@@ -70,27 +75,47 @@ export class WineryComponent implements OnInit {
     if (!$event) {
       this.isLoading = true;
 
-      this.lordgasmicService
-        .getWineRatingsByUsersForWineIds(
-          this.usersFormControl.value,
-          this.wineResponses.map((wr) => {
-            return wr.id;
-          })
-        )
-        .subscribe((response) => {
-          response.forEach((wrr) => {
-            this.wineResponses.forEach((wr) => {
-              if (wr.id === wrr.wineId) {
-                if (wr.wineFriend === undefined) {
-                  wr.wineFriend = [];
-                }
-                wr.wineFriend.push(wrr.user);
-              }
-            });
-          });
+      this.wineRatings.forEach((wrr) => {
+        this.wineResponses.forEach((wr) => {
+          if (wr.id === wrr.wineId) {
+            if (wr.wineFriend === undefined) {
+              wr.wineFriend = [];
+            }
+            wr.wineFriend.push(wrr.user);
+          }
         });
+      });
 
       this.isLoading = false;
     }
+  }
+
+  getYourRatings(wine: WineDisplay): number {
+    const wineId = wine.id;
+    const user = sessionStorage.getItem('username');
+
+    let count = 0;
+
+    this.wineRatings.forEach((value) => {
+      if (value.wineId === wineId && value.user === user) {
+        count++;
+      }
+    });
+
+    return count;
+  }
+
+  getTotalRatings(wine: WineDisplay): number {
+    const wineId = wine.id;
+
+    let count = 0;
+
+    this.wineRatings.forEach((value) => {
+      if (value.wineId === wineId) {
+        count++;
+      }
+    });
+
+    return count;
   }
 }
