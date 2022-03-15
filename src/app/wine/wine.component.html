@@ -1,4 +1,4 @@
-<app-wine-header [isTopLevel]="false"
+<app-wine-header *ngIf="wineResponse && wineId" [isTopLevel]="false"
                  [wineryId]="wineResponse.wineryId"
                  [wineId]="wineId"></app-wine-header>
 
