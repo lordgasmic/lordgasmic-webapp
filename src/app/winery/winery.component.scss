@@ -30,7 +30,7 @@
 }
 
 .card {
-  display: block;
+  display: flex;
   padding: 10px;
   border: 1px solid gray;
   border-radius: 16px;
@@ -44,4 +44,12 @@
 .v1 {
   border-right: 1px solid gray;
   width: 50%;
+}
+
+.ratings-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1em;
+  justify-content: center;
+  gap: .5em;
 }

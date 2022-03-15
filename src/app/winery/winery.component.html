@@ -24,7 +24,7 @@
       <span *ngFor="let friend of wine.wineFriend">{{friend}}</span> &nbsp;
     </div>
   </div>
-  <div *ngIf="wineRatings">
+  <div *ngIf="wineRatings" class="ratings-container">
     <span>{{getYourRatings(wine)}} rating(s) by you</span>
     <span>{{getTotalRatings(wine)}} total rating(s)</span>
   </div>
