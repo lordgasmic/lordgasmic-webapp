@@ -71,10 +71,14 @@ export class WineryComponent implements OnInit {
     });
   }
 
-  onOpenedChanged($event: boolean): void {
-    if (!$event) {
+  onOpenedChanged(event: boolean): void {
+    if (!event) {
+      // closes the drop down
       const users: string[] = this.usersFormControl.value;
       if (users == null || users.length === 0) {
+        this.wineResponses.forEach((wr) => {
+          wr.wineFriend = new Set<string>();
+        });
         return;
       }
 
