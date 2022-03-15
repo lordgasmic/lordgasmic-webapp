@@ -29,7 +29,7 @@ export class WineryComponent implements OnInit {
   isLoading = false;
   isWineryResponseLoaded = false;
   isUsersResponseLoaded = false;
-  id: string;
+  id: number;
 
   constructor(private lordgasmicService: LordgasmicService, private route: ActivatedRoute, private dialog: MatDialog) {}
 

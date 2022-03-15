@@ -126,7 +126,7 @@ export class LordgasmicService {
     });
   }
 
-  getWinesByWinery(id: string): Observable<Array<WineDisplay>> {
+  getWinesByWinery(id: number): Observable<Array<WineDisplay>> {
     return new Observable((observer: Observer<Array<WineDisplay>>) => {
       this.http.get<Array<WineDisplay>>(this.API + this.WINES + `?wineryId=${id}`).subscribe((response) => {
         observer.next(response);
