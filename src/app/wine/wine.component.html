@@ -1,3 +1,5 @@
+<app-wine-header></app-wine-header>
+
 <div [ngClass]="{'hide-container': !(isWineAvailable && isWineNoteAvailable && isWineRatingAvailable)}">
   <span *ngIf="isWineAvailable">Wine: {{wineResponse.name}}</span>
   <br/>

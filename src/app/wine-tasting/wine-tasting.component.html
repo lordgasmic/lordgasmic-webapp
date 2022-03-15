@@ -1,3 +1,5 @@
+<app-wine-header></app-wine-header>
+
 <div [ngClass]="{'hide-container': hidden}">
   <ul>
     <li *ngFor="let winery of wineryResponse"><a href="/wineTasting/winery/{{winery.id}}">{{winery.name}} ({{winery.location}})</a></li>
