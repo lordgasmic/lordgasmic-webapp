@@ -20,6 +20,9 @@ export class WineryComponent implements OnInit {
   usersResponse: Array<string> = [];
   wineRatings: Array<WineRatingResponse> = [];
 
+  winesTasted: Array<WineDisplay> = [];
+  winesUntasted: Array<WineDisplay> = [];
+
   usersFormControl = new FormControl();
 
   hidden = true;
@@ -49,6 +52,18 @@ export class WineryComponent implements OnInit {
             )
             .subscribe((response) => {
               this.wineRatings = response;
+
+              // sort into tasted and un
+              const wineIds: number[] = this.wineRatings.map((v) => {
+                return v.wineId;
+              });
+              this.wineResponses.forEach((wd) => {
+                if (wineIds.includes(wd.id)) {
+                  this.winesTasted.push(wd);
+                } else {
+                  this.winesUntasted.push(wd);
+                }
+              });
             });
         });
       });
