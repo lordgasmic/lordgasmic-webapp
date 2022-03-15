@@ -73,8 +73,12 @@ export class WineryComponent implements OnInit {
 
   onOpenedChanged($event: boolean): void {
     if (!$event) {
-      this.isLoading = true;
       const users: string[] = this.usersFormControl.value;
+      if (users == null || users.length === 0) {
+        return;
+      }
+
+      this.isLoading = true;
       this.wineRatings
         .filter((wrr) => {
           return users.includes(wrr.user);
@@ -89,9 +93,8 @@ export class WineryComponent implements OnInit {
             }
           });
         });
-
-      this.isLoading = false;
     }
+    this.isLoading = false;
   }
 
   getYourRatings(wine: WineDisplay): number {
