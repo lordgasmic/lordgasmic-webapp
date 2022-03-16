@@ -23,19 +23,7 @@
   <div *ngIf="winesTasted.length === 0">
     <span>You do not have any tasted wines</span>
   </div>
-  <div class="card" *ngFor="let wine of winesTasted">
-    <div class="v1">
-      <span class="card-span"><a href ="/wineTasting/wine/{{wine.id}}">{{wine.name}}</a></span>
-      <span class="card-span">{{wine.style}}</span>
-      <div>
-        <span *ngFor="let friend of wine.wineFriend">{{friend}}</span> &nbsp;
-      </div>
-    </div>
-    <div *ngIf="wineRatings" class="ratings-container">
-      <span>{{getYourRatings(wine)}} rating(s) by you</span>
-      <span>{{getTotalRatings(wine)}} total rating(s)</span>
-    </div>
-  </div>
+
 </div>
 
 <div>

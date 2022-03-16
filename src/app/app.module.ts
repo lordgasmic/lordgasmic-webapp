@@ -41,6 +41,7 @@ import { MatSelectModule } from '@angular/material/select';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { DialogWineImageAddComponent } from './dialog-wine-image-add/dialog-wine-image-add.component';
 import { WineHeaderComponent } from './wine-header/wine-header.component';
+import { WineCardComponent } from './wine-card/wine-card.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { WineHeaderComponent } from './wine-header/wine-header.component';
     DialogWineAddComponent,
     DialogWineRatingAddComponent,
     DialogWineImageAddComponent,
-    WineHeaderComponent
+    WineHeaderComponent,
+    WineCardComponent
   ],
   imports: [
     BrowserModule,
