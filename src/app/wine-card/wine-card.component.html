@@ -1,12 +1,11 @@
-<!--<div class="v1">-->
-<!--  <span class="card-span"><a href ="/wineTasting/wine/{{wineDisplay.id}}">{{wineDisplay.name}}</a></span>-->
-<!--  <span class="card-span">{{wineDisplay.style}}</span>-->
-<!--  <div>-->
-<!--    <span *ngFor="let friend of wineDisplay.wineFriend">{{friend}}</span> &nbsp;-->
-<!--  </div>-->
-<!--</div>-->
-<!--<div *ngIf="wineRatings" class="ratings-container">-->
-<!--  <span>{{getYourRatings(wineDisplay)}} rating(s) by you</span>-->
-<!--  <span>{{getTotalRatings(wineDisplay)}} total rating(s)</span>-->
-<!--</div>-->
-<span>success</span>
+<div class="v1">
+  <span class="card-span"><a href ="/wineTasting/wine/{{wineDisplay.id}}">{{wineDisplay.name}}</a></span>
+  <span class="card-span">{{wineDisplay.style}}</span>
+  <div>
+    <span *ngFor="let friend of wineDisplay.wineFriend">{{friend}}</span> &nbsp;
+  </div>
+</div>
+<div *ngIf="wineRatings" class="ratings-container">
+  <span>{{getYourRatings(wineDisplay)}} rating(s) by you</span>
+  <span>{{getTotalRatings(wineDisplay)}} total rating(s)</span>
+</div>
