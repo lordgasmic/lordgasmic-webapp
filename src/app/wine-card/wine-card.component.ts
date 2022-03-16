@@ -11,11 +11,14 @@ export class WineCardComponent implements OnInit {
   @Input() wineDisplay: WineDisplay;
   @Input() wineRatings: Array<WineRatingResponse>;
 
+  yourRatings = 0;
+  totalRatings = 0;
+
   constructor() {}
 
   ngOnInit(): void {}
 
-  getYourRatings(wine: WineDisplay): number {
+  getYourRatings(wine: WineDisplay): void {
     const wineId = wine.id;
     const user = sessionStorage.getItem('username');
 
@@ -27,10 +30,10 @@ export class WineCardComponent implements OnInit {
       }
     });
 
-    return count;
+    this.yourRatings = count;
   }
 
-  getTotalRatings(wine: WineDisplay): number {
+  getTotalRatings(wine: WineDisplay): void {
     const wineId = wine.id;
 
     let count = 0;
@@ -41,6 +44,6 @@ export class WineCardComponent implements OnInit {
       }
     });
 
-    return count;
+    this.totalRatings = count;
   }
 }
