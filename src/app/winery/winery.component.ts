@@ -120,33 +120,4 @@ export class WineryComponent implements OnInit {
     }
     this.isLoading = false;
   }
-
-  getYourRatings(wine: WineDisplay): number {
-    const wineId = wine.id;
-    const user = sessionStorage.getItem('username');
-
-    let count = 0;
-
-    this.wineRatings.forEach((value) => {
-      if (value.wineId === wineId && value.user === user) {
-        count++;
-      }
-    });
-
-    return count;
-  }
-
-  getTotalRatings(wine: WineDisplay): number {
-    const wineId = wine.id;
-
-    let count = 0;
-
-    this.wineRatings.forEach((value) => {
-      if (value.wineId === wineId) {
-        count++;
-      }
-    });
-
-    return count;
-  }
 }
