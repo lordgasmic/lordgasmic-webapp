@@ -13,9 +13,7 @@ export class WineCardComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.wineDisplay);
-  }
+  ngOnInit(): void {}
 
   getYourRatings(wine: WineDisplay): number {
     const wineId = wine.id;
