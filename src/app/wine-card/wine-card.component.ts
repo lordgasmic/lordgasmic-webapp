@@ -8,7 +8,7 @@ import { WineRatingResponse } from '../models/WineRatingResponse';
   styleUrls: ['./wine-card.component.scss']
 })
 export class WineCardComponent implements OnInit {
-  @Input() wineDisplay: Array<WineDisplay>;
+  @Input() wineDisplay: WineDisplay;
   @Input() wineRatings: Array<WineRatingResponse>;
 
   constructor() {}
