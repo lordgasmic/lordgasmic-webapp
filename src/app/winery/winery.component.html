@@ -22,7 +22,7 @@
   <h1 class="banner">Wines tasted</h1>
   <div *ngIf="winesTasted.length === 0">
     <span>You do not have any tasted wines</span>
-    <app-wine-card *ngIf="winesTasted > 0" [wineDisplay]="winesTasted" [wineRatings]="wineRatings"></app-wine-card>
+    <app-wine-card *ngIf="winesTasted.length > 0" [wineDisplay]="winesTasted" [wineRatings]="wineRatings"></app-wine-card>
   </div>
 </div>
 
