@@ -16,7 +16,10 @@ export class WineCardComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getYourRatings(this.wineDisplay);
+    this.getTotalRatings(this.wineDisplay);
+  }
 
   getYourRatings(wine: WineDisplay): void {
     const wineId = wine.id;
@@ -45,5 +48,15 @@ export class WineCardComponent implements OnInit {
     });
 
     this.totalRatings = count;
+  }
+
+  displayTooltip(): string {
+    let tooltip = '';
+    this.wineRatings.forEach((value) => {
+      if (value.wineId === this.wineDisplay.id && value.user !== sessionStorage.getItem('username')) {
+        tooltip += `${value.user}: ${value.rating}`;
+      }
+    });
+    return tooltip;
   }
 }
