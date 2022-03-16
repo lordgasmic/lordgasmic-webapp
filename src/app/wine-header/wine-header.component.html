@@ -6,6 +6,6 @@
     <span *ngIf="wineryId">&nbsp; > <a href="/wineTasting/winery/{{wineryId}}">{{wineryName}}</a></span>
     <span *ngIf="wineId">&nbsp; > <a href="/wineTasting/wine/{{wineId}}">{{wineName}}</a></span>
   </div>
-  <button *ngIf="!isTopLevel">Back</button>
+  <button *ngIf="!isTopLevel" (click)="goBack()">Back</button>
   <br />
 </div>

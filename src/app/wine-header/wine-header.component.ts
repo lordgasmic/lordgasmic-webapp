@@ -25,4 +25,8 @@ export class WineHeaderComponent implements OnInit {
       this.wineName = response.name;
     });
   }
+
+  goBack(): void {
+    history.back();
+  }
 }
