@@ -23,7 +23,8 @@
   <div *ngIf="winesTasted.length === 0">
     <span>You do not have any tasted wines</span>
     <div class="card" *ngFor="let wine of winesTasted">
-      <app-wine-card [wineDisplay]="wine" [wineRatings]="wineRatings"></app-wine-card>
+<!--      <app-wine-card [wineDisplay]="wine" [wineRatings]="wineRatings"></app-wine-card>-->
+      <app-wine-card></app-wine-card>
     </div>
   </div>
 </div>
