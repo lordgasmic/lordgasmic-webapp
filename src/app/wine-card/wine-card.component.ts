@@ -1,11 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { WineDisplay } from '../models/WineDisplay';
 import { WineRatingResponse } from '../models/WineRatingResponse';
 
 @Component({
   selector: 'app-wine-card',
   templateUrl: './wine-card.component.html',
-  styleUrls: ['./wine-card.component.scss']
+  styleUrls: ['./wine-card.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class WineCardComponent implements OnInit {
   @Input() wineDisplay: WineDisplay;
