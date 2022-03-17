@@ -55,7 +55,7 @@ export class WineCardComponent implements OnInit {
     let tooltip = '';
     this.wineRatings.forEach((value) => {
       if (value.wineId === this.wineDisplay.id && value.user !== sessionStorage.getItem('username')) {
-        tooltip += `${value.user}: ${value.rating}\n`;
+        tooltip += `${value.user}: ${value.rating === '-1' ? '💩' : value.rating}\n`;
       }
     });
     return tooltip;
