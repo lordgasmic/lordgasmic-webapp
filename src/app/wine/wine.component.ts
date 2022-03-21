@@ -40,6 +40,7 @@ export class WineComponent implements OnInit {
   isWineAvailable = false;
   isWineNoteAvailable = false;
   isWineRatingAvailable = false;
+  isWineImagesAvailable = false;
 
   isEditingNotes = false;
 
@@ -64,10 +65,12 @@ export class WineComponent implements OnInit {
           this.isWineRatingAvailable = true;
         });
         this.lordgasmicService.getWineImages(this.wineId).subscribe((response) => {
+          this.isWineImagesAvailable = true;
           response.wineImages.forEach((wi) => {
             this.loadImage(wi);
           });
         });
+        this.isLoading = !(this.isWineAvailable && this.isWineNoteAvailable && this.isWineRatingAvailable && this.isWineImagesAvailable);
       });
     });
   }
