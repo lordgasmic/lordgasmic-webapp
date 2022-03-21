@@ -12,6 +12,7 @@ import { WineImageDisplay } from '../models/WineImageDisplay';
 import { DialogWineImageAddComponent } from '../dialog-wine-image-add/dialog-wine-image-add.component';
 import { WineImage } from '../models/WineImage';
 import { WineImageResponse } from '../models/WineImageResponse';
+import { WineImageDialogData } from '../models/WineImageDialogData';
 
 @Component({
   selector: 'app-wine',
@@ -42,13 +43,11 @@ export class WineComponent implements OnInit {
 
   isEditingNotes = false;
 
+  isLoading = true;
+
   wineId: number;
   date: string;
   addWineNotes: string[] = [];
-
-  private static instanceOfWineImageResponse(data: any): data is WineImageResponse {
-    return 'wineImages' in data;
-  }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -128,13 +127,19 @@ export class WineComponent implements OnInit {
 
   addImage(): void {
     const dialogRef = this.dialog.open(DialogWineImageAddComponent, {
-      data: { wineId: this.wineId, response: {} }
+      data: {}
     });
 
-    dialogRef.afterClosed().subscribe((result: WineImageResponse | boolean) => {
-      if (result && WineComponent.instanceOfWineImageResponse(result)) {
-        result.wineImages.forEach((wi) => {
-          this.loadImage(wi);
+    dialogRef.afterClosed().subscribe((formData: FormData | boolean) => {
+      if (formData && typeof formData !== 'boolean') {
+        formData.append('wineId', this.wineId + '');
+
+        this.isLoading = true;
+        this.lordgasmicService.addWineImage(formData).subscribe((response) => {
+          response.wineImages.forEach((wi) => {
+            this.loadImage(wi);
+            this.isLoading = false;
+          });
         });
       }
     });

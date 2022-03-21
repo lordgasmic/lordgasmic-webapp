@@ -3,6 +3,10 @@
                  [wineryId]="wineResponse.wineryId"
                  [wineId]="wineId"></app-wine-header>
 
+<div class="loading-container" [ngClass]="{'is-loading': isLoading, 'hide-container': !isLoading}">
+  <img src="assets/icons/loading.gif" alt="loading">
+</div>
+
 <div [ngClass]="{'hide-container': !(isWineAvailable && isWineNoteAvailable && isWineRatingAvailable)}">
   <span *ngIf="isWineAvailable">Wine: {{wineResponse.name}}</span>
   <br/>

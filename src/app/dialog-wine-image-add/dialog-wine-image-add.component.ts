@@ -33,12 +33,14 @@ export class DialogWineImageAddComponent {
   onUpload(): void {
     const label = this.labelRef.nativeElement.value;
 
+    if (!this.selectedFile || label === '') {
+      return;
+    }
+
     const uploadImageData = new FormData();
     uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
-    uploadImageData.append('wineId', this.data.wineId + '');
     uploadImageData.append('label', label);
-    this.lordgasmicService.addWineImage(uploadImageData).subscribe((response) => {
-      this.dialogRef.close(response);
-    });
+
+    this.dialogRef.close(uploadImageData);
   }
 }
