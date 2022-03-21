@@ -44,7 +44,7 @@ export class WineComponent implements OnInit {
 
   isEditingNotes = false;
 
-  isLoading = true;
+  isLoading = false;
 
   wineId: number;
   date: string;
