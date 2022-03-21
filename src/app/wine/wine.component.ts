@@ -70,7 +70,6 @@ export class WineComponent implements OnInit {
             this.loadImage(wi);
           });
         });
-        this.isLoading = !(this.isWineAvailable && this.isWineNoteAvailable && this.isWineRatingAvailable && this.isWineImagesAvailable);
       });
     });
   }

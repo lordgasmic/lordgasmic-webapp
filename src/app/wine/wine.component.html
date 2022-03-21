@@ -3,7 +3,8 @@
                  [wineryId]="wineResponse.wineryId"
                  [wineId]="wineId"></app-wine-header>
 
-<div class="loading-container" [ngClass]="{'is-loading': isLoading, 'hide-container': !isLoading}">
+<div class="loading-container" [ngClass]="{'is-loading': (isLoading || (isWineAvailable && isWineNoteAvailable && isWineRatingAvailable && isWineImagesAvailable)),
+                                           'hide-container': !isLoading}">
   <img src="assets/icons/loading.gif" alt="loading">
 </div>
 
