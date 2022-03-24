@@ -1,7 +1,6 @@
-import { Component, ElementRef, Inject, NgZone, OnInit, ViewChild } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dialog-winery-add',
@@ -23,7 +22,7 @@ export class DialogWineryAddComponent {
     const location = this.locationRef.nativeElement.value;
 
     this.lordgasmicService.addWinery({ name, location }).subscribe((response) => {
-      this.dialogRef.close(true);
+      this.dialogRef.close(response);
     });
   }
 }

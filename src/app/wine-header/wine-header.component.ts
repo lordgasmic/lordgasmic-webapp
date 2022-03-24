@@ -17,12 +17,17 @@ export class WineHeaderComponent implements OnInit {
   constructor(private lordgasmicService: LordgasmicService) {}
 
   ngOnInit(): void {
-    this.lordgasmicService.getWinery(this.wineryId).subscribe((response) => {
-      this.wineryName = response.name;
-    });
-    this.lordgasmicService.getWineById(this.wineId).subscribe((response) => {
-      this.wineName = response.name;
-    });
+    if (this.wineryId) {
+      this.lordgasmicService.getWinery(this.wineryId).subscribe((response) => {
+        this.wineryName = response.name;
+      });
+    }
+
+    if (this.wineId) {
+      this.lordgasmicService.getWineById(this.wineId).subscribe((response) => {
+        this.wineName = response.name;
+      });
+    }
   }
 
   goBack(): void {
