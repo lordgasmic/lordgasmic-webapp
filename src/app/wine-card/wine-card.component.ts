@@ -20,6 +20,7 @@ export class WineCardComponent implements OnInit {
   ngOnInit(): void {
     this.getYourRatings(this.wineDisplay);
     this.getTotalRatings(this.wineDisplay);
+    document.addEventListener('contextmenu', event => event.preventDefault());
   }
 
   getYourRatings(wine: WineDisplay): void {
