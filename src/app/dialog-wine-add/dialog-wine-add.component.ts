@@ -13,7 +13,8 @@ export class DialogWineAddComponent {
   @ViewChild('name') nameRef: ElementRef;
   @ViewChild('style') styleRef: ElementRef;
 
-  constructor(private lordgasmicService: LordgasmicService
+  constructor(
+    private lordgasmicService: LordgasmicService,
     public dialogRef: MatDialogRef<DialogWineAddComponent>,
     @Inject(MAT_DIALOG_DATA) public data: WineDialogData,
     private lordgasmicService: LordgasmicService
