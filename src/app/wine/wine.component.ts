@@ -65,7 +65,6 @@ export class WineComponent implements OnInit {
         });
         this.lordgasmicService.getWineImages(this.wineId).subscribe((response) => {
           this.isWineImagesAvailable = true;
-          console.log('init responsse', response);
           response.wineImages.forEach((wi) => {
             this.loadImage(wi);
           });
@@ -101,7 +100,6 @@ export class WineComponent implements OnInit {
     req.user = sessionStorage.getItem('username');
     req.date = this.date;
 
-    console.log('submit', this.addWineNotes);
     this.addWineNotes.forEach((value) => {
       req.wineNotes.push(value);
     });

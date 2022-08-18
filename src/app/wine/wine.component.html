@@ -15,7 +15,8 @@
   Wine Rating:
   <div *ngIf="isWineRatingAvailable">
     <ul>
-      <li *ngFor="let rating of wineRatingResponse">{{rating.rating == "-1" ? "💩" : rating.rating}} ({{rating.date}})</li>
+      <li *ngFor="let rating of wineRatingResponse">{{rating.rating == "-1" ? "💩" : rating.rating}} ({{rating.date}})
+      </li>
     </ul>
   </div>
   <div class="button-wrapper">
@@ -43,18 +44,18 @@
   </div>
 </div>
 
-<br />
+<br/>
 
-<div class="wine-image">
-  <div class="container row">
-    <div class="col-md-12">
-      <div *ngFor="let image of wineImages">
-        <img [src]="image.image">
-      </div>
-    </div>
-  </div>
-</div>
-<div>
-  Upload Image: <br />
-  <button (click)="addImage()">Add Image</button>
-</div>
+<!--<div class="wine-image">-->
+<!--  <div class="container row">-->
+<!--    <div class="col-md-12">-->
+<!--      <div *ngFor="let image of wineImages">-->
+<!--        <img [src]="image.image">-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div>-->
+<!--  Upload Image: <br />-->
+<!--  <button (click)="addImage()">Add Image</button>-->
+<!--</div>-->
