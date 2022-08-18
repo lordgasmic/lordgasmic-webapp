@@ -24,7 +24,6 @@ export class GasComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    console.log('date', this.date);
     this.dateRef.nativeElement.value = this.date;
   }
 
