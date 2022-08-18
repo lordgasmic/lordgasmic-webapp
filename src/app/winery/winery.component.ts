@@ -52,23 +52,6 @@ export class WineryComponent implements OnInit {
             )
             .subscribe((response) => {
               this.wineRatings = response;
-
-              // // get current users wine ratings for sorting
-              // const currentUsersWineRatings = response.filter((wrr) => {
-              //   return wrr.user === sessionStorage.getItem('username');
-              // });
-              //
-              // // sort into tasted and un
-              // const wineIds: number[] = currentUsersWineRatings.map((v) => {
-              //   return v.wineId;
-              // });
-              // this.wineResponses.forEach((wd) => {
-              //   if (wineIds.includes(wd.id)) {
-              //     this.winesTasted.push(wd);
-              //   } else {
-              //     this.winesUntasted.push(wd);
-              //   }
-              // });
               this.sortTastedUntastedWines();
             });
         });
@@ -118,7 +101,7 @@ export class WineryComponent implements OnInit {
 
   onOpenedChanged(event: boolean): void {
     if (!event) {
-      // closes the drop down
+      // closes the dropdown
       const users: string[] = this.usersFormControl.value;
       if (users == null || users.length === 0) {
         this.wineResponses.forEach((wr) => {

@@ -33,7 +33,7 @@ export class DialogWineAddComponent {
     request.wineryId = this.data.wineryId;
 
     this.lordgasmicService.addWine(request).subscribe((response) => {
-      this.dialogRef.close(true);
+      this.dialogRef.close(response);
     });
   }
 }
