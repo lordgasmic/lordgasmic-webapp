@@ -18,6 +18,7 @@ export class PortalComponent implements OnInit {
   memesEnabled = false;
   wineEnabled = false;
   funkoEnabled = false;
+  gasEnabled = false;
 
   constructor(private lordgasmicService: LordgasmicService) {}
 
@@ -37,6 +38,7 @@ export class PortalComponent implements OnInit {
       this.memesEnabled = (RoleConstants.memes & this.roles) === RoleConstants.memes;
       this.wineEnabled = (RoleConstants.wine & this.roles) === RoleConstants.wine;
       this.funkoEnabled = (RoleConstants.funko & this.roles) === RoleConstants.funko;
+      this.gasEnabled = (RoleConstants.gas & this.roles) === RoleConstants.gas;
       /* tslint:enable:no-bitwise */
     });
   }

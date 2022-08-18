@@ -1,23 +1,25 @@
-import { Injectable } from '@angular/core';
-import { Expression } from '../../models/Expression';
-import { HttpClient } from '@angular/common/http';
-import { FeedRequest } from '../../models/FeedRequest';
-import { FeedResponse } from '../../models/FeedResponse';
-import { Observable, Observer } from 'rxjs';
-import { SessionInfo } from '../../models/SessionInfo';
-import { LoginRequest } from '../../models/LoginRequest';
-import { LoginInfo } from '../../models/LoginInfo';
-import { MemeResponse } from '../../models/MemeResponse';
-import { WineryResponse } from '../../models/WineryResponse';
-import { WineResponse } from '../../models/WineResponse';
-import { WineNoteResponse } from '../../models/WineNoteResponse';
-import { WineRatingResponse } from '../../models/WineRatingResponse';
-import { WineryRequest } from '../../models/WineryRequest';
-import { WineRequest } from '../../models/WineRequest';
-import { WineRatingRequest } from '../../models/WineRatingRequest';
-import { WineNoteRequest } from '../../models/WineNoteRequest';
-import { WineDisplay } from '../../models/WineDisplay';
-import { WineImageResponse } from '../../models/WineImageResponse';
+import {Injectable} from '@angular/core';
+import {Expression} from '../../models/Expression';
+import {HttpClient} from '@angular/common/http';
+import {FeedRequest} from '../../models/FeedRequest';
+import {FeedResponse} from '../../models/FeedResponse';
+import {Observable, Observer} from 'rxjs';
+import {SessionInfo} from '../../models/SessionInfo';
+import {LoginRequest} from '../../models/LoginRequest';
+import {LoginInfo} from '../../models/LoginInfo';
+import {MemeResponse} from '../../models/MemeResponse';
+import {WineryResponse} from '../../models/WineryResponse';
+import {WineResponse} from '../../models/WineResponse';
+import {WineNoteResponse} from '../../models/WineNoteResponse';
+import {WineRatingResponse} from '../../models/WineRatingResponse';
+import {WineryRequest} from '../../models/WineryRequest';
+import {WineRequest} from '../../models/WineRequest';
+import {WineRatingRequest} from '../../models/WineRatingRequest';
+import {WineNoteRequest} from '../../models/WineNoteRequest';
+import {WineDisplay} from '../../models/WineDisplay';
+import {WineImageResponse} from '../../models/WineImageResponse';
+import {GasRequest} from "../../models/GasRequest";
+import {GasResponse} from "../../models/GasResponse";
 
 @Injectable({
   providedIn: 'root'
@@ -36,8 +38,10 @@ export class LordgasmicService {
   private readonly WINE_RATING = '/v1/wineRating/';
   private readonly USERS = '/v1/users';
   private readonly WINE_IMAGES = '/v1/wineImages';
+  private readonly GAS = '/v1/gas';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   // getExpressions(): Expression[] {
   getExpressions(): void {
@@ -201,7 +205,7 @@ export class LordgasmicService {
   getWineRatingsByUsersForWineIds(users: string[], wineIds: number[]): Observable<Array<WineRatingResponse>> {
     return new Observable((observer: Observer<Array<WineRatingResponse>>) => {
       this.http
-        .post<Array<WineRatingResponse>>(this.API + this.WINE_RATING, { users, wineIds })
+        .post<Array<WineRatingResponse>>(this.API + this.WINE_RATING, {users, wineIds})
         .subscribe((response) => {
           observer.next(response);
           observer.complete();
@@ -296,6 +300,20 @@ export class LordgasmicService {
   getWineImages(wineId: number): Observable<WineImageResponse> {
     return new Observable((observer: Observer<WineImageResponse>) => {
       this.http.get<WineImageResponse>(this.API + this.WINE_IMAGES + `?wineId=${wineId}`).subscribe(
+        (response) => {
+          observer.next(response);
+          observer.complete();
+        },
+        (err) => {
+          observer.error(err);
+        }
+      );
+    });
+  }
+
+  addGas(gasRequest: GasRequest): Observable<GasResponse> {
+    return new Observable((observer: Observer<GasResponse>) => {
+      this.http.put<GasResponse>(this.API + this.GAS, gasRequest).subscribe(
         (response) => {
           observer.next(response);
           observer.complete();

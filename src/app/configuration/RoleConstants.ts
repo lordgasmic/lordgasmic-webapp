@@ -5,4 +5,5 @@ export class RoleConstants {
   public static readonly memes = 8;
   public static readonly wine = 16;
   public static readonly funko = 32;
+  public static readonly gas = 64;
 }

@@ -12,6 +12,7 @@ import { WineComponent } from './wine/wine.component';
 import { FunkoComponent } from './funko/funko.component';
 import { WineTastingComponent } from './wine-tasting/wine-tasting.component';
 import { WineryComponent } from './winery/winery.component';
+import {GasComponent} from "./gas/gas.component";
 
 const routes: Routes = [
   {
@@ -61,6 +62,10 @@ const routes: Routes = [
   {
     path: 'funko',
     component: FunkoComponent
+  },
+  {
+    path: 'gas',
+    component: GasComponent
   }
 ];
 
