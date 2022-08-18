@@ -1,4 +1,4 @@
-import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
 import { WineResponse } from '../models/WineResponse';
 import { WineNoteResponse } from '../models/WineNoteResponse';
@@ -11,8 +11,6 @@ import { WineNoteRequest } from '../models/WineNoteRequest';
 import { WineImageDisplay } from '../models/WineImageDisplay';
 import { DialogWineImageAddComponent } from '../dialog-wine-image-add/dialog-wine-image-add.component';
 import { WineImage } from '../models/WineImage';
-import { WineImageResponse } from '../models/WineImageResponse';
-import { WineImageDialogData } from '../models/WineImageDialogData';
 
 @Component({
   selector: 'app-wine',
@@ -30,6 +28,7 @@ export class WineComponent implements OnInit {
     const myDate = new Date();
     this.date = this.datePipe.transform(myDate, 'yyyy-MM-dd');
   }
+
   @ViewChild('wineNote') wineNoteRef: ElementRef;
 
   wineResponse: WineResponse;
@@ -66,6 +65,7 @@ export class WineComponent implements OnInit {
         });
         this.lordgasmicService.getWineImages(this.wineId).subscribe((response) => {
           this.isWineImagesAvailable = true;
+          console.log('init responsse', response);
           response.wineImages.forEach((wi) => {
             this.loadImage(wi);
           });
@@ -101,6 +101,7 @@ export class WineComponent implements OnInit {
     req.user = sessionStorage.getItem('username');
     req.date = this.date;
 
+    console.log('submit', this.addWineNotes);
     this.addWineNotes.forEach((value) => {
       req.wineNotes.push(value);
     });
