@@ -83,6 +83,10 @@ export class WineryComponent implements OnInit {
   }
 
   sortTastedUntastedWines(): void {
+    // empty the arrays
+    this.winesTasted = [];
+    this.winesUntasted = [];
+
     // get current users wine ratings for sorting
     const currentUsersWineRatings = this.wineRatings.filter((wrr) => {
       return wrr.user === sessionStorage.getItem('username');
