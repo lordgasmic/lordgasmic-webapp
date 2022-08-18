@@ -24,7 +24,7 @@ export class GasComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dateRef.nativeElement.value = this.date;
+    this.dateRef.value = this.date;
   }
 
   submit(): void {
