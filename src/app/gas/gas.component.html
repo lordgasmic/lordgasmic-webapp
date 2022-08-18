@@ -18,7 +18,7 @@
   </div>
   <div class="row">
     <label>Cost</label>
-    <input type="number" name="cost" id="cost" #cost>
+    <input (keyup.enter)="submit()" type="number" name="cost" id="cost" #cost>
   </div>
 </div>
 <div class="btn-container">

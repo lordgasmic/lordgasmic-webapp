@@ -4,7 +4,7 @@
   <input type="text" name="name" id="name" #name>
   <br/>
   <label>Winery Location</label>
-  <input type="text" name="location" id="location" #location>
+  <input (keyup.enter)="submit()" type="text" name="location" id="location" #location>
 </div>
 <div>
   <button mat-button (click)="onNoClick()">Cancel</button>
