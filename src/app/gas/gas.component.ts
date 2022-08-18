@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
 import { GasRequest } from '../models/GasRequest';
 import { DatePipe } from '@angular/common';
@@ -9,7 +9,7 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./gas.component.scss'],
   providers: [DatePipe]
 })
-export class GasComponent implements OnInit {
+export class GasComponent implements AfterViewInit {
   @ViewChild('date') dateRef: ElementRef;
   @ViewChild('odd') odometerRef: ElementRef;
   @ViewChild('vehicle') vehicleRef: ElementRef;
@@ -23,7 +23,7 @@ export class GasComponent implements OnInit {
     this.date = this.datePipe.transform(myDate, 'yyyy-MM-dd');
   }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     console.log('date', this.date);
     this.dateRef.nativeElement.value = this.date;
   }
