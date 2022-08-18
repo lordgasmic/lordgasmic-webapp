@@ -53,22 +53,23 @@ export class WineryComponent implements OnInit {
             .subscribe((response) => {
               this.wineRatings = response;
 
-              // get current users wine ratings for sorting
-              const currentUsersWineRatings = response.filter((wrr) => {
-                return wrr.user === sessionStorage.getItem('username');
-              });
-
-              // sort into tasted and un
-              const wineIds: number[] = currentUsersWineRatings.map((v) => {
-                return v.wineId;
-              });
-              this.wineResponses.forEach((wd) => {
-                if (wineIds.includes(wd.id)) {
-                  this.winesTasted.push(wd);
-                } else {
-                  this.winesUntasted.push(wd);
-                }
-              });
+              // // get current users wine ratings for sorting
+              // const currentUsersWineRatings = response.filter((wrr) => {
+              //   return wrr.user === sessionStorage.getItem('username');
+              // });
+              //
+              // // sort into tasted and un
+              // const wineIds: number[] = currentUsersWineRatings.map((v) => {
+              //   return v.wineId;
+              // });
+              // this.wineResponses.forEach((wd) => {
+              //   if (wineIds.includes(wd.id)) {
+              //     this.winesTasted.push(wd);
+              //   } else {
+              //     this.winesUntasted.push(wd);
+              //   }
+              // });
+              this.sortTastedUntastedWines();
             });
         });
       });
@@ -81,12 +82,32 @@ export class WineryComponent implements OnInit {
     });
   }
 
+  sortTastedUntastedWines(): void {
+    // get current users wine ratings for sorting
+    const currentUsersWineRatings = this.wineRatings.filter((wrr) => {
+      return wrr.user === sessionStorage.getItem('username');
+    });
+
+    // sort into tasted and un
+    const wineIds: number[] = currentUsersWineRatings.map((v) => {
+      return v.wineId;
+    });
+    this.wineResponses.forEach((wd) => {
+      if (wineIds.includes(wd.id)) {
+        this.winesTasted.push(wd);
+      } else {
+        this.winesUntasted.push(wd);
+      }
+    });
+  }
+
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogWineAddComponent, { data: { wineryId: this.id } });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.wineResponses.push(result);
+        this.sortTastedUntastedWines();
       }
     });
   }
