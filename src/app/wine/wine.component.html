@@ -25,16 +25,17 @@
   <br/> <br/>
 
   Wine Notes:
-  <ul *ngIf="isWineNoteAvailable">
-    <li *ngFor="let note of wineNoteResponse.wineNotes">{{note.note}}</li>
-  </ul>
   <div *ngIf="!isEditingNotes">
+    <ul *ngIf="isWineNoteAvailable">
+      <li *ngFor="let note of wineNoteResponse.wineNotes">{{note.note}}</li>
+    </ul>
     <div class="button-wrapper">
       <button (click)="editNotes()">Add Notes</button>
     </div>
   </div>
   <div *ngIf="isEditingNotes">
-    <span *ngFor="let note of addWineNotes" class="spn-add-wine-notes">{{note}}</span>
+    <input *ngFor="let note of wineNoteResponse.wineNotes" class="input-add-wine-notes" value="{{note.note}}">
+    <input *ngFor="let note of addWineNotes" class="input-add-wine-notes" value="{{note}}"/>
     <form (submit)='addNote()'>
       <input type="text" name="wineNote" id="wineNote" autofocus #wineNote>
       <button (click)="addNote()">Add</button>
