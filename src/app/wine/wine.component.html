@@ -34,8 +34,9 @@
     </div>
   </div>
   <div *ngIf="isEditingNotes">
-    <input *ngFor="let note of wineNoteResponse.wineNotes; let i  = index" class="input-add-wine-notes"
-           [(ngModel)]="note" [value]="note.note">
+    <ng-container *ngFor="let note of wineNoteResponse.wineNotes">
+      <input class="input-add-wine-notes" [(ngModel)]="note" [value]="note.note">
+    </ng-container>
     <input *ngFor="let note of addWineNotes" class="input-add-wine-notes" value="{{note}}"/>
     <form (submit)='addNote()'>
       <input type="text" name="wineNote" id="wineNote" autofocus #wineNote>
