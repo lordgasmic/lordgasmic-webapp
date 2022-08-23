@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { WineryResponse } from '../models/WineryResponse';
 import { DialogWineAddComponent } from '../dialog-wine-add/dialog-wine-add.component';
 import { MatDialog } from '@angular/material/dialog';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { RoleConstants } from '../configuration/RoleConstants';
 import { WineDisplay } from '../models/WineDisplay';
 import { WineRatingResponse } from '../models/WineRatingResponse';
@@ -23,7 +23,7 @@ export class WineryComponent implements OnInit {
   winesTasted: Array<WineDisplay> = [];
   winesUntasted: Array<WineDisplay> = [];
 
-  usersFormControl = new FormControl();
+  usersFormControl = new UntypedFormControl();
 
   hidden = true;
   isLoading = false;

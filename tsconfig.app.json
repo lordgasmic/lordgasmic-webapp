@@ -4,7 +4,7 @@
   "compilerOptions": {
     "outDir": "./out-tsc/app",
     "types": ["node"],
-    "target": "ES2016",
+    "target": "es2020",
     "module": "ES6"
   },
   "files": [
