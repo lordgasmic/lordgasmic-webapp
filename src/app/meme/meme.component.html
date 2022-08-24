@@ -1,23 +1,22 @@
-<form (submit)='submit($event)' >
+<form (submit)='submit($event)'>
   <label class="lbl" for="search">Seach by Tag</label><input type="text" name="search" id="search" #search>
   <button class="btn-search" type="button" value="Submit" (click)="submit($event)">Search</button>
 </form>
 
 <div [ngClass]="{'hide-container': hidden}">
   <div *ngFor="let meme of memeResponse">
-    <a href='{{meme.url}}' class ="a-image">
-<!--      todo: webm-->
-      <img *ngIf="isPicture(meme)" class="thumbnail" src='{{meme.url}}' />
+    <a href='{{meme.url}}' class="a-image">
+      <img *ngIf="isPicture(meme)" class="thumbnail" src='{{meme.url}}'/>
       <video *ngIf="idVideo(meme)" class="thumbnail" autoplay loop [muted]="'muted'">
         <source src="{{meme.url}}"/>
       </video>
     </a>
     <button (click)="copyToClipboard(meme.url)">
-      <img src='assets/icons/copy.png' class="copy2clipboard" />
+      <img src='assets/icons/copy.png' class="copy2clipboard"/>
     </button>
     <button (click)="share(meme.url)">
-      <img src="assets/icons/share.jpg" class="share" />
+      <img src="assets/icons/share.jpg" class="share"/>
     </button>
-    <br />
+    <br/>
   </div>
 </div>
