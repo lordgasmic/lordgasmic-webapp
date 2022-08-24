@@ -105,6 +105,7 @@ export class WineComponent implements OnInit {
       req.wineNotes.push(value);
     });
 
+    console.log(this.inputWineNotes);
     this.inputWineNotes.forEach((item) => {
       console.log('item value: ' + item.nativeElement.value);
     });
