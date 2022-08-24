@@ -35,6 +35,7 @@
   </div>
   <div *ngIf="isEditingNotes">
     <input *ngFor="let note of wineNoteResponse.wineNotes" class="input-add-wine-notes" value="{{note.note}}"
+           [id]="note.id"
            #inptWineNotes>
     <input *ngFor="let note of addWineNotes" class="input-add-wine-notes" value="{{note}}"/>
     <form (submit)='addNote()'>
