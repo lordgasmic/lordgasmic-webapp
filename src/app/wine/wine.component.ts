@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
 import { WineResponse } from '../models/WineResponse';
 import { WineNoteResponse } from '../models/WineNoteResponse';
@@ -18,7 +18,7 @@ import { WineImage } from '../models/WineImage';
   styleUrls: ['./wine.component.scss'],
   providers: [DatePipe]
 })
-export class WineComponent implements OnInit {
+export class WineComponent implements OnInit, AfterViewInit {
   constructor(
     private lordgasmicService: LordgasmicService,
     private route: ActivatedRoute,
@@ -72,6 +72,10 @@ export class WineComponent implements OnInit {
         });
       });
     });
+  }
+
+  ngAfterViewInit(): void {
+    this.inputWineNotes.changes.subscribe((c) => c.toArray().forEach((item) => console.log(item)));
   }
 
   addRating(): void {
