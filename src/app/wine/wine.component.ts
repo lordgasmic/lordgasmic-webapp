@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
 import { WineResponse } from '../models/WineResponse';
 import { WineNoteResponse } from '../models/WineNoteResponse';
@@ -30,6 +30,7 @@ export class WineComponent implements OnInit {
   }
 
   @ViewChild('wineNote') wineNoteRef: ElementRef;
+  @ViewChildren('inptWineNotes') inputWineNotes: QueryList<ElementRef>;
 
   wineResponse: WineResponse;
   wineNoteResponse: WineNoteResponse;
@@ -104,6 +105,9 @@ export class WineComponent implements OnInit {
       req.wineNotes.push(value);
     });
 
+    this.inputWineNotes.forEach((item) => {
+      console.log('item value: ' + item.nativeElement.value);
+    });
     this.lordgasmicService.addWineNotes(req).subscribe((response) => {
       this.wineNoteResponse.wineNotes.push(...response.wineNotes);
     });
