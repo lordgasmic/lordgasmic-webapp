@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
 import { WineResponse } from '../models/WineResponse';
 import { WineNoteResponse } from '../models/WineNoteResponse';
@@ -18,7 +18,7 @@ import { WineImage } from '../models/WineImage';
   styleUrls: ['./wine.component.scss'],
   providers: [DatePipe]
 })
-export class WineComponent implements OnInit, AfterViewInit {
+export class WineComponent implements OnInit {
   constructor(
     private lordgasmicService: LordgasmicService,
     private route: ActivatedRoute,
@@ -74,10 +74,6 @@ export class WineComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit(): void {
-    this.inputWineNotes.changes.subscribe((c) => c.toArray().forEach((item) => console.log(item)));
-  }
-
   addRating(): void {
     const dialogRef = this.dialog.open(DialogWineRatingAddComponent, {
       data: { wineId: this.wineId, date: this.date }
@@ -110,10 +106,7 @@ export class WineComponent implements OnInit, AfterViewInit {
     });
 
     console.log('inputs len', this.inputWineNotes.length);
-    for (const item of this.inputWineNotes) {
-      console.log('item value', item.nativeElement.value);
-    }
-    this.inputWineNotes.forEach((item: ElementRef) => console.log(item.nativeElement));
+    this.inputWineNotes.forEach((item: ElementRef) => console.log(item.nativeElement.value));
 
     this.lordgasmicService.addWineNotes(req).subscribe((response) => {
       this.wineNoteResponse.wineNotes.push(...response.wineNotes);
