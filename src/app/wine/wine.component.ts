@@ -105,8 +105,14 @@ export class WineComponent implements OnInit {
       req.wineNotes.push(value);
     });
 
+    console.log('first', this.inputWineNotes.first);
+    console.log('last', this.inputWineNotes.last);
+    console.log('dirty', this.inputWineNotes.dirty);
     console.log('inputs len', this.inputWineNotes.length);
     console.log('get 0', this.inputWineNotes.get(0));
+    this.inputWineNotes.changes.subscribe((value) => {
+      console.log(value);
+    });
     for (let i = 0; i < this.inputWineNotes.length; ++i) {
       console.log('item value', this.inputWineNotes.get(i).nativeElement.value);
     }
