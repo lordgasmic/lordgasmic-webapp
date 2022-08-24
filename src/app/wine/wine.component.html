@@ -30,7 +30,9 @@
     <!--      <li *ngFor="let note of wineNoteResponse.wineNotes">{{note.note}}</li>-->
     <!--    </ul>-->
     <ng-container *ngIf="isWineNoteAvailable">
-      <input *ngFor="let note of wineNoteResponse.wineNotes" value="{{note.note}}" #inptWineNotes/>
+      <ng-container *ngFor="let note of wineNoteResponse.wineNotes">
+        <input value="{{note.note}}" #inptWineNotes/>
+      </ng-container>
     </ng-container>
     <div class="button-wrapper">
       <button (click)="editNotes()">Add Notes</button>
