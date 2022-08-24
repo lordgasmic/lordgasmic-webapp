@@ -106,9 +106,10 @@ export class WineComponent implements OnInit {
     });
 
     console.log(this.inputWineNotes);
-    this.inputWineNotes.toArray().forEach((item) => {
+    for (const item of this.inputWineNotes) {
       console.log('item value', item.nativeElement.value);
-    });
+    }
+
     this.lordgasmicService.addWineNotes(req).subscribe((response) => {
       this.wineNoteResponse.wineNotes.push(...response.wineNotes);
     });
