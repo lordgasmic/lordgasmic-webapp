@@ -106,15 +106,12 @@ export class WineComponent implements OnInit {
     });
 
     this.inputWineNotes.forEach((item: ElementRef) => {
-      console.log('id', item.nativeElement.id);
-      console.log('value', item.nativeElement.value);
       req.upsert.push({ id: item.nativeElement.id, note: item.nativeElement.value });
     });
 
     console.log(req);
 
     this.lordgasmicService.addWineNotes(req).subscribe((response) => {
-      console.log('response', response);
       this.wineNoteResponse.wineNotes = response.wineNotes;
     });
 
