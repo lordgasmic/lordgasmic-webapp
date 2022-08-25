@@ -114,6 +114,7 @@ export class WineComponent implements OnInit {
     console.log(req);
 
     this.lordgasmicService.addWineNotes(req).subscribe((response) => {
+      console.log('response', response);
       this.wineNoteResponse.wineNotes = response.wineNotes;
     });
 
