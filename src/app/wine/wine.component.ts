@@ -94,7 +94,6 @@ export class WineComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        // this.wineRatingResponse.push(result);
         const itemToReplace = this.wineRatingResponse.filter((response) => {
           return response.id === result.id;
         });
