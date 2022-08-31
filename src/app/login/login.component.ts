@@ -1,7 +1,8 @@
 import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { LoginRequest } from '../models/LoginRequest';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { WebappConstants } from '../configuration/WebappConstants';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,19 @@ export class LoginComponent implements OnInit {
     loginRequest.password = this.password.nativeElement.value;
 
     this.lordgasmicService.login(loginRequest).subscribe((value) => {
-      this.zone.run(() => this.router.navigate(['/portal']));
+      let redirectUrl = '/portal';
+      const previousPageUrl = this.getPreviousPageUrl();
+      if (previousPageUrl) {
+        redirectUrl = previousPageUrl;
+      }
+      this.zone.run(() => this.router.navigate([redirectUrl]));
     });
+  }
+
+  public getPreviousPageUrl(): string | null {
+    try {
+      return window.sessionStorage.getItem(WebappConstants.PREVIOUS_URL);
+    } catch (e) {}
+    return null;
   }
 }

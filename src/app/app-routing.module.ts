@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { PumpingComponent } from './pumping/pumping.component';
 import { FeedingComponent } from './feeding/feeding.component';
 import { FeedingHistoryComponent } from './feeding-history/feeding-history.component';
@@ -12,7 +12,7 @@ import { WineComponent } from './wine/wine.component';
 import { FunkoComponent } from './funko/funko.component';
 import { WineTastingComponent } from './wine-tasting/wine-tasting.component';
 import { WineryComponent } from './winery/winery.component';
-import {GasComponent} from "./gas/gas.component";
+import { GasComponent } from './gas/gas.component';
 
 const routes: Routes = [
   {

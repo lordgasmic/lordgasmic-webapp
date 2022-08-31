@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LordgasmicService } from './services/lordgasmic/lordgasmic.service';
-import { logger } from 'codelyzer/util/logger';
+import { WebappConstants } from './configuration/WebappConstants';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +21,13 @@ export class AppComponent implements OnInit {
       console.log('sessionInfo: ', sessionInfo);
       sessionStorage.setItem('username', sessionInfo.username);
       sessionStorage.setItem('roles', String(sessionInfo.roles));
+      this.setPreviousPageUrl();
     });
+  }
+
+  private setPreviousPageUrl(): void {
+    try {
+      window.sessionStorage.setItem(WebappConstants.PREVIOUS_URL, window.location.href);
+    } catch (e) {}
   }
 }
