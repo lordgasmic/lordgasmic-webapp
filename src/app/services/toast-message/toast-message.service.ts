@@ -1,6 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router, NavigationStart } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +15,13 @@ export class ToastMessageService {
   }
 
   showToastMessage(message: string, duration?: number): void {
-    this.zone.run(() => {
-      this.matSnackBar.open(message, undefined, { duration: duration || 3000, verticalPosition: 'bottom', horizontalPosition: 'center' });
+    // this.zone.run(() => {
+    this.matSnackBar.open(message, undefined, {
+      duration: duration || 3000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'center'
     });
+    // });
   }
 
   hideToastMessage(): void {
