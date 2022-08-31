@@ -11,6 +11,7 @@ import { WineNoteRequest } from '../models/WineNoteRequest';
 import { WineImageDisplay } from '../models/WineImageDisplay';
 import { DialogWineImageAddComponent } from '../dialog-wine-image-add/dialog-wine-image-add.component';
 import { WineImage } from '../models/WineImage';
+import { DialogWineRatingEditComponent } from '../dialog-wine-rating-edit/dialog-wine-rating-edit.component';
 
 @Component({
   selector: 'app-wine',
@@ -82,6 +83,24 @@ export class WineComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.wineRatingResponse.push(result);
+      }
+    });
+  }
+
+  editWineRating(id: number, rating: string): void {
+    const dialogRef = this.dialog.open(DialogWineRatingEditComponent, {
+      data: { id, rating }
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // this.wineRatingResponse.push(result);
+        const itemToReplace = this.wineRatingResponse.filter((response) => {
+          return response.id === result.id;
+        });
+        const index = this.wineRatingResponse.indexOf(itemToReplace[0]);
+
+        this.wineRatingResponse[index] = result;
       }
     });
   }

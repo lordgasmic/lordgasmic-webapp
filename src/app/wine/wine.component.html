@@ -15,8 +15,13 @@
   Wine Rating:
   <div *ngIf="isWineRatingAvailable">
     <ul>
-      <li *ngFor="let rating of wineRatingResponse">{{rating.rating == "-1" ? "💩" : rating.rating}} ({{rating.date}})
-      </li>
+      <ng-container *ngFor="let rating of wineRatingResponse">
+        <li>
+          {{rating.rating == "-1" ? "💩" : rating.rating}} ({{rating.date}})
+        </li>
+        <button *ngIf="date === rating.date" (click)="editWineRating(rating.id, rating.rating)"
+                class="btn-rating-edit"></button>
+      </ng-container>
     </ul>
   </div>
   <div class="button-wrapper">

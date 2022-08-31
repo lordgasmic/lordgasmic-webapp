@@ -43,6 +43,7 @@ import { DialogWineImageAddComponent } from './dialog-wine-image-add/dialog-wine
 import { WineHeaderComponent } from './wine-header/wine-header.component';
 import { WineCardComponent } from './wine-card/wine-card.component';
 import { GasComponent } from './gas/gas.component';
+import { DialogWineRatingEditComponent } from './dialog-wine-rating-edit/dialog-wine-rating-edit.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { GasComponent } from './gas/gas.component';
     DialogWineImageAddComponent,
     WineHeaderComponent,
     WineCardComponent,
-    GasComponent
+    GasComponent,
+    DialogWineRatingEditComponent
   ],
   imports: [
     BrowserModule,
