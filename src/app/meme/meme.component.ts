@@ -5,7 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PictureType } from '../models/PictureType';
 import { VideoType } from '../models/VideoType';
 import { ToastMessageService } from '../services/toast-message/toast-message.service';
-import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-meme',
@@ -34,6 +33,7 @@ export class MemeComponent implements OnInit {
       } else {
         const tag = params.get('tag');
         this.lordgasmicService.getMemes(tag).subscribe((value) => {
+          console.log('memes', value);
           this.memeResponse = value;
           this.hidden = false;
         });
