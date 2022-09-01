@@ -6,7 +6,7 @@
 <div [ngClass]="{'hide-container': hidden}">
   <div *ngFor="let meme of memeResponse">
     <a href='{{meme.url}}' class="a-image">
-      <img *ngIf="isPicture(meme)" class="thumbnail" src='tb-{{meme.url}}'/>
+      <img *ngIf="isPicture(meme)" class="thumbnail" src='{{meme.thumbnailUrl}}'/>
       <video *ngIf="idVideo(meme)" class="thumbnail" autoplay loop [muted]="'muted'">
         <source src="{{meme.url}}"/>
       </video>
