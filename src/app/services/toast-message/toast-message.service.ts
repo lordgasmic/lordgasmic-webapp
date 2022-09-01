@@ -18,7 +18,7 @@ export class ToastMessageService {
     // this.zone.run(() => {
     this.matSnackBar.open(message, undefined, {
       duration: duration || 3000,
-      verticalPosition: 'bottom',
+      // verticalPosition: 'bottom',
       horizontalPosition: 'center'
     });
     // });
