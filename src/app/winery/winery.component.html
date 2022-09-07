@@ -20,14 +20,16 @@
 <div>
   <div class="tasted-header">
     <h1 class="banner">Wines tasted</h1>
-    <img *ngIf="isList" class="list-grid-view-ico" src="assets/icons/list-view-30.png" (click)="toggleListGridView()"/>
-    <img *ngIf="!isList" class="list-grid-view-ico" src="assets/icons/grid-view-48.png" (click)="toggleListGridView()"/>
+    <img *ngIf="!isList" class="list-grid-view-ico" src="assets/icons/list-view-30.png" (click)="toggleListGridView()"/>
+    <img *ngIf="isList" class="list-grid-view-ico" src="assets/icons/grid-view-48.png" (click)="toggleListGridView()"/>
   </div>
   <div *ngIf="winesTasted.length === 0">
     <span>You do not have any tasted wines</span>
   </div>
-  <div class="card" [ngClass]="getListGridViewClassName()" *ngFor="let wine of winesTasted">
-    <app-wine-card [wineDisplay]="wine" [wineRatings]="wineRatings"></app-wine-card>
+  <div class="cards-container">
+    <div class="card" [ngClass]="getListGridViewClassName()" *ngFor="let wine of winesTasted">
+      <app-wine-card [wineDisplay]="wine" [wineRatings]="wineRatings"></app-wine-card>
+    </div>
   </div>
 </div>
 

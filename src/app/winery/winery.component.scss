@@ -53,3 +53,9 @@
   display: flex;
   justify-content: space-between;
 }
+
+.cards-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
