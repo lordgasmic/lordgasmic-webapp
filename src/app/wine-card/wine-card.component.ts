@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { WineDisplay } from '../models/WineDisplay';
 import { WineRatingResponse } from '../models/WineRatingResponse';
 
@@ -8,9 +8,11 @@ import { WineRatingResponse } from '../models/WineRatingResponse';
   styleUrls: ['./wine-card.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class WineCardComponent implements OnInit {
+export class WineCardComponent implements OnInit, AfterViewInit {
   @Input() wineDisplay: WineDisplay;
   @Input() wineRatings: Array<WineRatingResponse>;
+
+  @ViewChildren('infosvg') infoRef: ElementRef;
 
   yourRatings = 0;
   totalRatings = 0;
@@ -20,8 +22,10 @@ export class WineCardComponent implements OnInit {
   ngOnInit(): void {
     this.getYourRatings(this.wineDisplay);
     this.getTotalRatings(this.wineDisplay);
-    document.addEventListener('contextmenu', (event) => {
-      console.log('event', event);
+  }
+
+  ngAfterViewInit(): void {
+    this.infoRef.nativeElement.addEventListener('contextmenu', (event) => {
       event.preventDefault();
     });
   }
