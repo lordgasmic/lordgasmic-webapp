@@ -8,8 +8,10 @@
   </div>
   <div *ngIf="wineRatings" class="ratings-container">
     <span>{{yourRatings}} rating(s) by you</span>
-    <span matTooltip="{{displayTooltip()}}" matTooltipClass="custom-tooltip">{{totalRatings}} total rating(s) <img
-      *ngIf="yourRatings !== totalRatings" src="assets/icons/info.svg" alt="info for item" class="info-svg"
-      #infosvg/></span>
+    <span matTooltip="{{displayTooltip()}}" matTooltipClass="custom-tooltip">
+      {{totalRatings}} total rating(s)
+      <img *ngIf="yourRatings !== totalRatings" src="assets/icons/info.svg" alt="info for item" class="info-svg"
+           #infosvg/>
+    </span>
   </div>
 </div>

@@ -12,7 +12,7 @@ export class WineCardComponent implements OnInit, AfterViewInit {
   @Input() wineDisplay: WineDisplay;
   @Input() wineRatings: Array<WineRatingResponse>;
 
-  @ViewChildren('infosvg') infoRef: ElementRef;
+  @ViewChildren('infosvg') infoRef: ElementRef[];
 
   yourRatings = 0;
   totalRatings = 0;
@@ -25,8 +25,10 @@ export class WineCardComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.infoRef.nativeElement.addEventListener('contextmenu', (event) => {
-      event.preventDefault();
+    this.infoRef.forEach((e) => {
+      e.nativeElement.addEventListener('contextmenu', (event) => {
+        event.preventDefault();
+      });
     });
   }
 
