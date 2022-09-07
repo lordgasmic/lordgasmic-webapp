@@ -30,6 +30,7 @@ export class WineryComponent implements OnInit {
   isWineryResponseLoaded = false;
   isUsersResponseLoaded = false;
   id: number;
+  isList = true;
 
   constructor(private lordgasmicService: LordgasmicService, private route: ActivatedRoute, private dialog: MatDialog) {}
 
@@ -127,5 +128,16 @@ export class WineryComponent implements OnInit {
         });
     }
     this.isLoading = false;
+  }
+
+  toggleListGridView(): void {
+    this.isList = !this.isList;
+  }
+
+  getListGridViewClassName(): string {
+    if (this.isList) {
+      return 'list';
+    }
+    return 'grid';
   }
 }
