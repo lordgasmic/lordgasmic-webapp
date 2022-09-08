@@ -1,0 +1,30 @@
+.card-container {
+  display: flex;
+}
+
+.ratings-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1em;
+  justify-content: center;
+  gap: .5em;
+}
+
+.h1 {
+  border-bottom: 1px solid gray;
+  width: 50%;
+}
+
+.card-span {
+  display: flex;
+}
+
+.info-svg {
+  height: 17px;
+  width: 17px;
+  margin-bottom: -4px;
+}
+
+.custom-tooltip {
+  white-space: pre-line;
+}
