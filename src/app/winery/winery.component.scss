@@ -36,9 +36,6 @@
   margin: 3px;
 }
 
-.list {
-}
-
 .grid {
   width: 250px;
 }
@@ -53,8 +50,12 @@
   justify-content: space-between;
 }
 
-.cards-container {
+.cards-container-grid {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.cards-container-list {
+  display: block;
 }
