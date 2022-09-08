@@ -1,18 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WineCardXgridComponent } from './wine-card-xgrid.component';
+import { WineCardXGridComponent } from './wine-card-xgrid.component';
 
 describe('WineCardXgridComponent', () => {
-  let component: WineCardXgridComponent;
-  let fixture: ComponentFixture<WineCardXgridComponent>;
+  let component: WineCardXGridComponent;
+  let fixture: ComponentFixture<WineCardXGridComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WineCardXgridComponent ]
-    })
-    .compileComponents();
+      declarations: [WineCardXGridComponent]
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(WineCardXgridComponent);
+    fixture = TestBed.createComponent(WineCardXGridComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

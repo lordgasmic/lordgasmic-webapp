@@ -3,7 +3,7 @@ import { WineDisplay } from '../models/WineDisplay';
 import { WineRatingResponse } from '../models/WineRatingResponse';
 
 @Component({
-  selector: 'app-wine-card',
+  selector: 'app-wine-card-xlist',
   templateUrl: './wine-card.component.html',
   styleUrls: ['./wine-card.component.scss'],
   encapsulation: ViewEncapsulation.None

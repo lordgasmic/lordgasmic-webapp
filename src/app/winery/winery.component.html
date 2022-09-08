@@ -40,7 +40,8 @@
   </div>
   <div [ngClass]="getCardsContainerClassName()">
     <div class="card" [ngClass]="getListGridViewClassName()" *ngFor="let wine of winesUntasted">
-      <app-wine-card [wineDisplay]="wine" [wineRatings]="wineRatings"></app-wine-card>
+      <app-wine-card-xlist *ngIf="isList" [wineDisplay]="wine" [wineRatings]="wineRatings"></app-wine-card-xlist>
+      <app-wine-card-xgrid *ngIf="!isList" [wineDisplay]="wine" [wineRatings]="wineRatings"></app-wine-card-xgrid>
     </div>
   </div>
 </div>
