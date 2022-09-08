@@ -135,9 +135,10 @@ export class WineryComponent implements OnInit {
   }
 
   getListGridViewClassName(): string {
-    if (this.isList) {
-      return 'list';
-    }
-    return 'grid';
+    return this.isList ? 'list' : 'grid';
+  }
+
+  getCardsContainerClassName(): string {
+    return this.isList ? 'cards-container-list' : 'cards-container-grid';
   }
 }
