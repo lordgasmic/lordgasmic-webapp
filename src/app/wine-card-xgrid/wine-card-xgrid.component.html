@@ -6,7 +6,7 @@
       <span *ngFor="let friend of wineDisplay.wineFriend">{{friend}}</span> &nbsp;
     </div>
   </div>
-  <div *ngIf="wineRatings" class="ratings-container">
+  <div *ngIf="wineRatings" class="ratings-container-grid">
     <span>{{yourRatings}} rating(s) by you</span>
     <span matTooltip="{{displayTooltip()}}" matTooltipClass="custom-tooltip">
       {{totalRatings}} total rating(s)
