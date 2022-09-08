@@ -3,7 +3,7 @@ import { WineDisplay } from '../models/WineDisplay';
 import { WineRatingResponse } from '../models/WineRatingResponse';
 
 @Component({
-  selector: 'app-wine-card-xgrid',
+  selector: 'app-wine-card-xlist-xgrid',
   templateUrl: './wine-card-xgrid.component.html',
   styleUrls: ['./wine-card-xgrid.component.scss']
 })

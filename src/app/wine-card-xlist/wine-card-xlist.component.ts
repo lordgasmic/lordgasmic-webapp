@@ -4,11 +4,11 @@ import { WineRatingResponse } from '../models/WineRatingResponse';
 
 @Component({
   selector: 'app-wine-card-xlist',
-  templateUrl: './wine-card.component.html',
-  styleUrls: ['./wine-card.component.scss'],
+  templateUrl: './wine-card-xlist.component.html',
+  styleUrls: ['./wine-card-xlist.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class WineCardComponent implements OnInit, AfterViewInit {
+export class WineCardXListComponent implements OnInit, AfterViewInit {
   @Input() wineDisplay: WineDisplay;
   @Input() wineRatings: Array<WineRatingResponse>;
 
