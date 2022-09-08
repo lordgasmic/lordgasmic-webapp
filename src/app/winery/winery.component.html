@@ -38,7 +38,9 @@
   <div *ngIf="winesUntasted.length === 0">
     <span>You do not have any untasted wines</span>
   </div>
-  <div class="card" [ngClass]="getListGridViewClassName()" *ngFor="let wine of winesUntasted">
-    <app-wine-card [wineDisplay]="wine" [wineRatings]="wineRatings"></app-wine-card>
+  <div [ngClass]="getCardsContainerClassName()">
+    <div class="card" [ngClass]="getListGridViewClassName()" *ngFor="let wine of winesUntasted">
+      <app-wine-card [wineDisplay]="wine" [wineRatings]="wineRatings"></app-wine-card>
+    </div>
   </div>
 </div>
