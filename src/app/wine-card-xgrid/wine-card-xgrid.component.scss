@@ -1,5 +1,6 @@
-.card-container {
+.card-container-grid {
   display: flex;
+  flex-direction: column;
 }
 
 .ratings-container-grid {
