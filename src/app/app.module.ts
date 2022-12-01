@@ -45,6 +45,7 @@ import { WineCardXListComponent } from './wine-card-xlist/wine-card-xlist.compon
 import { GasComponent } from './gas/gas.component';
 import { DialogWineRatingEditComponent } from './dialog-wine-rating-edit/dialog-wine-rating-edit.component';
 import { WineCardXGridComponent } from './wine-card-xgrid/wine-card-xgrid.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -94,7 +95,8 @@ import { WineCardXGridComponent } from './wine-card-xgrid/wine-card-xgrid.compon
     MatTooltipModule,
     MatSelectModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgxChartsModule
   ],
   providers: [
     {

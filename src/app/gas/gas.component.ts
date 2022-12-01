@@ -18,6 +18,16 @@ export class GasComponent implements AfterViewInit {
 
   date: string;
 
+  dummyData = [
+    { name: 'derp', value: 20 },
+    { name: 'plop', value: 12 },
+    { name: 'blah', value: 55 },
+    {
+      name: 'nerp',
+      value: 34
+    }
+  ];
+
   constructor(private lordgasmicService: LordgasmicService, private datePipe: DatePipe) {
     const myDate = new Date();
     this.date = this.datePipe.transform(myDate, 'yyyy-MM-dd');
