@@ -13,6 +13,8 @@ import { FunkoComponent } from './funko/funko.component';
 import { WineTastingComponent } from './wine-tasting/wine-tasting.component';
 import { WineryComponent } from './winery/winery.component';
 import { GasComponent } from './gas/gas.component';
+import { GasFormComponent } from './gas-form/gas-form.component';
+import { GasStatsComponent } from './gas-stats/gas-stats.component';
 
 const routes: Routes = [
   {
@@ -66,6 +68,14 @@ const routes: Routes = [
   {
     path: 'gas',
     component: GasComponent
+  },
+  {
+    path: 'gas/form',
+    component: GasFormComponent
+  },
+  {
+    path: 'gas/stats',
+    component: GasStatsComponent
   }
 ];
 
