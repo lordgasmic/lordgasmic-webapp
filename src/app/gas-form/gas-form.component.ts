@@ -42,7 +42,7 @@ export class GasFormComponent implements AfterViewInit {
     };
 
     this.lordgasmicService.addGas(request).subscribe((response) => {
-      window.location.reload();
+      window.location.assign('gas/stats');
     });
   }
 }
