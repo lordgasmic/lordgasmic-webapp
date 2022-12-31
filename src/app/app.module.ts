@@ -46,6 +46,7 @@ import { GasComponent } from './gas/gas.component';
 import { DialogWineRatingEditComponent } from './dialog-wine-rating-edit/dialog-wine-rating-edit.component';
 import { WineCardXGridComponent } from './wine-card-xgrid/wine-card-xgrid.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { GasStatsComponent } from './gas-stats/gas-stats.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     WineCardXListComponent,
     GasComponent,
     DialogWineRatingEditComponent,
-    WineCardXGridComponent
+    WineCardXGridComponent,
+    GasStatsComponent
   ],
   imports: [
     BrowserModule,
