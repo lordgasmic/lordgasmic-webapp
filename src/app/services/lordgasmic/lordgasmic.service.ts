@@ -339,4 +339,18 @@ export class LordgasmicService {
       );
     });
   }
+
+  getGas(vehicle: string): Observable<Array<GasResponse>> {
+    return new Observable((observer: Observer<Array<GasResponse>>) => {
+      this.http.get<Array<GasResponse>>(this.API + this.GAS + `?vehicle=${vehicle}`).subscribe(
+        (response) => {
+          observer.next(response);
+          observer.complete();
+        },
+        (err) => {
+          observer.error(err);
+        }
+      );
+    });
+  }
 }
