@@ -23,7 +23,15 @@ export class GasStatsComponent implements OnInit {
     });
 
     this.lordgasmicService.getGas('Charger').subscribe((res) => {
-      this.data = res;
+      this.data = res.sort((a, b) => {
+        if (a.date > b.date) {
+          return 1;
+        } else if (a.date < b.date) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
       this.vehicle = true;
       this.calculateMPG();
     });
