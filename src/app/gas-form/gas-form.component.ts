@@ -6,7 +6,8 @@ import { GasRequest } from '../models/GasRequest';
 @Component({
   selector: 'app-gas-form',
   templateUrl: './gas-form.component.html',
-  styleUrls: ['./gas-form.component.scss']
+  styleUrls: ['./gas-form.component.scss'],
+  providers: [DatePipe]
 })
 export class GasFormComponent implements AfterViewInit {
   @ViewChild('date') dateRef: ElementRef;
