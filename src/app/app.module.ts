@@ -48,6 +48,7 @@ import { WineCardXGridComponent } from './wine-card-xgrid/wine-card-xgrid.compon
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { GasStatsComponent } from './gas-stats/gas-stats.component';
 import { GasFormComponent } from './gas-form/gas-form.component';
+import { RecipeViewComponent } from './recipe-view/recipe-view.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { GasFormComponent } from './gas-form/gas-form.component';
     DialogWineRatingEditComponent,
     WineCardXGridComponent,
     GasStatsComponent,
-    GasFormComponent
+    GasFormComponent,
+    RecipeViewComponent
   ],
   imports: [
     BrowserModule,

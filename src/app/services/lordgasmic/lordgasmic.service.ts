@@ -21,6 +21,10 @@ import { WineImageResponse } from '../../models/WineImageResponse';
 import { GasRequest } from '../../models/GasRequest';
 import { GasResponse } from '../../models/GasResponse';
 import { WineRatingEditRequest } from '../../models/WineRatingEditRequest';
+import { RecipeResponse } from '../../models/RecipeResponse';
+import { IngredientResponse } from '../../models/IngredientResponse';
+import { TagResponse } from '../../models/TagResponse';
+import { DirectionResponse } from '../../models/DirectionResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +45,10 @@ export class LordgasmicService {
   private readonly USERS = '/v1/users';
   private readonly WINE_IMAGES = '/v1/wineImages';
   private readonly GAS = '/v1/gas';
+  private readonly RECIPE = '/v1/recipe';
+  private readonly RECIPE_INGREDIENT = '/v1/ingredient';
+  private readonly RECIPE_DIRECTION = '/v1/direction';
+  private readonly RECIPE_TAG = '/v1/tag';
 
   constructor(private http: HttpClient) {}
 
@@ -343,6 +351,76 @@ export class LordgasmicService {
   getGas(vehicle: string): Observable<Array<GasResponse>> {
     return new Observable((observer: Observer<Array<GasResponse>>) => {
       this.http.get<Array<GasResponse>>(this.API + this.GAS + `?vehicle=${vehicle}`).subscribe(
+        (response) => {
+          observer.next(response);
+          observer.complete();
+        },
+        (err) => {
+          observer.error(err);
+        }
+      );
+    });
+  }
+
+  getRecipes(): Observable<Array<RecipeResponse>> {
+    return new Observable((observer: Observer<Array<RecipeResponse>>) => {
+      this.http.get<Array<RecipeResponse>>(this.API + this.RECIPE).subscribe(
+        (response) => {
+          observer.next(response);
+          observer.complete();
+        },
+        (err) => {
+          observer.error(err);
+        }
+      );
+    });
+  }
+
+  getRecipe(recipeId: number): Observable<RecipeResponse> {
+    return new Observable((observer: Observer<RecipeResponse>) => {
+      this.http.get<RecipeResponse>(this.API + this.RECIPE + `/${recipeId}`).subscribe(
+        (response) => {
+          observer.next(response);
+          observer.complete();
+        },
+        (err) => {
+          observer.error(err);
+        }
+      );
+    });
+  }
+
+  getIngredientsForRecipe(recipeId: number): Observable<Array<IngredientResponse>> {
+    return new Observable((observer: Observer<Array<IngredientResponse>>) => {
+      this.http.get<Array<IngredientResponse>>(this.API + this.RECIPE_INGREDIENT + `/${recipeId}`).subscribe(
+        (response) => {
+          observer.next(response);
+          observer.complete();
+        },
+        (err) => {
+          observer.error(err);
+        }
+      );
+    });
+  }
+
+  getTagsForRecipe(recipeId: number): Observable<Array<TagResponse>> {
+    return new Observable((observer: Observer<Array<TagResponse>>) => {
+      this.http.get<Array<TagResponse>>(this.API + this.RECIPE_TAG + `/${recipeId}`).subscribe(
+        (response) => {
+          observer.next(response);
+          observer.complete();
+        },
+        (err) => {
+          observer.error(err);
+        }
+      );
+    });
+  }
+
+  getDirectionsForRecipe(recipeId: number): Observable<Array<DirectionResponse>> {
+    return new Observable((observer: Observer<Array<DirectionResponse>>) => {
+      this.http.get<Array<DirectionResponse>>(this.API + this.RECIPE_DIRECTION + `/${recipeId}`).subscribe(
         (response) => {
           observer.next(response);
           observer.complete();

@@ -15,6 +15,8 @@ import { WineryComponent } from './winery/winery.component';
 import { GasComponent } from './gas/gas.component';
 import { GasFormComponent } from './gas-form/gas-form.component';
 import { GasStatsComponent } from './gas-stats/gas-stats.component';
+import { RecipeHomeComponent } from './recipe-home/recipe-home.component';
+import { RecipeViewComponent } from './recipe-view/recipe-view.component';
 
 const routes: Routes = [
   {
@@ -76,6 +78,14 @@ const routes: Routes = [
   {
     path: 'gas/stats',
     component: GasStatsComponent
+  },
+  {
+    path: 'recipe',
+    component: RecipeHomeComponent
+  },
+  {
+    path: 'recipe/:id',
+    component: RecipeViewComponent
   }
 ];
 
