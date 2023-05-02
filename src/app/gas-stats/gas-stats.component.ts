@@ -11,7 +11,7 @@ import { GasSeries, GasVehicle } from '../models/GasMPG';
 })
 export class GasStatsComponent implements OnInit {
   data: Array<GasResponse> = [];
-  mpgData: GasVehicle;
+  mpgData: Array<GasVehicle> = [];
 
   vehicle = false;
 
@@ -40,6 +40,6 @@ export class GasStatsComponent implements OnInit {
 
       series.push({ name: date, value: mpg });
     }
-    this.mpgData = { name: 'Charger', series };
+    this.mpgData.push({ name: 'Charger', series });
   }
 }
