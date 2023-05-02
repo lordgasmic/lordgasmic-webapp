@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
 import { GasResponse } from '../models/GasResponse';
 import { ActivatedRoute } from '@angular/router';
-import { GasMPG } from '../models/GasMPG';
+import { GasSeries, GasVehicle } from '../models/GasMPG';
 
 @Component({
   selector: 'app-gas-stats',
@@ -10,18 +10,8 @@ import { GasMPG } from '../models/GasMPG';
   styleUrls: ['./gas-stats.component.scss']
 })
 export class GasStatsComponent implements OnInit {
-  dummyData = [
-    { name: 'derp', value: 20 },
-    { name: 'plop', value: 12 },
-    { name: 'blah', value: 55 },
-    {
-      name: 'nerp',
-      value: 34
-    }
-  ];
-
   data: Array<GasResponse> = [];
-  mpgData: Array<GasMPG> = [];
+  mpgData: GasVehicle;
 
   vehicle = false;
 
@@ -34,18 +24,22 @@ export class GasStatsComponent implements OnInit {
 
     this.lordgasmicService.getGas('Charger').subscribe((res) => {
       this.data = res;
+      this.vehicle = true;
       this.calculateMPG();
     });
   }
 
   calculateMPG(): void {
+    const series: Array<GasSeries> = [];
     for (let i = 1; i < this.data.length; i++) {
       const gal = Number(this.data[i].gas);
       const odo = Number(this.data[i].odometer) - Number(this.data[i - 1].odometer);
       const date = this.data[i].date;
 
       const mpg = odo / gal + '';
-      this.mpgData.push({ date, mpg });
+
+      series.push({ name: date, value: mpg });
     }
+    this.mpgData = { name: 'Charger', series };
   }
 }

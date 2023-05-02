@@ -1,27 +1,7 @@
-<ngx-charts-bar-vertical
-  [view]="[1000,400]"
-  [results]="dummyData"
-  [xAxisLabel]="'Products'"
-  [legendTitle]="'Dummy Data'"
-  [yAxisLabel]="'Sales'"
-  [legend]="true"
-  [showXAxisLabel]="true"
-  [showYAxisLabel]="true"
-  [xAxis]="true"
-  [yAxis]="true"
-  [gradient]="true">
-</ngx-charts-bar-vertical>
-
-<div *ngIf="!vehicle">
-  <div *ngFor="derp">
-    <a href="gas?vehicle${derp}">{{derp}}</a>
-  </div>
-</div>
-
 <div *ngIf="vehicle">
-  <ngx-charts-bar-vertical
+  <ngx-charts-line-chart
     [view]="[1000,400]"
-    [results]="dummyData"
+    [results]="mpgData"
     [xAxisLabel]="'Products'"
     [legendTitle]="'Dummy Data'"
     [yAxisLabel]="'Sales'"
@@ -31,5 +11,12 @@
     [xAxis]="true"
     [yAxis]="true"
     [gradient]="true">
-  </ngx-charts-bar-vertical>
+  </ngx-charts-line-chart>
+</div>
+
+<div *ngIf="!vehicle">
+  <!--  <div *ngFor="derp">-->
+  <!--    <a href="gas?vehicle${derp}">{{derp}}</a>-->
+  <!--  </div>-->
+  <span>Vehicle not set</span>
 </div>
