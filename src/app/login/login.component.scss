@@ -1,8 +1,12 @@
+.centered {
+	margin: 0 auto;
+	max-width: 500px;
+}
+
 .login-form {
 	background: #ffffff;
 	border-radius: 0.5rem;
-	margin: 20px auto 0;
-	max-width: 400px;
+	margin: 20px;
 	padding: 1rem;
 	position: relative;
 }

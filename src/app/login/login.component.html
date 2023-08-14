@@ -1,13 +1,15 @@
-<div class="login-form">
-  <form [formGroup]="form" (submit)="login()">
-    <mat-form-field class="field">
-      <mat-label>Username</mat-label>
-      <input matInput type="text" name="username" id="username" formControlName="username">
-    </mat-form-field>
-    <mat-form-field class="field">
-      <mat-label>Password</mat-label>
-      <input matInput type="password" name="password" id="password" formControlName="password">
-    </mat-form-field>
-    <button mat-button type="submit">Submit</button>
-  </form>
+<div class="centered">
+  <div class="login-form">
+    <form [formGroup]="form" (submit)="login()">
+      <mat-form-field class="field">
+        <mat-label>Username</mat-label>
+        <input matInput type="text" name="username" id="username" formControlName="username">
+      </mat-form-field>
+      <mat-form-field class="field">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" name="password" id="password" formControlName="password">
+      </mat-form-field>
+      <button mat-button type="submit">Submit</button>
+    </form>
+  </div>
 </div>

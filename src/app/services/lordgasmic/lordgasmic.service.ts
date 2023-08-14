@@ -95,12 +95,7 @@ export class LordgasmicService {
   }
 
   login(loginRequest: LoginRequest): Observable<LoginInfo> {
-    return new Observable<LoginInfo>((observer: Observer<LoginInfo>) => {
-      this.http.post<LoginInfo>(this.API + this.LOGIN, loginRequest).subscribe((response) => {
-        observer.next(response);
-        observer.complete();
-      });
-    });
+    return this.http.post<LoginInfo>(this.API + this.LOGIN, loginRequest);
   }
 
   getMemes(tag: string): Observable<Array<MemeResponse>> {
