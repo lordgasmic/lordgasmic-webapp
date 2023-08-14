@@ -25,6 +25,7 @@ import { RecipeResponse } from '../../models/RecipeResponse';
 import { IngredientResponse } from '../../models/IngredientResponse';
 import { TagResponse } from '../../models/TagResponse';
 import { DirectionResponse } from '../../models/DirectionResponse';
+import { WebappConstants } from '../../configuration/WebappConstants';
 
 @Injectable({
   providedIn: 'root'
@@ -97,6 +98,7 @@ export class LordgasmicService {
   login(loginRequest: LoginRequest): Observable<LoginInfo> {
     return new Observable<LoginInfo>((observer: Observer<LoginInfo>) => {
       this.http.post<LoginInfo>(this.API + this.LOGIN, loginRequest).subscribe((response) => {
+        localStorage.setItem(WebappConstants.LORDGASMIC_AUTH_TOKEN, response.token);
         observer.next(response);
         observer.complete();
       });
