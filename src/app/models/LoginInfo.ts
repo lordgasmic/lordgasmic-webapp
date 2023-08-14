@@ -1,1 +1,3 @@
-export class LoginInfo {}
+export class LoginInfo {
+  token: string;
+}
