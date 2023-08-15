@@ -25,6 +25,7 @@ import { RecipeResponse } from '../../models/RecipeResponse';
 import { IngredientResponse } from '../../models/IngredientResponse';
 import { TagResponse } from '../../models/TagResponse';
 import { DirectionResponse } from '../../models/DirectionResponse';
+import { WebappConstants } from '../../configuration/WebappConstants';
 
 @Injectable({
   providedIn: 'root'
