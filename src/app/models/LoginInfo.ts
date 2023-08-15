@@ -1,3 +1,7 @@
 export class LoginInfo {
-  token: string;
+  sessionInfo: SessionInfo;
+}
+
+export class SessionInfo {
+  authToken: string;
 }
