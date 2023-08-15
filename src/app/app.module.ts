@@ -49,6 +49,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { GasStatsComponent } from './gas-stats/gas-stats.component';
 import { GasFormComponent } from './gas-form/gas-form.component';
 import { RecipeViewComponent } from './recipe-view/recipe-view.component';
+import { RequestInterceptor } from './shared/RequestInterceptor';
 
 @NgModule({
   declarations: [
@@ -108,6 +109,11 @@ import { RecipeViewComponent } from './recipe-view/recipe-view.component';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestInterceptor,
       multi: true
     }
   ],
