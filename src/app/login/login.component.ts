@@ -1,9 +1,9 @@
 import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoginRequest } from '../models/LoginRequest';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
+import { ToastMessageService } from '../services/toast-message/toast-message.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +21,7 @@ export class LoginComponent {
     private lordgasmicService: LordgasmicService, 
     private router: Router, 
     private fb: FormBuilder,
-    private snackBar: MatSnackBar,
+    private toast: ToastMessageService,
     private zone: NgZone
   ) {}
 
@@ -35,7 +35,7 @@ export class LoginComponent {
         this.zone.run(() => this.router.navigate(['/portal']));
       },
       (error) => {
-        this.snackBar.open('Username or password is incorrect.', 'Close');
+        this.toast.showToastMessage('Username or password is incorrect.');
       }
     );
   }
