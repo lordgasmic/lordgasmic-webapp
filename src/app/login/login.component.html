@@ -1,5 +1,15 @@
-<div>
-  <label class="lbl" for="username">Username</label><input type="text" name="username" id="username" #username>
-  <label class="lbl" for="password">Password</label><input type="password" name="password" id="password" #password (keyup.enter)="login()">
-  <input type="submit" value="Submit" (click)="login()">
+<div class="centered">
+  <div class="login-form">
+    <form [formGroup]="form" (submit)="login()">
+      <mat-form-field class="field">
+        <mat-label>Username</mat-label>
+        <input matInput type="text" name="username" id="username" formControlName="username">
+      </mat-form-field>
+      <mat-form-field class="field">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" name="password" id="password" formControlName="password">
+      </mat-form-field>
+      <button mat-button type="submit">Submit</button>
+    </form>
+  </div>
 </div>

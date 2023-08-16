@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { FeedRequest } from '../../models/FeedRequest';
 import { FeedResponse } from '../../models/FeedResponse';
 import { Observable, Observer } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { SessionInfo } from '../../models/SessionInfo';
 import { LoginRequest } from '../../models/LoginRequest';
 import { LoginInfo } from '../../models/LoginInfo';
@@ -96,13 +97,11 @@ export class LordgasmicService {
   }
 
   login(loginRequest: LoginRequest): Observable<LoginInfo> {
-    return new Observable<LoginInfo>((observer: Observer<LoginInfo>) => {
-      this.http.post<LoginInfo>(this.API + this.LOGIN, loginRequest).subscribe((response) => {
-        localStorage.setItem(WebappConstants.LORDGASMIC_AUTH_TOKEN, response.sessionInfo.authToken);
-        observer.next(response);
-        observer.complete();
-      });
-    });
+    return this.http.post<LoginInfo>(this.API + this.LOGIN, loginRequest).pipe(
+      tap(response => {
+         localStorage.setItem(WebappConstants.LORDGASMIC_AUTH_TOKEN, response.token);
+      })
+    );
   }
 
   getMemes(tag: string): Observable<Array<MemeResponse>> {
