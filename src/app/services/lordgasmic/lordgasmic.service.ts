@@ -98,8 +98,8 @@ export class LordgasmicService {
 
   login(loginRequest: LoginRequest): Observable<LoginInfo> {
     return this.http.post<LoginInfo>(this.API + this.LOGIN, loginRequest).pipe(
-      tap(response => {
-         localStorage.setItem(WebappConstants.LORDGASMIC_AUTH_TOKEN, response.token);
+      tap((response) => {
+        localStorage.setItem(WebappConstants.LORDGASMIC_AUTH_TOKEN, response.sessionInfo.authToken);
       })
     );
   }
