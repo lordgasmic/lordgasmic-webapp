@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
+import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  constructor(private lordgasmicService: LordgasmicService, private router: Router, private zone: NgZone) {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  logout(): void {
+    this.lordgasmicService.logout().subscribe((value) => {
+      this.zone.run(() => this.router.navigate(['/']));
+    });
   }
-
 }

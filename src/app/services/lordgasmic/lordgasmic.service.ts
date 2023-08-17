@@ -38,6 +38,7 @@ export class LordgasmicService {
   private readonly FEEDS = '/v2/feeds';
   private readonly SESSION = '/v1/session';
   private readonly LOGIN = '/v1/login';
+  private readonly LOGOUT = '/v1/logout';
   private readonly MEME = '/v1/memes/tag/';
   private readonly WINERIES = '/v1/wineries/';
   private readonly WINES = '/v1/wines/';
@@ -102,6 +103,10 @@ export class LordgasmicService {
         localStorage.setItem(WebappConstants.LORDGASMIC_AUTH_TOKEN, response.authToken);
       })
     );
+  }
+
+  logout(): Observable<void> {
+    return this.http.get<void>(this.API + this.LOGOUT);
   }
 
   getMemes(tag: string): Observable<Array<MemeResponse>> {

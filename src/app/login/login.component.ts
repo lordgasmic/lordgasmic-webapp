@@ -1,4 +1,4 @@
-import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginRequest } from '../models/LoginRequest';
@@ -11,15 +11,14 @@ import { ToastMessageService } from '../services/toast-message/toast-message.ser
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-
   form = this.fb.group({
     username: ['', [Validators.required]],
     password: ['', [Validators.required]]
   });
 
   constructor(
-    private lordgasmicService: LordgasmicService, 
-    private router: Router, 
+    private lordgasmicService: LordgasmicService,
+    private router: Router,
     private fb: FormBuilder,
     private toast: ToastMessageService,
     private zone: NgZone
