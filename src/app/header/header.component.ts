@@ -1,6 +1,7 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
 import { Router } from '@angular/router';
+import { WebappConstants } from '../configuration/WebappConstants';
 
 @Component({
   selector: 'app-header',
@@ -12,8 +13,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  logout(): void {
+  logout(event): void {
+    event.preventDefault();
     this.lordgasmicService.logout().subscribe((value) => {
+      localStorage.removeItem(WebappConstants.LORDGASMIC_AUTH_TOKEN);
       this.zone.run(() => this.router.navigate(['/']));
     });
   }
