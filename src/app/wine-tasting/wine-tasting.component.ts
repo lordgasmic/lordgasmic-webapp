@@ -1,6 +1,6 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { WineryResponse } from '../models/WineryResponse';
-import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
+import { WineService } from '../services/wine/wine.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogWineryAddComponent } from '../dialog-winery-add/dialog-winery-add.component';
 import { Router } from '@angular/router';
@@ -13,10 +13,16 @@ import { Router } from '@angular/router';
 export class WineTastingComponent implements OnInit {
   wineryResponse: Array<WineryResponse> = [];
   hidden = true;
-  constructor(private lordgasmicService: LordgasmicService, private dialog: MatDialog, private router: Router, private zone: NgZone) {}
+
+  constructor(
+    private wineService: WineService, 
+    private dialog: MatDialog, 
+    private router: Router, 
+    private zone: NgZone
+  ) {}
 
   ngOnInit(): void {
-    this.lordgasmicService.getWineries().subscribe((value) => {
+    this.wineService.getWineries().subscribe((value) => {
       this.wineryResponse = value;
       this.hidden = false;
     });

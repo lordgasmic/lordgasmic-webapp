@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WineService } from '../services/wine/wine.service';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
 import { ActivatedRoute } from '@angular/router';
 import { WineryResponse } from '../models/WineryResponse';
@@ -32,19 +33,24 @@ export class WineryComponent implements OnInit {
   id: number;
   isList = true;
 
-  constructor(private lordgasmicService: LordgasmicService, private route: ActivatedRoute, private dialog: MatDialog) {}
+  constructor(
+    private lordgasmicService: LordgasmicService,
+    private wineService: WineService, 
+    private route: ActivatedRoute, 
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.id = params.id;
-      this.lordgasmicService.getWinery(this.id).subscribe((value) => {
+      this.wineService.getWinery(this.id).subscribe((value) => {
         this.wineryResponse = value;
         this.isWineryResponseLoaded = true;
-        this.lordgasmicService.getWinesByWinery(this.id).subscribe((res) => {
+        this.wineService.getWinesByWinery(this.id).subscribe((res) => {
           this.wineResponses = res;
           this.hidden = false;
 
-          this.lordgasmicService
+          this.wineService
             .getWineRatingsByUsersForWineIds(
               ['*'],
               this.wineResponses.map((wr) => {

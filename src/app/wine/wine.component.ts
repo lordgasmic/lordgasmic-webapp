@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
+import { WineService } from '../services/wine/wine.service';
 import { WineResponse } from '../models/WineResponse';
 import { WineNoteResponse } from '../models/WineNoteResponse';
 import { WineRatingResponse } from '../models/WineRatingResponse';
@@ -21,7 +21,7 @@ import { DialogWineRatingEditComponent } from '../dialog-wine-rating-edit/dialog
 })
 export class WineComponent implements OnInit {
   constructor(
-    private lordgasmicService: LordgasmicService,
+    private wineService: WineService,
     private route: ActivatedRoute,
     private dialog: MatDialog,
     private datePipe: DatePipe
@@ -54,18 +54,18 @@ export class WineComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.wineId = params.id;
-      this.lordgasmicService.getWineById(this.wineId).subscribe((res) => {
+      this.wineService.getWineById(this.wineId).subscribe((res) => {
         this.wineResponse = res;
         this.isWineAvailable = true;
-        this.lordgasmicService.getWineNotesByWineId(this.wineId).subscribe((wnr) => {
+        this.wineService.getWineNotesByWineId(this.wineId).subscribe((wnr) => {
           this.wineNoteResponse = wnr;
           this.isWineNoteAvailable = true;
         });
-        this.lordgasmicService.getWineRatingByWineId(this.wineId).subscribe((wrr) => {
+        this.wineService.getWineRatingByWineId(this.wineId).subscribe((wrr) => {
           this.wineRatingResponse = wrr;
           this.isWineRatingAvailable = true;
         });
-        this.lordgasmicService.getWineImages(this.wineId).subscribe((response) => {
+        this.wineService.getWineImages(this.wineId).subscribe((response) => {
           this.isWineImagesAvailable = true;
           response.wineImages.forEach((wi) => {
             this.loadImage(wi);
@@ -129,7 +129,7 @@ export class WineComponent implements OnInit {
 
     console.log(req);
 
-    this.lordgasmicService.addWineNotes(req).subscribe((response) => {
+    this.wineService.addWineNotes(req).subscribe((response) => {
       this.wineNoteResponse.wineNotes = response.wineNotes;
     });
 
@@ -161,7 +161,7 @@ export class WineComponent implements OnInit {
         formData.append('wineId', this.wineId + '');
 
         this.isLoading = true;
-        this.lordgasmicService.addWineImage(formData).subscribe((response) => {
+        this.wineService.addWineImage(formData).subscribe((response) => {
           response.wineImages.forEach((wi) => {
             this.loadImage(wi);
             this.isLoading = false;

@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, Inject, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
+import { WineService } from '../services/wine/wine.service';
 import { WineRatingEditDialogData } from '../models/WineRatingEditDialogData';
 
 @Component({
@@ -14,7 +14,7 @@ export class DialogWineRatingEditComponent implements AfterViewInit {
   constructor(
     public dialogRef: MatDialogRef<DialogWineRatingEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: WineRatingEditDialogData,
-    private lordgasmicService: LordgasmicService
+    private wineService: WineService
   ) {}
 
   ngAfterViewInit(): void {
@@ -33,7 +33,7 @@ export class DialogWineRatingEditComponent implements AfterViewInit {
       rating
     };
 
-    this.lordgasmicService.editWineRating(request).subscribe((response) => {
+    this.wineService.editWineRating(request).subscribe((response) => {
       this.dialogRef.close(response);
     });
   }

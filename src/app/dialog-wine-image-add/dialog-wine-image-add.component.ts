@@ -1,7 +1,6 @@
 import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { WineRatingDialogData } from '../models/WineRatingDialogData';
-import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
 import { WineRatingRequest } from '../models/WineRatingRequest';
 import { WineImageResponse } from '../models/WineImageResponse';
 import { WineImageDialogData } from '../models/WineImageDialogData';
@@ -19,7 +18,6 @@ export class DialogWineImageAddComponent {
   constructor(
     public dialogRef: MatDialogRef<DialogWineImageAddComponent>,
     @Inject(MAT_DIALOG_DATA) public data: WineImageDialogData,
-    private lordgasmicService: LordgasmicService
   ) {}
 
   onNoClick(): void {
