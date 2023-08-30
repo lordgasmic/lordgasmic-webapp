@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { UntypedFormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { forkJoin } from 'rxjs';
 import { WineService } from '../services/wine/wine.service';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
-import { ActivatedRoute } from '@angular/router';
 import { WineryResponse } from '../models/WineryResponse';
 import { DialogWineAddComponent } from '../dialog-wine-add/dialog-wine-add.component';
-import { MatDialog } from '@angular/material/dialog';
-import { UntypedFormControl } from '@angular/forms';
 import { RoleConstants } from '../configuration/RoleConstants';
 import { WineDisplay } from '../models/WineDisplay';
 import { WineRatingResponse } from '../models/WineRatingResponse';
@@ -43,27 +44,22 @@ export class WineryComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.id = params.id;
-      this.wineService.getWinery(this.id).subscribe((value) => {
-        this.wineryResponse = value;
-        this.isWineryResponseLoaded = true;
-        this.wineService.getWinesByWinery(this.id).subscribe((res) => {
-          this.wineResponses = res;
-          this.hidden = false;
 
-          this.wineService
-            .getWineRatingsByUsersForWineIds(
-              ['*'],
-              this.wineResponses.map((wr) => {
-                return wr.id;
-              })
-            )
-            .subscribe((response) => {
-              this.wineRatings = response;
-              this.sortTastedUntastedWines();
-            });
-        });
+      forkJoin({
+        winery: this.wineService.getWinery(this.id),
+        wines: this.wineService.getWinesByWinery(this.id)
+      }).subscribe((response: { winery: WineryResponse, wines: Array<WineDisplay>}) => {
+        this.wineryResponse = response.winery;
+        this.wineResponses = response.wines;
+
+        const wineIds = response.wines.map(wine => wine.id);
+        this.wineService.getWineRatingsByUsersForWineIds(['*'], wineIds).subscribe(ratings => {
+          this.wineRatings = ratings;
+          this.sortTastedUntastedWines();
+        })
       });
     });
+
     this.lordgasmicService.getUsersByRole(RoleConstants.wine).subscribe((res) => {
       this.usersResponse = res.filter((obj) => {
         return obj !== sessionStorage.getItem('username');
