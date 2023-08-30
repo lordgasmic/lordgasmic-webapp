@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { forkJoin } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
+import { map, mergeMap, tap } from 'rxjs/operators';
 import { WineService } from '../services/wine/wine.service';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
 import { WineryResponse } from '../models/WineryResponse';
@@ -17,20 +18,20 @@ import { WineRatingResponse } from '../models/WineRatingResponse';
   styleUrls: ['./winery.component.scss']
 })
 export class WineryComponent implements OnInit {
-  wineryResponse: WineryResponse;
+  winery$: Observable<WineryResponse>;
   wineResponses: Array<WineDisplay> = [];
-  usersResponse: Array<string> = [];
+  users$: Observable<Array<string>>;
   wineRatings: Array<WineRatingResponse> = [];
+  ratings$: Observable<Array<WineRatingResponse>>;
 
   winesTasted: Array<WineDisplay> = [];
   winesUntasted: Array<WineDisplay> = [];
 
   usersFormControl = new UntypedFormControl();
 
+  currentUser = sessionStorage.getItem('username');
   hidden = true;
   isLoading = false;
-  isWineryResponseLoaded = false;
-  isUsersResponseLoaded = false;
   id: number;
   isList = true;
 
@@ -45,27 +46,18 @@ export class WineryComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.id = params.id;
 
-      forkJoin({
-        winery: this.wineService.getWinery(this.id),
-        wines: this.wineService.getWinesByWinery(this.id)
-      }).subscribe((response: { winery: WineryResponse, wines: Array<WineDisplay>}) => {
-        this.wineryResponse = response.winery;
-        this.wineResponses = response.wines;
-
-        const wineIds = response.wines.map(wine => wine.id);
-        this.wineService.getWineRatingsByUsersForWineIds(['*'], wineIds).subscribe(ratings => {
-          this.wineRatings = ratings;
-          this.sortTastedUntastedWines();
+      this.winery$ = this.wineService.getWinery(this.id);
+      this.ratings$ = this.wineService.getWinesByWinery(this.id).pipe(
+        mergeMap((wines: Array<WineDisplay>) => {
+          const wineIds = wines.map(wine => wine.id);
+          return this.wineService.getWineRatingsByUsersForWineIds(['*'], wineIds);
         })
-      });
+      );
     });
 
-    this.lordgasmicService.getUsersByRole(RoleConstants.wine).subscribe((res) => {
-      this.usersResponse = res.filter((obj) => {
-        return obj !== sessionStorage.getItem('username');
-      });
-      this.isUsersResponseLoaded = true;
-    });
+    this.users$ = this.lordgasmicService.getUsersByRole(RoleConstants.wine).pipe(
+      map(users => users.filter(user => user !== this.currentUser))
+    );
   }
 
   sortTastedUntastedWines(): void {
@@ -75,7 +67,7 @@ export class WineryComponent implements OnInit {
 
     // get current users wine ratings for sorting
     const currentUsersWineRatings = this.wineRatings.filter((wrr) => {
-      return wrr.user === sessionStorage.getItem('username');
+      return wrr.user === this.currentUser;
     });
 
     // sort into tasted and un
