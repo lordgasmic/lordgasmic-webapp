@@ -7,6 +7,7 @@ import { PumpingComponent } from './pumping/pumping.component';
 import { FeedingComponent } from './feeding/feeding.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -50,6 +51,7 @@ import { GasStatsComponent } from './gas-stats/gas-stats.component';
 import { GasFormComponent } from './gas-form/gas-form.component';
 import { RecipeViewComponent } from './recipe-view/recipe-view.component';
 import { RequestInterceptor } from './shared/RequestInterceptor';
+import { FilterByPipe } from './util/filter-by.pipe';
 
 @NgModule({
   declarations: [
@@ -83,13 +85,15 @@ import { RequestInterceptor } from './shared/RequestInterceptor';
     WineCardXGridComponent,
     GasStatsComponent,
     GasFormComponent,
-    RecipeViewComponent
+    RecipeViewComponent,
+    FilterByPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MatButtonToggleModule,
     MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,

@@ -17,19 +17,25 @@
   <button mat-raised-button (click)="openDialog()">Add Wine</button>
 </div>
 
-<ng-container *ngIf="ratings$ | async as ratings">
-  <p *ngFor="let rating of ratings">{{ rating | json }}</p>
+<ng-container *ngIf="wines$ | async as wines">
   <div>
     <div class="tasted-header">
       <h1 class="banner">Wines tasted</h1>
-      <img *ngIf="!isList" class="list-grid-view-ico" src="assets/icons/list-view-30.png" (click)="toggleListGridView()"/>
-      <img *ngIf="isList" class="list-grid-view-ico" src="assets/icons/grid-view-48.png" (click)="toggleListGridView()"/>
+      <mat-button-toggle-group>
+        <mat-button-toggle value="list" [checked]="true">
+          <img class="list-grid-view-ico" src="assets/icons/list-view-30.png" (click)="toggleListGridView()"/>
+        </mat-button-toggle>
+        <mat-button-toggle value="grid">
+          <img class="list-grid-view-ico" src="assets/icons/grid-view-48.png" (click)="toggleListGridView()"/>
+        </mat-button-toggle>
+      </mat-button-toggle-group>
     </div>
-    <div *ngIf="winesTasted.length === 0">
+
+    <div *ngIf="wines.length === 0">
       <span>You do not have any tasted wines</span>
     </div>
     <div [ngClass]="getCardsContainerClassName()">
-      <div class="card" [ngClass]="getListGridViewClassName()" *ngFor="let wine of winesTasted">
+      <div class="card" [ngClass]="getListGridViewClassName()" *ngFor="let wine of wines | filterBy:'myRating'">
         <app-wine-card-xlist *ngIf="isList" [wineDisplay]="wine" [wineRatings]="wineRatings"></app-wine-card-xlist>
         <app-wine-card-xgrid *ngIf="!isList" [wineDisplay]="wine" [wineRatings]="wineRatings"></app-wine-card-xgrid>
       </div>
@@ -42,7 +48,7 @@
       <span>You do not have any untasted wines</span>
     </div>
     <div [ngClass]="getCardsContainerClassName()">
-      <div class="card" [ngClass]="getListGridViewClassName()" *ngFor="let wine of winesUntasted">
+      <div class="card" [ngClass]="getListGridViewClassName()" *ngFor="let wine of wines | filterBy:'myRating':'':true">
         <app-wine-card-xlist *ngIf="isList" [wineDisplay]="wine" [wineRatings]="wineRatings"></app-wine-card-xlist>
         <app-wine-card-xgrid *ngIf="!isList" [wineDisplay]="wine" [wineRatings]="wineRatings"></app-wine-card-xgrid>
       </div>
