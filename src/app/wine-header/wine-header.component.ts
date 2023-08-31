@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
+import { WineService } from '../services/wine/wine.service';
 
 @Component({
   selector: 'app-wine-header',
@@ -14,17 +14,17 @@ export class WineHeaderComponent implements OnInit {
   wineryName: string;
   wineName: string;
 
-  constructor(private lordgasmicService: LordgasmicService) {}
+  constructor(private wineService: WineService) {}
 
   ngOnInit(): void {
     if (this.wineryId) {
-      this.lordgasmicService.getWinery(this.wineryId).subscribe((response) => {
+      this.wineService.getWinery(this.wineryId).subscribe((response) => {
         this.wineryName = response.name;
       });
     }
 
     if (this.wineId) {
-      this.lordgasmicService.getWineById(this.wineId).subscribe((response) => {
+      this.wineService.getWineById(this.wineId).subscribe((response) => {
         this.wineName = response.name;
       });
     }

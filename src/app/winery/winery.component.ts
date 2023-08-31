@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
+import { UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { forkJoin, Observable } from 'rxjs';
+import { map, mergeMap, tap } from 'rxjs/operators';
+import { WineService } from '../services/wine/wine.service';
+import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
 import { WineryResponse } from '../models/WineryResponse';
 import { DialogWineAddComponent } from '../dialog-wine-add/dialog-wine-add.component';
-import { MatDialog } from '@angular/material/dialog';
-import { UntypedFormControl } from '@angular/forms';
 import { RoleConstants } from '../configuration/RoleConstants';
 import { WineDisplay } from '../models/WineDisplay';
 import { WineRatingResponse } from '../models/WineRatingResponse';
@@ -15,78 +18,55 @@ import { WineRatingResponse } from '../models/WineRatingResponse';
   styleUrls: ['./winery.component.scss']
 })
 export class WineryComponent implements OnInit {
-  wineryResponse: WineryResponse;
+  winery$: Observable<WineryResponse>;
   wineResponses: Array<WineDisplay> = [];
-  usersResponse: Array<string> = [];
+  users$: Observable<Array<string>>;
   wineRatings: Array<WineRatingResponse> = [];
+  wines$: Observable<Array<any>>;
 
   winesTasted: Array<WineDisplay> = [];
   winesUntasted: Array<WineDisplay> = [];
 
   usersFormControl = new UntypedFormControl();
 
+  currentUser = sessionStorage.getItem('username');
   hidden = true;
   isLoading = false;
-  isWineryResponseLoaded = false;
-  isUsersResponseLoaded = false;
   id: number;
   isList = true;
 
-  constructor(private lordgasmicService: LordgasmicService, private route: ActivatedRoute, private dialog: MatDialog) {}
+  constructor(
+    private lordgasmicService: LordgasmicService,
+    private wineService: WineService, 
+    private route: ActivatedRoute, 
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.id = params.id;
-      this.lordgasmicService.getWinery(this.id).subscribe((value) => {
-        this.wineryResponse = value;
-        this.isWineryResponseLoaded = true;
-        this.lordgasmicService.getWinesByWinery(this.id).subscribe((res) => {
-          this.wineResponses = res;
-          this.hidden = false;
 
-          this.lordgasmicService
-            .getWineRatingsByUsersForWineIds(
-              ['*'],
-              this.wineResponses.map((wr) => {
-                return wr.id;
-              })
-            )
-            .subscribe((response) => {
-              this.wineRatings = response;
-              this.sortTastedUntastedWines();
+      this.winery$ = this.wineService.getWinery(this.id);
+      this.wines$ = this.wineService.getWinesByWinery(this.id).pipe(
+        mergeMap(
+          (wines: Array<WineDisplay>) => {
+            const wineIds = wines.map(wine => wine.id);
+            return this.wineService.getWineRatingsByUsersForWineIds(['*'], wineIds);
+          },
+          (wines, ratings) => {
+            return wines.map(wine => {
+              const wineRating = ratings.filter(rating => rating.wineId === wine.id);
+              const myRating = wineRating.find(rating => rating.user === this.currentUser);
+              return { ...wine, ratings: wineRating, myRating };
             });
-        });
-      });
-    });
-    this.lordgasmicService.getUsersByRole(RoleConstants.wine).subscribe((res) => {
-      this.usersResponse = res.filter((obj) => {
-        return obj !== sessionStorage.getItem('username');
-      });
-      this.isUsersResponseLoaded = true;
-    });
-  }
-
-  sortTastedUntastedWines(): void {
-    // empty the arrays
-    this.winesTasted = [];
-    this.winesUntasted = [];
-
-    // get current users wine ratings for sorting
-    const currentUsersWineRatings = this.wineRatings.filter((wrr) => {
-      return wrr.user === sessionStorage.getItem('username');
+          }
+        )
+      );
     });
 
-    // sort into tasted and un
-    const wineIds: number[] = currentUsersWineRatings.map((v) => {
-      return v.wineId;
-    });
-    this.wineResponses.forEach((wd) => {
-      if (wineIds.includes(wd.id)) {
-        this.winesTasted.push(wd);
-      } else {
-        this.winesUntasted.push(wd);
-      }
-    });
+    this.users$ = this.lordgasmicService.getUsersByRole(RoleConstants.wine).pipe(
+      map(users => users.filter(user => user !== this.currentUser))
+    );
   }
 
   openDialog(): void {
@@ -95,7 +75,7 @@ export class WineryComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.wineResponses.push(result);
-        this.sortTastedUntastedWines();
+        // this.sortTastedUntastedWines();
       }
     });
   }

@@ -1,6 +1,6 @@
 import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
+import { WineService } from '../services/wine/wine.service';
 import { WineDialogData } from '../models/WineDialogData';
 import { WineRequest } from '../models/WineRequest';
 
@@ -16,7 +16,7 @@ export class DialogWineAddComponent {
   constructor(
     public dialogRef: MatDialogRef<DialogWineAddComponent>,
     @Inject(MAT_DIALOG_DATA) public data: WineDialogData,
-    private lordgasmicService: LordgasmicService
+    private wineService: WineService
   ) {}
 
   onNoClick(): void {
@@ -32,7 +32,7 @@ export class DialogWineAddComponent {
     request.style = style;
     request.wineryId = this.data.wineryId;
 
-    this.lordgasmicService.addWine(request).subscribe((response) => {
+    this.wineService.addWine(request).subscribe((response) => {
       this.dialogRef.close(response);
     });
   }
