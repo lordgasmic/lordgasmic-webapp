@@ -4,57 +4,59 @@
   <img src="assets/icons/loading.gif" alt="loading">
 </div>
 
-<div class="wine-container" [ngClass]="{'hide-container': hidden}">
-  <span *ngIf="winery$ | async as winery">{{winery.name}} ({{winery.location}})</span>
-</div>
-
-<div *ngIf="users$ | async as users" class="filter">
-  <mat-select [formControl]="usersFormControl" (openedChange)="onOpenedChanged($event)" multiple>
-    <mat-option *ngFor="let user of users" [value]="user">{{ user }}</mat-option>
-  </mat-select>
-</div>
-<div>
-  <button mat-raised-button (click)="openDialog()">Add Wine</button>
-</div>
-
-<ng-container *ngIf="wines$ | async as wines">
-  <div>
-    <div class="tasted-header">
-      <h1 class="banner">Wines tasted</h1>
-      <mat-button-toggle-group>
-        <mat-button-toggle value="list" [checked]="true">
-          <img class="list-grid-view-ico" src="assets/icons/list-view-30.png" (click)="toggleListGridView()"/>
-        </mat-button-toggle>
-        <mat-button-toggle value="grid">
-          <img class="list-grid-view-ico" src="assets/icons/grid-view-48.png" (click)="toggleListGridView()"/>
-        </mat-button-toggle>
-      </mat-button-toggle-group>
-    </div>
-
-    <div *ngIf="wines.length === 0">
-      <span>You do not have any tasted wines</span>
-    </div>
-    <div [ngClass]="getCardsContainerClassName()">
-      <ng-container *ngIf="isList">
-        <app-wine-card-xlist *ngFor="let wine of wines | filterBy:'myRating'" [wine]="wine"></app-wine-card-xlist>
-      </ng-container>
-      <!-- <div class="card" [ngClass]="getListGridViewClassName()" *ngFor="let wine of wines | filterBy:'myRating'">
-        
-        <app-wine-card-xgrid *ngIf="!isList" [wineDisplay]="wine" [wineRatings]="wineRatings"></app-wine-card-xgrid>
-      </div> -->
-    </div>
+<main>
+  <div class="wine-container" [ngClass]="{'hide-container': hidden}">
+    <span *ngIf="winery$ | async as winery">{{winery.name}} ({{winery.location}})</span>
   </div>
 
+  <div *ngIf="users$ | async as users" class="filter">
+    <mat-select [formControl]="usersFormControl" (openedChange)="onOpenedChanged($event)" multiple>
+      <mat-option *ngFor="let user of users" [value]="user">{{ user }}</mat-option>
+    </mat-select>
+  </div>
   <div>
-    <h1 class="banner">Wines Untasted</h1>
-    <div *ngIf="winesUntasted.length === 0">
-      <span>You do not have any untasted wines</span>
-    </div>
-    <div [ngClass]="getCardsContainerClassName()">
-      <div class="card" [ngClass]="getListGridViewClassName()" *ngFor="let wine of wines | filterBy:'myRating':'':true">
-        <app-wine-card-xlist *ngIf="isList" [wine]="wine"></app-wine-card-xlist>
-        <app-wine-card-xgrid *ngIf="!isList" [wineDisplay]="wine" [wineRatings]="wineRatings"></app-wine-card-xgrid>
+    <button mat-raised-button (click)="openDialog()">Add Wine</button>
+  </div>
+
+  <ng-container *ngIf="wines$ | async as wines">
+    <div>
+      <div class="tasted-header">
+        <h1 class="banner">Wines tasted</h1>
+        <mat-button-toggle-group>
+          <mat-button-toggle value="list" [checked]="true">
+            <img class="list-grid-view-ico" src="assets/icons/list-view-30.png" (click)="toggleListGridView()"/>
+          </mat-button-toggle>
+          <mat-button-toggle value="grid">
+            <img class="list-grid-view-ico" src="assets/icons/grid-view-48.png" (click)="toggleListGridView()"/>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+
+      <div *ngIf="wines.length === 0">
+        <span>You do not have any tasted wines</span>
+      </div>
+      <div [ngClass]="getCardsContainerClassName()">
+        <ng-container *ngIf="isList">
+          <app-wine-card-xlist *ngFor="let wine of wines | filterBy:'myRating'" [wine]="wine"></app-wine-card-xlist>
+        </ng-container>
+        <!-- <div class="card" [ngClass]="getListGridViewClassName()" *ngFor="let wine of wines | filterBy:'myRating'">
+          
+          <app-wine-card-xgrid *ngIf="!isList" [wineDisplay]="wine" [wineRatings]="wineRatings"></app-wine-card-xgrid>
+        </div> -->
       </div>
     </div>
-  </div>
-</ng-container>
+
+    <div>
+      <h1 class="banner">Wines Untasted</h1>
+      <div *ngIf="winesUntasted.length === 0">
+        <span>You do not have any untasted wines</span>
+      </div>
+      <div [ngClass]="getCardsContainerClassName()">
+        <div class="card" [ngClass]="getListGridViewClassName()" *ngFor="let wine of wines | filterBy:'myRating':'':true">
+          <app-wine-card-xlist *ngIf="isList" [wine]="wine"></app-wine-card-xlist>
+          <app-wine-card-xgrid *ngIf="!isList" [wineDisplay]="wine" [wineRatings]="wineRatings"></app-wine-card-xgrid>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</main>

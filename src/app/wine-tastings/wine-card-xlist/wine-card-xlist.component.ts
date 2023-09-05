@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { WineDisplay } from '../models/WineDisplay';
-import { WineRatingResponse } from '../models/WineRatingResponse';
+import { WineDisplay } from '@models/WineDisplay';
+import { WineRatingResponse } from '@models/WineRatingResponse';
 
 @Component({
   selector: 'app-wine-card-xlist',

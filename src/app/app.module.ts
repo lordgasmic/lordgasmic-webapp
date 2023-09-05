@@ -8,12 +8,17 @@ import { FeedingComponent } from './feeding/feeding.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { FeedingHistoryComponent } from './feeding-history/feeding-history.component';
 import { FeedingHistoryTypeComponent } from './feeding-history-type/feeding-history-type.component';
@@ -32,17 +37,13 @@ import { WineComponent } from './wine/wine.component';
 import { FunkoComponent } from './funko/funko.component';
 import { WineTastingComponent } from './wine-tasting/wine-tasting.component';
 import { WineryComponent } from './winery/winery.component';
-import { MatButtonModule } from '@angular/material/button';
 import { DialogWineryAddComponent } from './dialog-winery-add/dialog-winery-add.component';
-import { MatDialogModule } from '@angular/material/dialog';
 import { DialogWineAddComponent } from './dialog-wine-add/dialog-wine-add.component';
 import { DialogWineRatingAddComponent } from './dialog-wine-rating-add/dialog-wine-rating-add.component';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogWineImageAddComponent } from './dialog-wine-image-add/dialog-wine-image-add.component';
 import { WineHeaderComponent } from './wine-header/wine-header.component';
-import { WineCardXListComponent } from './wine-card-xlist/wine-card-xlist.component';
+import { WineCardXListComponent } from './wine-tastings/wine-card-xlist/wine-card-xlist.component';
 import { GasComponent } from './gas/gas.component';
 import { DialogWineRatingEditComponent } from './dialog-wine-rating-edit/dialog-wine-rating-edit.component';
 import { WineCardXGridComponent } from './wine-card-xgrid/wine-card-xgrid.component';
@@ -106,6 +107,7 @@ import { RatingIconComponent } from './wine-tastings/rating-icon/rating-icon.com
     MatButtonModule,
     MatDialogModule,
     MatTooltipModule,
+    MatToolbarModule,
     MatSelectModule,
     ReactiveFormsModule,
     FormsModule,
