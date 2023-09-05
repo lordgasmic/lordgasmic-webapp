@@ -1,14 +1,9 @@
-<mat-expansion-panel hideToggle>
-  <mat-expansion-panel-header>
-    <mat-panel-title class="stacked">
-      <span class="wine-name">{{ wine.name }}</span>
-      <span class="wine-style">{{ wine.style }}</span>
-    </mat-panel-title>
-    <mat-panel-description class="rating">
-      {{ wine.ratings.length }} <app-rating-icon [rating]="averageRating"></app-rating-icon>
-    </mat-panel-description>
-  </mat-expansion-panel-header>
-  <ng-container *ngFor="let rating of wine.ratings">
-    <p>{{ rating | json }}</p>
-  </ng-container>
-</mat-expansion-panel>
+<div class="wine-container" (click)="viewNotes()">
+  <div class="wine-title">
+    <span class="wine-name">{{ wine.name }}</span>
+    <span class="wine-style">{{ wine.style }}</span>
+  </div>
+  <div class="rating">
+    ({{ wine.ratings.length }}) <app-rating-icon [rating]="averageRating"></app-rating-icon>
+  </div>
+</div>

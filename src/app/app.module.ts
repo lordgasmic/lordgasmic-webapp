@@ -9,7 +9,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
@@ -97,7 +96,6 @@ import { RatingIconComponent } from './wine-tastings/rating-icon/rating-icon.com
     HttpClientModule,
     BrowserAnimationsModule,
     MatButtonToggleModule,
-    MatExpansionModule,
     MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,

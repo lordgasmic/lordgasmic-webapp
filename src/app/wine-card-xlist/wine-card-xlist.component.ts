@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChildren, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { WineDisplay } from '../models/WineDisplay';
 import { WineRatingResponse } from '../models/WineRatingResponse';
 
@@ -6,7 +7,6 @@ import { WineRatingResponse } from '../models/WineRatingResponse';
   selector: 'app-wine-card-xlist',
   templateUrl: './wine-card-xlist.component.html',
   styleUrls: ['./wine-card-xlist.component.scss'],
-  encapsulation: ViewEncapsulation.None
 })
 export class WineCardXListComponent implements OnInit {
   @Input() wine;
@@ -15,13 +15,19 @@ export class WineCardXListComponent implements OnInit {
   yourRatings = 0;
   totalRatings = 0;
 
-  constructor() {}
+  constructor(
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     if (this.wine.ratings.length) {
       const total = this.wine.ratings.reduce((total, rating) => { return total + parseInt(rating.rating) }, 0);
       this.averageRating = total / this.wine.ratings.length;
     }
+  }
+
+  viewNotes() {
+    this.router.navigate(['wineTasting', 'wine', this.wine.id])
   }
 
   getYourRatings(wine: WineDisplay): void {
