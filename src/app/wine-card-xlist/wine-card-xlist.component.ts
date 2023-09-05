@@ -8,11 +8,9 @@ import { WineRatingResponse } from '../models/WineRatingResponse';
   styleUrls: ['./wine-card-xlist.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class WineCardXListComponent implements OnInit, AfterViewInit {
-  @Input() wineDisplay: WineDisplay;
-  @Input() wineRatings: Array<WineRatingResponse>;
-
-  @ViewChildren('infosvg') infoRef: ElementRef[];
+export class WineCardXListComponent implements OnInit {
+  @Input() wine;
+  averageRating = 0;
 
   yourRatings = 0;
   totalRatings = 0;
@@ -20,16 +18,10 @@ export class WineCardXListComponent implements OnInit, AfterViewInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.getYourRatings(this.wineDisplay);
-    this.getTotalRatings(this.wineDisplay);
-  }
-
-  ngAfterViewInit(): void {
-    this.infoRef.forEach((e) => {
-      e.nativeElement.addEventListener('contextmenu', (event) => {
-        event.preventDefault();
-      });
-    });
+    if (this.wine.ratings.length) {
+      const total = this.wine.ratings.reduce((total, rating) => { return total + parseInt(rating.rating) }, 0);
+      this.averageRating = total / this.wine.ratings.length;
+    }
   }
 
   getYourRatings(wine: WineDisplay): void {
@@ -38,7 +30,7 @@ export class WineCardXListComponent implements OnInit, AfterViewInit {
 
     let count = 0;
 
-    this.wineRatings.forEach((value) => {
+    this.wine.ratings.forEach((value) => {
       if (value.wineId === wineId && value.user === user) {
         count++;
       }
@@ -52,7 +44,7 @@ export class WineCardXListComponent implements OnInit, AfterViewInit {
 
     let count = 0;
 
-    this.wineRatings.forEach((value) => {
+    this.wine.ratings.forEach((value) => {
       if (value.wineId === wineId) {
         count++;
       }
@@ -63,8 +55,8 @@ export class WineCardXListComponent implements OnInit, AfterViewInit {
 
   displayTooltip(): string {
     let tooltip = '';
-    this.wineRatings.forEach((value) => {
-      if (value.wineId === this.wineDisplay.id && value.user !== sessionStorage.getItem('username')) {
+    this.wine.ratings.forEach((value) => {
+      if (value.wineId === this.wine.id && value.user !== sessionStorage.getItem('username')) {
         tooltip += `${value.user}: ${value.rating === '-1' ? '💩' : value.rating}\n`;
       }
     });

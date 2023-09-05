@@ -8,8 +8,9 @@ import { FeedingComponent } from './feeding/feeding.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -52,6 +53,7 @@ import { GasFormComponent } from './gas-form/gas-form.component';
 import { RecipeViewComponent } from './recipe-view/recipe-view.component';
 import { RequestInterceptor } from './shared/RequestInterceptor';
 import { FilterByPipe } from './util/filter-by.pipe';
+import { RatingIconComponent } from './wine-tastings/rating-icon/rating-icon.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +88,8 @@ import { FilterByPipe } from './util/filter-by.pipe';
     GasStatsComponent,
     GasFormComponent,
     RecipeViewComponent,
-    FilterByPipe
+    FilterByPipe,
+    RatingIconComponent
   ],
   imports: [
     BrowserModule,
@@ -94,6 +97,7 @@ import { FilterByPipe } from './util/filter-by.pipe';
     HttpClientModule,
     BrowserAnimationsModule,
     MatButtonToggleModule,
+    MatExpansionModule,
     MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,

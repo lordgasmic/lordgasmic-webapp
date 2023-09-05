@@ -1,17 +1,14 @@
-<div class="card-container-list">
-  <div class="v1">
-    <span class="card-span"><a href="/wineTasting/wine/{{wineDisplay.id}}">{{wineDisplay.name}}</a></span>
-    <span class="card-span">{{wineDisplay.style}}</span>
-    <div>
-      <span *ngFor="let friend of wineDisplay.wineFriend">{{friend}}</span> &nbsp;
-    </div>
-  </div>
-  <div *ngIf="wineRatings" class="ratings-container-list">
-    <span>My rating: {{ wineDisplay.myRating?.rating }}</span>
-    <span [matTooltip]="displayTooltip()" matTooltipClass="custom-tooltip">
-      {{ wineDisplay.ratings.length }} total rating(s)
-      <img *ngIf="yourRatings !== totalRatings" src="assets/icons/info.svg" alt="info for item" class="info-svg"
-           #infosvg/>
-    </span>
-  </div>
-</div>
+<mat-expansion-panel hideToggle>
+  <mat-expansion-panel-header>
+    <mat-panel-title class="stacked">
+      <span class="wine-name">{{ wine.name }}</span>
+      <span class="wine-style">{{ wine.style }}</span>
+    </mat-panel-title>
+    <mat-panel-description class="rating">
+      {{ wine.ratings.length }} <app-rating-icon [rating]="averageRating"></app-rating-icon>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <ng-container *ngFor="let rating of wine.ratings">
+    <p>{{ rating | json }}</p>
+  </ng-container>
+</mat-expansion-panel>

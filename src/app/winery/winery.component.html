@@ -35,10 +35,13 @@
       <span>You do not have any tasted wines</span>
     </div>
     <div [ngClass]="getCardsContainerClassName()">
-      <div class="card" [ngClass]="getListGridViewClassName()" *ngFor="let wine of wines | filterBy:'myRating'">
-        <app-wine-card-xlist *ngIf="isList" [wineDisplay]="wine" [wineRatings]="wineRatings"></app-wine-card-xlist>
+      <mat-accordion *ngIf="isList">
+        <app-wine-card-xlist *ngFor="let wine of wines | filterBy:'myRating'" [wine]="wine"></app-wine-card-xlist>
+      </mat-accordion>
+      <!-- <div class="card" [ngClass]="getListGridViewClassName()" *ngFor="let wine of wines | filterBy:'myRating'">
+        
         <app-wine-card-xgrid *ngIf="!isList" [wineDisplay]="wine" [wineRatings]="wineRatings"></app-wine-card-xgrid>
-      </div>
+      </div> -->
     </div>
   </div>
 
@@ -49,7 +52,7 @@
     </div>
     <div [ngClass]="getCardsContainerClassName()">
       <div class="card" [ngClass]="getListGridViewClassName()" *ngFor="let wine of wines | filterBy:'myRating':'':true">
-        <app-wine-card-xlist *ngIf="isList" [wineDisplay]="wine" [wineRatings]="wineRatings"></app-wine-card-xlist>
+        <app-wine-card-xlist *ngIf="isList" [wine]="wine"></app-wine-card-xlist>
         <app-wine-card-xgrid *ngIf="!isList" [wineDisplay]="wine" [wineRatings]="wineRatings"></app-wine-card-xgrid>
       </div>
     </div>

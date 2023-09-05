@@ -28,3 +28,29 @@
 .custom-tooltip {
   white-space: pre-line;
 }
+
+.mat-expansion-panel-header {
+  height: 60px;
+}
+
+.mat-expansion-panel-header-title.stacked {
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.mat-expansion-panel-header-description.rating {
+  flex-grow: unset;
+  justify-content: flex-end;
+  margin-right: 0;
+}
+
+.wine-name {
+  font-weight: 700;
+}
+
+.wine-style {
+  color: rgba(0,0,0,0.54);
+  font-size: 0.8rem;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+}
