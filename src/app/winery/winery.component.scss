@@ -29,11 +29,6 @@
   position: fixed;
 }
 
-.grid {
-  width: 150px;
-  height: 200px;
-}
-
 .list-grid-view-ico {
   width: 20px;
   height: 20px;
@@ -45,12 +40,27 @@
   margin-bottom: 1rem;
 }
 
-.cards-container-grid {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+.wine-list-container {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  width: 100%;
+
+  &.grid {
+    align-items: stretch;
+    grid-template-columns: 1fr 1fr;
+
+    @media screen and (min-width: 1200px) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  }
 }
 
-.cards-container-list {
-  display: block;
+::ng-deep .wine-list-container.grid .wine-container {
+  flex-direction: column;
+  height: 100%;
+
+  .rating {
+    align-self: flex-end;
+  }
 }

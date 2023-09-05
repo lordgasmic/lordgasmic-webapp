@@ -59,13 +59,4 @@ export class WineCardXListComponent implements OnInit {
     this.totalRatings = count;
   }
 
-  displayTooltip(): string {
-    let tooltip = '';
-    this.wine.ratings.forEach((value) => {
-      if (value.wineId === this.wine.id && value.user !== sessionStorage.getItem('username')) {
-        tooltip += `${value.user}: ${value.rating === '-1' ? '💩' : value.rating}\n`;
-      }
-    });
-    return tooltip;
-  }
 }

@@ -46,7 +46,6 @@ import { WineHeaderComponent } from './wine-header/wine-header.component';
 import { WineCardXListComponent } from './wine-tastings/wine-card-xlist/wine-card-xlist.component';
 import { GasComponent } from './gas/gas.component';
 import { DialogWineRatingEditComponent } from './dialog-wine-rating-edit/dialog-wine-rating-edit.component';
-import { WineCardXGridComponent } from './wine-card-xgrid/wine-card-xgrid.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { GasStatsComponent } from './gas-stats/gas-stats.component';
 import { GasFormComponent } from './gas-form/gas-form.component';
@@ -84,7 +83,6 @@ import { RatingIconComponent } from './wine-tastings/rating-icon/rating-icon.com
     WineCardXListComponent,
     GasComponent,
     DialogWineRatingEditComponent,
-    WineCardXGridComponent,
     GasStatsComponent,
     GasFormComponent,
     RecipeViewComponent,

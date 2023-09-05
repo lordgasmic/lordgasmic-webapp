@@ -30,6 +30,7 @@ export class WineryComponent implements OnInit {
   usersFormControl = new UntypedFormControl();
 
   currentUser = sessionStorage.getItem('username');
+  displayType: 'list' | 'grid' = 'list';
   hidden = true;
   isLoading = false;
   id: number;
@@ -67,6 +68,10 @@ export class WineryComponent implements OnInit {
     this.users$ = this.lordgasmicService.getUsersByRole(RoleConstants.wine).pipe(
       map(users => users.filter(user => user !== this.currentUser))
     );
+  }
+
+  updateDisplay(change) {
+    this.displayType = change.value;
   }
 
   openDialog(): void {
