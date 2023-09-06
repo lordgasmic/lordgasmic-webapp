@@ -1,0 +1,9 @@
+<div class="wine-container" (click)="viewNotes()">
+  <div class="wine-title">
+    <span class="wine-name">{{ wine.name }}</span>
+    <span class="wine-style">{{ wine.style }}</span>
+  </div>
+  <div class="rating">
+    ({{ wine.ratings.length }}) <app-rating-icon [rating]="averageRating"></app-rating-icon>
+  </div>
+</div>
