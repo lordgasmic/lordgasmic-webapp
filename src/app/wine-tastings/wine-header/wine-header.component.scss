@@ -1,0 +1,18 @@
+.breadcrumbs {
+  padding: 0.5rem;
+
+  span {
+    padding: 0 0.5rem;
+
+    &:not(:first-child) {
+      border-left: 1px solid black;
+    }
+  }
+
+  a {
+    font-size: 0.8rem;
+    letter-spacing: 0.05rem;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+}
