@@ -12,6 +12,7 @@ import { WineComponent } from './wine/wine.component';
 import { FunkoComponent } from './funko/funko.component';
 import { WineTastingComponent } from './wine-tasting/wine-tasting.component';
 import { WineryComponent } from './winery/winery.component';
+import { WineryListComponent } from './wine-tastings/winery-list/winery-list.component';
 import { GasComponent } from './gas/gas.component';
 import { GasFormComponent } from './gas-form/gas-form.component';
 import { GasStatsComponent } from './gas-stats/gas-stats.component';
@@ -53,15 +54,12 @@ const routes: Routes = [
   },
   {
     path: 'wineTasting',
-    component: WineTastingComponent
-  },
-  {
-    path: 'wineTasting/winery/:id',
-    component: WineryComponent
-  },
-  {
-    path: 'wineTasting/wine/:id',
-    component: WineComponent
+    component: WineTastingComponent,
+    children: [
+      { path: 'winery/:id', component: WineryComponent },
+      { path: 'winery/:wineryId/wine/:wineId', component: WineComponent },
+      { path: '', pathMatch: 'full', component: WineryListComponent }
+    ]
   },
   {
     path: 'funko',

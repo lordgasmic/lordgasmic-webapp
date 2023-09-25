@@ -1,0 +1,10 @@
+<div>
+  <ul>
+    <li *ngFor="let winery of wineries | async">
+      <a [routerLink]="['/wineTasting/winery/', winery.id]">{{winery.name}} ({{winery.location}})</a>
+    </li>
+  </ul>
+</div>
+<div>
+  <button mat-raised-button (click)="openDialog()">Add Winery</button>
+</div>
