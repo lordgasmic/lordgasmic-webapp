@@ -27,7 +27,6 @@ export class WineCardXListComponent implements OnInit {
   }
 
   viewNotes() {
-    console.log(this.wine);
     this.router.navigate(['wineTasting', 'winery', this.wine.wineryId, 'wine', this.wine.id])
   }
 
