@@ -1,5 +1,18 @@
-.hide-container {
-  visibility: hidden;
+.rating {
+  align-items: center;
+  border-bottom: 1px solid #cdcdcd;
+  border-top: 1px solid #cdcdcd;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.averageRating {
+  align-items: center;
+  border-bottom: 1px solid #cdcdcd;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem 0.5rem;
 }
 
 .spn-add-wine-notes {
@@ -9,22 +22,6 @@
 
 .button-wrapper {
   display: inline-block;
-}
-
-.is-loading {
-  z-index: 10000;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 200px;
-}
-
-.loading-container {
-  position: fixed;
 }
 
 .btn-rating-edit {

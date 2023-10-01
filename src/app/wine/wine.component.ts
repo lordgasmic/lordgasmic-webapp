@@ -1,23 +1,24 @@
 import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { WineService } from '../services/wine/wine.service';
-import { WineResponse } from '../models/WineResponse';
-import { WineNoteResponse } from '../models/WineNoteResponse';
-import { WineRatingResponse } from '../models/WineRatingResponse';
+import { DatePipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { WineService } from '../services/wine/wine.service';
+import { WineResponse } from '@models/WineResponse';
+import { WineNoteResponse } from '@models/WineNoteResponse';
+import { WineRatingResponse } from '@models/WineRatingResponse';
 import { DialogWineRatingAddComponent } from '../dialog-wine-rating-add/dialog-wine-rating-add.component';
-import { DatePipe } from '@angular/common';
-import { WineNoteRequest } from '../models/WineNoteRequest';
-import { WineImageDisplay } from '../models/WineImageDisplay';
+import { WineNoteRequest } from '@models/WineNoteRequest';
+import { WineImageDisplay } from '@models/WineImageDisplay';
 import { DialogWineImageAddComponent } from '../dialog-wine-image-add/dialog-wine-image-add.component';
-import { WineImage } from '../models/WineImage';
+import { WineImage } from '@models/WineImage';
 import { DialogWineRatingEditComponent } from '../dialog-wine-rating-edit/dialog-wine-rating-edit.component';
 
 @Component({
   selector: 'app-wine',
   templateUrl: './wine.component.html',
   styleUrls: ['./wine.component.scss'],
-  providers: [DatePipe]
 })
 export class WineComponent implements OnInit {
   constructor(
@@ -38,10 +39,12 @@ export class WineComponent implements OnInit {
   wineRatingResponse: Array<WineRatingResponse> = [];
   wineImages: Array<WineImageDisplay> = [];
 
-  isWineAvailable = false;
-  isWineNoteAvailable = false;
-  isWineRatingAvailable = false;
-  isWineImagesAvailable = false;
+  wine: Observable<WineResponse>;
+  notes: Observable<WineNoteResponse>;
+  ratings: Observable<WineRatingResponse[]>;
+
+  myRating: WineRatingResponse;
+  averageRating = 0;
 
   isEditingNotes = false;
 
@@ -50,28 +53,22 @@ export class WineComponent implements OnInit {
   wineId: number;
   date: string;
   addWineNotes: string[] = [];
+  private user = sessionStorage.getItem('username');
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.wineId = params.wineId;
-      this.wineService.getWineById(this.wineId).subscribe((res) => {
-        this.wineResponse = res;
-        this.isWineAvailable = true;
-        this.wineService.getWineNotesByWineId(this.wineId).subscribe((wnr) => {
-          this.wineNoteResponse = wnr;
-          this.isWineNoteAvailable = true;
-        });
-        this.wineService.getWineRatingByWineId(this.wineId).subscribe((wrr) => {
-          this.wineRatingResponse = wrr;
-          this.isWineRatingAvailable = true;
-        });
-        this.wineService.getWineImages(this.wineId).subscribe((response) => {
-          this.isWineImagesAvailable = true;
-          response.wineImages.forEach((wi) => {
-            this.loadImage(wi);
-          });
-        });
-      });
+      this.wine = this.wineService.getWineById(this.wineId);
+      this.notes = this.wineService.getWineNotesByWineId(this.wineId);
+      this.ratings = this.wineService.getWineRatingsByUsersForWineIds(['*'], [this.wineId]).pipe(
+        tap(ratings => {
+          this.myRating = ratings.find(rating => rating.user === this.user);
+          console.log(ratings);
+          const total = ratings.reduce((total, rating) => { return total + parseInt(rating.rating) }, 0);
+          console.log(total);
+          this.averageRating = total / ratings.length;
+        })
+      );
     });
   }
 
