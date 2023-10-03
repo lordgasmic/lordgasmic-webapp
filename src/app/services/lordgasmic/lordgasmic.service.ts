@@ -103,17 +103,7 @@ export class LordgasmicService {
 
 
   getUsersByRole(role: number): Observable<Array<string>> {
-    return new Observable((observer: Observer<Array<string>>) => {
-      this.http.get<Array<string>>(this.API + this.USERS + `?role=${role}`).subscribe(
-        (response) => {
-          observer.next(response);
-          observer.complete();
-        },
-        (err) => {
-          observer.error(err);
-        }
-      );
-    });
+    return this.http.get<Array<string>>(this.API + this.USERS + `?role=${role}`);
   }
 
   addGas(gasRequest: GasRequest): Observable<GasResponse> {

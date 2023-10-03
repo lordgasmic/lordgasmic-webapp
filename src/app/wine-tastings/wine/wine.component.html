@@ -1,14 +1,30 @@
 <div>
-  <ng-container *ngIf="ratings | async">
-    <div class="rating">
+  <ng-container *ngIf="ratings$ | async as ratings">
+    <div class="myRating">
       <app-rating-icon [rating]="myRating?.rating || 0" size="40"></app-rating-icon>
       <button *ngIf="!myRating" mat-mini-fab color="primary" (click)="addRating()">+</button>
     </div>
-    <div class="averageRating">
-      <label>Avg. Rating</label>
-      <app-rating-icon [rating]="averageRating"></app-rating-icon>
+    <div class="allRatings" [class.allRatings--opened]="areRatingsShown">
+      <div class="rating rating--average" (click)="toggleRatings()">
+        <label>Avg. Rating</label>
+        <app-rating-icon [rating]="averageRating"></app-rating-icon>
+      </div>
+
+      <ng-container *ngIf="areRatingsShown">
+        <div *ngFor="let rating of ratings" class="rating">
+          <label>{{ rating.user }}</label>
+          <app-rating-icon [rating]="rating.rating"></app-rating-icon>
+        </div>
+      </ng-container>
     </div>
   </ng-container>
+
+  <div *ngIf="notes | async as noteList" class="noteList">
+    <div *ngFor="let note of noteList.wineNotes" class="note">
+      <p>{{ note.note }}</p>
+      <div class="details">{{ note.user }} {{ note.date | date:'shortDate' }}</div>
+    </div>
+  </div>
 
   Wine Notes:
   <div *ngIf="!isEditingNotes">

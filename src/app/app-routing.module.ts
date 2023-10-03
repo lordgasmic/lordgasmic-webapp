@@ -8,7 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { PortalComponent } from './portal/portal.component';
 import { ApprovedCountersComponent } from './approved-counters/approved-counters.component';
 import { MemeComponent } from './meme/meme.component';
-import { WineComponent } from './wine/wine.component';
+import { WineComponent } from './wine-tastings/wine/wine.component';
 import { FunkoComponent } from './funko/funko.component';
 import { WineTastingComponent } from './wine-tasting/wine-tasting.component';
 import { WineryComponent } from './winery/winery.component';

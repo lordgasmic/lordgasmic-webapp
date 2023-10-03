@@ -1,3 +1,18 @@
 <app-wine-header></app-wine-header>
 
 <router-outlet></router-outlet>
+
+<div class="awards" *ngIf="userRatingsAverage$ | async as userRatingsAverage">
+	<div class="awards__hater">
+		<img src="assets/trophy.png">
+		<label>Top Hater</label>
+		<span>{{ userRatingsAverage[0].user }}</span>
+		<span>Average Rating: {{ userRatingsAverage[0].average.toFixed(1) }}</span>
+	</div>
+	<div class="awards__lover">
+		<img src="assets/trophy2.png">
+		<label>Top Lover</label>
+		<span>{{ userRatingsAverage[userRatingsAverage.length - 1].user }}</span>
+		<span>Average Rating: {{ userRatingsAverage[userRatingsAverage.length - 1].average.toFixed(1) }}</span>
+	</div>
+</div>
