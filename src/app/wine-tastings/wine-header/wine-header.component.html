@@ -1,0 +1,12 @@
+<mat-toolbar color="primary">
+  <button *ngIf="!isTopLevel" mat-icon-button (click)="goBack()">
+    <img src="assets/icons/back.svg">
+  </button>
+  <h1>{{ title }}</h1>
+</mat-toolbar>
+
+<div class="breadcrumbs">
+  <span><a routerLink="/wineTasting">Wineries</a></span>
+  <span *ngIf="winery.value"><a [routerLink]="['/wineTasting/winery', winery.value.id]">{{winery.value.name}}</a></span>
+  <span *ngIf="wine.value"><a [routerLink]="['/wineTasting/winery', wine.value.wineryId, 'wine', wine.value.id]">{{wine.value.name}}</a></span>
+</div>

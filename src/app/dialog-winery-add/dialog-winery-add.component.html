@@ -1,12 +1,19 @@
-<h2>Add Winery</h2>
-<div>
-  <label>Winery Name</label>
-  <input type="text" name="name" id="name" #name>
-  <br/>
-  <label>Winery Location</label>
-  <input (keyup.enter)="submit()" type="text" name="location" id="location" #location>
-</div>
-<div>
-  <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button (click)="submit()">Submit</button>
-</div>
+<h2 mat-dialog-title>Add Winery</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="form" (submit)="submit()">
+    <mat-form-field>
+      <mat-label>Winery Name</mat-label>
+      <input matInput type="text" formControlName="name">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Winery Location</mat-label>
+      <input matInput type="text" formControlName="location">
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-stroked-button mat-dialog-close>Cancel</button>
+  <button mat-flat-button color="primary" (click)="submit()">Submit</button>
+</mat-dialog-actions>

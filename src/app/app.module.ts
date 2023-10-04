@@ -42,7 +42,7 @@ import { DialogWineAddComponent } from './dialog-wine-add/dialog-wine-add.compon
 import { DialogWineRatingAddComponent } from './dialog-wine-rating-add/dialog-wine-rating-add.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogWineImageAddComponent } from './dialog-wine-image-add/dialog-wine-image-add.component';
-import { WineHeaderComponent } from './wine-header/wine-header.component';
+import { WineHeaderComponent } from './wine-tastings/wine-header/wine-header.component';
 import { WineCardXListComponent } from './wine-tastings/wine-card-xlist/wine-card-xlist.component';
 import { GasComponent } from './gas/gas.component';
 import { DialogWineRatingEditComponent } from './dialog-wine-rating-edit/dialog-wine-rating-edit.component';
@@ -53,6 +53,7 @@ import { RecipeViewComponent } from './recipe-view/recipe-view.component';
 import { RequestInterceptor } from './shared/RequestInterceptor';
 import { FilterByPipe } from './util/filter-by.pipe';
 import { RatingIconComponent } from './wine-tastings/rating-icon/rating-icon.component';
+import { WineryListComponent } from './wine-tastings/winery-list/winery-list.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { RatingIconComponent } from './wine-tastings/rating-icon/rating-icon.com
     GasFormComponent,
     RecipeViewComponent,
     FilterByPipe,
-    RatingIconComponent
+    RatingIconComponent,
+    WineryListComponent
   ],
   imports: [
     BrowserModule,

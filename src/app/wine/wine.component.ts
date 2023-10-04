@@ -53,7 +53,7 @@ export class WineComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.wineId = params.id;
+      this.wineId = params.wineId;
       this.wineService.getWineById(this.wineId).subscribe((res) => {
         this.wineResponse = res;
         this.isWineAvailable = true;
