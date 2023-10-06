@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
@@ -21,30 +22,30 @@ import { DialogWineRatingEditComponent } from '../../dialog-wine-rating-edit/dia
   styleUrls: ['./wine.component.scss'],
 })
 export class WineComponent implements OnInit {
+
   constructor(
     private wineService: WineService,
     private route: ActivatedRoute,
     private dialog: MatDialog,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private fb: FormBuilder
   ) {
     const myDate = new Date();
     this.date = this.datePipe.transform(myDate, 'yyyy-MM-dd');
   }
 
-  wineResponse: WineResponse;
-  wineNoteResponse: WineNoteResponse;
   wineRatingResponse: Array<WineRatingResponse> = [];
-  wineImages: Array<WineImageDisplay> = [];
 
-  wine: Observable<WineResponse>;
-  notes: Observable<WineNoteResponse>;
+  wine$: Observable<WineResponse>;
+  notes$: Observable<WineNoteResponse>;
   ratings$: Observable<WineRatingResponse[]>;
+
+  note = this.fb.control('');
 
   myRating: WineRatingResponse;
   averageRating = 0;
 
   areRatingsShown = false;
-  isEditingNotes = false;
   isLoading = false;
 
   wineId: number;
@@ -55,8 +56,8 @@ export class WineComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.wineId = params.wineId;
-      this.wine = this.wineService.getWineById(this.wineId);
-      this.notes = this.wineService.getWineNotesByWineId(this.wineId);
+      this.wine$ = this.wineService.getWineById(this.wineId);
+      this.notes$ = this.wineService.getWineNotesByWineId(this.wineId);
       this.ratings$ = this.wineService.getWineRatingsByUsersForWineIds(['*'], [this.wineId]).pipe(
         tap(ratings => {
           this.myRating = ratings.find(rating => rating.user === this.user);
@@ -101,29 +102,15 @@ export class WineComponent implements OnInit {
   }
 
   addNote(): void {
+    let request = {
+      wineId: this.wineId,
+      user: this.user,
+      date: this.date,
+      wineNotes: [this.note.value],
+      upsert: []
+    };
+    this.note.setValue('');
+    this.notes$ = this.wineService.addWineNotes(request);
   }
 
-  addImage(): void {
-    const dialogRef = this.dialog.open(DialogWineImageAddComponent, {
-      data: {}
-    });
-
-    dialogRef.afterClosed().subscribe((formData: FormData | boolean) => {
-      if (formData && typeof formData !== 'boolean') {
-        formData.append('wineId', this.wineId + '');
-
-        this.isLoading = true;
-        this.wineService.addWineImage(formData).subscribe((response) => {
-          response.wineImages.forEach((wi) => {
-            this.loadImage(wi);
-            this.isLoading = false;
-          });
-        });
-      }
-    });
-  }
-
-  private loadImage(wineImage: WineImage): void {
-    this.wineImages.push({ label: wineImage.label, image: `data:${wineImage.mimeType};base64,${wineImage.image}` });
-  }
 }

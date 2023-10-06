@@ -18,7 +18,8 @@
   }
 }
 
-.rating {
+.rating,
+.style {
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -26,6 +27,29 @@
 
   &.rating--average {
     padding-bottom: 1rem;
+  }
+}
+
+.style,
+.rating--average {
+  label {
+    font-weight: bold;
+  }
+}
+
+.style {
+  border-bottom: 1px solid #cdcdcd;
+}
+
+form {
+  background: #ffffff;
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 1px 0 rgba(66, 66, 66, 0.08), 0 1px 3px 1px rgba(66, 66, 66, 0.16);
+  margin: 1rem;
+  padding: 1rem;
+
+  textarea {
+    height: 6rem;
   }
 }
 
