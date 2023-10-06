@@ -41,6 +41,7 @@ export class WineComponent implements OnInit {
   ratings$: Observable<WineRatingResponse[]>;
 
   note = this.fb.control('');
+  notesTrackBy = (index, item) => item.id;
 
   myRating: WineRatingResponse;
   averageRating = 0;

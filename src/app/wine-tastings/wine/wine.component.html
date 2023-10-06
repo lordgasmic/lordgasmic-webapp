@@ -33,7 +33,7 @@
   </form>
 
   <div *ngIf="notes$ | async as notes" class="noteList">
-    <div *ngFor="let note of notes.wineNotes" class="note" [class.note--mine]="note.user === user">
+    <div *ngFor="let note of notes.wineNotes; trackBy: notesTrackBy" class="note" [class.note--mine]="note.user === user">
       <span>{{ note.note }}</span>
       <div class="details">{{ note.user }} {{ note.date | date:'shortDate' }}</div>
     </div>
