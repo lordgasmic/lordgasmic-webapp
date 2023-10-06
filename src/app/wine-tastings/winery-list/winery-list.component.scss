@@ -1,0 +1,18 @@
+.awards {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	justify-content: center;
+	padding: 1rem;
+}
+
+.awards__hater,
+.awards__lover {
+    align-items: center;
+	display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    label {
+    	font-weight: bold;
+    }
+}

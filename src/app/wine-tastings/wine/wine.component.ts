@@ -31,9 +31,6 @@ export class WineComponent implements OnInit {
     this.date = this.datePipe.transform(myDate, 'yyyy-MM-dd');
   }
 
-  @ViewChild('wineNote') wineNoteRef: ElementRef;
-  @ViewChildren('inptWineNotes') inputWineNotes: QueryList<ElementRef>;
-
   wineResponse: WineResponse;
   wineNoteResponse: WineNoteResponse;
   wineRatingResponse: Array<WineRatingResponse> = [];
@@ -53,7 +50,7 @@ export class WineComponent implements OnInit {
   wineId: number;
   date: string;
   addWineNotes: string[] = [];
-  private user = sessionStorage.getItem('username');
+  user = sessionStorage.getItem('username');
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -103,51 +100,7 @@ export class WineComponent implements OnInit {
     });
   }
 
-  editNotes(): void {
-    this.toggleEditingNotes();
-  }
-
-  onCancel(): void {
-    this.addWineNotes = [];
-    this.toggleEditingNotes();
-  }
-
-  onSubmit(): void {
-    const req = new WineNoteRequest();
-    req.wineId = this.wineId;
-    req.user = sessionStorage.getItem('username');
-    req.date = this.date;
-
-    this.addWineNotes.forEach((value) => {
-      req.wineNotes.push(value);
-    });
-
-    this.inputWineNotes.forEach((item: ElementRef) => {
-      req.upsert.push({ id: item.nativeElement.id, note: item.nativeElement.value });
-    });
-
-    console.log(req);
-
-    this.wineService.addWineNotes(req).subscribe((response) => {
-      this.wineNoteResponse.wineNotes = response.wineNotes;
-    });
-
-    this.addWineNotes = [];
-    this.toggleEditingNotes();
-  }
-
   addNote(): void {
-    const note = this.wineNoteRef.nativeElement.value;
-    if (note === '') {
-      return;
-    }
-    this.addWineNotes.push(note);
-    this.wineNoteRef.nativeElement.value = '';
-    this.wineNoteRef.nativeElement.focus();
-  }
-
-  toggleEditingNotes(): void {
-    this.isEditingNotes = !this.isEditingNotes;
   }
 
   addImage(): void {

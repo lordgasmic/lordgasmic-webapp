@@ -4,8 +4,8 @@
       <app-rating-icon [rating]="myRating?.rating || 0" size="40"></app-rating-icon>
       <button *ngIf="!myRating" mat-mini-fab color="primary" (click)="addRating()">+</button>
     </div>
-    <div class="allRatings" [class.allRatings--opened]="areRatingsShown">
-      <div class="rating rating--average" (click)="toggleRatings()">
+    <div class="allRatings" [class.allRatings--opened]="areRatingsShown" (click)="toggleRatings()">
+      <div class="rating rating--average">
         <label>Avg. Rating</label>
         <app-rating-icon [rating]="averageRating"></app-rating-icon>
       </div>
@@ -20,35 +20,9 @@
   </ng-container>
 
   <div *ngIf="notes | async as noteList" class="noteList">
-    <div *ngFor="let note of noteList.wineNotes" class="note">
-      <p>{{ note.note }}</p>
+    <div *ngFor="let note of noteList.wineNotes" class="note" [class.note--mine]="note.user === user">
+      <span>{{ note.note }}</span>
       <div class="details">{{ note.user }} {{ note.date | date:'shortDate' }}</div>
     </div>
-  </div>
-
-  Wine Notes:
-  <div *ngIf="!isEditingNotes">
-    <ul>
-      <li *ngFor="let note of wineNoteResponse?.wineNotes">{{note.note}}</li>
-    </ul>
-    <div class="button-wrapper">
-      <button (click)="editNotes()">Add Notes</button>
-    </div>
-  </div>
-  <div *ngIf="isEditingNotes">
-    <ng-container *ngFor="let note of wineNoteResponse?.wineNotes">
-      <input class="input-add-wine-notes" value="{{note.note}}"
-             [id]="note.id"
-             #inptWineNotes>
-    </ng-container>
-    <ng-container *ngFor="let note of addWineNotes">
-      <input class="input-add-wine-notes" value="{{note}}"/>
-    </ng-container>
-    <form (submit)='addNote()'>
-      <input type="text" name="wineNote" id="wineNote" autofocus #wineNote>
-      <button (click)="addNote()">Add</button>
-    </form>
-    <button (click)="onCancel()">Cancel</button>
-    <button (click)="onSubmit()">Submit</button>
   </div>
 </div>
