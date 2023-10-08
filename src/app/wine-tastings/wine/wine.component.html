@@ -1,0 +1,41 @@
+<div>
+  <ng-container *ngIf="ratings$ | async as ratings">
+    <div class="myRating">
+      <app-rating-icon [rating]="myRating?.rating || 0" size="40"></app-rating-icon>
+      <button *ngIf="!myRating" mat-mini-fab color="primary" (click)="addRating()">+</button>
+    </div>
+    <div class="allRatings" [class.allRatings--opened]="areRatingsShown" (click)="toggleRatings()">
+      <div class="rating rating--average">
+        <label>Avg. Rating</label>
+        <app-rating-icon [rating]="averageRating"></app-rating-icon>
+      </div>
+
+      <ng-container *ngIf="areRatingsShown">
+        <div *ngFor="let rating of ratings" class="rating">
+          <label>{{ rating.user }}</label>
+          <app-rating-icon [rating]="rating.rating"></app-rating-icon>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="style" *ngIf="wine$ | async as wine">
+      <label>Style</label>
+      <span>{{ wine.style }}</span>
+    </div>
+  </ng-container>
+
+  <form (submit)="addNote()">
+    <mat-form-field class="fullWidth">
+      <mat-label>Notes</mat-label>
+      <textarea matInput placeholder="The finish is long and memorable, with the lingering taste of black fruits and a subtle earthy undertone." [formControl]="note"></textarea>
+    </mat-form-field>
+    <button type="submit" mat-stroked-button color="primary" class="fullWidth">Add Note</button>
+  </form>
+
+  <div *ngIf="notes$ | async as notes" class="noteList">
+    <div *ngFor="let note of notes.wineNotes; trackBy: notesTrackBy" class="note" [class.note--mine]="note.user === user">
+      <span>{{ note.note }}</span>
+      <div class="details">{{ note.user }} {{ note.date | date:'shortDate' }}</div>
+    </div>
+  </div>
+</div>

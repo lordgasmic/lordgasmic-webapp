@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,7 +34,7 @@ import { RecipeHomeComponent } from './recipe-home/recipe-home.component';
 import { MemeComponent } from './meme/meme.component';
 import { HttpErrorInterceptor } from './shared/http-error.interceptor';
 import { HeaderComponent } from './header/header.component';
-import { WineComponent } from './wine/wine.component';
+import { WineComponent } from './wine-tastings/wine/wine.component';
 import { FunkoComponent } from './funko/funko.component';
 import { WineTastingComponent } from './wine-tasting/wine-tasting.component';
 import { WineryComponent } from './winery/winery.component';
@@ -54,6 +55,7 @@ import { RequestInterceptor } from './shared/RequestInterceptor';
 import { FilterByPipe } from './util/filter-by.pipe';
 import { RatingIconComponent } from './wine-tastings/rating-icon/rating-icon.component';
 import { WineryListComponent } from './wine-tastings/winery-list/winery-list.component';
+import { SortByPipe } from './util/sort-by.pipe';
 
 @NgModule({
   declarations: [
@@ -89,7 +91,8 @@ import { WineryListComponent } from './wine-tastings/winery-list/winery-list.com
     RecipeViewComponent,
     FilterByPipe,
     RatingIconComponent,
-    WineryListComponent
+    WineryListComponent,
+    SortByPipe
   ],
   imports: [
     BrowserModule,
@@ -123,7 +126,8 @@ import { WineryListComponent } from './wine-tastings/winery-list/winery-list.com
       provide: HTTP_INTERCEPTORS,
       useClass: RequestInterceptor,
       multi: true
-    }
+    },
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

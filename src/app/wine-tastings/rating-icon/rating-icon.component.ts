@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class RatingIconComponent {
 
   @Input() rating;
+  @Input() size = 20;
 
   get percent() {
     return this.rating / 5;
