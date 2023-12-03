@@ -16,6 +16,7 @@ import { IngredientResponse } from '../../models/IngredientResponse';
 import { TagResponse } from '../../models/TagResponse';
 import { DirectionResponse } from '../../models/DirectionResponse';
 import { WebappConstants } from '../../configuration/WebappConstants';
+import { FacetsResponse } from '@models/FacetsResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,7 @@ export class LordgasmicService {
   private readonly LOGIN = '/v1/login';
   private readonly LOGOUT = '/v1/logout';
   private readonly MEME = '/v1/memes/tag/';
+  private readonly FACETS = '/v1/memes/facets';
   private readonly USERS = '/v1/users';
   private readonly GAS = '/v1/gas';
   private readonly RECIPE = '/v1/recipe';
@@ -101,6 +103,9 @@ export class LordgasmicService {
     });
   }
 
+  getFacets(): Observable<Array<FacetsResponse>> {
+    return this.http.get<Array<FacetsResponse>>(this.API + this.FACETS);
+  }
 
   getUsersByRole(role: number): Observable<Array<string>> {
     return this.http.get<Array<string>>(this.API + this.USERS + `?role=${role}`);

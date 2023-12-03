@@ -1,3 +1,14 @@
-.header-image {
+.header__image {
   height: 5em;
+}
+
+.header__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logout {
+  padding-right: 1em;
 }

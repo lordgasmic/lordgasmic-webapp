@@ -37,6 +37,9 @@ export class MemeComponent implements OnInit {
           this.memeResponse = value;
           this.hidden = false;
         });
+        this.lordgasmicService.getFacets().subscribe((value) => {
+          console.log('facets', value);
+        });
       }
     });
   }

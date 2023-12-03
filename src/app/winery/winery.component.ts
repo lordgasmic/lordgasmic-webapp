@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { forkJoin, Observable } from 'rxjs';
-import { map, mergeMap, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, mergeMap } from 'rxjs/operators';
 import { WineService } from '../services/wine/wine.service';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
 import { WineryResponse } from '../models/WineryResponse';
@@ -38,8 +38,8 @@ export class WineryComponent implements OnInit {
 
   constructor(
     private lordgasmicService: LordgasmicService,
-    private wineService: WineService, 
-    private route: ActivatedRoute, 
+    private wineService: WineService,
+    private route: ActivatedRoute,
     private dialog: MatDialog
   ) {}
 
@@ -51,13 +51,13 @@ export class WineryComponent implements OnInit {
       this.wines$ = this.wineService.getWinesByWinery(this.id).pipe(
         mergeMap(
           (wines: Array<WineDisplay>) => {
-            const wineIds = wines.map(wine => wine.id);
+            const wineIds = wines.map((wine) => wine.id);
             return this.wineService.getWineRatingsByUsersForWineIds(['*'], wineIds);
           },
           (wines, ratings) => {
-            return wines.map(wine => {
-              const wineRating = ratings.filter(rating => rating.wineId === wine.id);
-              const myRating = wineRating.find(rating => rating.user === this.currentUser);
+            return wines.map((wine) => {
+              const wineRating = ratings.filter((rating) => rating.wineId === wine.id);
+              const myRating = wineRating.find((rating) => rating.user === this.currentUser);
               return { ...wine, ratings: wineRating, myRating };
             });
           }
@@ -65,9 +65,9 @@ export class WineryComponent implements OnInit {
       );
     });
 
-    this.users$ = this.lordgasmicService.getUsersByRole(RoleConstants.wine).pipe(
-      map(users => users.filter(user => user !== this.currentUser))
-    );
+    this.users$ = this.lordgasmicService
+      .getUsersByRole(RoleConstants.wine)
+      .pipe(map((users) => users.filter((user) => user !== this.currentUser)));
   }
 
   updateDisplay(change) {
