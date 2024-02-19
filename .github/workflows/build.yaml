@@ -12,18 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Cache node modules
-        uses: actions/cache@v4
-        env:
-          cache-name: cache-node-modules
+        uses: actions/setup-node@v4
         with:
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          path: '**/node_modules'
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+          node-version: 16
+          cache: 'npm'
       - name: npm install and npm run CI commands
         run: |
           npm i
-          # npm run test
           npm run build
