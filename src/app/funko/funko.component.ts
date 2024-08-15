@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
+import { FunkoResponse } from '@models/FunkoResponse';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-funko',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FunkoComponent implements OnInit {
 
-  constructor() { }
+  funkoResponse$: Observable<FunkoResponse>;
+
+  constructor(private lordgasmicService: LordgasmicService) {
+  }
 
   ngOnInit(): void {
+    this.funkoResponse$ = this.lordgasmicService.getFunkos();
   }
 
 }

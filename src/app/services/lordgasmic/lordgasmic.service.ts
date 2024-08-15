@@ -17,6 +17,7 @@ import { TagResponse } from '../../models/TagResponse';
 import { DirectionResponse } from '../../models/DirectionResponse';
 import { WebappConstants } from '../../configuration/WebappConstants';
 import { FacetsResponse } from '@models/FacetsResponse';
+import { FunkoResponse } from '@models/FunkoResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -37,8 +38,10 @@ export class LordgasmicService {
   private readonly RECIPE_INGREDIENT = '/v1/ingredient';
   private readonly RECIPE_DIRECTION = '/v1/direction';
   private readonly RECIPE_TAG = '/v1/tag';
+  private readonly FUNKO = '/v1/funkos';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   // getExpressions(): Expression[] {
   getExpressions(): void {
@@ -207,5 +210,9 @@ export class LordgasmicService {
         }
       );
     });
+  }
+
+  getFunkos(): Observable<FunkoResponse> {
+    return this.http.get<FunkoResponse>(this.API + this.FUNKO);
   }
 }
