@@ -1,6 +1,6 @@
 <main>
   <ng-container *ngIf="funkoResponse$ | async as funkoResponse">
-    <app-funko-card *ngFor="let funko of funkoResponse.funkos" />
+    <app-funko-card *ngFor="let funko of funkoResponse.funkos"></app-funko-card>
 
   </ng-container>
 </main>
