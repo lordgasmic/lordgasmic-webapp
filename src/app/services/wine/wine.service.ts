@@ -1,38 +1,38 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { WineryResponse } from '../../models/WineryResponse';
-import { WineResponse } from '../../models/WineResponse';
-import { WineNoteResponse } from '../../models/WineNoteResponse';
-import { WineRatingResponse } from '../../models/WineRatingResponse';
-import { WineryRequest } from '../../models/WineryRequest';
-import { WineRequest } from '../../models/WineRequest';
-import { WineRatingRequest } from '../../models/WineRatingRequest';
-import { WineNoteRequest } from '../../models/WineNoteRequest';
-import { WineDisplay } from '../../models/WineDisplay';
-import { WineImageResponse } from '../../models/WineImageResponse';
-import { WineRatingEditRequest } from '../../models/WineRatingEditRequest';
+import { WineryResponse } from '@models/WineryResponse';
+import { WineResponse } from '@models/WineResponse';
+import { WineNoteResponse } from '@models/WineNoteResponse';
+import { WineRatingResponse } from '@models/WineRatingResponse';
+import { WineryRequest } from '@models/WineryRequest';
+import { WineRequest } from '@models/WineRequest';
+import { WineRatingRequest } from '@models/WineRatingRequest';
+import { WineNoteRequest } from '@models/WineNoteRequest';
+import { WineDisplay } from '@models/WineDisplay';
+import { WineImageResponse } from '@models/WineImageResponse';
+import { WineRatingEditRequest } from '@models/WineRatingEditRequest';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WineService {
   private readonly API = 'https://lordgasmic.com/api';
-  private readonly WINERIES = '/v1/wineries/';
-  private readonly WINES = '/v1/wines/';
-  private readonly WINE_NOTES = '/v1/wineNotes/';
-  private readonly WINE_RATING = '/v1/wineRating/';
+  private readonly WINERIES = '/v1/wineries';
+  private readonly WINES = '/v1/wines';
+  private readonly WINE_NOTES = '/v1/wineNotes';
+  private readonly WINE_RATING = '/v1/wineRating';
   private readonly WINE_RATING_EDIT = '/v1/wineRating/edit';
   private readonly WINE_IMAGES = '/v1/wineImages';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getWineries(): Observable<Array<WineryResponse>> {
     return this.http.get<Array<WineryResponse>>(this.API + this.WINERIES);
   }
 
   getWinery(id: number): Observable<WineryResponse> {
-    return this.http.get<WineryResponse>(this.API + this.WINERIES + id);
+    return this.http.get<WineryResponse>(`${this.API}${this.WINERIES}/${id}`);
   }
 
   getAllWines(): Observable<Array<WineResponse>> {
