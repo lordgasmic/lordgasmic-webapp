@@ -1,4 +1,4 @@
-name: Angular CI Test
+name: Angular CI PR Actions
 
 on:
   pull_request:
@@ -17,4 +17,5 @@ jobs:
       - name: npm install and npm run CI commands
         run: |
           npm i
+          npm run lint
           npm run test
