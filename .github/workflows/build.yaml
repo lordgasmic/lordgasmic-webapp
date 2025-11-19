@@ -17,7 +17,7 @@ jobs:
       - name: npm install and npm run CI commands
         run: |
           npm i
-          npm run build
+          npm run build:prod
       - uses: actions/upload-artifact@v4
         with:
           path: dist/lordgasmic-webapp
