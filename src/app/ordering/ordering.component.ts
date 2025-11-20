@@ -12,7 +12,8 @@ export class OrderingComponent {
   formGroup: FormGroup;
   checkboxOptions = [
     { name: 'Water', value: 'water' },
-    { name: 'Chips', value: 'chips' },
+    { name: 'Salty Snacks', value: 'salty-snacks' },
+    { name: 'Sweet Snacks', value: 'sweet-snacks' },
     { name: 'Wine', value: 'wine' },
     { name: 'Other', value: 'other' }
   ];
