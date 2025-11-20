@@ -1,7 +1,7 @@
-name: Angular CI Build
+name: Angular CI PR Actions
 
 on:
-  push:
+  pull_request:
     branches: [ master ]
 
 jobs:
@@ -17,9 +17,5 @@ jobs:
       - name: npm install and npm run CI commands
         run: |
           npm i
-          npm run build:prod
-      - uses: actions/upload-artifact@v4
-        with:
-          path: dist/lordgasmic-webapp
-          retention-days: 14
-
+          #npm run lint
+          npm run test
