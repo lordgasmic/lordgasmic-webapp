@@ -15,7 +15,7 @@ FROM nginx:1.29.3-alpine AS runner
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
-COPY --from=build /app/dist/* /usr/share/nginx/html
+COPY --from=build /app/dist/* /var/www/lordgasmic
 
 EXPOSE 4200
 
