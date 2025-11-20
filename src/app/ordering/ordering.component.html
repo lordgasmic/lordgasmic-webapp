@@ -1,0 +1,10 @@
+<h2>Lordgasmic Ordering</h2>
+
+<form [formGroup]="formGroup">
+  <div formArrayName="selectedOptions">
+    <div *ngFor="let option of checkboxOptions; let i = index">
+      <input type="checkbox" [formControlName]="i">
+      <label>{{ option.name }}</label>
+    </div>
+  </div>
+</form>

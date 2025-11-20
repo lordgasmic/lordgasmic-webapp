@@ -18,6 +18,7 @@ import { GasFormComponent } from './gas-form/gas-form.component';
 import { GasStatsComponent } from './gas-stats/gas-stats.component';
 import { RecipeHomeComponent } from './recipe-home/recipe-home.component';
 import { RecipeViewComponent } from './recipe-view/recipe-view.component';
+import { OrderingComponent } from './ordering/ordering.component';
 
 const routes: Routes = [
   {
@@ -84,6 +85,10 @@ const routes: Routes = [
   {
     path: 'recipe/:id',
     component: RecipeViewComponent
+  },
+  {
+    path: 'ordering',
+    component: OrderingComponent
   }
 ];
 

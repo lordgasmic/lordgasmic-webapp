@@ -57,6 +57,7 @@ import { RatingIconComponent } from './wine-tastings/rating-icon/rating-icon.com
 import { WineryListComponent } from './wine-tastings/winery-list/winery-list.component';
 import { SortByPipe } from './util/sort-by.pipe';
 import { FunkoCardComponent } from './funko-card/funko-card.component';
+import { OrderingComponent } from './ordering/ordering.component';
 
 @NgModule({
   declarations: [
@@ -94,7 +95,8 @@ import { FunkoCardComponent } from './funko-card/funko-card.component';
     RatingIconComponent,
     WineryListComponent,
     SortByPipe,
-    FunkoCardComponent
+    FunkoCardComponent,
+    OrderingComponent
   ],
   imports: [
     BrowserModule,

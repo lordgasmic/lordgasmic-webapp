@@ -19,7 +19,7 @@ export class PortalComponent implements OnInit {
   wineEnabled = false;
   funkoEnabled = false;
   gasEnabled = false;
-  printEnabled = false;
+  orderingEnabled = false;
 
   constructor(private lordgasmicService: LordgasmicService) {}
 
@@ -40,7 +40,7 @@ export class PortalComponent implements OnInit {
       this.wineEnabled = (RoleConstants.wine & this.roles) === RoleConstants.wine;
       this.funkoEnabled = (RoleConstants.funko & this.roles) === RoleConstants.funko;
       this.gasEnabled = (RoleConstants.gas & this.roles) === RoleConstants.gas;
-      this.printEnabled = (RoleConstants.print & this.roles) === RoleConstants.print;
+      this.orderingEnabled = (RoleConstants.ordering & this.roles) === RoleConstants.ordering;
       /* tslint:enable:no-bitwise */
     });
   }
