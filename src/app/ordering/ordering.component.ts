@@ -29,7 +29,11 @@ export class OrderingComponent {
   submit(): void {
     // todo build request object out of form group
     const orderingRequest: OrderingRequest = { properties: new Map<string, string[]>() };
+    console.log(this.formGroup.value.selectedOptions);
     this.formGroup.value.selectedOptions.forEach((checked, i) => {
+      console.log(checked);
+      console.log(i);
+      console.log(this.checkboxOptions[i]);
       if (checked) {
         orderingRequest.properties.set(this.checkboxOptions[i].value, []);
       }
