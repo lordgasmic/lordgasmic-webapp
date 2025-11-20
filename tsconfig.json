@@ -10,17 +10,14 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "ES2022",
+    "target": "es2020",
     "module": "es2020",
     "lib": [
       "es2018",
       "dom"
     ],
     "paths": {
-      "@models/*": [
-        "./src/app/models/*"
-      ]
-    },
-    "useDefineForClassFields": false
+      "@models/*": ["./src/app/models/*"]
+    }
   }
 }
