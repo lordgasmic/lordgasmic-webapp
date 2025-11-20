@@ -11,13 +11,13 @@ COPY . .
 RUN npm run build:prod
 
 
-FROM nginx:1.29.3-alpine AS runner
+FROM nginx:1.29.3-alpine
 
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
 COPY --from=build /app/dist/* /var/www/lordgasmic
 
 EXPOSE 4200
 
-ENTRYPOINT ["nginx", "-c", "/etc/nginx/nginx.conf"]
-CMD ["-g", "daemon off;"]
+#ENTRYPOINT ["nginx", "-c", "/etc/nginx/nginx.conf"]
+CMD ["nginx", "-g", "daemon off;"]
