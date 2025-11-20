@@ -14,7 +14,7 @@ jobs:
       output1: ${{ steps.step1.outputs.date }}
     steps:
       - id: step1
-        run: echo "::set-output name=date::lordgasmic/lordgasmicwebapp"
+        run: echo "::set-output name=date::lordgasmic/webapp"
 
   build:
     needs: vars
