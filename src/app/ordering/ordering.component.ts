@@ -31,13 +31,13 @@ export class OrderingComponent {
     const orderingRequest: OrderingRequest = { properties: new Map<string, string[]>() };
     console.log(this.formGroup.value.selectedOptions);
     this.formGroup.value.selectedOptions.forEach((checked, i) => {
-      console.log(checked);
-      console.log(i);
-      console.log(this.checkboxOptions[i]);
       if (checked) {
+        console.log('got here');
+        console.log(this.checkboxOptions[i].value);
         orderingRequest.properties.set(this.checkboxOptions[i].value, []);
       }
     });
+    console.log(orderingRequest);
     this.orderingService.placeOrder(orderingRequest).subscribe(() => {
       // todo
     });
