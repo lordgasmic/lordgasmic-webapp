@@ -1,7 +1,5 @@
-import { PrintType } from '@models/PrintType';
-
 export interface OrderingRequest {
   message: string;
-  type: PrintType;
+  type: string;
   properties: { [key: string]: string[] };
 }
