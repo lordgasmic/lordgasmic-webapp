@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { OrderingService } from '../services/ordering/ordering.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { OrderingRequest } from '@models/OrderingRequest';
+import { PrintType } from '@models/PrintType';
 
 @Component({
   selector: 'app-ordering',
@@ -34,7 +35,7 @@ export class OrderingComponent {
         properties[this.checkboxOptions[i].value] = [];
       }
     });
-    const orderingRequest: OrderingRequest = { properties };
+    const orderingRequest: OrderingRequest = { message: 'Wifey needy', type: PrintType.RECEIPT, properties };
 
     console.log(orderingRequest);
     this.orderingService.placeOrder(orderingRequest).subscribe(() => {
