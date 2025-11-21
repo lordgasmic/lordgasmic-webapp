@@ -19,5 +19,4 @@ COPY --from=build /app/dist/* /var/www/lordgasmic
 
 EXPOSE 4200
 
-#ENTRYPOINT ["nginx", "-c", "/etc/nginx/nginx.conf"]
 CMD ["nginx", "-g", "daemon off;"]
