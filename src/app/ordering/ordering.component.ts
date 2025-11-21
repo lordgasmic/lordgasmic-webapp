@@ -35,7 +35,7 @@ export class OrderingComponent {
         properties[this.checkboxOptions[i].value] = [];
       }
     });
-    const orderingRequest: OrderingRequest = { message: 'Wifey needy', type: PrintType.RECEIPT, properties };
+    const orderingRequest: OrderingRequest = { message: 'Wifey needy', type: PrintType.RECEIPT.toString(), properties };
 
     console.log(orderingRequest);
     this.orderingService.placeOrder(orderingRequest).subscribe(() => {
