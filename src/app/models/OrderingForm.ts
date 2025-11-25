@@ -5,6 +5,7 @@ export interface OrderingForm {
 }
 
 export interface OrderingRow {
+  name: FormControl<string>;
   selectedOption: FormControl<boolean>;
   additionalOptions: FormArray<FormControl<boolean>>;
   writeIn: FormControl<string>;

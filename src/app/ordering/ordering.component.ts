@@ -33,6 +33,7 @@ export class OrderingComponent implements OnInit {
     this.formGroup = this.fb.group({
       rows: this.fb.array([
         this.fb.group({
+          name: [''],
           selectedOption: [false],
           additionalOptions: this.fb.array<boolean>([]),
           writeIn: ['']
@@ -43,12 +44,19 @@ export class OrderingComponent implements OnInit {
 
   ngOnInit(): void {
     // todo init form
+    for (let i = 0; i <= this.orderingOptions.length; i++) {
+      this.formGroup.controls.rows.value[i].name = this.orderingOptions[i].name;
+      this.formGroup.controls.rows.value[i].selectedOption = false;
+      // this.formGroup.controls.rows.value[i].additionalOptions = this.orderingOptions[i].name;
+      this.formGroup.controls.rows.value[i].writeIn = '';
+    }
   }
 
   submit(): void {
     const properties: { [key: string]: string[] } = {};
     console.log(this.formGroup);
     this.formGroup.value.rows.forEach((row, i) => {
+      console.log(i);
       console.log(row);
       if (row.selectedOption) {
         properties[this.orderingOptions[i].value] = [];
