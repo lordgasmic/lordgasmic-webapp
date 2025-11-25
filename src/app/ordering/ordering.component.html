@@ -1,8 +1,8 @@
 <h2>Lordgasmic Ordering</h2>
 
 <form [formGroup]="formGroup" (ngSubmit)="submit()">
-  <div formArrayName="selectedOptions">
-    <div *ngFor="let option of checkboxOptions; let i = index">
+  <div formArrayName="rows">
+    <div *ngFor="let option of orderingOptions; let i = index">
       <input type="checkbox" [formControlName]="i">
       <label>{{ option.name }}</label>
     </div>
