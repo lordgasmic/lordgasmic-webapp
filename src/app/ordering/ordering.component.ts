@@ -47,7 +47,9 @@ export class OrderingComponent implements OnInit {
 
   submit(): void {
     const properties: { [key: string]: string[] } = {};
+    console.log(this.formGroup);
     this.formGroup.value.rows.forEach((row, i) => {
+      console.log(row);
       if (row.selectedOption) {
         properties[this.orderingOptions[i].value] = [];
       }
