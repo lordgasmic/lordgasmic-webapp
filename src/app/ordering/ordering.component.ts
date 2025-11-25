@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { OrderingService } from '../services/ordering/ordering.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { OrderingRequest } from '@models/OrderingRequest';
 import { PrintType } from '@models/PrintType';
+import { ToastMessageService } from '../services/toast-message/toast-message.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ordering',
@@ -19,7 +21,13 @@ export class OrderingComponent {
     { name: 'Other', value: 'other' }
   ];
 
-  constructor(private orderingService: OrderingService, private fb: FormBuilder) {
+  constructor(
+    private orderingService: OrderingService,
+    private router: Router,
+    private zone: NgZone,
+    private toastService: ToastMessageService,
+    private fb: FormBuilder
+  ) {
     this.formGroup = this.fb.group({
       selectedOptions: this.fb.array(
         this.checkboxOptions.map(() => false) // Initialize all checkboxes as unchecked
@@ -37,9 +45,9 @@ export class OrderingComponent {
     });
     const orderingRequest: OrderingRequest = { message: 'Wifey needy', type: PrintType.RECEIPT.toString(), properties };
 
-    console.log(orderingRequest);
     this.orderingService.placeOrder(orderingRequest).subscribe(() => {
-      // todo
+      this.toastService.showToastMessage('Order submitted', 4000);
+      this.zone.run(() => this.router.navigate([`/portal`]));
     });
   }
 }
