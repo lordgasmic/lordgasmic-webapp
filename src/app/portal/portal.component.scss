@@ -1,5 +1,5 @@
 .portal__app {
-  
+
 }
 
 .portal__recipe-header {
@@ -58,6 +58,17 @@
 }
 
 .portal__gas-header {
+  img {
+    height: 50px;
+    width: 50px;
+  }
+
+  span {
+    width: 100%;
+  }
+}
+
+.portal__ordering-header {
   img {
     height: 50px;
     width: 50px;
