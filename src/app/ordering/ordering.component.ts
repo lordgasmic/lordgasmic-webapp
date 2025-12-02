@@ -16,11 +16,11 @@ import { OrderingOptions } from '@models/OrderingOptions';
 export class OrderingComponent implements OnInit {
   formGroup: FormGroup<OrderingForm>;
   orderingOptions: OrderingOptions[] = [
-    { name: 'Water', value: 'water', options: ['Ice', 'Stanley'] },
-    { name: 'Salty Snacks', value: 'salty-snacks', options: ['Chips', 'Nuts'] },
-    { name: 'Sweet Snacks', value: 'sweet-snacks', options: ['Candy', 'Cereal'] },
-    { name: 'Wine', value: 'wine', options: [] },
-    { name: 'Other', value: 'other', options: [] }
+    { name: 'Water', value: 'WATER', options: ['Ice', 'Stanley'] },
+    { name: 'Salty Snacks', value: 'SALTY_SNACKS', options: ['Chips', 'Nuts'] },
+    { name: 'Sweet Snacks', value: 'SWEET_SNACKS', options: ['Candy', 'Cereal'] },
+    { name: 'Wine', value: 'WINE', options: [] },
+    { name: 'Other', value: 'OTHER', options: [] }
   ];
 
   constructor(
