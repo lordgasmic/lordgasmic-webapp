@@ -1,6 +1,10 @@
+import { DirectionResponse } from '@models/DirectionResponse';
+import { IngredientResponse } from '@models/IngredientResponse';
+
 export interface RecipeResponse {
-  recipeId: number;
+  id: number;
   name: string;
-  direction: string;
-  image: string;
+  description: string;
+  ingredients: IngredientResponse[];
+  directions: DirectionResponse[];
 }
