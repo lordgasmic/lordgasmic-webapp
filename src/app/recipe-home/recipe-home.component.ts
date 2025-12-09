@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
+import { RecipeService } from '../services/recipe/recipe.service';
+import { RecipeResponse } from '@models/RecipeResponse';
 
 @Component({
   selector: 'app-recipe-home',
@@ -7,7 +8,15 @@ import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
   styleUrls: ['./recipe-home.component.scss']
 })
 export class RecipeHomeComponent implements OnInit {
-  constructor(private lordgasmicService: LordgasmicService) {}
+  recipes: RecipeResponse[] = [];
 
-  ngOnInit(): void {}
+  constructor(private recipeService: RecipeService) {}
+
+  ngOnInit(): void {
+    this.recipeService.getAllRecipes().subscribe((data) => {
+      if (data) {
+        this.recipes = data;
+      }
+    });
+  }
 }

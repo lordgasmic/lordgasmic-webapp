@@ -1,6 +1,5 @@
 export interface DirectionResponse {
-  directionId: number;
+  id: number;
   recipeId: number;
-  ordinal: number;
   direction: string;
 }

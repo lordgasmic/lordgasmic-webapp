@@ -1,9 +1,10 @@
+import { IngredientPreparationResponse } from '@models/IngredientPreparationResponse';
+
 export interface IngredientResponse {
-  ingredientId: number;
+  id: number;
   recipeId: number;
-  ordinal: number;
   quantity: string;
   uom: string;
   ingredient: string;
-  preparation: string;
+  preparations: IngredientPreparationResponse[];
 }
