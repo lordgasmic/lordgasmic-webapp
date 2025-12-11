@@ -59,6 +59,7 @@ import { SortByPipe } from './util/sort-by.pipe';
 import { FunkoCardComponent } from './funko-card/funko-card.component';
 import { OrderingComponent } from './ordering/ordering.component';
 import { RecipesComponent } from './recipes/recipes.component';
+import { RecipeHeaderComponent } from './recipes/recipe-header/recipe-header.component';
 
 @NgModule({
   declarations: [
@@ -98,7 +99,8 @@ import { RecipesComponent } from './recipes/recipes.component';
     SortByPipe,
     FunkoCardComponent,
     OrderingComponent,
-    RecipesComponent
+    RecipesComponent,
+    RecipeHeaderComponent
   ],
   imports: [
     BrowserModule,
