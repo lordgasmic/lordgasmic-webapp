@@ -5,8 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './wine-tasting.component.html',
   styleUrls: ['./wine-tasting.component.scss']
 })
-export class WineTastingComponent  {
-
+export class WineTastingComponent {
   constructor() {}
-    
 }

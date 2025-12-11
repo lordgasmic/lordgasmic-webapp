@@ -1,0 +1,9 @@
+<h2>Recipe Home</h2>
+
+<ng-container *ngIf="recipes.length > 0">
+  <ul>
+    <li *ngFor="let recipe of recipes">
+      <a [routerLink]="['/recipe/', recipe.id]">{{ recipe.name }})</a>
+    </li>
+  </ul>
+</ng-container>

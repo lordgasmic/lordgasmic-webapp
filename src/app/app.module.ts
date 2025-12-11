@@ -30,7 +30,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { PortalComponent } from './portal/portal.component';
 import { ApprovedCountersComponent } from './approved-counters/approved-counters.component';
-import { RecipeHomeComponent } from './recipe-home/recipe-home.component';
+import { RecipeHomeComponent } from './recipes/recipe-home/recipe-home.component';
 import { MemeComponent } from './meme/meme.component';
 import { HttpErrorInterceptor } from './shared/http-error.interceptor';
 import { HeaderComponent } from './header/header.component';
@@ -50,7 +50,7 @@ import { DialogWineRatingEditComponent } from './dialog-wine-rating-edit/dialog-
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { GasStatsComponent } from './gas-stats/gas-stats.component';
 import { GasFormComponent } from './gas-form/gas-form.component';
-import { RecipeViewComponent } from './recipe-view/recipe-view.component';
+import { RecipeViewComponent } from './recipes/recipe-view/recipe-view.component';
 import { RequestInterceptor } from './shared/RequestInterceptor';
 import { FilterByPipe } from './util/filter-by.pipe';
 import { RatingIconComponent } from './wine-tastings/rating-icon/rating-icon.component';
@@ -58,6 +58,7 @@ import { WineryListComponent } from './wine-tastings/winery-list/winery-list.com
 import { SortByPipe } from './util/sort-by.pipe';
 import { FunkoCardComponent } from './funko-card/funko-card.component';
 import { OrderingComponent } from './ordering/ordering.component';
+import { RecipesComponent } from './recipes/recipes.component';
 
 @NgModule({
   declarations: [
@@ -96,7 +97,8 @@ import { OrderingComponent } from './ordering/ordering.component';
     WineryListComponent,
     SortByPipe,
     FunkoCardComponent,
-    OrderingComponent
+    OrderingComponent,
+    RecipesComponent
   ],
   imports: [
     BrowserModule,
