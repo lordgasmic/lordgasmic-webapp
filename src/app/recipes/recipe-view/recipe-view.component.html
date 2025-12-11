@@ -1,14 +1,15 @@
 <ng-container *ngIf="recipe">
   <h2>{{ recipe.name }}</h2>
   <h3>Ingredients:</h3>
-  <ol *ngFor="let ingredient of recipe.ingredients">
-    <li>
-      <span>{{ ingredient.quantity }}</span><span>{{ ingredient.uom }}</span><span>{{ ingredient.ingredient }}</span>
+  <ol>
+    <li *ngFor="let ingredient of recipe.ingredients">
+      <span>{{ ingredient.quantity }}</span>&nbsp;<span>{{ ingredient.uom }}</span>
+      <span>{{ ingredient.ingredient }}</span>
     </li>
   </ol>
   <h3>Directions:</h3>
-  <ol *ngFor="let direction of recipe.directions">
-    <li>
+  <ol>
+    <li *ngFor="let direction of recipe.directions">
       <span>{{ direction.direction }}</span>
     </li>
   </ol>
