@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { RecipeResponse } from '@models/RecipeResponse';
+import { RecipeRequest } from '@models/RecipeRequest';
+import { RecipeNewResponse } from '@models/RecipeNewResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +20,9 @@ export class RecipeService {
 
   getRecipeById(id: number): Observable<RecipeResponse> {
     return this.http.get<RecipeResponse>(`${this.API}${this.RECIPES}/${id}`);
+  }
+
+  postNewRecipe(request: RecipeRequest): Observable<RecipeNewResponse> {
+    return this.http.put<RecipeNewResponse>(`${this.API}${this.RECIPES}`, request);
   }
 }

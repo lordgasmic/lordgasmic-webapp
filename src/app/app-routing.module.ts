@@ -20,6 +20,7 @@ import { RecipeHomeComponent } from './recipes/recipe-home/recipe-home.component
 import { RecipeViewComponent } from './recipes/recipe-view/recipe-view.component';
 import { OrderingComponent } from './ordering/ordering.component';
 import { RecipesComponent } from './recipes/recipes.component';
+import { RecipeNewComponent } from './recipes/recipe-new/recipe-new.component';
 
 const routes: Routes = [
   {
@@ -84,7 +85,8 @@ const routes: Routes = [
     component: RecipesComponent,
     children: [
       { path: '', pathMatch: 'full', component: RecipeHomeComponent },
-      { path: ':recipeId', component: RecipeViewComponent }
+      { path: ':recipeId', component: RecipeViewComponent },
+      { path: 'new', component: RecipeNewComponent }
     ]
   },
   {

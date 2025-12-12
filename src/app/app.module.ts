@@ -60,6 +60,7 @@ import { FunkoCardComponent } from './funko-card/funko-card.component';
 import { OrderingComponent } from './ordering/ordering.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeHeaderComponent } from './recipes/recipe-header/recipe-header.component';
+import { RecipeNewComponent } from './recipes/recipe-new/recipe-new.component';
 
 @NgModule({
   declarations: [
@@ -100,7 +101,8 @@ import { RecipeHeaderComponent } from './recipes/recipe-header/recipe-header.com
     FunkoCardComponent,
     OrderingComponent,
     RecipesComponent,
-    RecipeHeaderComponent
+    RecipeHeaderComponent,
+    RecipeNewComponent
   ],
   imports: [
     BrowserModule,
