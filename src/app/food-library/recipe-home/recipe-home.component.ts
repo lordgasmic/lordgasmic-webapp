@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { RecipeService } from '../../services/recipe/recipe.service';
+import { RecipeService } from '../../services/food-library/recipe.service';
 import { RecipeResponse } from '@models/RecipeResponse';
 
 @Component({
-  selector: 'app-recipe-home',
+  selector: 'app-food-library-home',
   templateUrl: './recipe-home.component.html',
   styleUrls: ['./recipe-home.component.scss']
 })

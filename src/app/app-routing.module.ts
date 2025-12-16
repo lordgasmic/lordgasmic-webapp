@@ -16,10 +16,10 @@ import { WineryListComponent } from './wine-tastings/winery-list/winery-list.com
 import { GasComponent } from './gas/gas.component';
 import { GasFormComponent } from './gas-form/gas-form.component';
 import { GasStatsComponent } from './gas-stats/gas-stats.component';
-import { RecipeHomeComponent } from './recipes/recipe-home/recipe-home.component';
-import { RecipeViewComponent } from './recipes/recipe-view/recipe-view.component';
+import { RecipeHomeComponent } from './food-library/recipe-home/recipe-home.component';
+import { RecipeViewComponent } from './food-library/recipe-view/recipe-view.component';
 import { OrderingComponent } from './ordering/ordering.component';
-import { RecipesComponent } from './recipes/recipes.component';
+import { FoodLibraryComponent } from './food-library/food-library.component';
 
 const routes: Routes = [
   {
@@ -81,7 +81,7 @@ const routes: Routes = [
   },
   {
     path: 'recipe',
-    component: RecipesComponent,
+    component: FoodLibraryComponent,
     children: [
       { path: '', pathMatch: 'full', component: RecipeHomeComponent },
       { path: ':recipeId', component: RecipeViewComponent }

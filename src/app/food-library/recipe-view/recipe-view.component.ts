@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { RecipeService } from '../../services/recipe/recipe.service';
+import { RecipeService } from '../../services/food-library/recipe.service';
 import { RecipeResponse } from '@models/RecipeResponse';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-recipe-view',
+  selector: 'app-food-library-view',
   templateUrl: './recipe-view.component.html',
   styleUrls: ['./recipe-view.component.scss']
 })
