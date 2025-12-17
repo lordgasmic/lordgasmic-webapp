@@ -1,6 +1,6 @@
 <form (ngSubmit)="submit()">
   <select [(ngModel)]="selectedDepartment">
-    <option *ngFor="let department of departments" value="{{department.name}}">
+    <option *ngFor="let department of mockDepartments" value="{{department.type}}">
       {{ department.label }}
     </option>
   </select>

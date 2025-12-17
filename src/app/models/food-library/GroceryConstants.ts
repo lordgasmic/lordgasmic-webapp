@@ -1,4 +1,4 @@
-import { DepartmentType } from '@models/food-library/GroceryType';
+import { DepartmentType } from '@models/food-library/DepartmentType';
 
 export const DEPARTMENTS: Map<DepartmentType, string> = new Map<DepartmentType, string>([
   [DepartmentType.NON_FOODS, 'Non-Foods'],

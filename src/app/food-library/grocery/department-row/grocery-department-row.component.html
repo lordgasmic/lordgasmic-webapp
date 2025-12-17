@@ -1,0 +1,8 @@
+<ng-container *ngIf="groupedGroceryList[rowName] as items">
+  <div>
+    <p>{{ departments[rowName] }}</p>
+    <ul *ngFor="let item of items">
+      <li>{{ item.quantity }} {{ item.item }}</li>
+    </ul>
+  </div>
+</ng-container>

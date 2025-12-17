@@ -62,6 +62,7 @@ import { FoodLibraryComponent } from './food-library/food-library.component';
 import { GroceryAddComponent } from './food-library/grocery/add/grocery-add.component';
 import { FoodLibraryHomeComponent } from './food-library/food-library-home/food-library-home.component';
 import { GroceryListComponent } from './food-library/grocery/list/grocery-list.component';
+import { GroceryDepartmentRowComponent } from './food-library/grocery/department-row/grocery-department-row.component';
 
 @NgModule({
   declarations: [
@@ -104,7 +105,8 @@ import { GroceryListComponent } from './food-library/grocery/list/grocery-list.c
     FoodLibraryComponent,
     GroceryAddComponent,
     FoodLibraryHomeComponent,
-    GroceryListComponent
+    GroceryListComponent,
+    GroceryDepartmentRowComponent
   ],
   imports: [
     BrowserModule,

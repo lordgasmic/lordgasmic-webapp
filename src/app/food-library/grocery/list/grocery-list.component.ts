@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GroceryService } from '../../../services/food-library/grocery.service';
 import { Item } from '@models/food-library/Item';
-import { DEPARTMENTS } from '@models/food-library/GroceryConstants';
-import { DepartmentType } from '@models/food-library/GroceryType';
+import { DepartmentType } from '@models/food-library/DepartmentType';
 
 @Component({
   selector: 'app-list',
@@ -13,7 +12,6 @@ export class GroceryListComponent implements OnInit {
   hasLoaded = false;
   failed = false;
   groupedGroceryList: Map<DepartmentType, Item[]>;
-  departments = DEPARTMENTS;
 
   constructor(private groceryService: GroceryService) {}
 
@@ -36,6 +34,4 @@ export class GroceryListComponent implements OnInit {
       }
     });
   }
-
-  protected readonly DepartmentType = DepartmentType;
 }
