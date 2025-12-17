@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GroceryListResponse } from '@models/food-library/GroceryListResponse';
+import { GroceryService } from '../../../services/food-library/grocery.service';
 
 @Component({
   selector: 'app-list',
