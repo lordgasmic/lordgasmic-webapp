@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GroceryListResponse } from '@models/food-library/GroceryListResponse';
 
 @Component({
   selector: 'app-list',
@@ -6,7 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./grocery-list.component.scss']
 })
 export class GroceryListComponent implements OnInit {
-  constructor() {}
+  groceryList: GroceryListResponse[] = [];
 
-  ngOnInit(): void {}
+  constructor(private groceryService: GroceryService) {}
+
+  ngOnInit(): void {
+    this.groceryService.groceryList().subscribe((data) => {
+      if (data) {
+        this.groceryList = data;
+      }
+    });
+  }
 }
