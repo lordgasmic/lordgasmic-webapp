@@ -1,1 +1,11 @@
-<p>list works!</p>
+<h3>Grocery List</h3>
+<ng-container *ngIf="hasLoaded">
+  <ng-container *ngIf="groupedGroceryList[DepartmentType.NON_FOODS] as items">
+    <div>
+      <p>{{ departments[DepartmentType.NON_FOODS] }}</p>
+      <ul *ngFor="let item of items">
+        <li>{{ item.quantity }} {{ item.item }}</li>
+      </ul>
+    </div>
+  </ng-container>
+</ng-container>

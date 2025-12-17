@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { RecipeResponse } from '@models/RecipeResponse';
-import { API_ROOT } from '../GlobalConstants';
+import { API_ROOT } from '../ServiceConstants';
 
 @Injectable({
   providedIn: 'root'

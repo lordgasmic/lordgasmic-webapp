@@ -1,0 +1,16 @@
+export enum DepartmentType {
+  NON_FOODS,
+  DAIRY,
+  HOUSEHOLD,
+  BAKING,
+  WORLD_FOODS,
+  SHELF_STABLE,
+  BREAKFAST,
+  SNACKS,
+  MEAT,
+  VEGETABLES,
+  FRUITS,
+  BREAD,
+  DELI,
+  ALCOHOL
+}

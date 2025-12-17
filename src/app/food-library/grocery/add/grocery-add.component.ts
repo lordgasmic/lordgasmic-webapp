@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { GroceryDepartment } from '@models/food-library/GroceryDepartment';
+import { GroceryDepartment } from '@models/food-library/GroceryType';
 import { GroceryService } from '../../../services/food-library/grocery.service';
+import { DEPARTMENTS } from '@models/food-library/GroceryConstants';
 
 @Component({
   selector: 'app-add',
@@ -8,22 +9,7 @@ import { GroceryService } from '../../../services/food-library/grocery.service';
   styleUrls: ['./grocery-add.component.scss']
 })
 export class GroceryAddComponent implements OnInit {
-  departments: GroceryDepartment[] = [
-    { label: 'Non-Foods', name: 'non_foods' },
-    { label: 'Dairy', name: 'dairy' },
-    { label: 'Household', name: 'household' },
-    { label: 'Baking', name: 'baking' },
-    { label: 'World Foods', name: 'world_foods' },
-    { label: 'Shelf Stable', name: 'shelf_stable' },
-    { label: 'Breakfast', name: 'breakfast' },
-    { label: 'Snacks', name: 'snacks' },
-    { label: 'Meat', name: 'meat' },
-    { label: 'Vegetables', name: 'vegetables' },
-    { label: 'Fruits', name: 'fruits' },
-    { label: 'Bread', name: 'bread' },
-    { label: 'Deli', name: 'deli' },
-    { label: 'Alcohol', name: 'alcohol' }
-  ];
+  departments = DEPARTMENTS;
   selectedDepartment: GroceryDepartment;
   txtQuantity: string;
   txtItem: string;

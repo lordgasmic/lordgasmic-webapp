@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { GroceryAddRequest } from '@models/food-library/GroceryAddRequest';
 import { Observable } from 'rxjs';
-import { API_ROOT } from '../GlobalConstants';
+import { API_ROOT } from '../ServiceConstants';
 import { GroceryListResponse } from '@models/food-library/GroceryListResponse';
 
 @Injectable({
