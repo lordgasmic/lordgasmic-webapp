@@ -4,10 +4,10 @@ import { GroceryService } from '../../../services/food-library/grocery.service';
 
 @Component({
   selector: 'app-add',
-  templateUrl: './add.component.html',
-  styleUrls: ['./add.component.scss']
+  templateUrl: './grocery-add.component.html',
+  styleUrls: ['./grocery-add.component.scss']
 })
-export class AddComponent implements OnInit {
+export class GroceryAddComponent implements OnInit {
   departments: GroceryDepartment[] = [
     { label: 'Non-Foods', name: 'non_foods' },
     { label: 'Dairy', name: 'dairy' },

@@ -59,8 +59,9 @@ import { SortByPipe } from './util/sort-by.pipe';
 import { FunkoCardComponent } from './funko-card/funko-card.component';
 import { OrderingComponent } from './ordering/ordering.component';
 import { FoodLibraryComponent } from './food-library/food-library.component';
-import { AddComponent } from './food-library/grocery/add/add.component';
+import { GroceryAddComponent } from './food-library/grocery/add/grocery-add.component';
 import { FoodLibraryHomeComponent } from './food-library/food-library-home/food-library-home.component';
+import { GroceryListComponent } from './food-library/grocery/list/grocery-list.component';
 
 @NgModule({
   declarations: [
@@ -101,8 +102,9 @@ import { FoodLibraryHomeComponent } from './food-library/food-library-home/food-
     FunkoCardComponent,
     OrderingComponent,
     FoodLibraryComponent,
-    AddComponent,
-    FoodLibraryHomeComponent
+    GroceryAddComponent,
+    FoodLibraryHomeComponent,
+    GroceryListComponent
   ],
   imports: [
     BrowserModule,

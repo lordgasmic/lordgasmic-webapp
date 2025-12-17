@@ -21,6 +21,9 @@ import { RecipeViewComponent } from './food-library/recipe-view/recipe-view.comp
 import { OrderingComponent } from './ordering/ordering.component';
 import { FoodLibraryComponent } from './food-library/food-library.component';
 import { FoodLibraryHomeComponent } from './food-library/food-library-home/food-library-home.component';
+import { GroceryAddComponent } from './food-library/grocery/add/grocery-add.component';
+import { GroceryListComponent } from './food-library/grocery/list/grocery-list.component';
+import { GroceryHomeComponent } from './food-library/grocery/home/grocery-home.component';
 
 const routes: Routes = [
   {
@@ -87,7 +90,9 @@ const routes: Routes = [
       { path: '', pathMatch: 'full', component: FoodLibraryHomeComponent },
       { path: 'recipe', component: RecipeHomeComponent },
       { path: 'recipe/:recipeId', component: RecipeViewComponent },
-      { path: 'grocery', component: RecipeHomeComponent }
+      { path: 'grocery', component: GroceryHomeComponent },
+      { path: 'grocery/add', component: GroceryAddComponent },
+      { path: 'grocery/list', component: GroceryListComponent }
     ]
   },
   {
