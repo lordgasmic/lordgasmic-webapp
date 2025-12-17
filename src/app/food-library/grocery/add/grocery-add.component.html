@@ -1,12 +1,12 @@
 <form (ngSubmit)="submit()">
-  <select [ngModel]="selectedDepartment">
+  <select [(ngModel)]="selectedDepartment">
     <option *ngFor="let department of departments" value="{{department.name}}">
       {{ department.label }}
     </option>
   </select>
   <label for="txtQuantity">Quantity:</label>
-  <input id="txtQuantity" type="text" [ngModel]="txtQuantity" />
+  <input id="txtQuantity" type="text" [(ngModel)]="txtQuantity" />
   <label for="txtItem">Item:</label>
-  <input id="txtItem" type="text" [ngModel]="txtItem" />
+  <input id="txtItem" type="text" [(ngModel)]="txtItem" />
   <button type="submit">Submit</button>
 </form>
