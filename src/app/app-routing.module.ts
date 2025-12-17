@@ -20,6 +20,7 @@ import { RecipeHomeComponent } from './food-library/recipe-home/recipe-home.comp
 import { RecipeViewComponent } from './food-library/recipe-view/recipe-view.component';
 import { OrderingComponent } from './ordering/ordering.component';
 import { FoodLibraryComponent } from './food-library/food-library.component';
+import { FoodLibraryHomeComponent } from './food-library/food-library-home/food-library-home.component';
 
 const routes: Routes = [
   {
@@ -80,11 +81,13 @@ const routes: Routes = [
     component: GasStatsComponent
   },
   {
-    path: 'recipe',
+    path: 'food-library',
     component: FoodLibraryComponent,
     children: [
-      { path: '', pathMatch: 'full', component: RecipeHomeComponent },
-      { path: ':recipeId', component: RecipeViewComponent }
+      { path: '', pathMatch: 'full', component: FoodLibraryHomeComponent },
+      { path: 'recipe', component: RecipeHomeComponent },
+      { path: 'recipe/:recipeId', component: RecipeViewComponent },
+      { path: 'grocery', component: RecipeHomeComponent }
     ]
   },
   {

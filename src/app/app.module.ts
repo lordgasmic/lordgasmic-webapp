@@ -60,6 +60,7 @@ import { FunkoCardComponent } from './funko-card/funko-card.component';
 import { OrderingComponent } from './ordering/ordering.component';
 import { FoodLibraryComponent } from './food-library/food-library.component';
 import { AddComponent } from './food-library/grocery/add/add.component';
+import { FoodLibraryHomeComponent } from './food-library/food-library-home/food-library-home.component';
 
 @NgModule({
   declarations: [
@@ -100,7 +101,8 @@ import { AddComponent } from './food-library/grocery/add/add.component';
     FunkoCardComponent,
     OrderingComponent,
     FoodLibraryComponent,
-    AddComponent
+    AddComponent,
+    FoodLibraryHomeComponent
   ],
   imports: [
     BrowserModule,
