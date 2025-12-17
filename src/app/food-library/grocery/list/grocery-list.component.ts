@@ -28,6 +28,7 @@ export class GroceryListComponent implements OnInit {
           items.push({ quantity: datum.quantity, item: datum.item });
           this.groupedGroceryList.set(datum.department, items);
         });
+        console.log(this.groupedGroceryList);
         this.hasLoaded = true;
       } else {
         this.failed = true;
