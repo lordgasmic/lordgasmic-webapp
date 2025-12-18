@@ -27,7 +27,7 @@ export class GroceryDepartmentRowComponent implements OnInit, OnChanges {
     }
   }
   ngOnInit(): void {
-    console.log(this.rowName);
-    console.log(this.groupedGroceryList);
+    console.log('rowname', this.rowName);
+    console.log('groupedGroceryList', this.groupedGroceryList);
   }
 }
