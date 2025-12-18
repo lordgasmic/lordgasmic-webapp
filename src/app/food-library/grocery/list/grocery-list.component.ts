@@ -30,7 +30,8 @@ export class GroceryListComponent implements OnInit {
           items.push({ quantity: datum.quantity, item: datum.item });
           this.groupedGroceryList.set(datum.department, items);
         });
-        this.hasContent = true;
+
+        this.hasContent = data.length > 0;
       } else {
         this.failed = true;
       }
