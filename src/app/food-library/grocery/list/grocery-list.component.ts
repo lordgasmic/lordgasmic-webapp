@@ -13,20 +13,9 @@ export class GroceryListComponent implements OnInit {
   failed = false;
   groupedGroceryList: Map<DepartmentType, Item[]>;
 
-  departmentTypes: DepartmentType[];
+  DepartmentType = DepartmentType;
 
-  constructor(private groceryService: GroceryService) {
-    const types = Object.keys(DepartmentType);
-
-    this.departmentTypes = [];
-    types.forEach((type) => {
-      this.departmentTypes.push(DepartmentType[type]);
-    });
-
-    console.log('non-foods', this.departmentTypes['NON_FOODS']);
-    console.log('non-foods', this.departmentTypes[0]);
-    console.log('department types', this.departmentTypes);
-  }
+  constructor(private groceryService: GroceryService) {}
 
   ngOnInit(): void {
     this.groceryService.groceryList().subscribe((data) => {
