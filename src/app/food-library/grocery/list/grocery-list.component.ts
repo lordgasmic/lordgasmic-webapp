@@ -22,6 +22,10 @@ export class GroceryListComponent implements OnInit {
     types.forEach((type) => {
       this.departmentTypes.push(DepartmentType[type]);
     });
+
+    console.log('non-foods', this.departmentTypes['NON_FOODS']);
+    console.log('non-foods', this.departmentTypes[0]);
+    console.log('department types', this.departmentTypes);
   }
 
   ngOnInit(): void {
