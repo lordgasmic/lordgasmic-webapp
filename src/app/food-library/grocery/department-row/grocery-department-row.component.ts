@@ -16,14 +16,11 @@ export class GroceryDepartmentRowComponent implements OnInit {
 
   departments = DEPARTMENTS;
 
-  title: string;
+  items: Item[];
 
   constructor() {}
 
   ngOnInit(): void {
-    console.log('rowname', this.rowName);
-    console.log('groupedGroceryList', this.groupedGroceryList);
-    const items = this.groupedGroceryList.get(this.rowName);
-    console.log('items', items);
+    this.items = this.groupedGroceryList.get(this.rowName);
   }
 }
