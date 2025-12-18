@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FeedResponse } from '../models/FeedResponse';
+import { FeedResponse } from '@models/feeding/FeedResponse';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
 
 @Component({

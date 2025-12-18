@@ -1,4 +1,4 @@
-import { Funko } from '@models/Funko';
+import { Funko } from '@models/funkos/Funko';
 
 export interface FunkoResponse {
   start: number;

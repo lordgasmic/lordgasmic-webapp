@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Expression } from '../../models/Expression';
+import { Expression } from '@models/feeding/Expression';
 import { HttpClient } from '@angular/common/http';
-import { FeedRequest } from '../../models/FeedRequest';
-import { FeedResponse } from '../../models/FeedResponse';
+import { FeedRequest } from '@models/feeding/FeedRequest';
+import { FeedResponse } from '@models/feeding/FeedResponse';
 import { Observable, Observer } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { SessionInfo } from '../../models/SessionInfo';
 import { LoginRequest } from '../../models/LoginRequest';
 import { LoginInfo } from '../../models/LoginInfo';
 import { MemeResponse } from '../../models/MemeResponse';
-import { GasRequest } from '../../models/GasRequest';
-import { GasResponse } from '../../models/GasResponse';
+import { GasRequest } from '@models/gas/GasRequest';
+import { GasResponse } from '@models/gas/GasResponse';
 import { WebappConstants } from '../../configuration/WebappConstants';
 import { FacetsResponse } from '@models/FacetsResponse';
-import { FunkoResponse } from '@models/FunkoResponse';
+import { FunkoResponse } from '@models/funkos/FunkoResponse';
 
 @Injectable({
   providedIn: 'root'

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
-import { Expression } from '../models/Expression';
+import { Expression } from '@models/feeding/Expression';
 
 @Component({
   selector: 'app-pumping',

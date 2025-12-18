@@ -1,4 +1,4 @@
-import { UnitOfMeasure } from './UnitOfMeasure';
+import { UnitOfMeasure } from '../UnitOfMeasure';
 
 export class Bottle {
   ordinal: number;

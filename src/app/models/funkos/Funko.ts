@@ -1,4 +1,4 @@
-import { FunkoExtras } from '@models/FunkoExtras';
+import { FunkoExtras } from '@models/funkos/FunkoExtras';
 
 export interface Funko {
   id: number;

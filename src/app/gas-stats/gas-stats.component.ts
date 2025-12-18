@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
-import { GasResponse } from '../models/GasResponse';
+import { GasResponse } from '@models/gas/GasResponse';
 import { ActivatedRoute } from '@angular/router';
-import { GasSeries, GasVehicle } from '../models/GasMPG';
+import { GasSeries, GasVehicle } from '@models/gas/GasMPG';
 
 @Component({
   selector: 'app-gas-stats',

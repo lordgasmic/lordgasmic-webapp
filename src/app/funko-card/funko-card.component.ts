@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Funko } from '@models/Funko';
+import { Funko } from '@models/funkos/Funko';
 
 @Component({
   selector: 'app-funko-card',
@@ -7,13 +7,9 @@ import { Funko } from '@models/Funko';
   styleUrls: ['./funko-card.component.scss']
 })
 export class FunkoCardComponent implements OnInit {
-
   @Input() funko: Funko;
 
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

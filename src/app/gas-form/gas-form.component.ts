@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
 import { DatePipe } from '@angular/common';
-import { GasRequest } from '../models/GasRequest';
+import { GasRequest } from '@models/gas/GasRequest';
 
 @Component({
   selector: 'app-gas-form',

@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { FeedingHistoryParent } from '../models/FeedingHistoryParent';
+import { FeedingHistoryParent } from '@models/feeding/FeedingHistoryParent';
 
 @Component({
   selector: 'app-feeding-history-quantity',

@@ -1,10 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
 import { ToastMessageService } from '../services/toast-message/toast-message.service';
-import { FeedRequest } from '../models/FeedRequest';
+import { FeedRequest } from '@models/feeding/FeedRequest';
 import { UnitOfMeasure } from '../models/UnitOfMeasure';
 import { Meridiem } from '../models/Meridiem';
-import { Bottle } from '../models/Bottle';
+import { Bottle } from '@models/feeding/Bottle';
 
 @Component({
   selector: 'app-feeding',

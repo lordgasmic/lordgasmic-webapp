@@ -1,4 +1,4 @@
-import { Meridiem } from './Meridiem';
+import { Meridiem } from '../Meridiem';
 import { Bottle } from './Bottle';
 
 export class FeedResponse {
