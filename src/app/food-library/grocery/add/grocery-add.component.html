@@ -1,7 +1,7 @@
 <form (ngSubmit)="submit()">
   <select [(ngModel)]="selectedDepartment">
-    <option *ngFor="let department of mockDepartments" value="{{department.type}}">
-      {{ department.label }}
+    <option *ngFor="let department of departments | keyvalue" value="{{department.key}}">
+      {{ department.value }}
     </option>
   </select>
   <label for="txtQuantity">Quantity:</label>

@@ -14,3 +14,5 @@ export const DEPARTMENTS: Map<string, string> = new Map<string, string>([
   ['DELI', 'Deli'],
   ['ALCOHOL', 'Alcohol']
 ]);
+
+export const DEPARTMENT_NAMES: string[] = [...DEPARTMENTS.keys()];

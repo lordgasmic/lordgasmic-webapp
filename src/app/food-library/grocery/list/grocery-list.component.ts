@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GroceryService } from '../../../services/food-library/grocery.service';
 import { Item } from '@models/food-library/Item';
+import { DEPARTMENT_NAMES } from '@models/food-library/GroceryConstants';
 
 @Component({
   selector: 'app-list',
@@ -11,7 +12,7 @@ export class GroceryListComponent implements OnInit {
   hasLoaded = false;
   failed = false;
   groupedGroceryList: Map<string, Item[]>;
-  departments: string[];
+  departmentNames = DEPARTMENT_NAMES;
 
   constructor(private groceryService: GroceryService) {}
 
@@ -28,12 +29,6 @@ export class GroceryListComponent implements OnInit {
           items.push({ quantity: datum.quantity, item: datum.item });
           this.groupedGroceryList.set(datum.department, items);
         });
-        console.log(this.groupedGroceryList);
-        this.departments = [];
-        for (const k of this.departments.keys()) {
-          this.departments.push(k);
-        }
-        console.log('departments', this.departments);
         this.hasLoaded = true;
       } else {
         this.failed = true;
