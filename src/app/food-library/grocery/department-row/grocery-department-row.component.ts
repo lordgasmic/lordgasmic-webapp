@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DepartmentType } from '@models/food-library/DepartmentType';
 import { Item } from '@models/food-library/Item';
 import { DEPARTMENTS } from '@models/food-library/GroceryConstants';
@@ -8,7 +8,7 @@ import { DEPARTMENTS } from '@models/food-library/GroceryConstants';
   templateUrl: './grocery-department-row.component.html',
   styleUrls: ['./grocery-department-row.component.scss']
 })
-export class GroceryDepartmentRowComponent implements OnInit, OnChanges {
+export class GroceryDepartmentRowComponent implements OnInit {
   @Input()
   rowName: DepartmentType;
 
@@ -20,14 +20,11 @@ export class GroceryDepartmentRowComponent implements OnInit, OnChanges {
   title: string;
 
   constructor() {}
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.rowName && changes.rowName.currentValue !== null) {
-      // Perform logic here when 'data' is not null
-      console.log('Data is now available:', changes.rowName.currentValue);
-    }
-  }
+
   ngOnInit(): void {
     console.log('rowname', this.rowName);
     console.log('groupedGroceryList', this.groupedGroceryList);
+    const items = this.groupedGroceryList[this.rowName];
+    console.log('items', items);
   }
 }
