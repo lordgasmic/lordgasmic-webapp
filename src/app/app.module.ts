@@ -30,7 +30,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { PortalComponent } from './portal/portal.component';
 import { ApprovedCountersComponent } from './approved-counters/approved-counters.component';
-import { RecipeHomeComponent } from './food-library/recipe-home/recipe-home.component';
+import { RecipeHomeComponent } from './food-library/recipe/recipe-home/recipe-home.component';
 import { MemeComponent } from './meme/meme.component';
 import { HttpErrorInterceptor } from './shared/http-error.interceptor';
 import { HeaderComponent } from './header/header.component';
@@ -50,7 +50,7 @@ import { DialogWineRatingEditComponent } from './dialog-wine-rating-edit/dialog-
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { GasStatsComponent } from './gas-stats/gas-stats.component';
 import { GasFormComponent } from './gas-form/gas-form.component';
-import { RecipeViewComponent } from './food-library/recipe-view/recipe-view.component';
+import { RecipeViewComponent } from './food-library/recipe/recipe-view/recipe-view.component';
 import { RequestInterceptor } from './shared/RequestInterceptor';
 import { FilterByPipe } from './util/filter-by.pipe';
 import { RatingIconComponent } from './wine-tastings/rating-icon/rating-icon.component';
@@ -63,6 +63,7 @@ import { GroceryAddComponent } from './food-library/grocery/add/grocery-add.comp
 import { FoodLibraryHomeComponent } from './food-library/food-library-home/food-library-home.component';
 import { GroceryListComponent } from './food-library/grocery/list/grocery-list.component';
 import { GroceryDepartmentRowComponent } from './food-library/grocery/department-row/grocery-department-row.component';
+import { AddComponent } from './food-library/recipe/add/add.component';
 
 @NgModule({
   declarations: [
@@ -106,7 +107,8 @@ import { GroceryDepartmentRowComponent } from './food-library/grocery/department
     GroceryAddComponent,
     FoodLibraryHomeComponent,
     GroceryListComponent,
-    GroceryDepartmentRowComponent
+    GroceryDepartmentRowComponent,
+    AddComponent
   ],
   imports: [
     BrowserModule,

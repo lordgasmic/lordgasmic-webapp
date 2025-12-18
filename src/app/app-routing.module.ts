@@ -16,8 +16,8 @@ import { WineryListComponent } from './wine-tastings/winery-list/winery-list.com
 import { GasComponent } from './gas/gas.component';
 import { GasFormComponent } from './gas-form/gas-form.component';
 import { GasStatsComponent } from './gas-stats/gas-stats.component';
-import { RecipeHomeComponent } from './food-library/recipe-home/recipe-home.component';
-import { RecipeViewComponent } from './food-library/recipe-view/recipe-view.component';
+import { RecipeHomeComponent } from './food-library/recipe/recipe-home/recipe-home.component';
+import { RecipeViewComponent } from './food-library/recipe/recipe-view/recipe-view.component';
 import { OrderingComponent } from './ordering/ordering.component';
 import { FoodLibraryComponent } from './food-library/food-library.component';
 import { FoodLibraryHomeComponent } from './food-library/food-library-home/food-library-home.component';
