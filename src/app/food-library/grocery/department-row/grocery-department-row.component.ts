@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DepartmentType } from '@models/food-library/DepartmentType';
 import { Item } from '@models/food-library/Item';
 import { DEPARTMENTS } from '@models/food-library/GroceryConstants';
 
@@ -10,10 +9,10 @@ import { DEPARTMENTS } from '@models/food-library/GroceryConstants';
 })
 export class GroceryDepartmentRowComponent implements OnInit {
   @Input()
-  rowName: DepartmentType;
+  rowName: string;
 
   @Input()
-  groupedGroceryList: Map<DepartmentType, Item[]>;
+  groupedGroceryList: Map<string, Item[]>;
 
   departments = DEPARTMENTS;
 
@@ -22,8 +21,7 @@ export class GroceryDepartmentRowComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log('rowname', this.rowName.toString());
-    console.log('rowname', DepartmentType[this.rowName].valueOf());
+    console.log('rowname', this.rowName);
     console.log('groupedGroceryList', this.groupedGroceryList);
     const items = this.groupedGroceryList[this.rowName];
     console.log('items', items);

@@ -1,8 +1,6 @@
-import { DepartmentType } from '@models/food-library/DepartmentType';
-
 export interface GroceryListResponse {
   id: number;
-  department: DepartmentType;
+  department: string;
   quantity: string;
   item: string;
 }
