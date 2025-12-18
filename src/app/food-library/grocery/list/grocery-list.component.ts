@@ -32,10 +32,10 @@ export class GroceryListComponent implements OnInit {
         });
 
         this.hasContent = data.length > 0;
+        this.hasLoaded = true;
       } else {
         this.failed = true;
       }
-      this.hasLoaded = true;
     });
   }
 
