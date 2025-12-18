@@ -11,6 +11,7 @@ import { DEPARTMENT_NAMES } from '@models/food-library/GroceryConstants';
 export class GroceryListComponent implements OnInit {
   hasLoaded = false;
   failed = false;
+  hasContent = false;
   groupedGroceryList: Map<string, Item[]>;
   departmentNames = DEPARTMENT_NAMES;
 
@@ -29,9 +30,18 @@ export class GroceryListComponent implements OnInit {
           items.push({ quantity: datum.quantity, item: datum.item });
           this.groupedGroceryList.set(datum.department, items);
         });
-        this.hasLoaded = true;
+        this.hasContent = true;
       } else {
         this.failed = true;
+      }
+      this.hasLoaded = true;
+    });
+  }
+
+  print(): void {
+    this.groceryService.printGroceryList().subscribe((response) => {
+      if (response.ok) {
+        console.log('ok');
       }
     });
   }

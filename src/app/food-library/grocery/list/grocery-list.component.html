@@ -2,4 +2,7 @@
 <ng-container *ngIf="hasLoaded">
   <app-department-row *ngFor="let name of departmentNames"
                       [groupedGroceryList]="groupedGroceryList" [rowName]="name"></app-department-row>
+  
+  <button *ngIf="hasContent" (click)="print()">Print</button>
 </ng-container>
+
