@@ -23,6 +23,7 @@ export class GroceryDepartmentRowComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('rowname', this.rowName.toString());
+    console.log('rowname', DepartmentType[this.rowName].valueOf());
     console.log('groupedGroceryList', this.groupedGroceryList);
     const items = this.groupedGroceryList[this.rowName];
     console.log('items', items);
