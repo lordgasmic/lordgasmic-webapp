@@ -17,6 +17,8 @@ export class GroceryDepartmentRowComponent implements OnInit, OnChanges {
 
   departments = DEPARTMENTS;
 
+  title: string;
+
   constructor() {}
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.rowName && changes.rowName.currentValue !== null) {
@@ -26,5 +28,6 @@ export class GroceryDepartmentRowComponent implements OnInit, OnChanges {
   }
   ngOnInit(): void {
     console.log(this.rowName);
+    console.log(this.groupedGroceryList);
   }
 }
