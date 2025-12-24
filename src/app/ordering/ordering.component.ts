@@ -39,11 +39,13 @@ export class OrderingComponent implements OnInit {
 
     this.children.forEach((elem) => {
       if (elem.nativeElement.checked) {
-        properties[elem.nativeElement.value] = this.modifiers.map((subElm) => {
-          if (elem.nativeElement.value === subElm.nativeElement.value) {
+        const derp = this.modifiers.map((subElm) => {
+          if (subElm.nativeElement.checked && elem.nativeElement.value === subElm.nativeElement.value) {
             return subElm.nativeElement.id;
           }
         });
+        console.log('der', derp);
+        properties[elem.nativeElement.value] = derp;
       }
     });
 
