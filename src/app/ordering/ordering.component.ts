@@ -14,6 +14,8 @@ import { OrderingOptions } from '@models/OrderingOptions';
 export class OrderingComponent implements OnInit {
   @ViewChildren('menu')
   children!: QueryList<ElementRef<HTMLInputElement>>;
+  @ViewChildren('subMenu')
+  modifiers!: QueryList<ElementRef<HTMLInputElement>>;
 
   orderingOptions: OrderingOptions[] = [
     { name: 'Water', value: 'WATER', options: ['Ice', 'Stanley'] },
@@ -37,7 +39,11 @@ export class OrderingComponent implements OnInit {
 
     this.children.forEach((elem) => {
       if (elem.nativeElement.checked) {
-        properties[elem.nativeElement.value] = [];
+        properties[elem.nativeElement.value] = this.modifiers.map((subElm) => {
+          if (elem.nativeElement.value === subElm.nativeElement.value) {
+            return subElm.nativeElement.id;
+          }
+        });
       }
     });
 
