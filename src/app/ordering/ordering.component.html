@@ -1,11 +1,9 @@
 <h2>Lordgasmic Ordering</h2>
 
-<form [formGroup]="formGroup" (ngSubmit)="submit()">
-  <div formArrayName="rows">
-    <div *ngFor="let option of orderingOptions; let i = index">
-      <input type="checkbox" [formControlName]="i">
-      <label>{{ option.name }}</label>
-    </div>
-  </div>
-  <button type="submit">Submit</button>
-</form>
+<div *ngFor="let option of orderingOptions">
+  <p>
+    <input #menu type="checkbox" value="{{option.value}}" />
+    <label>{{ option.name }}</label>
+  </p>
+  <button (click)="submit()">Submit</button>
+</div>
