@@ -8,12 +8,13 @@
     </label>
     <ng-container *ngIf="option.options.length > 0">
       <!--      indent-->
-      <p *ngFor="let subOption of option.options">
+      <ng-container *ngFor="let subOption of option.options">
         <label>
-          <input type="checkbox" value="{{subOption}}">
+          <input #subMenu type="checkbox" value="{{option.value}}" id="{{subOption}}">
           {{ subOption }}
         </label>
-      </p>
+        <br />
+      </ng-container>
     </ng-container>
   </p>
   <button (click)="submit()">Submit</button>
