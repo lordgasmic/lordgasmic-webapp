@@ -1,9 +1,20 @@
 <h2>Lordgasmic Ordering</h2>
 
-<div *ngFor="let option of orderingOptions">
-  <p>
-    <input #menu type="checkbox" value="{{option.value}}" />
-    <label>{{ option.name }}</label>
+<div>
+  <p *ngFor="let option of orderingOptions">
+    <label>
+      <input #menu type="checkbox" value="{{option.value}}">
+      {{ option.name }}
+    </label>
+    <ng-container *ngIf="option.options.length > 0">
+      <!--      indent-->
+      <p *ngFor="let subOption of option.options">
+        <label>
+          <input type="checkbox" value="{{subOption}}">
+          {{ subOption }}
+        </label>
+      </p>
+    </ng-container>
   </p>
   <button (click)="submit()">Submit</button>
 </div>
