@@ -6,16 +6,18 @@
       <input #menu type="checkbox" value="{{option.value}}">
       {{ option.name }}
     </label>
+    |
     <ng-container *ngIf="option.options.length > 0">
       <!--      indent-->
-      <br />
       <ng-container *ngFor="let subOption of option.options">
         <label>
           <input #subMenu type="checkbox" value="{{option.value}}" id="{{subOption}}">
           {{ subOption }}
         </label>
-        <br />
       </ng-container>
+    </ng-container>
+    <ng-container *ngFor="let misc of miscOptions; let i = index">
+      <input #miscOption type="text" value="{{option.value}}" [(ngModel)]="miscOptions[i]">
     </ng-container>
   </p>
   <button (click)="submit()">Submit</button>

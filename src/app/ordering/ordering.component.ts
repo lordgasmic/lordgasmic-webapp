@@ -16,6 +16,8 @@ export class OrderingComponent implements OnInit {
   children!: QueryList<ElementRef<HTMLInputElement>>;
   @ViewChildren('subMenu')
   modifiers!: QueryList<ElementRef<HTMLInputElement>>;
+  @ViewChildren('miscOption')
+  miscOption!: QueryList<ElementRef<HTMLInputElement>>;
 
   orderingOptions: OrderingOptions[] = [
     { name: 'Water', value: 'WATER', options: ['Ice', 'Stanley'] },
@@ -25,6 +27,8 @@ export class OrderingComponent implements OnInit {
     { name: 'Other', value: 'OTHER', options: [] }
   ];
 
+  miscOptions: string[] = [];
+
   constructor(
     private orderingService: OrderingService,
     private router: Router,
@@ -32,7 +36,15 @@ export class OrderingComponent implements OnInit {
     private toastService: ToastMessageService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.addMiscOptionsRow();
+  }
+
+  addMiscOptionsRow(): void {
+    this.miscOptions.push('');
+  }
+
+  handleCheckboxDisabled(): void {}
 
   submit(): void {
     const properties: { [key: string]: string[] } = {};
