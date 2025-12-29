@@ -20,14 +20,12 @@ export class OrderingComponent implements OnInit {
   miscOption!: QueryList<ElementRef<HTMLInputElement>>;
 
   orderingOptions: OrderingOptions[] = [
-    { name: 'Water', value: 'WATER', options: ['Ice', 'Stanley'] },
-    { name: 'Salty Snacks', value: 'SALTY_SNACKS', options: ['Chips', 'Nuts'] },
-    { name: 'Sweet Snacks', value: 'SWEET_SNACKS', options: ['Candy', 'Cereal'] },
-    { name: 'Wine', value: 'WINE', options: [] },
-    { name: 'Other', value: 'OTHER', options: [] }
+    { name: 'Water', value: 'WATER', options: ['Ice', 'Stanley'], specialRequests: [] },
+    { name: 'Salty Snacks', value: 'SALTY_SNACKS', options: ['Chips', 'Nuts'], specialRequests: [] },
+    { name: 'Sweet Snacks', value: 'SWEET_SNACKS', options: ['Candy', 'Cereal'], specialRequests: [] },
+    { name: 'Wine', value: 'WINE', options: [], specialRequests: [] },
+    { name: 'Other', value: 'OTHER', options: [], specialRequests: [] }
   ];
-
-  miscOptions: string[] = [];
 
   constructor(
     private orderingService: OrderingService,
@@ -37,11 +35,13 @@ export class OrderingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.addMiscOptionsRow();
+    for (let i = 0; i < this.orderingOptions.length; i++) {
+      this.addMiscOptionsRow(i);
+    }
   }
 
-  addMiscOptionsRow(): void {
-    this.miscOptions.push('');
+  addMiscOptionsRow(index: number): void {
+    this.orderingOptions[index].specialRequests.push('');
   }
 
   handleCheckboxDisabled(): void {}

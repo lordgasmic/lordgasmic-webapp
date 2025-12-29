@@ -16,8 +16,8 @@
         </label>
       </ng-container>
     </ng-container>
-    <ng-container *ngFor="let misc of miscOptions; let i = index">
-      <input #miscOption type="text" value="{{option.value}}" [(ngModel)]="miscOptions[i]">
+    <ng-container *ngFor="let misc of option.specialRequests; let i = index">
+      <input #miscOption type="text" value="{{option.value}}" [(ngModel)]="option.specialRequests[i]">
     </ng-container>
   </p>
   <button (click)="submit()">Submit</button>
