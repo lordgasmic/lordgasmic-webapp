@@ -40,11 +40,15 @@ export class OrderingComponent implements OnInit {
     }
   }
 
+  handleCheckboxDisabled(): void {}
+
   addMiscOptionsRow(index: number): void {
     this.orderingOptions[index].specialRequests.push('');
   }
 
-  handleCheckboxDisabled(): void {}
+  updateSpecialRequests($event: any, i: number): void {
+    console.log('event', $event);
+  }
 
   submit(): void {
     const properties: { [key: string]: string[] } = {};
