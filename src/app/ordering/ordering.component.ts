@@ -89,14 +89,8 @@ export class OrderingComponent implements OnInit {
     // set checked on subs
   }
 
-  addMiscOptionsRow(index: number): void {
-    // this.formGroup.controls
-    //   .filter((fg) => {
-    //     return fg.value.name === this.orderingOptions[index].name;
-    //   })
-    //   .forEach((fg) => {
-    //     fg.controls.orderingOptions.controls.dynamicOptions.controls.push(new FormControl(''));
-    //   });
+  addDynamicOptionRow(): void {
+    this.waterFG.controls.orderingOptions.controls.dynamicOptions.controls.push(new FormControl(''));
   }
 
   submit(): void {
@@ -124,4 +118,8 @@ export class OrderingComponent implements OnInit {
       this.zone.run(() => this.router.navigate([`/portal`]));
     });
   }
+
+  clear(): void {}
+
+  history(): void {}
 }
