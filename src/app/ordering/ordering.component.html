@@ -3,22 +3,19 @@
 <form [formGroup]="waterFG">
   <p>
     <label>
-      <input #menu type="checkbox" [formControl]="waterFG.controls.mainCheckbox">
+      <input type="checkbox" [formControl]="waterFG.controls.mainCheckbox">
       {{ waterFG.controls.name.value }}
     </label>
     |
-    <ng-container *ngIf="waterFG.controls.orderingOptions.controls.staticOptions.controls.length > 0">
-      <!--      indent-->
-      <ng-container *ngFor="let subOption of waterFG.controls.orderingOptions.controls.staticOptions.controls">
-        <label>
-          <input #subMenu type="checkbox" value="{{subOption.controls.name.value}}">
-          {{ subOption.controls.name.value }}
-        </label>
-      </ng-container>
+    <!--      indent-->
+    <ng-container *ngFor="let subOption of waterFG.controls.orderingOptions.controls.staticOptions.controls">
+      <label>
+        <input type="checkbox" [formControl]="subOption.controls.value">
+        {{ subOption.controls.name.value }}
+      </label>
     </ng-container>
     <ng-container *ngFor="let dynamicOptions of waterFG.controls.orderingOptions.controls.dynamicOptions.controls">
-      <input #miscOption type="text"
-             value="{{dynamicOptions.value}}" />
+      <input type="text" [formControl]="dynamicOptions" />
     </ng-container>
   </p>
   <button (click)="submit()">Submit</button>

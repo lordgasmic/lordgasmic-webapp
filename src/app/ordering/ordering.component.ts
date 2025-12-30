@@ -58,7 +58,7 @@ export class OrderingComponent implements OnInit {
             value: new FormControl(false)
           })
         ]),
-        dynamicOptions: this.fb.array<FormControl<string>>([])
+        dynamicOptions: this.fb.array<FormControl<string>>([new FormControl('')])
       })
     });
     this.initFormGroup();
@@ -127,6 +127,10 @@ export class OrderingComponent implements OnInit {
     // });
 
     console.log(this.waterFG.controls.mainCheckbox.value);
+    this.waterFG.controls.orderingOptions.controls.staticOptions.controls.forEach((control) => {
+      console.log(control.value.name);
+      console.log(control.value.value);
+    });
 
     const orderingRequest: OrderingRequest = { message: 'Wifey needy', type: PrintType.RECEIPT.toString(), properties };
 
