@@ -3,7 +3,7 @@
 <form [formGroup]="waterFG">
   <p>
     <label>
-      <input #menu type="checkbox" [formControlName]="waterFG.controls.mainCheckbox">
+      <input #menu type="checkbox" [formControl]="waterFG.controls.mainCheckbox">
       {{ waterFG.controls.name.value }}
     </label>
     |
