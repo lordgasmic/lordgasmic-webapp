@@ -28,7 +28,7 @@ export class OrderingComponent implements OnInit {
   wineFG: FormGroup<OrderingForm>;
   otherFG: FormGroup<OrderingForm>;
 
-  imEnabled = true;
+  imDisabled = true;
 
   constructor(
     private orderingService: OrderingService,
@@ -46,19 +46,19 @@ export class OrderingComponent implements OnInit {
         staticOptions: this.fb.array<FormGroup<StaticOptionsForm>>([
           this.fb.group<StaticOptionsForm>({
             name: new FormControl('Ice'),
-            value: new FormControl(false)
+            value: new FormControl({ value: false, disabled: this.imDisabled })
           }),
           this.fb.group<StaticOptionsForm>({
             name: new FormControl('Stanley'),
-            value: new FormControl(false)
+            value: new FormControl({ value: false, disabled: this.imDisabled })
           })
         ]),
-        dynamicOptions: this.fb.array<FormControl<string>>([new FormControl('')])
+        dynamicOptions: this.fb.array<FormControl<string>>([new FormControl({ value: '', disabled: this.imDisabled })])
       })
     });
 
     this.waterFG.controls.mainCheckbox.valueChanges.subscribe((value) => {
-      this.imEnabled = value;
+      this.imDisabled = value;
     });
   }
 
