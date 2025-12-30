@@ -6,6 +6,10 @@
   margin-left: 2.5rem;
 }
 
+.dynamic-text {
+  margin-right: .5rem;
+}
+
 .dynamic-icon {
   height: 12px;
   width: 12px;
@@ -24,4 +28,8 @@ image-button {
 
 .image-button:hover img {
   opacity: 0.8; /* Optional: add hover effect */
+}
+
+.nav-buttons {
+  margin-top: .5rem;
 }

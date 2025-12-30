@@ -17,19 +17,21 @@
     <ng-container
       *ngFor="let dynamicOptions of waterFG.controls.orderingOptions.controls.dynamicOptions.controls; let index = index">
       <div class="sub-option">
-        <input type="text" [formControl]="dynamicOptions" />
+        <input type="text" [formControl]="dynamicOptions" class="dynamic-text" />
         <button type="button" class="image-button" (click)="removeDynamicOptionRow(index)">
-          <img src="assets/icons/plus-25.png" alt="Add dynamic option row" class="dynamic-icon" />
+          <img src="assets/icons/minus-16.png" alt="remove this dynamic option row" class="dynamic-icon" />
         </button>
       </div>
     </ng-container>
-    <div>
+    <div class="sub-option">
       <button type="button" class="image-button" (click)="addDynamicOptionRow()">
         <img src="assets/icons/plus-25.png" alt="Add dynamic option row" class="dynamic-icon" />
       </button>
     </div>
   </div>
-  <button (click)="submit()">Submit</button>
-  <button (click)="clear()">Clear</button>
-  <button (click)="history()">History</button>
+  <div class="nav-buttons">
+    <button (click)="submit()">Submit</button>
+    <button (click)="clear()">Clear</button>
+    <button (click)="history()">History</button>
+  </div>
 </form>
