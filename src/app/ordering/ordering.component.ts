@@ -14,13 +14,6 @@ import { OrderingForm, OrderingOptionsForm, StaticOptionsForm } from '@models/lo
   styleUrls: ['./ordering.component.scss']
 })
 export class OrderingComponent implements OnInit {
-  // @ViewChildren('menu')
-  // children!: QueryList<ElementRef<HTMLInputElement>>;
-  // @ViewChildren('subMenu')
-  // modifiers!: QueryList<ElementRef<HTMLInputElement>>;
-  // @ViewChildren('miscOption')
-  // miscOption!: QueryList<ElementRef<HTMLInputElement>>;
-
   orderingOptions: OrderingOptions[] = [
     { name: 'Water', value: 'WATER', options: ['Ice', 'Stanley'] },
     { name: 'Salty Snacks', value: 'SALTY_SNACKS', options: ['Chips', 'Nuts'] },
@@ -34,6 +27,8 @@ export class OrderingComponent implements OnInit {
   sweetSnacksFG: FormGroup<OrderingForm>;
   wineFG: FormGroup<OrderingForm>;
   otherFG: FormGroup<OrderingForm>;
+
+  imDisabled = true;
 
   constructor(
     private orderingService: OrderingService,
@@ -61,26 +56,10 @@ export class OrderingComponent implements OnInit {
         dynamicOptions: this.fb.array<FormControl<string>>([new FormControl('')])
       })
     });
-    this.initFormGroup();
-  }
 
-  initFormGroup(): void {
-    for (const oo of this.orderingOptions) {
-      const staticOptions: boolean[] = [];
-      for (const o of oo.options) {
-        staticOptions.push(false);
-      }
-
-      // this.formGroup.controls.push(
-      //   this.fb.group({
-      //     name: [oo.name],
-      //     orderingOptions: this.fb.group<OrderingOptionsForm>({
-      //       staticOptions: this.fb.array(staticOptions),
-      //       dynamicOptions: this.fb.array([''])
-      //     })
-      //   })
-      // );
-    }
+    this.waterFG.controls.mainCheckbox.valueChanges.subscribe((values) => {
+      console.log(values);
+    });
   }
 
   handleCheckboxDisabled(): void {
