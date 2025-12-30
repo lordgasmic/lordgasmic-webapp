@@ -28,7 +28,7 @@ export class OrderingComponent implements OnInit {
   wineFG: FormGroup<OrderingForm>;
   otherFG: FormGroup<OrderingForm>;
 
-  imDisabled = true;
+  imEnabled = true;
 
   constructor(
     private orderingService: OrderingService,
@@ -57,8 +57,8 @@ export class OrderingComponent implements OnInit {
       })
     });
 
-    this.waterFG.controls.mainCheckbox.valueChanges.subscribe((values) => {
-      console.log(values);
+    this.waterFG.controls.mainCheckbox.valueChanges.subscribe((value) => {
+      this.imEnabled = value;
     });
   }
 
