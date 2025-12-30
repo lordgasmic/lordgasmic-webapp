@@ -1,27 +1,25 @@
 <h2>Lordgasmic Ordering</h2>
 
-<div>
-  <p *ngFor="let option of orderingOptions; let i = index">
+<form [formGroup]="waterFG">
+  <p>
     <label>
-      <input #menu type="checkbox" value="{{option.value}}">
-      {{ option.name }}
+      <input #menu type="checkbox" value="{{waterFG.controls.mainCheckbox.value}}">
+      {{ waterFG.controls.name.value }}
     </label>
     |
-    <ng-container *ngIf="option.options.length > 0">
+    <ng-container *ngIf="waterFG.controls.orderingOptions.controls.staticOptions.controls.length > 0">
       <!--      indent-->
-      <ng-container *ngFor="let subOption of option.options">
+      <ng-container *ngFor="let subOption of waterFG.controls.orderingOptions.controls.staticOptions.controls">
         <label>
-          <input #subMenu type="checkbox" value="{{option.value}}" id="{{subOption}}">
-          {{ subOption }}
+          <input #subMenu type="checkbox" value="{{subOption.controls.name.value}}">
+          {{ subOption.controls.name.value }}
         </label>
       </ng-container>
     </ng-container>
-    <ng-container *ngFor="let misc of option.specialRequests; let ii = index">
+    <ng-container *ngFor="let dynamicOptions of waterFG.controls.orderingOptions.controls.dynamicOptions.controls">
       <input #miscOption type="text"
-             value="{{option.value}}"
-             [ngModel]="option.specialRequests[ii]"
-             (ngModelChange)="updateSpecialRequests($event, i, ii)" />
+             value="{{dynamicOptions.value}}" />
     </ng-container>
   </p>
   <button (click)="submit()">Submit</button>
-</div>
+</form>

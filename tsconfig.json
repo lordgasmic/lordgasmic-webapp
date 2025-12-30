@@ -13,11 +13,13 @@
     "target": "es2020",
     "module": "es2020",
     "lib": [
-      "es2018",
+      "es2020",
       "dom"
     ],
     "paths": {
-      "@models/*": ["./src/app/models/*"]
+      "@models/*": [
+        "./src/app/models/*"
+      ]
     }
   }
 }
