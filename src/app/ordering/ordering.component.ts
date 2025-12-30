@@ -93,6 +93,10 @@ export class OrderingComponent implements OnInit {
     this.waterFG.controls.orderingOptions.controls.dynamicOptions.controls.push(new FormControl(''));
   }
 
+  removeDynamicOptionRow(index: number): void {
+    this.waterFG.controls.orderingOptions.controls.dynamicOptions.controls.splice(index, 1);
+  }
+
   submit(): void {
     const properties: { [key: string]: string[] } = {};
 
