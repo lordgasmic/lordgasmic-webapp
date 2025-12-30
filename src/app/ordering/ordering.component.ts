@@ -131,6 +131,9 @@ export class OrderingComponent implements OnInit {
       console.log(control.value.name);
       console.log(control.value.value);
     });
+    this.waterFG.controls.orderingOptions.controls.dynamicOptions.controls.forEach((control) => {
+      console.log(control.value);
+    });
 
     const orderingRequest: OrderingRequest = { message: 'Wifey needy', type: PrintType.RECEIPT.toString(), properties };
 
