@@ -1,7 +1,7 @@
 <h2>Lordgasmic Ordering</h2>
 
 <div>
-  <p *ngFor="let option of orderingOptions">
+  <p *ngFor="let option of orderingOptions; let i = index">
     <label>
       <input #menu type="checkbox" value="{{option.value}}">
       {{ option.name }}
@@ -16,9 +16,11 @@
         </label>
       </ng-container>
     </ng-container>
-    <ng-container *ngFor="let misc of option.specialRequests; let i = index">
-      <input #miscOption type="text" value="{{option.value}}" [ngModel]="option.specialRequests[i]"
-             (ngModelChange)="updateSpecialRequests($event, i)">
+    <ng-container *ngFor="let misc of option.specialRequests; let ii = index">
+      <input #miscOption type="text"
+             value="{{option.value}}"
+             [ngModel]="option.specialRequests[ii]"
+             (ngModelChange)="updateSpecialRequests($event, i, ii)" />
     </ng-container>
   </p>
   <button (click)="submit()">Submit</button>

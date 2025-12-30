@@ -40,14 +40,18 @@ export class OrderingComponent implements OnInit {
     }
   }
 
-  handleCheckboxDisabled(): void {}
+  handleCheckboxDisabled(): void {
+    // get row
+    // check if checked
+    // set checked on subs
+  }
 
   addMiscOptionsRow(index: number): void {
     this.orderingOptions[index].specialRequests.push('');
   }
 
-  updateSpecialRequests($event: any, i: number): void {
-    console.log('event', $event);
+  updateSpecialRequests($event: string, i: number, ii: number): void {
+    this.orderingOptions[i].specialRequests[ii] = $event;
   }
 
   submit(): void {
@@ -65,6 +69,14 @@ export class OrderingComponent implements OnInit {
           .map((subElm) => {
             return subElm.nativeElement.id;
           });
+        const derp2 = this.orderingOptions
+          .filter((orderingOption) => {
+            return orderingOption.value === elem.nativeElement.value;
+          })
+          .map((orderingOption) => {
+            return orderingOption.specialRequests;
+          });
+        console.log(derp2);
         properties[elem.nativeElement.value] = derp;
       }
     });
