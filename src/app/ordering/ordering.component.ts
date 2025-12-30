@@ -102,44 +102,26 @@ export class OrderingComponent implements OnInit {
   submit(): void {
     const properties: { [key: string]: string[] } = {};
 
-    // this.children.forEach((elem) => {
-    //   if (elem.nativeElement.checked) {
-    //     const derp = this.modifiers
-    //       .filter((subElm) => {
-    //         return elem.nativeElement.value === subElm.nativeElement.value;
-    //       })
-    //       .filter((subElm) => {
-    //         return subElm.nativeElement.checked;
-    //       })
-    //       .map((subElm) => {
-    //         return subElm.nativeElement.id;
-    //       });
-    // const derp2 = this.orderingOptions
-    //   .filter((orderingOption) => {
-    //     return orderingOption.value === elem.nativeElement.value;
-    //   })
-    //   .flatMap((orderingOption) => {
-    //     return orderingOption.specialRequests;
-    //   });
-    // properties[elem.nativeElement.value] = [...derp, ...derp2];
-    //   properties[elem.nativeElement.value] = derp;
-    // }
-    // });
-
-    console.log(this.waterFG.controls.mainCheckbox.value);
-    this.waterFG.controls.orderingOptions.controls.staticOptions.controls.forEach((control) => {
-      console.log(control.value.name);
-      console.log(control.value.value);
-    });
-    this.waterFG.controls.orderingOptions.controls.dynamicOptions.controls.forEach((control) => {
-      console.log(control.value);
-    });
+    if (this.waterFG.controls.mainCheckbox.value) {
+      const modifiers: string[] = [];
+      this.waterFG.controls.orderingOptions.controls.staticOptions.controls.forEach((control) => {
+        if (control.value.value) {
+          modifiers.push(control.value.name);
+        }
+      });
+      this.waterFG.controls.orderingOptions.controls.dynamicOptions.controls.forEach((control) => {
+        if (control.value) {
+          modifiers.push(control.value);
+        }
+      });
+      properties[this.waterFG.controls.name.value] = modifiers;
+    }
 
     const orderingRequest: OrderingRequest = { message: 'Wifey needy', type: PrintType.RECEIPT.toString(), properties };
 
-    // this.orderingService.placeOrder(orderingRequest).subscribe(() => {
-    //   this.toastService.showToastMessage('Order submitted', 4000); // todo
-    //   this.zone.run(() => this.router.navigate([`/portal`]));
-    // });
+    this.orderingService.placeOrder(orderingRequest).subscribe(() => {
+      this.toastService.showToastMessage('Order submitted', 4000); // todo
+      this.zone.run(() => this.router.navigate([`/portal`]));
+    });
   }
 }
