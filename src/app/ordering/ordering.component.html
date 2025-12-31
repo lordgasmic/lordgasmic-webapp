@@ -9,7 +9,7 @@
     <ng-container *ngFor="let subOption of waterFG.controls.orderingOptions.controls.staticOptions.controls">
       <div class="sub-option">
         <label>
-          <input type="checkbox" [formControl]="subOption.controls.value" [disabled]="imDisabled">
+          <input type="checkbox" [formControl]="subOption.controls.value" [disabled]="imEnabled">
           {{ subOption.controls.name.value }}
         </label>
       </div>
@@ -17,14 +17,14 @@
     <ng-container
       *ngFor="let dynamicOptions of waterFG.controls.orderingOptions.controls.dynamicOptions.controls; let index = index">
       <div class="sub-option">
-        <input type="text" [formControl]="dynamicOptions" [disabled]="imDisabled" class="dynamic-text" />
-        <button type="button" [disabled]="imDisabled" class="image-button" (click)="removeDynamicOptionRow(index)">
+        <input type="text" [formControl]="dynamicOptions" [disabled]="imEnabled" class="dynamic-text" />
+        <button type="button" [disabled]="imEnabled" class="image-button" (click)="removeDynamicOptionRow(index)">
           <img src="assets/icons/minus-16.png" alt="remove this dynamic option row" class="dynamic-icon" />
         </button>
       </div>
     </ng-container>
     <div class="sub-option">
-      <button type="button" [disabled]="imDisabled" class="image-button" (click)="addDynamicOptionRow()">
+      <button type="button" [disabled]="imEnabled" class="image-button" (click)="addDynamicOptionRow()">
         <img src="assets/icons/plus-25.png" alt="Add dynamic option row" class="dynamic-icon" />
       </button>
     </div>
