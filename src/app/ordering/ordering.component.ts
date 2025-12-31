@@ -59,6 +59,7 @@ export class OrderingComponent implements OnInit {
 
     this.waterFG.controls.mainCheckbox.valueChanges.subscribe((value) => {
       this.imDisabled = value;
+      console.log("i'm disabled", this.imDisabled);
     });
   }
 
