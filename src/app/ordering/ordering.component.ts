@@ -113,7 +113,7 @@ export class OrderingComponent implements OnInit {
     this.waterFG.controls.orderingOptions.controls.staticOptions.controls.forEach((fg) => {
       fg.controls.value.reset({ value: false, disabled: true });
     });
-    this.waterFG.controls.orderingOptions.controls.dynamicOptions.reset({ value: '', disabled: true });
+    this.waterFG.controls.orderingOptions.controls.dynamicOptions.reset([new FormControl({ value: '', disabled: true })]);
   }
 
   history(): void {}
