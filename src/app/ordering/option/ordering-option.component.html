@@ -1,1 +1,30 @@
-<p>option works!</p>
+<form [formGroup]="formGroup">
+  <div class="main-option">
+    <label>
+      <input type="checkbox" [formControl]="formGroup.controls.mainCheckbox">
+      {{ formGroup.controls.name.value }}
+    </label>
+    <ng-container *ngFor="let subOption of formGroup.controls.orderingOptions.controls.staticOptions.controls">
+      <div class="sub-option">
+        <label>
+          <input type="checkbox" [formControl]="subOption.controls.value">
+          {{ subOption.controls.name.value }}
+        </label>
+      </div>
+    </ng-container>
+    <ng-container
+      *ngFor="let dynamicOptions of formGroup.controls.orderingOptions.controls.dynamicOptions.controls; let index = index">
+      <div class="sub-option">
+        <input type="text" [formControl]="dynamicOptions" class="dynamic-text" />
+        <button type="button" [disabled]="imDisabled" class="image-button" (click)="removeDynamicOptionRow(index)">
+          <img src="assets/icons/minus-16.png" alt="remove this dynamic option row" class="dynamic-icon" />
+        </button>
+      </div>
+    </ng-container>
+    <div class="sub-option">
+      <button type="button" [disabled]="imDisabled" class="image-button" (click)="addDynamicOptionRow()">
+        <img src="assets/icons/plus-25.png" alt="Add dynamic option row" class="dynamic-icon" />
+      </button>
+    </div>
+  </div>
+</form>

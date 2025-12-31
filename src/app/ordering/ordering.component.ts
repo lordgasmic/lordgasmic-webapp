@@ -1,4 +1,4 @@
-import { Component, NgZone, OnInit } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { OrderingService } from '../services/ordering/ordering.service';
 import { OrderingRequest } from '@models/lordgasmic-ordering/OrderingRequest';
 import { PrintType } from '@models/PrintType';
@@ -6,14 +6,14 @@ import { ToastMessageService } from '../services/toast-message/toast-message.ser
 import { Router } from '@angular/router';
 import { OrderingOptions } from '@models/lordgasmic-ordering/OrderingOptions';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { OrderingForm, OrderingOptionsForm, StaticOptionsForm } from '@models/lordgasmic-ordering/OrderingForm';
+import { OrderingForm } from '@models/lordgasmic-ordering/OrderingForm';
 
 @Component({
   selector: 'app-ordering',
   templateUrl: './ordering.component.html',
   styleUrls: ['./ordering.component.scss']
 })
-export class OrderingComponent implements OnInit {
+export class OrderingComponent {
   orderingOptions: OrderingOptions[] = [
     { name: 'Water', value: 'WATER', options: ['Ice', 'Stanley'] },
     { name: 'Salty Snacks', value: 'SALTY_SNACKS', options: ['Chips', 'Nuts'] },
@@ -28,7 +28,7 @@ export class OrderingComponent implements OnInit {
   wineFG: FormGroup<OrderingForm>;
   otherFG: FormGroup<OrderingForm>;
 
-  imDisabled = true;
+  // imDisabled = true;
 
   constructor(
     private orderingService: OrderingService,
@@ -37,50 +37,44 @@ export class OrderingComponent implements OnInit {
     private toastService: ToastMessageService,
     private fb: FormBuilder
   ) {}
-
-  ngOnInit(): void {
-    this.waterFG = this.fb.group<OrderingForm>({
-      name: new FormControl('Water'),
-      mainCheckbox: new FormControl(false),
-      orderingOptions: this.fb.group<OrderingOptionsForm>({
-        staticOptions: this.fb.array<FormGroup<StaticOptionsForm>>([
-          this.fb.group<StaticOptionsForm>({
-            name: new FormControl('Ice'),
-            value: new FormControl({ value: false, disabled: true })
-          }),
-          this.fb.group<StaticOptionsForm>({
-            name: new FormControl('Stanley'),
-            value: new FormControl({ value: false, disabled: true })
-          })
-        ]),
-        dynamicOptions: this.fb.array<FormControl<string>>([new FormControl({ value: '', disabled: true })])
-      })
-    });
-
-    this.waterFG.controls.mainCheckbox.valueChanges.subscribe((value) => {
-      this.imDisabled = !value;
-      this.waterFG.controls.orderingOptions.controls.staticOptions.controls.forEach((fg) => {
-        this.imDisabled ? fg.controls.value.disable() : fg.controls.value.enable();
-      });
-      this.waterFG.controls.orderingOptions.controls.dynamicOptions.controls.forEach((control) => {
-        this.imDisabled ? control.disable() : control.enable();
-      });
-    });
-  }
-
-  handleCheckboxDisabled(): void {
-    // get row
-    // check if checked
-    // set checked on subs
-  }
-
-  addDynamicOptionRow(): void {
-    this.waterFG.controls.orderingOptions.controls.dynamicOptions.controls.push(new FormControl(''));
-  }
-
-  removeDynamicOptionRow(index: number): void {
-    this.waterFG.controls.orderingOptions.controls.dynamicOptions.controls.splice(index, 1);
-  }
+  //
+  // ngOnInit(): void {
+  //   this.waterFG = this.fb.group<OrderingForm>({
+  //     name: new FormControl('Water'),
+  //     mainCheckbox: new FormControl(false),
+  //     orderingOptions: this.fb.group<OrderingOptionsForm>({
+  //       staticOptions: this.fb.array<FormGroup<StaticOptionsForm>>([
+  //         this.fb.group<StaticOptionsForm>({
+  //           name: new FormControl('Ice'),
+  //           value: new FormControl({ value: false, disabled: true })
+  //         }),
+  //         this.fb.group<StaticOptionsForm>({
+  //           name: new FormControl('Stanley'),
+  //           value: new FormControl({ value: false, disabled: true })
+  //         })
+  //       ]),
+  //       dynamicOptions: this.fb.array<FormControl<string>>([new FormControl({ value: '', disabled: true })])
+  //     })
+  //   });
+  //
+  //   this.waterFG.controls.mainCheckbox.valueChanges.subscribe((value) => {
+  //     this.imDisabled = !value;
+  //     this.waterFG.controls.orderingOptions.controls.staticOptions.controls.forEach((fg) => {
+  //       this.imDisabled ? fg.controls.value.disable() : fg.controls.value.enable();
+  //     });
+  //     this.waterFG.controls.orderingOptions.controls.dynamicOptions.controls.forEach((control) => {
+  //       this.imDisabled ? control.disable() : control.enable();
+  //     });
+  //   });
+  // }
+  //
+  // addDynamicOptionRow(): void {
+  //   this.waterFG.controls.orderingOptions.controls.dynamicOptions.controls.push(new FormControl(''));
+  // }
+  //
+  // removeDynamicOptionRow(index: number): void {
+  //   this.waterFG.controls.orderingOptions.controls.dynamicOptions.controls.splice(index, 1);
+  // }
 
   submit(): void {
     const properties: { [key: string]: string[] } = {};

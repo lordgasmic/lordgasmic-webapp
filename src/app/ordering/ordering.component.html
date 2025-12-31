@@ -1,37 +1,45 @@
-<h2>Lordgasmic Ordering</h2>
+<app-ordering-main></app-ordering-main>
 
-<form [formGroup]="waterFG">
-  <div class="main-option">
-    <label>
-      <input type="checkbox" [formControl]="waterFG.controls.mainCheckbox">
-      {{ waterFG.controls.name.value }}
-    </label>
-    <ng-container *ngFor="let subOption of waterFG.controls.orderingOptions.controls.staticOptions.controls">
-      <div class="sub-option">
-        <label>
-          <input type="checkbox" [formControl]="subOption.controls.value">
-          {{ subOption.controls.name.value }}
-        </label>
-      </div>
-    </ng-container>
-    <ng-container
-      *ngFor="let dynamicOptions of waterFG.controls.orderingOptions.controls.dynamicOptions.controls; let index = index">
-      <div class="sub-option">
-        <input type="text" [formControl]="dynamicOptions" class="dynamic-text" />
-        <button type="button" [disabled]="imDisabled" class="image-button" (click)="removeDynamicOptionRow(index)">
-          <img src="assets/icons/minus-16.png" alt="remove this dynamic option row" class="dynamic-icon" />
-        </button>
-      </div>
-    </ng-container>
-    <div class="sub-option">
-      <button type="button" [disabled]="imDisabled" class="image-button" (click)="addDynamicOptionRow()">
-        <img src="assets/icons/plus-25.png" alt="Add dynamic option row" class="dynamic-icon" />
-      </button>
-    </div>
-  </div>
+<app-ordering-option [formGroup]="waterFG"></app-ordering-option>
+<div>
   <div class="nav-buttons">
     <button (click)="submit()">Submit</button>
     <button (click)="clear()">Clear</button>
     <button (click)="history()">History</button>
   </div>
-</form>
+</div>
+<!--<form [formGroup]="waterFG">-->
+<!--  <div class="main-option">-->
+<!--    <label>-->
+<!--      <input type="checkbox" [formControl]="waterFG.controls.mainCheckbox">-->
+<!--      {{ waterFG.controls.name.value }}-->
+<!--    </label>-->
+<!--    <ng-container *ngFor="let subOption of waterFG.controls.orderingOptions.controls.staticOptions.controls">-->
+<!--      <div class="sub-option">-->
+<!--        <label>-->
+<!--          <input type="checkbox" [formControl]="subOption.controls.value">-->
+<!--          {{ subOption.controls.name.value }}-->
+<!--        </label>-->
+<!--      </div>-->
+<!--    </ng-container>-->
+<!--    <ng-container-->
+<!--      *ngFor="let dynamicOptions of waterFG.controls.orderingOptions.controls.dynamicOptions.controls; let index = index">-->
+<!--      <div class="sub-option">-->
+<!--        <input type="text" [formControl]="dynamicOptions" class="dynamic-text" />-->
+<!--        <button type="button" [disabled]="imDisabled" class="image-button" (click)="removeDynamicOptionRow(index)">-->
+<!--          <img src="assets/icons/minus-16.png" alt="remove this dynamic option row" class="dynamic-icon" />-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </ng-container>-->
+<!--    <div class="sub-option">-->
+<!--      <button type="button" [disabled]="imDisabled" class="image-button" (click)="addDynamicOptionRow()">-->
+<!--        <img src="assets/icons/plus-25.png" alt="Add dynamic option row" class="dynamic-icon" />-->
+<!--      </button>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="nav-buttons">-->
+<!--    <button (click)="submit()">Submit</button>-->
+<!--    <button (click)="clear()">Clear</button>-->
+<!--    <button (click)="history()">History</button>-->
+<!--  </div>-->
+<!--</form>-->
