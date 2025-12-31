@@ -28,7 +28,7 @@ export class OrderingComponent implements OnInit {
   wineFG: FormGroup<OrderingForm>;
   otherFG: FormGroup<OrderingForm>;
 
-  imEnabled = false;
+  imDisabled = true;
 
   constructor(
     private orderingService: OrderingService,
@@ -47,20 +47,25 @@ export class OrderingComponent implements OnInit {
           this.fb.group<StaticOptionsForm>({
             name: new FormControl('Ice'),
             // value: new FormControl({ value: false, disabled: this.imDisabled })
-            value: new FormControl(false)
+            value: new FormControl({ value: false, disabled: true })
           }),
           this.fb.group<StaticOptionsForm>({
             name: new FormControl('Stanley'),
-            value: new FormControl(false)
+            value: new FormControl({ value: false, disabled: true })
           })
         ]),
-        dynamicOptions: this.fb.array<FormControl<string>>([new FormControl('')])
+        dynamicOptions: this.fb.array<FormControl<string>>([new FormControl({ value: '', disabled: true })])
       })
     });
 
     this.waterFG.controls.mainCheckbox.valueChanges.subscribe((value) => {
-      this.imEnabled = value;
-      console.log("i'm enabled", this.imEnabled);
+      this.imDisabled = !value;
+      this.waterFG.controls.orderingOptions.controls.staticOptions.controls.forEach((fg) => {
+        this.imDisabled ? fg.controls.value.disable() : fg.controls.value.enable();
+      });
+      this.waterFG.controls.orderingOptions.controls.dynamicOptions.controls.forEach((control) => {
+        this.imDisabled ? control.disable() : control.enable();
+      });
     });
   }
 
@@ -104,7 +109,9 @@ export class OrderingComponent implements OnInit {
     });
   }
 
-  clear(): void {}
+  clear(): void {
+    // this.waterFG.controls.mainCheckbox.reset({value: false, disabled true})
+  }
 
   history(): void {}
 }
