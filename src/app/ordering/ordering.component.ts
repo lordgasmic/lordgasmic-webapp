@@ -46,7 +46,6 @@ export class OrderingComponent implements OnInit {
         staticOptions: this.fb.array<FormGroup<StaticOptionsForm>>([
           this.fb.group<StaticOptionsForm>({
             name: new FormControl('Ice'),
-            // value: new FormControl({ value: false, disabled: this.imDisabled })
             value: new FormControl({ value: false, disabled: true })
           }),
           this.fb.group<StaticOptionsForm>({
@@ -110,7 +109,13 @@ export class OrderingComponent implements OnInit {
   }
 
   clear(): void {
-    // this.waterFG.controls.mainCheckbox.reset({value: false, disabled true})
+    this.waterFG.controls.mainCheckbox.reset({ value: false, disabled: false });
+    this.waterFG.controls.orderingOptions.controls.staticOptions.controls.forEach((fg) => {
+      fg.controls.value.reset({ value: false, disabled: true });
+    });
+    this.waterFG.controls.orderingOptions.controls.dynamicOptions.controls.forEach((control) => {
+      control.reset({ value: '', disabled: true });
+    });
   }
 
   history(): void {}
