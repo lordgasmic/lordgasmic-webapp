@@ -74,7 +74,7 @@ export class OrderingComponent {
         option.formGroup.controls.orderingOptions.controls.dynamicOptions.push(new FormControl({ value: '', disabled: true }));
       } catch (e: any) {
         console.log(option.name);
-        console.log(option.formGroup.controls.orderingOptions.controls.staticOptions);
+        console.log(option.formGroup.controls.orderingOptions);
       }
     });
   }
