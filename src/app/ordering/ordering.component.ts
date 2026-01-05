@@ -45,6 +45,11 @@ export class OrderingComponent {
   submit(): void {
     const properties: { [key: string]: string[] } = {};
 
+    this.orderingOptions.forEach((option) => {
+      if (option.formGroup.controls.mainCheckbox.value) {
+        console.log('checkbox: ', option.name);
+      }
+    });
     if (this.waterFG.controls.mainCheckbox.value) {
       const modifiers: string[] = [];
       this.waterFG.controls.orderingOptions.controls.staticOptions.controls.forEach((control) => {
@@ -69,12 +74,14 @@ export class OrderingComponent {
   }
 
   clear(): void {
-    this.waterFG.controls.mainCheckbox.reset({ value: false, disabled: false });
-    this.waterFG.controls.orderingOptions.controls.staticOptions.controls.forEach((fg) => {
-      fg.controls.value.reset({ value: false, disabled: true });
+    this.orderingOptions.forEach((option) => {
+      option.formGroup.controls.mainCheckbox.reset({ value: false, disabled: false });
+      option.formGroup.controls.orderingOptions.controls.staticOptions.controls.forEach((fg) => {
+        fg.controls.value.reset({ value: false, disabled: true });
+      });
+      option.formGroup.controls.orderingOptions.controls.dynamicOptions.clear();
+      option.formGroup.controls.orderingOptions.controls.dynamicOptions.push(new FormControl({ value: '', disabled: true }));
     });
-    this.waterFG.controls.orderingOptions.controls.dynamicOptions.clear();
-    this.waterFG.controls.orderingOptions.controls.dynamicOptions.push(new FormControl({ value: '', disabled: true }));
   }
 
   history(): void {}
