@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { OrderingForm, OrderingOptionsForm, StaticOptionsForm } from '@models/lordgasmic-ordering/OrderingForm';
 
@@ -10,6 +10,8 @@ import { OrderingForm, OrderingOptionsForm, StaticOptionsForm } from '@models/lo
 export class OrderingOptionComponent implements OnInit {
   @Input()
   formGroup: FormGroup<OrderingForm>;
+  @Output()
+  formGroupChange: EventEmitter<FormGroup<OrderingForm>> = new EventEmitter();
 
   constructor(private fb: FormBuilder) {}
 
@@ -42,6 +44,7 @@ export class OrderingOptionComponent implements OnInit {
       this.formGroup.controls.orderingOptions.controls.dynamicOptions.controls.forEach((control) => {
         this.imDisabled ? control.disable() : control.enable();
       });
+      this.formGroupChange.emit(this.formGroup);
     });
   }
 

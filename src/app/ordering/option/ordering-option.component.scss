@@ -1,0 +1,31 @@
+.main-option {
+  margin-left: .5rem;
+}
+
+.sub-option {
+  margin-left: 1.5rem;
+}
+
+.dynamic-text {
+  margin-right: .5rem;
+}
+
+.dynamic-icon {
+  height: 12px;
+  width: 12px;
+}
+
+.image-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  /* Ensures the image inside is centered if the button is larger */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-button:hover img {
+  opacity: 0.8; /* Optional: add hover effect */
+}
