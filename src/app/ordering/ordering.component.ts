@@ -1,4 +1,4 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { OrderingService } from '../services/ordering/ordering.service';
 import { OrderingRequest } from '@models/lordgasmic-ordering/OrderingRequest';
 import { PrintType } from '@models/PrintType';
@@ -13,7 +13,7 @@ import { OrderingForm } from '@models/lordgasmic-ordering/OrderingForm';
   templateUrl: './ordering.component.html',
   styleUrls: ['./ordering.component.scss']
 })
-export class OrderingComponent {
+export class OrderingComponent implements OnInit {
   orderingOptions: OrderingOptions[] = [
     { name: 'Water', value: 'WATER', options: ['Ice', 'Stanley'] },
     { name: 'Salty Snacks', value: 'SALTY_SNACKS', options: ['Chips', 'Nuts'] },
@@ -38,7 +38,9 @@ export class OrderingComponent {
     private fb: FormBuilder
   ) {}
   //
-  // ngOnInit(): void {
+  ngOnInit(): void {
+    this.waterFG = this.fb.group<OrderingForm>({ mainCheckbox: undefined, name: undefined, orderingOptions: undefined });
+  }
   //   this.waterFG = this.fb.group<OrderingForm>({
   //     name: new FormControl('Water'),
   //     mainCheckbox: new FormControl(false),
