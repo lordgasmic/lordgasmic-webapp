@@ -37,9 +37,6 @@ export class OrderingComponent {
 
     this.orderingOptions.forEach((option) => {
       if (option.formGroup.controls.mainCheckbox.value) {
-        console.log('checkbox: ', option.name);
-      }
-      if (option.formGroup.controls.mainCheckbox.value) {
         const modifiers: string[] = [];
         option.formGroup.controls.orderingOptions.controls.staticOptions.controls.forEach((control) => {
           if (control.value.value) {
@@ -65,17 +62,12 @@ export class OrderingComponent {
 
   clear(): void {
     this.orderingOptions.forEach((option) => {
-      try {
-        option.formGroup.controls.mainCheckbox.reset({ value: false, disabled: false });
-        option.formGroup.controls.orderingOptions.controls.staticOptions.controls.forEach((fg) => {
-          fg.controls.value.reset({ value: false, disabled: true });
-        });
-        option.formGroup.controls.orderingOptions.controls.dynamicOptions.clear();
-        option.formGroup.controls.orderingOptions.controls.dynamicOptions.push(new FormControl({ value: '', disabled: true }));
-      } catch (e: any) {
-        console.log(option.name);
-        console.log(option.formGroup.controls.orderingOptions);
-      }
+      option.formGroup.controls.mainCheckbox.reset({ value: false, disabled: false });
+      option.formGroup.controls.orderingOptions.controls.staticOptions.controls.forEach((fg) => {
+        fg.controls.value.reset({ value: false, disabled: true });
+      });
+      option.formGroup.controls.orderingOptions.controls.dynamicOptions.clear();
+      option.formGroup.controls.orderingOptions.controls.dynamicOptions.push(new FormControl({ value: '', disabled: true }));
     });
   }
 
