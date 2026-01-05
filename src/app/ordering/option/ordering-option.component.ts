@@ -9,7 +9,7 @@ import { OrderingForm, OrderingOptionsForm, StaticOptionsForm } from '@models/lo
 })
 export class OrderingOptionComponent implements OnInit {
   @Input()
-  formGroup: FormGroup<OrderingForm>;
+  formGroup!: FormGroup<OrderingForm>;
   @Output()
   formGroupChange: EventEmitter<FormGroup<OrderingForm>> = new EventEmitter();
 
