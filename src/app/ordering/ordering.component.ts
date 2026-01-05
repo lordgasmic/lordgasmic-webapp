@@ -49,21 +49,21 @@ export class OrderingComponent {
       if (option.formGroup.controls.mainCheckbox.value) {
         console.log('checkbox: ', option.name);
       }
+      if (option.formGroup.controls.mainCheckbox.value) {
+        const modifiers: string[] = [];
+        option.formGroup.controls.orderingOptions.controls.staticOptions.controls.forEach((control) => {
+          if (control.value.value) {
+            modifiers.push(control.value.name);
+          }
+        });
+        option.formGroup.controls.orderingOptions.controls.dynamicOptions.controls.forEach((control) => {
+          if (control.value) {
+            modifiers.push(control.value);
+          }
+        });
+        properties[option.formGroup.controls.name.value] = modifiers;
+      }
     });
-    if (this.waterFG.controls.mainCheckbox.value) {
-      const modifiers: string[] = [];
-      this.waterFG.controls.orderingOptions.controls.staticOptions.controls.forEach((control) => {
-        if (control.value.value) {
-          modifiers.push(control.value.name);
-        }
-      });
-      this.waterFG.controls.orderingOptions.controls.dynamicOptions.controls.forEach((control) => {
-        if (control.value) {
-          modifiers.push(control.value);
-        }
-      });
-      properties[this.waterFG.controls.name.value] = modifiers;
-    }
 
     const orderingRequest: OrderingRequest = { message: 'Wifey needy', type: PrintType.RECEIPT.toString(), properties };
 
