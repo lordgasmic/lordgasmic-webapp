@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { OrderingForm, OrderingOptionsForm, StaticOptionsForm } from '@models/lordgasmic-ordering/OrderingForm';
+import { OrderingOptions } from '@models/lordgasmic-ordering/OrderingOptions';
 
 @Component({
   selector: 'app-ordering-option',
@@ -9,50 +10,47 @@ import { OrderingForm, OrderingOptionsForm, StaticOptionsForm } from '@models/lo
 })
 export class OrderingOptionComponent implements OnInit {
   @Input()
-  formGroup!: FormGroup<OrderingForm>;
+  orderingOptions!: OrderingOptions;
   @Output()
-  formGroupChange: EventEmitter<FormGroup<OrderingForm>> = new EventEmitter();
+  orderingOptionsChange: EventEmitter<OrderingOptions> = new EventEmitter();
 
   constructor(private fb: FormBuilder) {}
 
   imDisabled = true;
 
   ngOnInit(): void {
-    this.formGroup = this.fb.group<OrderingForm>({
-      name: new FormControl('Water'),
+    const sos = this.orderingOptions.formGroup.options.map((o) => {
+      return this.fb.group<StaticOptionsForm>({
+        name: new FormControl(o),
+        value: new FormControl({ value: false, disabled: true })
+      });
+    });
+    this.orderingOptions.formGroup = this.fb.group<OrderingForm>({
+      name: new FormControl(this.orderingOptions.name),
       mainCheckbox: new FormControl(false),
       orderingOptions: this.fb.group<OrderingOptionsForm>({
-        staticOptions: this.fb.array<FormGroup<StaticOptionsForm>>([
-          this.fb.group<StaticOptionsForm>({
-            name: new FormControl('Ice'),
-            value: new FormControl({ value: false, disabled: true })
-          }),
-          this.fb.group<StaticOptionsForm>({
-            name: new FormControl('Stanley'),
-            value: new FormControl({ value: false, disabled: true })
-          })
-        ]),
+        staticOptions: this.fb.array<FormGroup<StaticOptionsForm>>(sos),
         dynamicOptions: this.fb.array<FormControl<string>>([new FormControl({ value: '', disabled: true })])
       })
     });
 
-    this.formGroup.controls.mainCheckbox.valueChanges.subscribe((value) => {
+    this.orderingOptions.formGroup.controls.mainCheckbox.valueChanges.subscribe((value) => {
       this.imDisabled = !value;
-      this.formGroup.controls.orderingOptions.controls.staticOptions.controls.forEach((fg) => {
+      this.orderingOptions.formGroup.controls.orderingOptions.controls.staticOptions.controls.forEach((fg) => {
         this.imDisabled ? fg.controls.value.disable() : fg.controls.value.enable();
       });
-      this.formGroup.controls.orderingOptions.controls.dynamicOptions.controls.forEach((control) => {
+      this.orderingOptions.formGroup.controls.orderingOptions.controls.dynamicOptions.controls.forEach((control) => {
         this.imDisabled ? control.disable() : control.enable();
       });
-      this.formGroupChange.emit(this.formGroup);
+      this.orderingOptionsChange.emit(this.orderingOptions);
     });
   }
 
   addDynamicOptionRow(): void {
-    this.formGroup.controls.orderingOptions.controls.dynamicOptions.controls.push(new FormControl(''));
+    this.orderingOptions.formGroup.controls.orderingOptions.controls.dynamicOptions.controls.push(new FormControl(''));
   }
 
   removeDynamicOptionRow(index: number): void {
-    this.formGroup.controls.orderingOptions.controls.dynamicOptions.controls.splice(index, 1);
+    this.orderingOptions.formGroup.controls.orderingOptions.controls.dynamicOptions.controls.splice(index, 1);
   }
 }

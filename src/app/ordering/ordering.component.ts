@@ -14,13 +14,7 @@ import { OrderingForm } from '@models/lordgasmic-ordering/OrderingForm';
   styleUrls: ['./ordering.component.scss']
 })
 export class OrderingComponent implements OnInit {
-  orderingOptions: OrderingOptions[] = [
-    { name: 'Water', value: 'WATER', options: ['Ice', 'Stanley'] },
-    { name: 'Salty Snacks', value: 'SALTY_SNACKS', options: ['Chips', 'Nuts'] },
-    { name: 'Sweet Snacks', value: 'SWEET_SNACKS', options: ['Candy', 'Cereal'] },
-    { name: 'Wine', value: 'WINE', options: [] },
-    { name: 'Other', value: 'OTHER', options: [] }
-  ];
+  orderingOptions: OrderingOptions[] = [];
 
   waterFG: FormGroup<OrderingForm>;
   saltySnacksFG: FormGroup<OrderingForm>;
@@ -28,19 +22,27 @@ export class OrderingComponent implements OnInit {
   wineFG: FormGroup<OrderingForm>;
   otherFG: FormGroup<OrderingForm>;
 
-  // imDisabled = true;
-
   constructor(
     private orderingService: OrderingService,
     private router: Router,
     private zone: NgZone,
     private toastService: ToastMessageService,
     private fb: FormBuilder
-  ) {}
-  //
-  ngOnInit(): void {
+  ) {
     this.waterFG = this.fb.group<OrderingForm>({ mainCheckbox: undefined, name: undefined, orderingOptions: undefined });
+    this.saltySnacksFG = this.fb.group<OrderingForm>({ mainCheckbox: undefined, name: undefined, orderingOptions: undefined });
+    this.sweetSnacksFG = this.fb.group<OrderingForm>({ mainCheckbox: undefined, name: undefined, orderingOptions: undefined });
+    this.wineFG = this.fb.group<OrderingForm>({ mainCheckbox: undefined, name: undefined, orderingOptions: undefined });
+    this.otherFG = this.fb.group<OrderingForm>({ mainCheckbox: undefined, name: undefined, orderingOptions: undefined });
+
+    this.orderingOptions.push({ name: 'Water', value: 'WATER', options: ['Ice', 'Stanley'], formGroup: this.waterFG });
+    this.orderingOptions.push({ name: 'Salty Snacks', value: 'SALTY_SNACKS', options: ['Chips', 'Nuts'], formGroup: this.saltySnacksFG });
+    this.orderingOptions.push({ name: 'Sweet Snacks', value: 'SWEET_SNACKS', options: ['Candy', 'Cereal'], formGroup: this.sweetSnacksFG });
+    this.orderingOptions.push({ name: 'Wine', value: 'WINE', options: [], formGroup: this.wineFG });
+    this.orderingOptions.push({ name: 'Other', value: 'OTHER', options: [], formGroup: this.otherFG });
   }
+  //
+  ngOnInit(): void {}
   //   this.waterFG = this.fb.group<OrderingForm>({
   //     name: new FormControl('Water'),
   //     mainCheckbox: new FormControl(false),
