@@ -19,7 +19,7 @@ export class OrderingOptionComponent implements OnInit {
   imDisabled = true;
 
   ngOnInit(): void {
-    const sos = this.orderingOptions.formGroup.options.map((o) => {
+    const sos = this.orderingOptions.options.map((o) => {
       return this.fb.group<StaticOptionsForm>({
         name: new FormControl(o),
         value: new FormControl({ value: false, disabled: true })
