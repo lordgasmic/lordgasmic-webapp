@@ -5,7 +5,7 @@ import { PrintType } from '@models/PrintType';
 import { ToastMessageService } from '../services/toast-message/toast-message.service';
 import { Router } from '@angular/router';
 import { OrderingOptions } from '@models/lordgasmic-ordering/OrderingOptions';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl } from '@angular/forms';
 import { OrderingForm } from '@models/lordgasmic-ordering/OrderingForm';
 
 @Component({
@@ -16,12 +16,6 @@ import { OrderingForm } from '@models/lordgasmic-ordering/OrderingForm';
 export class OrderingComponent {
   orderingOptions: OrderingOptions[] = [];
 
-  waterFG: FormGroup<OrderingForm>;
-  saltySnacksFG: FormGroup<OrderingForm>;
-  sweetSnacksFG: FormGroup<OrderingForm>;
-  wineFG: FormGroup<OrderingForm>;
-  otherFG: FormGroup<OrderingForm>;
-
   constructor(
     private orderingService: OrderingService,
     private router: Router,
@@ -29,17 +23,13 @@ export class OrderingComponent {
     private toastService: ToastMessageService,
     private fb: FormBuilder
   ) {
-    this.waterFG = this.fb.group<OrderingForm>({ mainCheckbox: undefined, name: undefined, orderingOptions: undefined });
-    this.saltySnacksFG = this.fb.group<OrderingForm>({ mainCheckbox: undefined, name: undefined, orderingOptions: undefined });
-    this.sweetSnacksFG = this.fb.group<OrderingForm>({ mainCheckbox: undefined, name: undefined, orderingOptions: undefined });
-    this.wineFG = this.fb.group<OrderingForm>({ mainCheckbox: undefined, name: undefined, orderingOptions: undefined });
-    this.otherFG = this.fb.group<OrderingForm>({ mainCheckbox: undefined, name: undefined, orderingOptions: undefined });
+    const formGroup = this.fb.group<OrderingForm>({ mainCheckbox: undefined, name: undefined, orderingOptions: undefined });
 
-    this.orderingOptions.push({ name: 'Water', value: 'WATER', options: ['Ice', 'Stanley'], formGroup: this.waterFG });
-    this.orderingOptions.push({ name: 'Salty Snacks', value: 'SALTY_SNACKS', options: ['Chips', 'Nuts'], formGroup: this.saltySnacksFG });
-    this.orderingOptions.push({ name: 'Sweet Snacks', value: 'SWEET_SNACKS', options: ['Candy', 'Cereal'], formGroup: this.sweetSnacksFG });
-    this.orderingOptions.push({ name: 'Wine', value: 'WINE', options: [], formGroup: this.wineFG });
-    this.orderingOptions.push({ name: 'Other', value: 'OTHER', options: [], formGroup: this.otherFG });
+    this.orderingOptions.push({ name: 'Water', value: 'WATER', options: ['Ice', 'Stanley'], formGroup });
+    this.orderingOptions.push({ name: 'Salty Snacks', value: 'SALTY_SNACKS', options: ['Chips', 'Nuts'], formGroup });
+    this.orderingOptions.push({ name: 'Sweet Snacks', value: 'SWEET_SNACKS', options: ['Candy', 'Cereal'], formGroup });
+    this.orderingOptions.push({ name: 'Wine', value: 'WINE', options: [], formGroup });
+    this.orderingOptions.push({ name: 'Other', value: 'OTHER', options: [], formGroup });
   }
 
   submit(): void {
