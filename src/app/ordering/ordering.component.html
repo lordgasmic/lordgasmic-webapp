@@ -1,7 +1,8 @@
 <app-ordering-main></app-ordering-main>
 
 <ng-container *ngFor="let option of orderingOptions">
-  <app-ordering-option [(orderingOptions)]="option"></app-ordering-option>
+  <app-ordering-option [name]="option.name" [options]="option.options"
+                       [(formGroup)]="option.formGroup"></app-ordering-option>
 </ng-container>
 <div>
   <div class="nav-buttons">

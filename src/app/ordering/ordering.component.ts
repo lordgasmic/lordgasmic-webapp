@@ -1,4 +1,4 @@
-import { Component, NgZone, OnInit } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { OrderingService } from '../services/ordering/ordering.service';
 import { OrderingRequest } from '@models/lordgasmic-ordering/OrderingRequest';
 import { PrintType } from '@models/PrintType';
@@ -13,7 +13,7 @@ import { OrderingForm } from '@models/lordgasmic-ordering/OrderingForm';
   templateUrl: './ordering.component.html',
   styleUrls: ['./ordering.component.scss']
 })
-export class OrderingComponent implements OnInit {
+export class OrderingComponent {
   orderingOptions: OrderingOptions[] = [];
 
   waterFG: FormGroup<OrderingForm>;
@@ -41,44 +41,6 @@ export class OrderingComponent implements OnInit {
     this.orderingOptions.push({ name: 'Wine', value: 'WINE', options: [], formGroup: this.wineFG });
     this.orderingOptions.push({ name: 'Other', value: 'OTHER', options: [], formGroup: this.otherFG });
   }
-  //
-  ngOnInit(): void {}
-  //   this.waterFG = this.fb.group<OrderingForm>({
-  //     name: new FormControl('Water'),
-  //     mainCheckbox: new FormControl(false),
-  //     orderingOptions: this.fb.group<OrderingOptionsForm>({
-  //       staticOptions: this.fb.array<FormGroup<StaticOptionsForm>>([
-  //         this.fb.group<StaticOptionsForm>({
-  //           name: new FormControl('Ice'),
-  //           value: new FormControl({ value: false, disabled: true })
-  //         }),
-  //         this.fb.group<StaticOptionsForm>({
-  //           name: new FormControl('Stanley'),
-  //           value: new FormControl({ value: false, disabled: true })
-  //         })
-  //       ]),
-  //       dynamicOptions: this.fb.array<FormControl<string>>([new FormControl({ value: '', disabled: true })])
-  //     })
-  //   });
-  //
-  //   this.waterFG.controls.mainCheckbox.valueChanges.subscribe((value) => {
-  //     this.imDisabled = !value;
-  //     this.waterFG.controls.orderingOptions.controls.staticOptions.controls.forEach((fg) => {
-  //       this.imDisabled ? fg.controls.value.disable() : fg.controls.value.enable();
-  //     });
-  //     this.waterFG.controls.orderingOptions.controls.dynamicOptions.controls.forEach((control) => {
-  //       this.imDisabled ? control.disable() : control.enable();
-  //     });
-  //   });
-  // }
-  //
-  // addDynamicOptionRow(): void {
-  //   this.waterFG.controls.orderingOptions.controls.dynamicOptions.controls.push(new FormControl(''));
-  // }
-  //
-  // removeDynamicOptionRow(index: number): void {
-  //   this.waterFG.controls.orderingOptions.controls.dynamicOptions.controls.splice(index, 1);
-  // }
 
   submit(): void {
     const properties: { [key: string]: string[] } = {};
