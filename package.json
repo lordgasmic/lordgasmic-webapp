@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:prod": "ng build -c production --source-map=true",
+    "build:prod": "ng build --source-map=true",
     "test": "ng test",
     "lint": "ng lint",
     "prettier": "prettier --write \"{{src,e2e}/**/*,*}.{scss,ts}\"",
