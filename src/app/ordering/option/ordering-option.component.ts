@@ -47,6 +47,8 @@ export class OrderingOptionComponent implements OnInit {
       });
       this.formGroupChange.emit(this.formGroup);
     });
+
+    this.formGroupChange.emit(this.formGroup);
   }
 
   addDynamicOptionRow(): void {
