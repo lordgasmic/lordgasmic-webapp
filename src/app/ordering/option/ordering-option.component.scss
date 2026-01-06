@@ -8,6 +8,9 @@
 .sub-option {
   margin-left: 1.5rem;
   display: flex;
+}
+
+.sub-option__disabled {
   opacity: 0.3;
 }
 
@@ -20,7 +23,7 @@
   width: 12px;
 }
 
-.disabled {
+.dynamic-icon__disabled {
   filter: grayscale(1);
 }
 
