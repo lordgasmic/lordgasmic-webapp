@@ -8,6 +8,7 @@
 .sub-option {
   margin-left: 1.5rem;
   display: flex;
+  opacity: 0.3;
 }
 
 .dynamic-text {
@@ -17,6 +18,10 @@
 .dynamic-icon {
   height: 12px;
   width: 12px;
+}
+
+.dynamic-icon__disabled {
+  filter: grayscale(1);
 }
 
 .image-button {
@@ -37,5 +42,11 @@
 @media screen and (max-width: $phone-width) {
   .main-option {
     font-size: calc(1rem + 2vw);
+    //  space vertically between labels
+  }
+
+  .image-button {
+    height: 8vw;
+    width: 8vw;
   }
 }
