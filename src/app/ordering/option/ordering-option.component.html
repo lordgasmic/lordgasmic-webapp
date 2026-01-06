@@ -4,9 +4,9 @@
       <input type="checkbox" [formControl]="formGroup.controls.mainCheckbox">
       {{ formGroup.controls.name.value }}
     </label>
-    <ng-container
-      *ngFor="let subOption of formGroup.controls.orderingOptions.controls.staticOptions.controls">
-      <div class="sub-option" [ngClass]="{'sub-option__disabled': imDisabled}">
+    <ng-container *ngIf="formGroup.controls.orderingOptions.controls.staticOptions.controls.length > 0">
+      <div class="sub-option" [ngClass]="{'sub-option__disabled': imDisabled}"
+           *ngFor="let subOption of formGroup.controls.orderingOptions.controls.staticOptions.controls">
         <label>
           <input type="checkbox" [formControl]="subOption.controls.value">
           {{ subOption.controls.name.value }}
