@@ -18,15 +18,15 @@
       <div class="sub-option">
         <input type="text" [formControl]="dynamicOptions" class="dynamic-text" />
         <button type="button" [disabled]="imDisabled" class="image-button" (click)="removeDynamicOptionRow(index)">
-          <img src="assets/icons/minus-16.png" alt="remove this dynamic option row"
-               [ngClass]="{'dynamic-icon': !imDisabled, 'dynamic-icon__disabled': imDisabled}" />
+          <img src="assets/icons/minus-16.png" alt="remove this dynamic option row" class="dynamic-icon"
+               [ngClass]="{'disabled': imDisabled}" />
         </button>
       </div>
     </ng-container>
     <div class="sub-option">
       <button type="button" [disabled]="imDisabled" class="image-button" (click)="addDynamicOptionRow()">
-        <img src="assets/icons/plus-25.png" alt="Add dynamic option row"
-             [ngClass]="{'dynamic-icon': !imDisabled, 'dynamic-icon__disabled': imDisabled}" />
+        <img src="assets/icons/plus-25.png" alt="Add dynamic option row" class="dynamic-icon"
+             [ngClass]="{'disabled': imDisabled}" />
       </button>
     </div>
   </div>

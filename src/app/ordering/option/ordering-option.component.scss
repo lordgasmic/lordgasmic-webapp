@@ -20,7 +20,7 @@
   width: 12px;
 }
 
-.dynamic-icon__disabled {
+.disabled {
   filter: grayscale(1);
 }
 
@@ -45,7 +45,7 @@
     //  space vertically between labels
   }
 
-  .image-button {
+  .dynamic-icon {
     height: 8vw;
     width: 8vw;
   }
