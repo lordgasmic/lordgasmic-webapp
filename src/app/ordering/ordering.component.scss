@@ -1,3 +1,13 @@
+@import "src/styles/variables";
+
 .nav-buttons {
   margin-top: 1rem;
+}
+
+@media screen and (max-width: $phone-width) {
+  .nav-buttons {
+    button {
+      padding: 3vw 6vw;
+    }
+  }
 }

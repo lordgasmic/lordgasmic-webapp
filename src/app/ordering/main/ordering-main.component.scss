@@ -1,0 +1,12 @@
+@import "src/styles/variables";
+
+.heading {
+
+}
+
+@media screen and (max-width: $phone-width) {
+  .heading {
+    font-size: 8vw;
+    margin-bottom: 11vw;
+  }
+}
