@@ -35,5 +35,7 @@
 }
 
 @media screen and (max-width: $phone-width) {
-  font-size: calc(1rem + 2vw);
+  .main-option {
+    font-size: calc(1rem + 2vw);
+  }
 }

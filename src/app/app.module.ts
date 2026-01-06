@@ -64,7 +64,7 @@ import { FoodLibraryHomeComponent } from './food-library/food-library-home/food-
 import { GroceryListComponent } from './food-library/grocery/list/grocery-list.component';
 import { GroceryDepartmentRowComponent } from './food-library/grocery/department-row/grocery-department-row.component';
 import { RecipeAddComponent } from './food-library/recipe/add/recipe-add.component';
-import { OrderingMainComponent } from './ordering/main/ordering-main.component';
+import { OrderingHeaderComponent } from './ordering/header/ordering-header.component';
 import { OrderingOptionComponent } from './ordering/option/ordering-option.component';
 
 @NgModule({
@@ -111,7 +111,7 @@ import { OrderingOptionComponent } from './ordering/option/ordering-option.compo
     GroceryListComponent,
     GroceryDepartmentRowComponent,
     RecipeAddComponent,
-    OrderingMainComponent,
+    OrderingHeaderComponent,
     OrderingOptionComponent
   ],
   imports: [
