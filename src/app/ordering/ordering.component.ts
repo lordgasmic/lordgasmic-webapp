@@ -1,6 +1,6 @@
 import { Component, NgZone } from '@angular/core';
 import { OrderingService } from '../services/ordering/ordering.service';
-import { OrderingRequest } from '@models/lordgasmic-ordering/OrderingRequest';
+import { OrderExtra, OrderingRequest } from '@models/lordgasmic-ordering/OrderingRequest';
 import { PrintType } from '@models/PrintType';
 import { ToastMessageService } from '../services/toast-message/toast-message.service';
 import { Router } from '@angular/router';
@@ -33,22 +33,22 @@ export class OrderingComponent {
   }
 
   submit(): void {
-    const properties: { [key: string]: string[] } = {};
+    const properties: OrderItem[] = [];
 
     this.orderingOptions.forEach((option) => {
       if (option.formGroup.controls.mainCheckbox.value) {
-        const modifiers: string[] = [];
+        const extras: OrderExtra[] = [];
         option.formGroup.controls.orderingOptions.controls.staticOptions.controls.forEach((control) => {
           if (control.value.value) {
-            modifiers.push(control.value.name);
+            extras.push({ extra: control.value.name, type: 'checkbox' });
           }
         });
         option.formGroup.controls.orderingOptions.controls.dynamicOptions.controls.forEach((control) => {
           if (control.value) {
-            modifiers.push(control.value);
+            extras.push({ extra: control.value, type: 'textbox' });
           }
         });
-        properties[option.formGroup.controls.name.value] = modifiers;
+        properties.push({ item: option.formGroup.controls.name.value, extras });
       }
     });
 

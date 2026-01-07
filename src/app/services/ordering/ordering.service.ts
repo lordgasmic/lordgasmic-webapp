@@ -8,7 +8,7 @@ import { OrderingRequest } from '@models/lordgasmic-ordering/OrderingRequest';
 })
 export class OrderingService {
   private readonly API = 'https://lordgasmic.com';
-  private readonly ORDERING = '/api/v1/ordering';
+  private readonly ORDERING = '/api/v1/orders';
 
   constructor(private http: HttpClient) {}
 
