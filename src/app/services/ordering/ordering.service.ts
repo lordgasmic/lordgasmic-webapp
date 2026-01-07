@@ -13,6 +13,6 @@ export class OrderingService {
   constructor(private http: HttpClient) {}
 
   placeOrder(orderingRequest: OrderingRequest): Observable<void> {
-    return this.http.post<void>(this.API + this.ORDERING, orderingRequest);
+    return this.http.put<void>(this.API + this.ORDERING, orderingRequest);
   }
 }
