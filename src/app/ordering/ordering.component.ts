@@ -1,6 +1,6 @@
 import { Component, NgZone } from '@angular/core';
 import { OrderingService } from '../services/ordering/ordering.service';
-import { OrderExtra, OrderingRequest } from '@models/lordgasmic-ordering/OrderingRequest';
+import { OrderExtra, OrderingRequest, OrderItem } from '@models/lordgasmic-ordering/OrderingRequest';
 import { PrintType } from '@models/PrintType';
 import { ToastMessageService } from '../services/toast-message/toast-message.service';
 import { Router } from '@angular/router';
