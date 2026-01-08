@@ -1,0 +1,10 @@
+<form [formGroup]="formGroup" (ngSubmit)="submit()" (reset)="close()">
+  <div>
+    <label>URL:</label>
+    <input type="text" [formControl]="formGroup.controls.url" />
+  </div>
+  <div>
+    <button type="reset">Close</button>
+    <button type="submit" [disabled]="formGroup.invalid">Submit</button>
+  </div>
+</form>

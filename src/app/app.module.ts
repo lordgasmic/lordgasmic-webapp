@@ -66,6 +66,7 @@ import { GroceryDepartmentRowComponent } from './food-library/grocery/department
 import { RecipeAddComponent } from './food-library/recipe/add/recipe-add.component';
 import { OrderingHeaderComponent } from './ordering/header/ordering-header.component';
 import { OrderingOptionComponent } from './ordering/option/ordering-option.component';
+import { RecipeAddDialogComponent } from './food-library/recipe/add-dialog/recipe-add-dialog.component';
 
 @NgModule({
   declarations: [
@@ -112,7 +113,8 @@ import { OrderingOptionComponent } from './ordering/option/ordering-option.compo
     GroceryDepartmentRowComponent,
     RecipeAddComponent,
     OrderingHeaderComponent,
-    OrderingOptionComponent
+    OrderingOptionComponent,
+    RecipeAddDialogComponent
   ],
   imports: [
     BrowserModule,
