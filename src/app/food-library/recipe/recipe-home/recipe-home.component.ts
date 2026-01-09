@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '../../../services/food-library/recipe.service';
 import { RecipeResponse } from '@models/RecipeResponse';
+import { MatDialog } from '@angular/material/dialog';
+import { RecipeAddDialogComponent } from '../add-dialog/recipe-add-dialog.component';
 
 @Component({
   selector: 'app-food-library-home',
@@ -10,7 +12,7 @@ import { RecipeResponse } from '@models/RecipeResponse';
 export class RecipeHomeComponent implements OnInit {
   recipes: RecipeResponse[] = [];
 
-  constructor(private recipeService: RecipeService) {}
+  constructor(private recipeService: RecipeService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.recipeService.getAllRecipes().subscribe((data) => {
@@ -18,5 +20,9 @@ export class RecipeHomeComponent implements OnInit {
         this.recipes = data;
       }
     });
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(RecipeAddDialogComponent);
   }
 }
