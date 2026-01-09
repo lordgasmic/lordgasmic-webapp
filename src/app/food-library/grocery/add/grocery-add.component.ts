@@ -13,11 +13,19 @@ export class GroceryAddComponent {
   txtQuantity: string;
   txtItem: string;
 
-  constructor(groceryService: GroceryService) {}
+  constructor(private groceryService: GroceryService) {}
+
+  clear(): void {
+    this.selectedDepartment = '';
+    this.txtQuantity = '';
+    this.txtItem = '';
+  }
 
   submit(): void {
-    console.log(this.selectedDepartment);
-    console.log(this.txtQuantity);
-    console.log(this.txtItem);
+    this.groceryService
+      .addGroceryItem({ department: this.selectedDepartment, quantity: this.txtQuantity, item: this.txtItem })
+      .subscribe(() => {
+        this.clear();
+      });
   }
 }
