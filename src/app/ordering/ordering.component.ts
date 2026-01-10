@@ -71,5 +71,7 @@ export class OrderingComponent {
     });
   }
 
-  history(): void {}
+  history(): void {
+    this.zone.run(() => this.router.navigateByUrl('/order/history'));
+  }
 }

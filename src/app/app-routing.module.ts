@@ -24,6 +24,7 @@ import { FoodLibraryHomeComponent } from './food-library/food-library-home/food-
 import { GroceryAddComponent } from './food-library/grocery/add/grocery-add.component';
 import { GroceryListComponent } from './food-library/grocery/list/grocery-list.component';
 import { GroceryHomeComponent } from './food-library/grocery/home/grocery-home.component';
+import { OrderHistoryComponent } from './ordering/history/order-history.component';
 
 const routes: Routes = [
   {
@@ -97,7 +98,8 @@ const routes: Routes = [
   },
   {
     path: 'ordering',
-    component: OrderingComponent
+    component: OrderingComponent,
+    children: [{ path: 'history', component: OrderHistoryComponent }]
   }
 ];
 

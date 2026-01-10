@@ -4,10 +4,10 @@ import { OrderResponse } from '@models/lordgasmic-ordering/OrderResponse';
 
 @Component({
   selector: 'app-history',
-  templateUrl: './history.component.html',
-  styleUrls: ['./history.component.scss']
+  templateUrl: './order-history.component.html',
+  styleUrls: ['./order-history.component.scss']
 })
-export class HistoryComponent implements OnInit {
+export class OrderHistoryComponent implements OnInit {
   history: OrderResponse[];
 
   constructor(private orderService: OrderingService) {}
