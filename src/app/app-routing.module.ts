@@ -99,7 +99,10 @@ const routes: Routes = [
   {
     path: 'ordering',
     component: OrderingComponent,
-    children: [{ path: 'history', component: OrderHistoryComponent }]
+    children: [
+      { path: '', pathMatch: 'full', component: OrderingComponent },
+      { path: 'history', component: OrderHistoryComponent }
+    ]
   }
 ];
 
