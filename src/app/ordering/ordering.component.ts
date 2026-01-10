@@ -72,6 +72,7 @@ export class OrderingComponent {
   }
 
   history(): void {
-    this.zone.run(() => this.router.navigateByUrl('/ordering/history'));
+    console.log('debug');
+    this.zone.run(() => this.router.navigate(['/ordering/history']));
   }
 }
