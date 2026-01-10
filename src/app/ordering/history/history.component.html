@@ -1,0 +1,19 @@
+<h2>Lordgasmic Ordering History</h2>
+
+<!--table def here-->
+<table>
+  <thead>
+  <tr>
+    <th>Date</th>
+    <th>Username</th>
+    <th>Items</th>
+  </tr>
+  </thead>
+  <tbody>
+  <ng-container *ngFor="let order of history">
+    <app-order-history-row [orderRow]="order"></app-order-history-row>
+  </ng-container>
+  </tbody>
+</table>
+<!-- <history-row> here (for each)-->
+<button>Back</button>
