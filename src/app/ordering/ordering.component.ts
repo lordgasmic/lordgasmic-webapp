@@ -70,4 +70,8 @@ export class OrderingComponent {
       option.formGroup.controls.orderingOptions.controls.dynamicOptions.push(new FormControl({ value: '', disabled: true }));
     });
   }
+
+  history(): void {
+    this.zone.run(() => this.router.navigate([`/ordering/history`]));
+  }
 }
