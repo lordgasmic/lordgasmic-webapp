@@ -29,7 +29,7 @@ export class OrderingComponent {
     this.orderingOptions.push({ name: 'Salty Snacks', value: 'SALTY_SNACKS', options: ['Chips', 'Nuts'], formGroup });
     this.orderingOptions.push({ name: 'Sweet Snacks', value: 'SWEET_SNACKS', options: ['Candy', 'Cereal'], formGroup });
     this.orderingOptions.push({ name: 'Wine', value: 'WINE', options: [], formGroup });
-    this.orderingOptions.push({ name: 'Other', value: 'OTHER', options: [], formGroup });
+    this.orderingOptions.push({ name: 'Other', value: 'OTHER', options: ['Proof of life'], formGroup });
   }
 
   submit(): void {
