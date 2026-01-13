@@ -21,8 +21,17 @@ export class OrderHistoryComponent implements OnInit {
     });
   }
 
-  buildItems(): string {
-    return 'derp';
+  buildItems(orderRow: OrderResponse): string {
+    const items: string[] = [];
+    for (const [key, value] of orderRow.items.entries()) {
+      let itemString = key;
+      if (value && value.length > 0) {
+        itemString += `: ${value.join(', ')}`;
+      }
+
+      items.push(itemString);
+    }
+    return items.join(';');
   }
 
   backButton(): void {
