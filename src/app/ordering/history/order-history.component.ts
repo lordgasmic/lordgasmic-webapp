@@ -24,12 +24,6 @@ export class OrderHistoryComponent implements OnInit {
   buildItems(orderRow: OrderResponse): string {
     const items: string[] = [];
     console.log(orderRow.items);
-    if (!orderRow.items) {
-      console.log('falsey');
-    }
-    if (!orderRow.items.keys()) {
-      console.log('no keys');
-    }
     if (Object.keys(orderRow.items).length === 0) {
       console.log('keys = 0');
     }
