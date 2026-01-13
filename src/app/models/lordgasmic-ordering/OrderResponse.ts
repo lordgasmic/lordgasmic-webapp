@@ -1,5 +1,6 @@
 export interface OrderResponse {
-  username: string;
+  user: string;
   orderDate: Date;
-  items: Map<string, string[]>;
+  // items: Map<string, string[]>;
+  items: any;
 }
