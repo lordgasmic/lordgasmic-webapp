@@ -15,7 +15,7 @@ export class OrderHistoryComponent implements OnInit {
   ngOnInit(): void {
     this.orderService.getOrderingHistory().subscribe((result) => {
       if (result) {
-        this.history = result.sort((a, b) => b.date.getTime() - a.date.getTime());
+        this.history = result.sort((a, b) => b.orderDate.getTime() - a.orderDate.getTime());
       }
     });
   }

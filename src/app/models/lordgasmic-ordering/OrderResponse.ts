@@ -1,5 +1,5 @@
 export interface OrderResponse {
   username: string;
-  date: Date;
+  orderDate: Date;
   items: Map<string, string[]>;
 }
