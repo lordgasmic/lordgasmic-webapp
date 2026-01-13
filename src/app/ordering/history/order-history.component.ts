@@ -24,14 +24,14 @@ export class OrderHistoryComponent implements OnInit {
   buildItems(orderRow: OrderResponse): string {
     const items: string[] = [];
     console.log(orderRow.items);
-    for (const [key, value] of orderRow.items.entries()) {
-      let itemString = key;
-      if (value && value.length > 0) {
-        itemString += `: ${value.join(', ')}`;
-      }
-
-      items.push(itemString);
-    }
+    // for (const [key, value] of orderRow.items.entries()) {
+    //   let itemString = key;
+    //   if (value && value.length > 0) {
+    //     itemString += `: ${value.join(', ')}`;
+    //   }
+    //
+    //   items.push(itemString);
+    // }
     return items.join(';');
   }
 
