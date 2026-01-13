@@ -9,9 +9,13 @@
   </tr>
   </thead>
   <tbody>
-  <ng-container *ngFor="let order of history">
-    <app-order-history-row [orderRow]="order"></app-order-history-row>
+  <ng-container *ngFor="let orderRow of history">
+    <tr>
+      <td>{{ orderRow.orderDate }}</td>
+      <td>{{ orderRow.username }}</td>
+      <td>{{ buildItems() }}</td>
+    </tr>
   </ng-container>
   </tbody>
 </table>
-<button>Back</button>
+<button (click)="backButton()">Back</button>

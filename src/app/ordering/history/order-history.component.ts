@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderingService } from '../../services/ordering/ordering.service';
 import { OrderResponse } from '@models/lordgasmic-ordering/OrderResponse';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-history',
@@ -10,7 +11,7 @@ import { OrderResponse } from '@models/lordgasmic-ordering/OrderResponse';
 export class OrderHistoryComponent implements OnInit {
   history: OrderResponse[];
 
-  constructor(private orderService: OrderingService) {}
+  constructor(private orderService: OrderingService, private location: Location) {}
 
   ngOnInit(): void {
     this.orderService.getOrderingHistory().subscribe((result) => {
@@ -18,5 +19,13 @@ export class OrderHistoryComponent implements OnInit {
         this.history = result.sort((a, b) => new Date(b.orderDate).getTime() - new Date(a.orderDate).getTime());
       }
     });
+  }
+
+  buildItems(): string {
+    return 'derp';
+  }
+
+  backButton(): void {
+    this.location.back();
   }
 }
