@@ -1,16 +1,1 @@
-<app-ordering-header></app-ordering-header>
-
-<ng-container *ngFor="let option of orderingOptions">
-  <app-ordering-option [name]="option.name" [options]="option.options"
-                       [(formGroup)]="option.formGroup"></app-ordering-option>
-</ng-container>
-
-<div>
-  <div class="nav-buttons">
-    <button (click)="submit()">Submit</button>
-    <button (click)="clear()">Clear</button>
-    <button (click)="history()">History</button>
-  </div>
-</div>
-
 <router-outlet></router-outlet>

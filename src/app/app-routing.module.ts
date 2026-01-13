@@ -25,6 +25,7 @@ import { GroceryAddComponent } from './food-library/grocery/add/grocery-add.comp
 import { GroceryListComponent } from './food-library/grocery/list/grocery-list.component';
 import { GroceryHomeComponent } from './food-library/grocery/home/grocery-home.component';
 import { OrderHistoryComponent } from './ordering/history/order-history.component';
+import { OrderingMainComponent } from './ordering/main/ordering-main.component';
 
 const routes: Routes = [
   {
@@ -100,7 +101,7 @@ const routes: Routes = [
     path: 'ordering',
     component: OrderingComponent,
     children: [
-      { path: '', pathMatch: 'full', component: OrderingComponent },
+      { path: '', pathMatch: 'full', component: OrderingMainComponent },
       { path: 'history', component: OrderHistoryComponent }
     ]
   }
