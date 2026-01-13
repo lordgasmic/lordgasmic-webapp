@@ -23,7 +23,7 @@ export class OrderHistoryComponent implements OnInit {
 
   buildItems(orderRow: OrderResponse): string {
     const items: string[] = [];
-    if (Object.keys(orderRow.items).length >= 0) {
+    if (Object.keys(orderRow.items).length > 0) {
       console.log(orderRow.items);
       for (const [key, value] of orderRow.items.entries()) {
         let itemString = key;
