@@ -25,7 +25,8 @@ export class OrderHistoryComponent implements OnInit {
     const items: string[] = [];
     if (Object.keys(orderRow.items).length > 0) {
       console.log(orderRow.items);
-      for (const [key, value] of orderRow.items.entries()) {
+      const itemMap: Map<string, string[]> = new Map(Object.entries(orderRow.items));
+      for (const [key, value] of itemMap.entries()) {
         let itemString = key;
         if (value && value.length > 0) {
           itemString += `: ${value.join(', ')}`;
