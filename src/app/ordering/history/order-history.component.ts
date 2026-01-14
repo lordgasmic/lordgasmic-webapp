@@ -35,7 +35,7 @@ export class OrderHistoryComponent implements OnInit {
         items.push(itemString);
       }
     }
-    return items.join(';');
+    return items.join('; ');
   }
 
   backButton(): void {
