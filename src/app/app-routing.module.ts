@@ -26,6 +26,7 @@ import { GroceryListComponent } from './food-library/grocery/list/grocery-list.c
 import { GroceryHomeComponent } from './food-library/grocery/home/grocery-home.component';
 import { OrderHistoryComponent } from './ordering/history/order-history.component';
 import { OrderingMainComponent } from './ordering/main/ordering-main.component';
+import { FunkoMainComponent } from './funko/main/funko-main.component';
 
 const routes: Routes = [
   {
@@ -71,7 +72,8 @@ const routes: Routes = [
   },
   {
     path: 'funko',
-    component: FunkoComponent
+    component: FunkoComponent,
+    children: [{ path: '', pathMatch: 'full', component: FunkoMainComponent }]
   },
   {
     path: 'gas',
