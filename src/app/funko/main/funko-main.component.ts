@@ -8,14 +8,14 @@ import { FunkoService } from '../../services/funko/funko.service';
   styleUrls: ['./funko-main.component.scss']
 })
 export class FunkoMainComponent implements OnInit {
-  funkos: FunkosResponse;
+  funkosResponse: FunkosResponse;
 
   constructor(private funkoService: FunkoService) {}
 
   ngOnInit(): void {
     this.funkoService.getFunkos().subscribe((data) => {
       if (data) {
-        this.funkos = data;
+        this.funkosResponse = data;
       }
     });
   }
