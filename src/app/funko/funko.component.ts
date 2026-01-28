@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LordgasmicService } from '../services/lordgasmic/lordgasmic.service';
-import { FunkoResponse } from '@models/funkos/FunkoResponse';
-import { Observable } from 'rxjs';
+import { FunkoService } from '../services/funko/funko.service';
+import { FunkosResponse } from '@models/funkos/FunkosResponse';
 
 @Component({
   selector: 'app-funko',
@@ -9,11 +8,15 @@ import { Observable } from 'rxjs';
   styleUrls: ['./funko.component.scss']
 })
 export class FunkoComponent implements OnInit {
-  funkoResponse$: Observable<FunkoResponse>;
+  funkos: FunkosResponse;
 
-  constructor(private lordgasmicService: LordgasmicService) {}
+  constructor(private funkoService: FunkoService) {}
 
   ngOnInit(): void {
-    this.funkoResponse$ = this.lordgasmicService.getFunkos();
+    this.funkoService.getFunkos().subscribe((data) => {
+      if (data) {
+        this.funkos = data;
+      }
+    });
   }
 }

@@ -13,7 +13,6 @@ import { GasRequest } from '@models/gas/GasRequest';
 import { GasResponse } from '@models/gas/GasResponse';
 import { WebappConstants } from '../../configuration/WebappConstants';
 import { FacetsResponse } from '@models/FacetsResponse';
-import { FunkoResponse } from '@models/funkos/FunkoResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +29,6 @@ export class LordgasmicService {
   private readonly FACETS = '/v1/memes/facets';
   private readonly USERS = '/v1/users';
   private readonly GAS = '/v1/gas';
-  private readonly FUNKO = '/v1/funkos';
 
   constructor(private http: HttpClient) {}
 
@@ -131,9 +129,5 @@ export class LordgasmicService {
         }
       );
     });
-  }
-
-  getFunkos(): Observable<FunkoResponse> {
-    return this.http.get<FunkoResponse>(this.API + this.FUNKO);
   }
 }

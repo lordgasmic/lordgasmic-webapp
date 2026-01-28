@@ -68,6 +68,10 @@ import { OrderingOptionComponent } from './ordering/option/ordering-option.compo
 import { RecipeAddDialogComponent } from './food-library/recipe/add-dialog/recipe-add-dialog.component';
 import { OrderHistoryComponent } from './ordering/history/order-history.component';
 import { OrderingMainComponent } from './ordering/main/ordering-main.component';
+import { FunkoMainComponent } from './funko/main/funko-main.component';
+import { FunkoPaginationComponent } from './funko/pagination/funko-pagination.component';
+import { FunkoFacetsComponent } from './funko/facets/funko-facets.component';
+import { CardComponent } from './funko/card/card.component';
 
 @NgModule({
   declarations: [
@@ -116,7 +120,12 @@ import { OrderingMainComponent } from './ordering/main/ordering-main.component';
     OrderingOptionComponent,
     RecipeAddDialogComponent,
     OrderHistoryComponent,
-    OrderingMainComponent
+    OrderingMainComponent,
+    FunkoMainComponent,
+    FunkoMainComponent,
+    FunkoPaginationComponent,
+    FunkoFacetsComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
