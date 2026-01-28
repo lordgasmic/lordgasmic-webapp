@@ -56,7 +56,6 @@ import { FilterByPipe } from './util/filter-by.pipe';
 import { RatingIconComponent } from './wine-tastings/rating-icon/rating-icon.component';
 import { WineryListComponent } from './wine-tastings/winery-list/winery-list.component';
 import { SortByPipe } from './util/sort-by.pipe';
-import { FunkoCardComponent } from './funko-card/funko-card.component';
 import { OrderingComponent } from './ordering/ordering.component';
 import { FoodLibraryComponent } from './food-library/food-library.component';
 import { GroceryAddComponent } from './food-library/grocery/add/grocery-add.component';
@@ -71,7 +70,7 @@ import { OrderingMainComponent } from './ordering/main/ordering-main.component';
 import { FunkoMainComponent } from './funko/main/funko-main.component';
 import { FunkoPaginationComponent } from './funko/pagination/funko-pagination.component';
 import { FunkoFacetsComponent } from './funko/facets/funko-facets.component';
-import { CardComponent } from './funko/card/card.component';
+import { FunkoCardComponent } from './funko/card/funko-card.component';
 
 @NgModule({
   declarations: [
@@ -125,7 +124,7 @@ import { CardComponent } from './funko/card/card.component';
     FunkoMainComponent,
     FunkoPaginationComponent,
     FunkoFacetsComponent,
-    CardComponent
+    FunkoCardComponent
   ],
   imports: [
     BrowserModule,
