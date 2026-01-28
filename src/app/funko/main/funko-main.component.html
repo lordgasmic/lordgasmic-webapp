@@ -1,1 +1,3 @@
-<p>main works!</p>
+<ng-container *ngIf="funkos">
+  <app-funko-card *ngFor="let funko of funkoResponse.funkos" [funko]="funko"></app-funko-card>
+</ng-container>
